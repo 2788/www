@@ -20,9 +20,25 @@
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
-  margin-left: @icecream-gap-md;
+  width: 40px;
+  height: @icecream-form-input-height-md;
+
+  svg {
+    max-width: 40px;
+    max-height: @icecream-form-input-height-md;
+  }
+}
+
+.iconNano {
+  display: inline-block;
+  width: @icecream-font-size-md;
+  height: @icecream-font-size-md;
+
+  svg {
+    display: block;
+    max-width: @icecream-font-size-md;
+    max-height: @icecream-font-size-md;
+  }
 }
 
 .preview {

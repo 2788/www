@@ -3,11 +3,11 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, DebouncedFieldState, ArrayFormState } from 'formstate-x'
 import { Button } from 'react-icecream'
-import { AddIcon, DeleteIcon } from 'react-icecream/icons'
+import { AddThinIcon, DeleteIcon } from 'react-icecream/icons'
 import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-icecream-form'
 
 import { useModalLike } from 'utils/async'
@@ -57,8 +57,8 @@ function createState(props?: SolutionComponentSceneConfig['props']) {
               if (desc.trim() === '') {
                 return '不能为空'
               }
-              if (desc.length > 120) {
-                return '不能超过 120 个字'
+              if (desc.length > 80) {
+                return '不能超过 80 个字'
               }
             })
           })
@@ -142,69 +142,70 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
     >
       <FormItem label="场景" labelWidth="2em" required state={state.$.items}>
         {state.$.items.$.map((itemState, itemIndex) => (
-          <Fragment key={itemIndex}>
-            <FormItem
-              label={
-                <span className={styles.section}>
-                  <span>{itemIndex + 1}</span>
-                  <Button
-                    type="link"
-                    icon={<DeleteIcon />}
-                    className={styles.btn}
-                    onClick={() => { removeItem(itemIndex) }}
-                  />
-                </span>
-              }
-              labelWidth="3em"
-              state={itemState}
-            >
-              <FormItem label="名称" required>
-                <TextInput state={itemState.$.name} />
-              </FormItem>
-              <FormItem label="描述" required>
-                <TextArea state={itemState.$.desc} maxCount={60} textareaProps={{ rows: 3 }} />
-              </FormItem>
-              <FormItem label="图片" required>
-                <UploadImgInput
-                  state={itemState.$.imgUrl}
-                  previewType="cover"
-                  width={634}
-                  height={332}
+          <FormItem
+            key={itemIndex}
+            label={
+              <span className={styles.sectionLabel}>
+                <span>{itemIndex + 1}</span>
+                <Button
+                  type="link"
+                  icon={<DeleteIcon />}
+                  className={styles.btn}
+                  onClick={() => { removeItem(itemIndex) }}
                 />
-              </FormItem>
-              <FormItem label="解决问题" required state={itemState.$.problems}>
-                {itemState.$.problems.$.map((problemState, problemIndex) => (
-                  <Fragment key={problemIndex}>
-                    <FormItem
-                      label={
-                        <span className={styles.section}>
-                          <span>{problemIndex + 1}</span>
-                          <Button
-                            type="link"
-                            icon={<DeleteIcon />}
-                            className={styles.btn}
-                            onClick={() => { removeProblem(itemIndex, problemIndex) }}
-                          />
-                        </span>
-                      }
-                      labelWidth="3em"
-                      state={problemState}
-                    >
-                      <FormItem label="标题" required>
-                        <TextInput state={problemState.$.name} />
-                      </FormItem>
-                      <FormItem label="描述" required>
-                        <TextArea state={problemState.$.desc} maxCount={120} textareaProps={{ rows: 7 }} />
-                      </FormItem>
-                    </FormItem>
-                  </Fragment>
-                ))}
-                <Button icon={<AddIcon />} onClick={() => { addProblem(itemIndex) }} />
-              </FormItem>
+              </span>
+            }
+            labelWidth="3em"
+            className={styles.sectionItem}
+            state={itemState}
+          >
+            <FormItem label="名称" required>
+              <TextInput state={itemState.$.name} />
             </FormItem>
-          </Fragment>
+            <FormItem label="描述" required>
+              <TextArea state={itemState.$.desc} maxCount={60} textareaProps={{ rows: 3 }} />
+            </FormItem>
+            <FormItem label="图片" required>
+              <UploadImgInput
+                state={itemState.$.imgUrl}
+                previewType="cover"
+                width={634}
+                height={328}
+                desc="推荐尺寸 634 × 328 px，最大 500 KB"
+              />
+            </FormItem>
+            <FormItem label="解决问题" required state={itemState.$.problems}>
+              {itemState.$.problems.$.map((problemState, problemIndex) => (
+                <FormItem
+                  key={problemIndex}
+                  label={
+                    <span className={styles.sectionLabel}>
+                      <span>{problemIndex + 1}</span>
+                      <Button
+                        type="link"
+                        icon={<DeleteIcon />}
+                        className={styles.btn}
+                        onClick={() => { removeProblem(itemIndex, problemIndex) }}
+                      />
+                    </span>
+                  }
+                  labelWidth="3em"
+                  className={styles.sectionItem}
+                  state={problemState}
+                >
+                  <FormItem label="标题" required>
+                    <TextInput state={problemState.$.name} />
+                  </FormItem>
+                  <FormItem label="描述" required>
+                    <TextArea state={problemState.$.desc} maxCount={80} textareaProps={{ rows: 5 }} />
+                  </FormItem>
+                </FormItem>
+              ))}
+              <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addProblem(itemIndex) }} />
+            </FormItem>
+          </FormItem>
         ))}
-        <Button icon={<AddIcon />} onClick={() => { addItem() }} />
+        <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addItem() }} />
       </FormItem>
     </DrawerForm>
   )

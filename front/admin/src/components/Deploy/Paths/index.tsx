@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react'
 
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
-import { Collapse, CollapsePanel, RadioGroup, Radio } from 'react-icecream-2'
+import { Collapse, CollapsePanel, RadioGroup, Radio } from 'react-icecream'
 
 import { wwwHost, wwwSourceHost } from 'constants/env'
 import { basePaths, indexPath, kodo404Path, sitemapPaths, externalSitePaths } from 'constants/deploy/refresh'

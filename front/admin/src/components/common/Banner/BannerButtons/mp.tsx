@@ -7,8 +7,7 @@ import React from 'react'
 import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { FormItem, Switch } from 'react-icecream-form'
 
-import { BannerButton, buttonMpTypes, platformMap } from 'constants/solution/page/comp-banner'
-
+import { BannerButton, buttonMpTypes, platformMap } from './common'
 import ButtonClick, { createState as createButtonClickState } from './ButtonClick'
 
 function getBaseValue(mp: BannerButton['mp']) {
@@ -51,12 +50,12 @@ export function createMpState(init: BannerButton['mp']) {
 export function renderMp(state: ReturnType<typeof createMpState>) {
   const fields = state.$.$
   return (
-    <FormItem label={platformMap.mp} state={state}>
+    <FormItem label={platformMap.mp} state={state} labelWidth="3em">
       <FormItem>
         <Switch state={fields.enabled} />
       </FormItem>
       {fields.enabled.value && (
-        <FormItem label="点击" required>
+        <FormItem label="点击" required labelWidth="2em">
           <ButtonClick state={fields.click} />
         </FormItem>
       )}

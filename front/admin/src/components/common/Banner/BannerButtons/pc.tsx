@@ -7,8 +7,7 @@ import React from 'react'
 import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { FormItem, Switch } from 'react-icecream-form'
 
-import { BannerButton, buttonPcTypes, platformMap } from 'constants/product/page/comp-banner'
-
+import { BannerButton, buttonPcTypes, platformMap } from './common'
 import ButtonClick, { createState as createButtonClickState } from './ButtonClick'
 
 function getBaseValue(pc: BannerButton['pc']) {
@@ -48,12 +47,12 @@ export function createPcState(init: BannerButton['pc']) {
 export function renderPc(state: ReturnType<typeof createPcState>) {
   const fields = state.$.$
   return (
-    <FormItem label={platformMap.pc} state={state}>
+    <FormItem label={platformMap.pc} state={state} labelWidth="3em">
       <FormItem>
         <Switch state={fields.enabled} />
       </FormItem>
       {fields.enabled.value && (
-        <FormItem label="点击" required>
+        <FormItem label="点击" required labelWidth="2em">
           <ButtonClick state={fields.click} />
         </FormItem>
       )}

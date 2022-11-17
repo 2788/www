@@ -3,11 +3,11 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, DebouncedFieldState, ArrayFormState } from 'formstate-x'
 import { Button } from 'react-icecream'
-import { AddIcon, DeleteIcon } from 'react-icecream/icons'
+import { AddThinIcon, DeleteIcon } from 'react-icecream/icons'
 import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-icecream-form'
 
 import { useModalLike } from 'utils/async'
@@ -104,35 +104,35 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
     >
       <FormItem label="功能" labelWidth="2em" required state={state.$.items}>
         {state.$.items.$.map((itemState, index) => (
-          <Fragment key={index}>
-            <FormItem
-              label={
-                <span className={styles.section}>
-                  <span>{index + 1}</span>
-                  <Button
-                    type="link"
-                    icon={<DeleteIcon />}
-                    className={styles.btn}
-                    onClick={() => { removeItem(index) }}
-                  />
-                </span>
-              }
-              labelWidth="3em"
-              state={itemState}
-            >
-              <FormItem label="标题" required>
-                <TextInput state={itemState.$.title} />
-              </FormItem>
-              <FormItem label="副标题" required>
-                <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 4 }} />
-              </FormItem>
-              <FormItem label={<div className={styles.urlLabel}>立即体验<br />跳转地址</div>}>
-                <WwwUrlPath state={itemState.$.url} />
-              </FormItem>
+          <FormItem
+            key={index}
+            label={
+              <span className={styles.sectionLabel}>
+                <span>{index + 1}</span>
+                <Button
+                  type="link"
+                  icon={<DeleteIcon />}
+                  className={styles.btn}
+                  onClick={() => { removeItem(index) }}
+                />
+              </span>
+            }
+            labelWidth="3em"
+            className={styles.sectionItem}
+            state={itemState}
+          >
+            <FormItem label="标题" required>
+              <TextInput state={itemState.$.title} />
             </FormItem>
-          </Fragment>
+            <FormItem label="副标题" required>
+              <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 4 }} />
+            </FormItem>
+            <FormItem label={<div className={styles.urlLabel}>立即体验<br />跳转地址</div>}>
+              <WwwUrlPath state={itemState.$.url} />
+            </FormItem>
+          </FormItem>
         ))}
-        <Button icon={<AddIcon />} onClick={() => { addItem() }} />
+        <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addItem() }} />
       </FormItem>
     </DrawerForm>
   )

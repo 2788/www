@@ -42,7 +42,13 @@ export default class IconInfoApis {
     await this.client.post(record, refreshPaths)
   }
 
-  async update(record: MongoApiStdClientPutOptions<BaseIconInfo>) {
+  // TODO: `MongoApiStdClient` 不够好用… 需要优化
+  async update(origin: MongoApiStdClientPutOptions<BaseIconInfo>, iconInfo: BaseIconInfo) {
+    const record = {
+      _id: (origin as unknown as { _id: string })._id,
+      createdAt: origin.createdAt,
+      ...iconInfo
+    }
     await this.client.put(record, refreshPaths)
   }
 }

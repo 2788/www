@@ -4,8 +4,8 @@
  */
 
 import React from 'react'
-import { Button } from 'react-icecream-2'
-import { AddThinIcon } from 'react-icecream-2/icons'
+import { Button } from 'react-icecream'
+import { AddThinIcon } from 'react-icecream/icons'
 
 import { useAddModal } from './modal-form'
 import { usePgcBannerList } from './list'

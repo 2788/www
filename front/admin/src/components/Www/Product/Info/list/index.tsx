@@ -4,11 +4,11 @@
  */
 
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import { Table, TableType, TablePaginationOptions, Button, Tooltip } from 'react-icecream-2'
+import { Table, TableType, TablePaginationOptions, Button, Tooltip } from 'react-icecream'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { ButtonLink } from 'admin-base/common/components/Link'
-import { ShareIcon } from 'react-icecream-2/icons'
+import { ShareIcon } from 'react-icecream/icons'
 
 import { timeFormatter } from 'utils/time'
 import { ProductId, wwwProductPathPrefix } from 'constants/product'

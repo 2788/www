@@ -5,7 +5,7 @@
 
 import React, { useState, useMemo } from 'react'
 import partition from 'lodash/partition'
-import { FormState, DebouncedFieldState, ArrayFormState } from 'formstate-x'
+import { FormState, DebouncedFieldState } from 'formstate-x'
 import { Loading } from 'react-icecream'
 import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-icecream-form'
 import { useInjection } from 'qn-fe-core/di'
@@ -46,16 +46,14 @@ function createState(productInfoList: BaseProductInfo[], currentProductInfo?: Ba
         return '不能为空'
       }
     }),
-    keywords: new ArrayFormState(
-      currentProductInfo?.keywords ?? [],
-      keyword => new DebouncedFieldState(keyword).withValidator(value => {
-        if (value.trim() === '') {
-          return '不能为空'
-        }
-      })
-    ).withValidator(keywords => {
+    keywords: new DebouncedFieldState(currentProductInfo?.keywords ?? []).withValidator(keywords => {
       if (keywords.length === 0) {
         return '不能为空'
+      }
+      for (const keyword of keywords) {
+        if (keyword.trim() === '') {
+          return '不能有空标签'
+        }
       }
     }),
     desc: new FormState({

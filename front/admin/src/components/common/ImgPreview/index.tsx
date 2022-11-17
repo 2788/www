@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react'
 import classnames from 'classnames'
-import { Modal, ModalFooter } from 'react-icecream-2'
+import { Modal, ModalFooter } from 'react-icecream'
 
 import style from './style.m.less'
 

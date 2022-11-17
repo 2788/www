@@ -4,8 +4,8 @@
  */
 
 import React, { useEffect, useState, useCallback } from 'react'
-import { Loading } from 'react-icecream-2'
-import { EditIcon } from 'react-icecream-2/icons'
+import { Loading } from 'react-icecream'
+import { EditIcon } from 'react-icecream/icons'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 

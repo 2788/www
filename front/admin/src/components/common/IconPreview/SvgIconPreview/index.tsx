@@ -4,12 +4,12 @@
  */
 
 import React, { useState } from 'react'
-import classnames from 'classnames'
-import { Modal, ModalFooter } from 'react-icecream-2'
+import classNames from 'classnames'
+import { Modal, ModalFooter } from 'react-icecream'
 
 import { iconConfig } from 'constants/icon'
 
-import style from './style.m.less'
+import styles from './style.m.less'
 
 export interface Props {
   svg: string
@@ -22,11 +22,11 @@ export default function SvgIconPreview({ svg, className }: Props) {
     <>
       <div
         title="点击预览大图"
-        className={classnames(style.main, className)}
+        className={classNames(styles.main, className)}
         onClick={() => { setVisible(true) }}
       >
         <div
-          className={classnames(style.icon, style.bordered, !svg && style.hidden)}
+          className={classNames(styles.icon, styles.bordered, !svg && styles.hidden)}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: svg }}
         >
@@ -34,14 +34,14 @@ export default function SvgIconPreview({ svg, className }: Props) {
       </div>
       <Modal
         title="预览大图"
-        width={150}
+        width={800}
         visible={visible}
         onOk={() => { setVisible(false) }}
         onCancel={() => { setVisible(false) }}
-        footer={<ModalFooter cancelButtonProps={{ className: style.hidden }} />}
+        footer={<ModalFooter cancelButtonProps={{ className: styles.hidden }} />}
       >
         <div
-          className={classnames(style.preview, style.bordered)}
+          className={classNames(styles.preview, styles.bordered)}
           style={{
             width: `${iconConfig.width}px`,
             height: `${iconConfig.height}px`
@@ -52,5 +52,17 @@ export default function SvgIconPreview({ svg, className }: Props) {
         </div>
       </Modal>
     </>
+  )
+}
+
+export function SvgIconPreviewNano({ svg, className }: Props) {
+  return (
+    <div
+      className={classNames(styles.iconNano, className)}
+      // TODO: 无法避免 svg 内容被搜索出来的问题
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: svg }}
+    >
+    </div>
   )
 }

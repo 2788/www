@@ -6,7 +6,7 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import {
   Table, TableType, TablePaginationOptions, TableColumnSelectFilterOptions, Button, Popover
-} from 'react-icecream-2'
+} from 'react-icecream'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { ButtonLink } from 'admin-base/common/components/Link'

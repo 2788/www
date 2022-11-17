@@ -5,8 +5,8 @@
 
 import React, { useState, useMemo, useEffect } from 'react'
 import { observer } from 'mobx-react'
-import { Button, Loading, Alert, Dropdown, Menu, MenuItem, Checkbox, Dialog, DialogFooter } from 'react-icecream-2'
-import { AddIcon, SettingIcon } from 'react-icecream-2/icons'
+import { Button, Loading, Alert, Dropdown, Menu, MenuItem, Checkbox, Dialog, DialogFooter } from 'react-icecream'
+import { AddIcon, SettingIcon } from 'react-icecream/icons'
 import { useInjection } from 'qn-fe-core/di'
 import { RouterStore, useRouteTitle } from 'qn-fe-core/router'
 import { ToasterStore } from 'admin-base/common/toaster'
@@ -49,10 +49,16 @@ export default observer(function PageInfo({ solutionId }: Props) {
     )
   }, [solutionId, solutionApis, toasterStore])
 
+  /** 固定按钮是否已勾选 */
   const [configFixed, setConfigFixed] = useState(true)
+  /** 编辑弹窗是否弹出 */
   const [isEditingComp, setIsEditingComp] = useState(false)
+  /** 保存成功后跳转弹窗是否弹出 */
   const [submittedConfirmVisible, setSubmittedConfirmVisible] = useState(false)
+  /** 是否有待保存的数据（修改过） */
   const [unsaved, setUnsaved] = useState(false)
+  /** 是否正在保存 */
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     function confirmUnsaved(event: BeforeUnloadEvent) {
@@ -74,7 +80,7 @@ export default observer(function PageInfo({ solutionId }: Props) {
   const [configCompFunction, compFunctionView] = useCompFunction()
   const [configCompScene, compSceneView] = useCompScene()
 
-  async function submit() {
+  function submit() {
     if (!solutionInfo) {
       return
     }
@@ -89,10 +95,17 @@ export default observer(function PageInfo({ solutionId }: Props) {
       return
     }
 
-    await toasterStore.promise(solutionApis.update(solutionInfo))
-
-    setUnsaved(false)
-    setSubmittedConfirmVisible(true)
+    setIsSubmitting(true)
+    toasterStore.promise(
+      solutionApis.update(solutionInfo)
+        .then(() => {
+          setUnsaved(false)
+          setSubmittedConfirmVisible(true)
+        })
+        .finally(() => {
+          setIsSubmitting(false)
+        })
+    )
   }
 
   function add(solutionModule: SolutionModule) {
@@ -199,12 +212,11 @@ export default observer(function PageInfo({ solutionId }: Props) {
   const configForm = (
     <div className={styles.list}>
       <div className={styles.fixedCheck}>
-        固定：<Checkbox value={configFixed} defaultChecked onChange={setConfigFixed} />
+        <label>固定：<Checkbox checked={configFixed} onChange={setConfigFixed} /></label>
       </div>
 
       <List
         solutionInfo={solutionInfo}
-        onSolutionInfoChange={setSolutionInfo}
         onBannerEdit={() => {
           setIsEditingComp(true)
           toasterStore.promise(
@@ -217,6 +229,13 @@ export default observer(function PageInfo({ solutionId }: Props) {
           )
         }}
         onSectionEdit={edit}
+        onSectionsChange={sections => {
+          setSolutionInfo({
+            ...solutionInfo!,
+            sections
+          })
+          setUnsaved(true)
+        }}
       />
 
       {modules.length > 0 && (
@@ -245,7 +264,14 @@ export default observer(function PageInfo({ solutionId }: Props) {
       {unsaved && (<Alert type="info" message="还没保存发布" />)}
 
       <div className={styles.config}>
-        <Button type="primary" disabled={!solutionInfo} onClick={() => submit()}>保存并发布</Button>
+        <Button
+          type="primary"
+          disabled={!solutionInfo}
+          loading={isSubmitting}
+          onClick={() => submit()}
+        >
+          保存并发布
+        </Button>
         <Dropdown
           // FIXME: 优化实现方式，不依赖于 undefined
           visible={configFixed && !isEditingComp || undefined}

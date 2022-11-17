@@ -3,11 +3,11 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, DebouncedFieldState, ArrayFormState } from 'formstate-x'
 import { Button } from 'react-icecream'
-import { AddIcon, DeleteIcon } from 'react-icecream/icons'
+import { AddThinIcon, DeleteIcon } from 'react-icecream/icons'
 import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-icecream-form'
 
 import { useModalLike } from 'utils/async'
@@ -98,40 +98,41 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
     >
       <FormItem label="场景" labelWidth="2em" required state={state.$.items}>
         {state.$.items.$.map((itemState, index) => (
-          <Fragment key={index}>
-            <FormItem
-              label={
-                <span className={styles.section}>
-                  <span>{index + 1}</span>
-                  <Button
-                    type="link"
-                    icon={<DeleteIcon />}
-                    className={styles.btn}
-                    onClick={() => { removeItem(index) }}
-                  />
-                </span>
-              }
-              labelWidth="3em"
-              state={itemState}
-            >
-              <FormItem label="名称" required>
-                <TextInput state={itemState.$.title} />
-              </FormItem>
-              <FormItem label="描述" required>
-                <TextArea state={itemState.$.desc} maxCount={60} textareaProps={{ rows: 4 }} />
-              </FormItem>
-              <FormItem label="图片" required>
-                <UploadImgInput
-                  state={itemState.$.imgUrl}
-                  previewType="cover"
-                  width={608}
-                  height={548}
+          <FormItem
+            key={index}
+            label={
+              <span className={styles.sectionLabel}>
+                <span>{index + 1}</span>
+                <Button
+                  type="link"
+                  icon={<DeleteIcon />}
+                  className={styles.btn}
+                  onClick={() => { removeItem(index) }}
                 />
-              </FormItem>
+              </span>
+            }
+            labelWidth="3em"
+            className={styles.sectionItem}
+            state={itemState}
+          >
+            <FormItem label="名称" required>
+              <TextInput state={itemState.$.title} />
             </FormItem>
-          </Fragment>
+            <FormItem label="描述" required>
+              <TextArea state={itemState.$.desc} maxCount={60} textareaProps={{ rows: 4 }} />
+            </FormItem>
+            <FormItem label="图片" required>
+              <UploadImgInput
+                state={itemState.$.imgUrl}
+                previewType="cover"
+                width={746}
+                height={394}
+                desc="推荐尺寸 746 × 394 px，最大 500 KB"
+              />
+            </FormItem>
+          </FormItem>
         ))}
-        <Button icon={<AddIcon />} onClick={() => { addItem() }} />
+        <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addItem() }} />
       </FormItem>
     </DrawerForm>
   )

@@ -5,11 +5,12 @@
 
 import React from 'react'
 import { observer } from 'mobx-react'
-import { Select, SelectOption, InputWrapper } from 'react-icecream-form'
-import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
+import { Select, SelectOption, InputWrapper, FormItem } from 'react-icecream-form'
+import { FormState, FieldState, TransformedState } from 'formstate-x'
 
 import { hasIconScheme } from 'transforms/icon'
 import * as uploadImg from 'components/common/Upload/Img'
+import ClearableUploadBtn from 'components/common/Upload/Img/ClearableUploadBtn'
 import SelectIcon, * as selectIcon from 'components/common/SelectIcon'
 
 import styles from './style.m.less'
@@ -21,7 +22,7 @@ interface OriginValue {
 }
 
 function createOriginState(value: OriginValue) {
-  const typeState = new DebouncedFieldState<OriginValue['type']>(value.type)
+  const typeState = new FieldState<OriginValue['type']>(value.type)
   return new FormState({
     type: typeState,
     http: uploadImg.createState(value.http).disableWhen(() => typeState.value !== 'http'),
@@ -60,23 +61,33 @@ export default observer(function ImgIconInput({ state, ...props }: Props) {
   return (
     <InputWrapper state={state}>
       <div className={styles.inputGroup}>
-        <Select state={originState.type} className={styles.typeSelect}>
-          <SelectOption<OriginValue['type']> value="icon">图标库</SelectOption>
-          <SelectOption<OriginValue['type']> value="http">图片</SelectOption>
-        </Select>
+        <FormItem>
+          <Select state={originState.type} className={styles.typeSelect}>
+            <SelectOption<OriginValue['type']> value="icon">图标库</SelectOption>
+            <SelectOption<OriginValue['type']> value="http">图片</SelectOption>
+          </Select>
+        </FormItem>
         {originState.type.value === 'icon' && (
-          <SelectIcon {...props} state={originState.icon} />
+          <FormItem>
+            <SelectIcon {...props} state={originState.icon} />
+          </FormItem>
         )}
         {originState.type.value === 'http' && (
-          <uploadImg.UploadImgInput
-            {...props}
-            state={originState.http}
-            previewType="contain"
-            width={96}
-            height={96}
-            desc="最大 100 KB"
-            maxSize={100}
-          />
+          <FormItem>
+            <uploadImg.UploadImgInput
+              {...props}
+              state={originState.http}
+              previewType="contain"
+              width={96}
+              height={96}
+              desc="最大 100 KB"
+              maxSize={100}
+            >
+              <span className={styles.uploadBtn}>
+                <ClearableUploadBtn state={originState.http} />
+              </span>
+            </uploadImg.UploadImgInput>
+          </FormItem>
         )}
       </div>
     </InputWrapper>

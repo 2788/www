@@ -9,10 +9,14 @@
   margin-top: -10px;
 }
 
-.section {
+.sectionLabel {
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.sectionItem:not(:last-of-type) {
+  padding-bottom: @icecream-gap-lg;
 }
 
 .btn {

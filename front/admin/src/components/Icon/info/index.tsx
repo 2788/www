@@ -7,36 +7,28 @@ import React, { useState, useMemo } from 'react'
 import partition from 'lodash/partition'
 import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { observer } from 'mobx-react'
-import { ModalForm, FormItem, useFormstateX, TextInput, Select, SelectOption } from 'react-icecream-form'
+import { ModalForm, FormItem, useFormstateX, TextInput } from 'react-icecream-form'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
 import { useModalLike } from 'utils/async'
-import { IconId, IconInfo as BaseIconInfo, iconConfig } from 'constants/icon'
+import { IconId, IconFile, IconInfo as BaseIconInfo } from 'constants/icon'
 import IconInfoApis, { IconInfo } from 'apis/icon'
-import { UploadImgInput, createState as createUploadImgState } from 'components/common/Upload/Img'
 
-import SvgFileInput, { createState as createSvgFileInputState } from './SvgFileInput'
-
-import styles from './style.m.less'
+import UploadIcon, { createState as createUploadIconState, defaultValue as defaultUploadIconValue } from './UploadIcon'
 
 function getBaseValue(iconInfo: BaseIconInfo | undefined) {
-  const type = iconInfo?.type ?? 'svg-inline'
+  const file: IconFile = iconInfo ?? defaultUploadIconValue
   return {
     id: iconInfo?.id ?? '',
     name: iconInfo?.name ?? '',
-    file: {
-      type,
-      url: type === 'url' && iconInfo && 'url' in iconInfo && iconInfo.url ? iconInfo.url : '',
-      content: type === 'svg-inline' && iconInfo && 'content' in iconInfo && iconInfo.content ? iconInfo.content : ''
-    }
+    file
   }
 }
 
 function createState(icons: BaseIconInfo[], current?: BaseIconInfo) {
   const init = getBaseValue(current)
 
-  const typeState = new DebouncedFieldState(init.file.type) // TODO: type 自动推断
   const state = new FormState({
     id: new DebouncedFieldState(init.id).withValidator(id => {
       if (id.trim() === '') {
@@ -57,43 +49,15 @@ function createState(icons: BaseIconInfo[], current?: BaseIconInfo) {
         return '该图标名已存在'
       }
     }),
-    file: new FormState({
-      type: typeState,
-      url: createUploadImgState(init.file.url).withValidator(url => {
-        if (url === '') {
-          return '不能为空'
-        }
-      }).disableWhen(() => typeState.value !== 'url'),
-      content: createSvgFileInputState(init.file.content).withValidator(content => {
-        if (content === '') {
-          return '不能为空'
-        }
-      }).disableWhen(() => typeState.value !== 'svg-inline')
-    })
+    file: createUploadIconState(init.file)
   })
 
   return new TransformedState<typeof state, BaseIconInfo, ReturnType<typeof getBaseValue>>(
     state,
-    ({ file, ...value }) => {
-      const newFile = file.type === 'url'
-        ? {
-          type: file.type,
-          url: file.url
-        }
-        : {
-          type: file.type,
-          content: file.content
-        }
-      return {
-        ...value,
-        ...newFile
-      }
-    },
+    ({ file, ...value }) => ({ ...file, ...value }),
     getBaseValue
   )
 }
-
-const imgFilter = ['.png', '.jpg', '.jpeg', '.gif']
 
 interface Props {
   current?: BaseIconInfo
@@ -128,27 +92,7 @@ const IconModalForm = observer(function _IconModalForm(props: Props) {
         <TextInput state={fields.name} />
       </FormItem>
       <FormItem label="图片" required>
-        <div className={styles.inputGroup}>
-          <Select state={fields.file.$.type} className={styles.inputGroupSelect}>
-            <SelectOption<BaseIconInfo['type']> value="svg-inline">SVG</SelectOption>
-            <SelectOption<BaseIconInfo['type']> value="url">普通图片</SelectOption>
-          </Select>
-          {fields.file.$.type.value === 'svg-inline' && (
-            <SvgFileInput state={fields.file.$.content} />
-          )}
-          {fields.file.$.type.value === 'url' && (
-            <UploadImgInput
-              state={fields.file.$.url}
-              uploadBucketKeyRule="icon"
-              accept={imgFilter}
-              previewType="contain"
-              width={iconConfig.width}
-              height={iconConfig.height}
-              desc={`最大 ${iconConfig.maxSize} KB`}
-              maxSize={iconConfig.maxSize}
-            />
-          )}
-        </div>
+        <UploadIcon state={fields.file} />
       </FormItem>
     </ModalForm>
   )
@@ -174,7 +118,7 @@ export default function useIconInfo(allIcons: IconInfo[]) {
 
   async function submit(iconInfo: BaseIconInfo) {
     const req = iconId
-      ? iconInfoApis.update({ ...currentIconInfo!, ...iconInfo })
+      ? iconInfoApis.update(currentIconInfo!, iconInfo)
       : iconInfoApis.create(iconInfo)
     await toasterStore.promise(req)
     resolve()

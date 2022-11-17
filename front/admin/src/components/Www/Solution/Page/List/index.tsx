@@ -4,10 +4,10 @@
  */
 
 import React from 'react'
-import { Button } from 'react-icecream-2'
-import { UpTriangleIcon, DownTriangleIcon, DeleteIcon, EditIcon } from 'react-icecream-2/icons'
+import { Button } from 'react-icecream'
+import { UpTriangleIcon, DownTriangleIcon, DeleteIcon, EditIcon } from 'react-icecream/icons'
 
-import { SolutionModule, solutionModuleTitleMap } from 'constants/solution/page'
+import { SolutionModule, solutionModuleTitleMap, SolutionSection } from 'constants/solution/page'
 import { SolutionInfo } from 'apis/solution'
 
 import styles from './style.m.less'
@@ -41,12 +41,13 @@ function Item({ name, onEdit, onRemove, onMove }: ItemProps) {
 
 export interface Props {
   solutionInfo: SolutionInfo
-  onSolutionInfoChange(solutionInfo: SolutionInfo): void
   onBannerEdit(): void
   onSectionEdit(index: number): void
+  /** move / remove */
+  onSectionsChange(sections: SolutionSection[]): void
 }
 
-export default function List({ solutionInfo, onSolutionInfoChange, onBannerEdit, onSectionEdit }: Props) {
+export default function List({ solutionInfo, onBannerEdit, onSectionEdit, onSectionsChange }: Props) {
 
   function move(index: number, offset: number) {
     const sections = [...solutionInfo.sections]
@@ -57,22 +58,13 @@ export default function List({ solutionInfo, onSolutionInfoChange, onBannerEdit,
 
     const item = sections.splice(index, 1)[0]
     sections.splice(newIndex, 0, item)
-
-    const result = {
-      ...solutionInfo,
-      sections
-    }
-    onSolutionInfoChange(result)
+    onSectionsChange(sections)
   }
 
   function remove(index: number) {
     const sections = [...solutionInfo.sections]
     sections.splice(index, 1)
-    const result = {
-      ...solutionInfo,
-      sections
-    }
-    onSolutionInfoChange(result)
+    onSectionsChange(sections)
   }
 
   return (

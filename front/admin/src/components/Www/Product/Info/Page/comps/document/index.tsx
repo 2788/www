@@ -3,11 +3,11 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, DebouncedFieldState, ArrayFormState } from 'formstate-x'
 import { Button } from 'react-icecream'
-import { AddIcon, DeleteIcon } from 'react-icecream/icons'
+import { AddThinIcon, DeleteIcon } from 'react-icecream/icons'
 import { DrawerForm, FormItem, useFormstateX, TextInput } from 'react-icecream-form'
 
 import { useModalLike } from 'utils/async'
@@ -127,58 +127,58 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
     >
       <FormItem label="文档组" labelWidth="3em" required state={state.$.items}>
         {state.$.items.$.map((itemState, itemIndex) => (
-          <Fragment key={itemIndex}>
-            <FormItem
-              label={
-                <span className={styles.section}>
-                  <span>{itemIndex + 1}</span>
-                  <Button
-                    type="link"
-                    icon={<DeleteIcon />}
-                    className={styles.btn}
-                    onClick={() => { removeItem(itemIndex) }}
-                  />
-                </span>
-              }
-              labelWidth="3em"
-              state={itemState}
-            >
-              <FormItem label="文档分类" required>
-                <TextInput state={itemState.$.type} />
-              </FormItem>
-              <FormItem label="文档列表" required state={itemState.$.links}>
-                {itemState.$.links.$.map((linkState, linkIndex) => (
-                  <Fragment key={linkIndex}>
-                    <FormItem
-                      label={
-                        <span className={styles.section}>
-                          <span>{linkIndex + 1}</span>
-                          <Button
-                            type="link"
-                            icon={<DeleteIcon />}
-                            className={styles.btn}
-                            onClick={() => { removeLink(itemIndex, linkIndex) }}
-                          />
-                        </span>
-                      }
-                      labelWidth="3em"
-                      state={linkState}
-                    >
-                      <FormItem label="文档名" required>
-                        <TextInput state={linkState.$.title} />
-                      </FormItem>
-                      <FormItem label="跳转地址" required>
-                        <WwwUrlPath state={linkState.$.url} />
-                      </FormItem>
-                    </FormItem>
-                  </Fragment>
-                ))}
-                <Button icon={<AddIcon />} onClick={() => { addLink(itemIndex) }} />
-              </FormItem>
+          <FormItem
+            key={itemIndex}
+            label={
+              <span className={styles.sectionLabel}>
+                <span>{itemIndex + 1}</span>
+                <Button
+                  type="link"
+                  icon={<DeleteIcon />}
+                  className={styles.btn}
+                  onClick={() => { removeItem(itemIndex) }}
+                />
+              </span>
+            }
+            labelWidth="3em"
+            className={styles.sectionItem}
+            state={itemState}
+          >
+            <FormItem label="文档分类" required>
+              <TextInput state={itemState.$.type} />
             </FormItem>
-          </Fragment>
+            <FormItem label="文档列表" required state={itemState.$.links}>
+              {itemState.$.links.$.map((linkState, linkIndex) => (
+                <FormItem
+                  key={linkIndex}
+                  label={
+                    <span className={styles.sectionLabel}>
+                      <span>{linkIndex + 1}</span>
+                      <Button
+                        type="link"
+                        icon={<DeleteIcon />}
+                        className={styles.btn}
+                        onClick={() => { removeLink(itemIndex, linkIndex) }}
+                      />
+                    </span>
+                  }
+                  labelWidth="3em"
+                  className={styles.sectionItem}
+                  state={linkState}
+                >
+                  <FormItem label="文档名" required>
+                    <TextInput state={linkState.$.title} />
+                  </FormItem>
+                  <FormItem label="跳转地址" required>
+                    <WwwUrlPath state={linkState.$.url} />
+                  </FormItem>
+                </FormItem>
+              ))}
+              <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addLink(itemIndex) }} />
+            </FormItem>
+          </FormItem>
         ))}
-        <Button icon={<AddIcon />} onClick={() => { addItem() }} />
+        <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addItem() }} />
       </FormItem>
     </DrawerForm>
   )

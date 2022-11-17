@@ -73,7 +73,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
           width={1180}
           height={800}
           maxSize={1024}
-          desc="最大 1024 KB"
+          desc="最大 1 MB"
         />
       </FormItem>
       <FormItem label="图片说明">

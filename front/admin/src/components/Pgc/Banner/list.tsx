@@ -4,8 +4,8 @@
  */
 
 import React, { useEffect, useState, useCallback } from 'react'
-import { Table, TableType, Button, Tooltip, Popover } from 'react-icecream-2'
-import { EditIcon, DeleteIcon } from 'react-icecream-2/icons'
+import { Table, TableType, Button, Tooltip, Popover } from 'react-icecream'
+import { EditIcon, DeleteIcon } from 'react-icecream/icons'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
@@ -90,7 +90,7 @@ export function usePgcBannerList() {
       <PgcBannerTable.Column
         title="状态"
         id="status"
-        render={(_, record) => getStateName(record)}
+        render={(_, record) => <div className={style.status}>{getStateName(record)}</div>}
       />
       <PgcBannerTable.Column
         title="banner"

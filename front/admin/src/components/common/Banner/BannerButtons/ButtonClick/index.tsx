@@ -5,15 +5,41 @@
 
 import React from 'react'
 import { observer } from 'mobx-react'
-import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
+import { FormState, FieldState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { InputWrapper, FormItem, TextInput, Select, SelectOption } from 'react-icecream-form'
 
-import {
-  ButtonClickType, ButtonClickTypes, ButtonClickWebLink, ButtonClickMpLink, buttonClickTypeMap
-} from 'constants/product/page/comp-banner'
 import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/WwwUrlPath'
 
 import styles from './style.m.less'
+
+export interface ButtonClickConsult {
+  type: 'consult'
+}
+
+export interface ButtonClickWebLink {
+  type: 'webLink'
+  url: string
+}
+
+export interface ButtonClickMpLink {
+  type: 'mpLink'
+  url: string
+}
+
+export type ButtonClickTypes = ButtonClickConsult | ButtonClickWebLink | ButtonClickMpLink
+
+export type ButtonClickType<T extends ButtonClickTypes['type']> = (
+  T extends 'webLink' ? ButtonClickWebLink
+  : T extends 'mpLink' ? ButtonClickMpLink
+  : T extends 'consult' ? ButtonClickConsult
+  : never
+)
+
+const buttonClickTypeMap = {
+  consult: '咨询',
+  webLink: 'Web 地址',
+  mpLink: '小程序页面'
+} as const
 
 function validateUrl(url: string, required = false) {
   if (required && url.trim() === '') {
@@ -58,10 +84,10 @@ function createBaseState<T extends ButtonClickTypes['type']>(
 ) {
   const click = getBaseValue<T>(init, allowTypes)
 
-  const typeState = new DebouncedFieldState(click.type)
+  const typeState = new FieldState(click.type)
   return new FormState({
     type: typeState,
-    allows: new DebouncedFieldState(click.allows),
+    allows: new FieldState(click.allows),
     webLinkUrl: createWwwUrlPathState(click.webLinkUrl)
       .withValidator(webLinkUrl => validateUrl(webLinkUrl))
       .disableWhen(() => !(typeState.value === 'webLink' && click.allows.webLink)),

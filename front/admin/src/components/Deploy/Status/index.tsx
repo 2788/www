@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
-import { Button, NumberInput } from 'react-icecream-2'
+import { Button, NumberInput } from 'react-icecream'
 
 import { wwwSourceHost, wwwHost } from 'constants/env'
 import { kodo404Path, sitemapPaths } from 'constants/deploy/refresh'

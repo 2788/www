@@ -31,11 +31,9 @@ module.exports = {
     '^react\\-dom\\/lib\\/getVendorPrefixedEventName$': '<rootDir>/test/react-dom-getVendorPrefixedEventName-mock.js',
     '^icecream\\-base$': '<rootDir>/node_modules/icecream-base/lib',
     '^react\\-icecream\\-2\\/icons$': '<rootDir>/node_modules/react-icecream-2/lib/icons/index.js',
-    '^react\\-icecream\\-2\\/form\\-x$': '<rootDir>/node_modules/react-icecream-2/lib/form-x/index.js',
     '^react\\-icecream\\-2$': '<rootDir>/node_modules/react-icecream-2/lib',
-    '^react\\-icecream\\/icons$': '<rootDir>/node_modules/react-icecream-2/lib/icons/index.js',
-    '^react\\-icecream\\/form\\-x$': '<rootDir>/node_modules/react-icecream-2/lib/form-x/index.js',
-    '^react\\-icecream$': '<rootDir>/node_modules/react-icecream-2/lib',
+    '^react\\-icecream\\/icons$': '<rootDir>/node_modules/react-icecream/lib/icons/index.js',
+    '^react\\-icecream$': '<rootDir>/node_modules/react-icecream/lib',
     '^react\\-icecream\\-form$': '<rootDir>/node_modules/react-icecream-form/lib',
     '^qn\\-fe\\-core\\/(.*)$': '<rootDir>/node_modules/qn-fe-core/lib/$1',
     '^admin\\-base\\/(.*)$': '<rootDir>/node_modules/admin-base/lib/$1'

@@ -1,5 +1,5 @@
 /**
- * @file 小程序
+ * @file 移动端
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
@@ -7,56 +7,52 @@ import React from 'react'
 import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { FormItem, Switch } from 'react-icecream-form'
 
-import { BannerButton, buttonMpTypes, platformMap } from 'constants/product/page/comp-banner'
-
+import { BannerButton, buttonMobileTypes, platformMap } from './common'
 import ButtonClick, { createState as createButtonClickState } from './ButtonClick'
 
-function getBaseValue(mp: BannerButton['mp']) {
+function getBaseValue(mobile: BannerButton['mobile']) {
   return {
-    enabled: !!mp,
-    click: mp?.click ?? {
+    enabled: !!mobile,
+    click: mobile?.click ?? {
       type: 'webLink' as const,
       url: ''
     }
   }
 }
 
-function createBaseState(init: BannerButton['mp']) {
-  const mp = getBaseValue(init)
+function createBaseState(init: BannerButton['mobile']) {
+  const mobile = getBaseValue(init)
 
-  const enabledState = new DebouncedFieldState(mp.enabled)
+  const enabledState = new DebouncedFieldState(mobile.enabled)
   return new FormState({
     enabled: enabledState,
-    click: createButtonClickState(mp.click, buttonMpTypes).withValidator(button => {
-      if (
-        button.type === 'webLink' && button.url.trim() === ''
-        || button.type === 'mpLink' && button.url.trim() === ''
-      ) {
+    click: createButtonClickState(mobile.click, buttonMobileTypes).withValidator(button => {
+      if (button.type === 'webLink' && button.url.trim() === '') {
         return '不能为空'
       }
     })
   })
 }
 
-export function createMpState(init: BannerButton['mp']) {
+export function createMobileState(init: BannerButton['mobile']) {
   const state = createBaseState(init)
 
   return new TransformedState(
     state,
-    ({ enabled, ...mp }) => (enabled ? mp : undefined),
+    ({ enabled, ...mobile }) => (enabled ? mobile : undefined),
     getBaseValue
   ).disableWhen(() => !state.$.enabled.value)
 }
 
-export function renderMp(state: ReturnType<typeof createMpState>) {
+export function renderMobile(state: ReturnType<typeof createMobileState>) {
   const fields = state.$.$
   return (
-    <FormItem label={platformMap.mp} state={state}>
+    <FormItem label={platformMap.mobile} state={state} labelWidth="3em">
       <FormItem>
         <Switch state={fields.enabled} />
       </FormItem>
       {fields.enabled.value && (
-        <FormItem label="点击" required>
+        <FormItem label="点击" required labelWidth="2em">
           <ButtonClick state={fields.click} />
         </FormItem>
       )}

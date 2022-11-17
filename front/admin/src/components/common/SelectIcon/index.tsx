@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { DebouncedFieldState, TransformedState } from 'formstate-x'
 import { Loading } from 'react-icecream'
@@ -13,6 +13,9 @@ import { ToasterStore } from 'admin-base/common/toaster'
 
 import { getIconId, withIconScheme } from 'transforms/icon'
 import IconInfoApis, { IconInfo } from 'apis/icon'
+import IconPreview, { IconPreviewNano } from 'components/common/IconPreview'
+
+import styles from './style.m.less'
 
 export function createState(idOrUrl?: string | null, withoutScheme = false) {
   return new TransformedState(
@@ -32,6 +35,11 @@ export default observer(function SelectIcon({ state }: Props) {
 
   const [icons, setIcons] = useState<IconInfo[] | undefined>(undefined)
 
+  const iconInfo = useMemo(
+    () => (icons ?? []).find(({ id }) => id === state.$.value),
+    [icons, state.$.value]
+  )
+
   useEffect(() => {
     toasterStore.promise(
       iconInfoApis.listAll().then(list => { setIcons(list) })
@@ -41,20 +49,28 @@ export default observer(function SelectIcon({ state }: Props) {
   return (
     // TODO: 如何把 loading 状态向上传递 / 暴露出去
     <Loading loading={icons == null}>
-      <InputWrapper state={state}>
-        <Select
-          state={state.$}
-          searchable
-          clearable
-        >
-          {icons != null && icons.map(({ id, name }) => (
-            // TODO: 优化，用更科学的方式支持按 icon id 搜索
-            // TODO: 优化，在这里直接显示小 icon
-            // TODO: 优化，选中后在旁边预览 icon 图标
-            <SelectOption value={id} key={id}>{name} ({id})</SelectOption>
-          ))}
-        </Select>
-      </InputWrapper>
+      <div className={styles.main}>
+        <InputWrapper state={state}>
+          <Select
+            state={state.$}
+            searchable
+            clearable
+            className={styles.select}
+          >
+            {icons != null && icons.map(icon => (
+              // TODO: 优化，用更科学的方式支持按 icon id 搜索
+              <SelectOption value={icon.id} key={icon.id}>
+                <div className={styles.item}>
+                  <IconPreviewNano icon={icon} className={styles.iconNano} /> {icon.name} ({icon.id})
+                </div>
+              </SelectOption>
+            ))}
+          </Select>
+        </InputWrapper>
+        {iconInfo && (
+          <IconPreview icon={iconInfo} className={styles.iconSelected} />
+        )}
+      </div>
     </Loading>
   )
 })

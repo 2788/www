@@ -5,7 +5,7 @@
 
 import React, { useState, useRef } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { Button, ButtonProps, Tooltip, TooltipProps } from 'react-icecream-2'
+import { Button, ButtonProps, Tooltip, TooltipProps } from 'react-icecream'
 
 const time = 2 * 1e3
 

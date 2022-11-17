@@ -8,14 +8,13 @@ import { reaction } from 'mobx'
 import { observer } from 'mobx-react'
 import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { InputWrapper, FormItem, RadioGroup, Radio } from 'react-icecream-form'
-import { Button } from 'react-icecream'
-import { CloseCircleIcon } from 'react-icecream/icons'
 
 import { isDark, getBgColor } from 'utils/color'
 import ColorPicker, { createState as createColorPickerState } from 'components/common/ColorPicker'
-import { UploadImgInput, createState as createUploadImgState, IProps as UploadImgInputProps } from 'components/common/Upload/Img'
-
-import styles from './style.m.less'
+import {
+  UploadImgInput, createState as createUploadImgState, IProps as UploadImgInputProps
+} from 'components/common/Upload/Img'
+import ClearableUploadBtn from 'components/common/Upload/Img/ClearableUploadBtn'
 
 function getDefaultBgColor(isLight: boolean) {
   return isLight ? '#B8DFFE' : '#213148'
@@ -106,16 +105,16 @@ export default observer(function Banner({ state, uploadLarge, uploadSmall }: Pro
 
   return (
     <InputWrapper state={state}>
-      <FormItem label="主题色" required labelVerticalAlign="text">
+      <FormItem label="主题色" required labelVerticalAlign="text" labelWidth="4em">
         <RadioGroup state={fields.light}>
           <Radio value={false}>深色</Radio>
           <Radio value>浅色</Radio>
         </RadioGroup>
       </FormItem>
-      <FormItem label="背景色" required>
+      <FormItem label="背景色" required labelWidth="4em">
         <ColorPicker state={fields.bgColor} colors={colors} />
       </FormItem>
-      <FormItem label="背景大图" required>
+      <FormItem label="背景大图" required labelWidth="4em">
         <UploadImgInput
           {...uploadLarge}
           state={fields.bgImgUrl.$.large}
@@ -124,25 +123,20 @@ export default observer(function Banner({ state, uploadLarge, uploadSmall }: Pro
           width={5120}
           height={960}
           maxSize={1024}
+          desc="推荐尺寸 5120 × 960 px (16:3)，最大 1 MB"
         />
       </FormItem>
-      <FormItem label="背景小图" className={styles.smallBg}>
+      <FormItem label="背景小图" labelWidth="4em">
         <UploadImgInput
           {...uploadSmall}
           state={fields.bgImgUrl.$.small}
           onUploaded={handleUploaded}
           previewType="cover"
-          width={2304}
-          height={750}
-          desc="针对移动端和小程序，推荐尺寸 2304 × 750 px，最大 500 KB"
+          width={1536}
+          height={500}
+          desc="针对移动端和小程序，推荐尺寸 1536 × 500 px，最大 500 KB"
         >
-          <Button type="link" className={styles.uploadBtn}>上传</Button>
-          {fields.bgImgUrl.$.small.value && (
-            <CloseCircleIcon
-              className={styles.clearIcon}
-              onClick={e => { e.stopPropagation(); fields.bgImgUrl.$.small.onChange('') }}
-            />
-          )}
+          <ClearableUploadBtn state={fields.bgImgUrl.$.small} />
         </UploadImgInput>
       </FormItem>
     </InputWrapper>

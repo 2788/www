@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactNode, useState, useMemo } from 'react'
 import { observer } from 'mobx-react'
 import { RcFile } from 'react-icecream-1/lib/upload'
-import { Button, Loading, Dialog, DialogFooter } from 'react-icecream-2'
+import { Button, Loading, Dialog, DialogFooter } from 'react-icecream'
 import { IState, FieldState } from 'formstate-x'
 import { InputWrapper } from 'react-icecream-form'
 
@@ -111,6 +111,7 @@ const UploadImg = observer(function _UploadImg(props: PropsWithChildren<IProps>)
         visible={visible}
         onOk={() => { setVisible(false) }}
         onCancel={() => { setVisible(false) }}
+        icon
         footer={<DialogFooter okText="知道了" cancelButtonProps={{ className: style.hidden }} />}
       >
         上传的图片大小不能超过 {maxSize} KB

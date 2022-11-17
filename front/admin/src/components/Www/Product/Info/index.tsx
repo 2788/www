@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { observer } from 'mobx-react'
-import { Button } from 'react-icecream-2'
+import { Button } from 'react-icecream'
 import { Route, Switch } from 'qn-fe-core/router'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
