@@ -57,21 +57,6 @@
   }
 }
 
-.headerWrapper {
-  position: relative;
-
-  &.scrollable::after {
-    content: " ";
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 6px; // TODO: 支持不同的 size
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.0001) 0%, rgba(0, 0, 0, 0.1) 99.94%);
-  }
-}
-
 .header {
   margin: 0;
   padding: 0;
@@ -96,6 +81,7 @@
 
     &.scrollable {
       justify-content: start;
+      scroll-behavior: smooth;
     }
   });
 
@@ -151,9 +137,15 @@
     }
   });
 
-  &.active, &:hover {
+  &.active {
     color: @primary-color;
   }
+
+  .notMobile({
+    &:hover {
+      color: @primary-color;
+    }
+  });
 
   // TODO: 把下边的横条放到 tabs 那层去实现，以便实现动画
   &:after {
@@ -187,10 +179,16 @@
   }
 
   .item {
-    &.active, &:hover {
+    &.active {
       color: @grey-1;
-      font-weight: 600;
+      font-weight: 500;
     }
+    .notMobile({
+      &:hover {
+        color: @grey-1;
+        font-weight: 500;
+      }
+    });
     &.active:after {
       background-color: @grey-1;
     }
@@ -199,9 +197,14 @@
 
 .themeThinPrimaryLight {
   .item {
-    &.active, &:hover {
+    &.active {
       color: @primary-color;
     }
+    .notMobile({
+      &:hover {
+        color: @primary-color;
+      }
+    });
     &.active::after {
       height: 2px;
       background-color: @primary-color;
@@ -215,10 +218,16 @@
   }
 
   .item {
-    &.active, &:hover {
+    &.active {
       color: @grey-7;
-      font-weight: 700;
+      font-weight: 500;
     }
+    .notMobile({
+      &:hover {
+        color: @grey-7;
+        font-weight: 500;
+      }
+    });
     &.active::after {
       height: 2px;
       background-color: @grey-7;

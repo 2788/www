@@ -43,11 +43,6 @@ export default function Navigator({ priceLink, children }: Props) {
     setWrapper(wrapper)
   }, [contextValue, setWrapper])
 
-  // 移动端不需要导航栏 TODO: 价格链接咋办？
-  if (isMobile) {
-    return null
-  }
-
   if (!contextValue) {
     throw new Error('Component `Navigator` should be used in `Navigatable`')
   }
@@ -65,11 +60,11 @@ export default function Navigator({ priceLink, children }: Props) {
   }
 
   const blockTabsView = blocks.map(
-    ({ name, title }) => <Tab key={name} value={name}>{title}</Tab>
+    ({ name, title }) => <Tab className={style.tab} key={name} value={name}>{title}</Tab>
   )
 
   const priceLinkView = priceLink && (
-    <Tab value={tabPriceLink}>
+    <Tab className={style.tab} value={tabPriceLink}>
       <Link className={style.priceLink} href={priceLink}>
         查看价格<Arrow className={style.priceArrow} />
       </Link>
@@ -88,12 +83,15 @@ export default function Navigator({ priceLink, children }: Props) {
           className={classnames(style.tabs, !children && style.center)}
           value={activeTab}
           onChange={handleTabsChange}
+          shadow={!isMobile}
+          size={isMobile ? 'middle' : undefined}
+          autoScroll={isMobile}
         >
           {blockTabsView}
-          {priceLinkView}
+          {!isMobile && priceLinkView}
         </Tabs>
         {
-          children && (
+          !isMobile && children && (
             <div className={style.extra}>
               {children}
             </div>

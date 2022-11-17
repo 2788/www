@@ -2,7 +2,7 @@
  * @file 可切换的 tab 列表
  */
 
-import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState, CSSProperties } from 'react'
+import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState, CSSProperties, useEffect } from 'react'
 import classnames from 'classnames'
 import { useOnChange } from 'hooks'
 
@@ -43,6 +43,8 @@ export type Props = {
   theme?: Theme,
   /** 是否垂直 */
   vertical?: boolean // FIXME: 支持移动端
+  /** 移动端当前 tab 是否自动滚动居中 */
+  autoScroll?: boolean
 }
 
 const themeClassMap = {
@@ -68,7 +70,8 @@ function useScrollableX(enabled: boolean) {
 export default function Tabs({
   children, className, contentClassName, defaultValue,
   value = null, onChange, size = 'default',
-  shadow = true, theme = 'default', vertical = false
+  shadow = true, theme = 'default', vertical = false,
+  autoScroll = true
 }: Props) {
   const [active, setActive] = useState(value || defaultValue || null)
   const isMobile = useMobile()
@@ -79,6 +82,34 @@ export default function Tabs({
   // 同步 value 到内部状态
   // 会渲染好几次，有空优化这个组件
   useOnChange(() => setActive(value), [value])
+
+  // 当前 tab 自动滚动到居中位置
+  useEffect(() => {
+    if (!scrollable || !autoScroll) {
+      return
+    }
+
+    if (!headerRef.current) {
+      return
+    }
+
+    const activeIdx = tabList.findIndex(tab => tab.props.value === active)
+    if (activeIdx < 0) {
+      return
+    }
+
+    const tabElement = headerRef.current.getElementsByTagName('li')[activeIdx]
+    if (!tabElement) {
+      return
+    }
+
+    // 当前 tab 离屏幕左侧的距离
+    const tabOffsetLeft = tabElement.offsetLeft - headerRef.current.scrollLeft
+    // 滚动到屏幕左侧，再向右滚 1/2 tabs 的宽度，向左滚 1/2 tab 的宽度，实现居中
+    const scrollLeft = tabOffsetLeft - headerRef.current.offsetWidth / 2 + tabElement.offsetWidth / 2
+
+    headerRef.current.scrollLeft += scrollLeft
+  }, [active, autoScroll, headerRef, scrollable, tabList])
 
   React.Children.forEach(children, child => {
     if (!React.isValidElement(child)) {

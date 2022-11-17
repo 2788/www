@@ -44,6 +44,7 @@ export default function Navigatable({ children }: Props) {
   useOnChange(() => {
     if (!loaded) return
     const navigatorHeight = navigatorInfo?.wrapper.offsetHeight || 0
+    const navigatorOffsetTop = navigatorInfo?.wrapper.offsetTop || 0
     for (let i = blocks.length - 1; i >= 0; i--) {
       const block = blocks[i]
       if (isBlockInView(block, scrollTop, navigatorHeight)) {
@@ -51,7 +52,10 @@ export default function Navigatable({ children }: Props) {
         return
       }
     }
-    setActive(null)
+    // navigator 还没吸顶时，置为 null
+    if (navigatorOffsetTop > scrollTop) {
+      setActive(null)
+    }
   }, [scrollTop])
 
   const activeBlock = active && blockMap[active.split('/')[0]]
