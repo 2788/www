@@ -48,9 +48,12 @@ export default observer(function SelectProducts({ state, className }: Props) {
           collapsed={false}
           className={styles.select}
         >
-          {productInfoList != null && productInfoList.map(({ path, name }) => (
-            // TODO: 优化，用更科学的方式支持按 path 搜索
-            <SelectOption value={path} key={path}>{name} {path}</SelectOption>
+          {productInfoList != null && productInfoList.map(({ path, name, keywords }) => (
+            // TODO: 优化，用更科学的方式支持自定义搜索
+            <SelectOption value={path} key={path} rootHtmlProps={{ title: path }}>
+              {name}
+              <div className={styles.keywords}>  ({path})  {keywords.join(',')}</div>
+            </SelectOption>
           ))}
         </MultiSelect>
       </Loading>

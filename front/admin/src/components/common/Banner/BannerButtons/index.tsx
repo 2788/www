@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 import { ArrayFormState, TransformedState } from 'formstate-x'
 import { Button } from 'react-icecream'
 import { AddThinIcon, DeleteIcon } from 'react-icecream/icons'
-import { FormItem } from 'react-icecream-form'
+import { FormItem, InputWrapper } from 'react-icecream-form'
 
 import { BannerButton as BannerButtonValue, platformMap } from './common'
 import BannerButton, { createState as createButtonState } from './BannerButton'
@@ -100,9 +100,9 @@ export default observer(function BannerButtons({ state }: Props) {
   }
 
   return (
-    <>
+    <InputWrapper state={state}>
       {state.$.$.map(renderButton)}
       <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addButton() }} />
-    </>
+    </InputWrapper>
   )
 })

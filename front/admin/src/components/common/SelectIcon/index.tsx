@@ -58,10 +58,12 @@ export default observer(function SelectIcon({ state }: Props) {
             className={styles.select}
           >
             {icons != null && icons.map(icon => (
-              // TODO: 优化，用更科学的方式支持按 icon id 搜索
-              <SelectOption value={icon.id} key={icon.id}>
+              // TODO: 优化，用更科学的方式支持自定义搜索
+              <SelectOption value={icon.id} key={icon.id} rootHtmlProps={{ title: icon.id }}>
                 <div className={styles.item}>
-                  <IconPreviewNano icon={icon} className={styles.iconNano} /> {icon.name} ({icon.id})
+                  <IconPreviewNano icon={icon} />
+                  <span className={styles.name}> {icon.name}</span>
+                  <span className={styles.id}> {icon.id}</span>
                 </div>
               </SelectOption>
             ))}

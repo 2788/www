@@ -61,7 +61,7 @@ export default observer(function ImgIconInput({ state, ...props }: Props) {
   return (
     <InputWrapper state={state}>
       <div className={styles.inputGroup}>
-        <FormItem>
+        <FormItem className={styles.typeSelectForm}>
           <Select state={originState.type} className={styles.typeSelect}>
             <SelectOption<OriginValue['type']> value="icon">图标库</SelectOption>
             <SelectOption<OriginValue['type']> value="http">图片</SelectOption>
