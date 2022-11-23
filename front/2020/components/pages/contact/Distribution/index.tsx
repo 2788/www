@@ -9,7 +9,6 @@ import guangzhou from './images/guangzhou.png'
 import hangzhou from './images/hangzhou.png'
 import nanjing from './images/nanjing.png'
 import shenzhen from './images/shenzhen.png'
-import xiamen from './images/xiamen.png'
 
 import style from './index.less'
 
@@ -56,11 +55,7 @@ export default function Distribution() {
           <Title className={style.title}>南京分部</Title>
           <Desc className={style.desc}>江苏省南京市雨花区软件大道 106 号极客站</Desc>
         </LayoutCard>
-        <LayoutCard>
-          <Img className={style.image} src={xiamen} />
-          <Title className={style.title}>厦门分部</Title>
-          <Desc className={style.desc}>福建省厦门市思明区岭兜西路 629 号夜光汇文化科创园 2 号楼 5 层 527 室</Desc>
-        </LayoutCard>
+        <LayoutCard />
         <LayoutCard />
       </Row>
     </Section>

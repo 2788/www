@@ -16,7 +16,6 @@ import wps from './images/logos/wps.jpg'
 import yiqijiefang from './images/logos/一汽解放.jpg'
 import shangqijituan from './images/logos/上汽集团.jpg'
 import shanghaidianqi from './images/logos/上海电气.jpg'
-import zhongguopingan from './images/logos/中国平安.jpg'
 import zhongguodianxin from './images/logos/中国电信.jpg'
 import zhongguowang from './images/logos/中国网.jpg'
 import zhongguoliantong from './images/logos/中国联通.jpg'
@@ -90,6 +89,6 @@ export const cardData: CardProps[] = [
 export const logoUrls = [
   kuaishou, mihoyo, yinhezhengquan, shangqijituan, yingshi, xiaohongshu, mangguotv, renmingwang, zhaoshang, oppo,
   jiangsuweishi, liulishuo, zhongguowang, haixin, bilibili, blued, taptap, yinlian, xiaotiancai, yiqijiefang,
-  zhongguopingan, haier, cctv, wps, weilai, lianxiang, zhongguodianxin, shanghaidianqi, vivo, shunfeng, huawei,
+  haier, cctv, wps, weilai, lianxiang, zhongguodianxin, shanghaidianqi, vivo, shunfeng, huawei,
   xueersi, zhongguoliantong, aiqiyi, huashu, qichezhijia
 ]
