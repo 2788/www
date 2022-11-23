@@ -41,7 +41,7 @@ export default function Code() {
           </pre>
         </TabPane>
         <TabPane value="2" tab={<strong>Android</strong>}>
-          <pre className={styles.code}>
+          <pre className={styles.codeWrapper}>
             <CodeArea code={androidContent} language="language-java" className={styles.code} />
           </pre>
         </TabPane>
