@@ -40,12 +40,12 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
     <BaseSidebar collapsed={collapsed}>
       <LinkItem relative to={globalBannersRoute}>{globalBannersTitle}</LinkItem>
       <Group title={productTitle} path={productRoute} relative>
-        <LinkItem relative to="/page">页面管理</LinkItem>
-        {/* <LinkItem relative to={productConfigRoute}>{productConfigTitle}</LinkItem> TODO: 撤掉上面换这个 */}
+        {/* <LinkItem relative to="/page">页面管理</LinkItem> TODO: 数据迁移 */}
+        <LinkItem relative to={productInfoRoute}>{productInfoTitle}</LinkItem>
         <LinkItem relative to={productNewsRoute}>{productNewsTitle}</LinkItem>
         <LinkItem relative to={productPriceRoute}>{productPriceTitle}</LinkItem>
       </Group>
-      {/* <LinkItem relative to={solutionRoute}>{solutionTitle}</LinkItem> TODO: 待放出来 */}
+      <LinkItem relative to={solutionRoute}>{solutionTitle}</LinkItem>
       <LinkItem relative to={consultRoute}>{consultTitle}</LinkItem>
       <LinkItem relative to={activityRoute}>{activityTitle}</LinkItem>
       <LinkItem relative to={iconRoute}>{iconTitle}</LinkItem>
@@ -88,7 +88,7 @@ export default function App() {
         <Layout>
           <Switch>
             <Route relative exact path="/">
-              <Redirect relative to={productRoute} />
+              请通过左侧菜单栏选择所需功能
             </Route>
             <Route relative title={globalBannersTitle} path={globalBannersRoute}>
               <Permission code={PermissionCode.GLOBAL_BANNER}>
@@ -99,7 +99,7 @@ export default function App() {
               <Permission code={PermissionCode.PRODUCT}>
                 <Switch>
                   <Route relative exact path="/">
-                    <Redirect relative to="/page" />
+                    <Redirect relative to={productInfoRoute} />
                   </Route>
                   <Route relative title="页面管理" path="/page">
                     <ProductPage />

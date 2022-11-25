@@ -26,8 +26,8 @@ function createState(props?: SolutionComponentFunctionConfig['props']) {
           if (title.trim() === '') {
             return '不能为空'
           }
-          if (title.length > 12) {
-            return '不能超过 12 个字'
+          if (title.length > 14) {
+            return '不能超过 14 个字'
           }
         }),
         desc: new DebouncedFieldState(item.desc).withValidator(desc => {

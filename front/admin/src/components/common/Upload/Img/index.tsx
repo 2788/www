@@ -5,11 +5,16 @@ import { Button, Loading, Dialog, DialogFooter } from 'react-icecream'
 import { IState, FieldState } from 'formstate-x'
 import { InputWrapper } from 'react-icecream-form'
 
-import { gcd } from 'utils/math'
 import ImgPreview from 'components/common/ImgPreview'
 
 import CommonUpload, { IProps as CommonUploadProps } from '..'
+
+import getDesc, { defaultMaxFileSize } from './desc'
+import ClearableUploadBtn, { IProps as ClearableUploadBtnProps } from './ClearableUploadBtn'
+
 import style from './style.m.less'
+
+export { getDesc, ClearableUploadBtn, ClearableUploadBtnProps }
 
 // 图片筛选
 const imgFilter = ['.png', '.jpg', '.jpeg', '.gif', '.svg']
@@ -36,7 +41,7 @@ export function createState(value: string): State {
 
 /** @deprecated use `UploadImgInput` instead */
 const UploadImg = observer(function _UploadImg(props: PropsWithChildren<IProps>) {
-  const { state, maxSize = 500, children } = props
+  const { state, maxSize = defaultMaxFileSize, children } = props
   const [isLoading, setIsLoading] = useState(false)
   const [visible, setVisible] = useState(false)
 
@@ -57,18 +62,10 @@ const UploadImg = observer(function _UploadImg(props: PropsWithChildren<IProps>)
       />
     )
 
-  const desc = useMemo(() => {
-    if (props.desc !== undefined) {
-      return props.desc
-    }
-
-    const whGcd = props.width && props.height ? gcd(props.width, props.height) : null
-    const boxDesc = whGcd
-      ? `推荐尺寸 ${props.width} × ${props.height} px (${props.width! / whGcd}:${props.height! / whGcd})`
-      : null
-    const sizeDesc = maxSize ? `最大 ${maxSize} KB` : null
-    return [boxDesc, sizeDesc].filter(Boolean).join('，')
-  }, [props.desc, props.width, props.height, maxSize])
+  const desc = useMemo(
+    () => props.desc ?? getDesc(props.width, props.height, maxSize),
+    [props.desc, props.width, props.height, maxSize]
+  )
 
   function beforeUpload(file: RcFile): boolean {
     const isOver = file.size > maxSize * 1024
@@ -122,11 +119,17 @@ const UploadImg = observer(function _UploadImg(props: PropsWithChildren<IProps>)
 
 export default UploadImg
 
+export interface UploadImgInputProps extends IProps {
+  clearable?: boolean
+}
+
 /** for react-icecream-form */
-export const UploadImgInput = observer(function _UploadImgInput(props: IProps) {
+export const UploadImgInput = observer(function _UploadImgInput(props: UploadImgInputProps) {
+  const clearable = props.clearable ?? true
+  const defaultChildren = clearable ? (<ClearableUploadBtn state={props.state} />) : undefined
   return (
     <InputWrapper state={props.state}>
-      <UploadImg {...props} />
+      <UploadImg {...props}>{props.children ?? defaultChildren}</UploadImg>
     </InputWrapper>
   )
 })

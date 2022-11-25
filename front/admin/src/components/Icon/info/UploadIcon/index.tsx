@@ -13,7 +13,7 @@ import { getMessage } from 'qn-fe-core/exception'
 
 import { iconConfig, IconFile } from 'constants/icon'
 import CommonUpload from 'components/common/Upload'
-import ClearableUploadBtn from 'components/common/Upload/Img/ClearableUploadBtn'
+import { ClearableUploadBtn } from 'components/common/Upload/Img'
 
 import IconPreview from 'components/common/IconPreview'
 

@@ -10,7 +10,6 @@ import { FormState, FieldState, TransformedState } from 'formstate-x'
 
 import { hasIconScheme } from 'transforms/icon'
 import * as uploadImg from 'components/common/Upload/Img'
-import ClearableUploadBtn from 'components/common/Upload/Img/ClearableUploadBtn'
 import SelectIcon, * as selectIcon from 'components/common/SelectIcon'
 
 import styles from './style.m.less'
@@ -80,13 +79,9 @@ export default observer(function ImgIconInput({ state, ...props }: Props) {
               previewType="contain"
               width={96}
               height={96}
-              desc="最大 100 KB"
               maxSize={100}
-            >
-              <span className={styles.uploadBtn}>
-                <ClearableUploadBtn state={originState.http} />
-              </span>
-            </uploadImg.UploadImgInput>
+              desc="最大 100 KB"
+            />
           </FormItem>
         )}
       </div>

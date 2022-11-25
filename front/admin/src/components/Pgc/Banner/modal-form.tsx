@@ -14,7 +14,7 @@ import { ToasterStore } from 'admin-base/common/toaster'
 import { StateProps as RecordRange, checkOverlap } from 'utils/check'
 import { BannerInfo, Banner, bannerSize } from 'constants/pgc/content-banner'
 import PgcContentBannerApis from 'apis/pgc/content-banner'
-import UploadImage, { createState as createUploadImageState } from 'components/common/Upload/Img'
+import { UploadImgInput, createState as createUploadImageState, getDesc } from 'components/common/Upload/Img'
 
 interface Props {
   current?: number
@@ -127,13 +127,13 @@ const BannerModalForm = observer(function _BannerModalForm(props: Props) {
       <FormItem label="banner 名称" required>
         <TextInput state={state.$.name} />
       </FormItem>
-      <FormItem label="banner 图片" state={state.$.img} required>
-        <UploadImage
+      <FormItem label="banner 图片" required>
+        <UploadImgInput
           uploadBucketKeyRule="pgc-content"
           state={state.$.img}
           previewType="cover"
           {...bannerSize.preview}
-          desc={`推荐尺寸： ${bannerSize.upload.width} × ${bannerSize.upload.height} px`}
+          desc={getDesc(bannerSize.upload.width, bannerSize.upload.height)}
         />
       </FormItem>
       <FormItem label="跳转路径" required>

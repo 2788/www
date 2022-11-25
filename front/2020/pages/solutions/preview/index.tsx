@@ -7,31 +7,36 @@ import React, { useEffect, useState } from 'react'
 
 import { usePreviewMessage } from 'hooks/admin-message'
 import { SolutionInfo } from 'apis/admin/solution'
-import { getIconMap } from 'apis/admin/icon-lib'
+import { getIconMap, getIconIdsFromJson } from 'apis/admin/icon-lib'
 import { IconMap } from 'components/LibIcon'
+
 import SolutionPage, { hasSolutionPage } from '../[solution]'
+
+import styles from './style.less'
 
 const msgKey = 'QINIU_SOLUTION_PAGE_PREVIEW'
 
 export default function ProductPagePreview() {
   const previewData = usePreviewMessage<SolutionInfo>(msgKey)
-  const [iconMap, setIconMap] = useState<IconMap | undefined>(undefined)
+  const [iconMap, setIconMap] = useState<IconMap>({})
 
   useEffect(() => {
-    getIconMap().then(setIconMap)
-  }, [])
+    if (previewData != null) {
+      const icons = getIconIdsFromJson(previewData)
+      getIconMap(icons).then(setIconMap)
+    }
+  }, [previewData])
 
-  if (!previewData) {
-    return null
+  if (previewData == null) {
+    return (<p className={styles.info}>加载中</p>)
   }
 
   if (!hasSolutionPage(previewData)) {
-    return '请配置 banner 和模块'
+    return (<p className={styles.info}>请配置 banner 和最少一个模块</p>)
   }
 
   return (
     <SolutionPage
-      isPreview
       solutionInfo={previewData}
       iconMap={iconMap}
     />

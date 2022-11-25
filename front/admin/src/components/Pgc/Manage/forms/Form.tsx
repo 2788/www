@@ -17,8 +17,8 @@ import {
   contentCategories, contentCategoryTextMap, UserLimitType, userLimitTypes, userLimitTypeTextMap
 } from 'constants/pgc/content'
 import Editor from 'components/common/MarkdownEditor'
-import UploadImage, {
-  createState as createUploadImageState, IProps as UploadImageProps
+import {
+  UploadImgInput, createState as createUploadImageState, IProps as UploadImageProps
 } from 'components/common/Upload/Img'
 import UploadVideo from 'components/common/Upload/Video'
 import UploadFile from 'components/common/Upload/File'
@@ -126,7 +126,7 @@ const posterUploadConfig: Record<ContentType, Partial<UploadImageProps>> = {
   [ContentType.Article]: { // 18:10
     width: 1926,
     height: 1070,
-    maxSize: 1000 // TODO: 移动端 & 缩略图体积优化
+    maxSize: 1024 // TODO: 移动端 & 缩略图体积优化
   },
   [ContentType.Video]: { // 16:9
     width: 736,
@@ -242,8 +242,8 @@ export default observer(function DetailForm({ type, onSubmitDraft, content, onPr
           className={style.textarea}
         />
       </FormItem>
-      <FormItem label="封面" state={state.$.posterUrl} required>
-        <UploadImage
+      <FormItem label="封面" required>
+        <UploadImgInput
           uploadBucketKeyRule="pgc-content"
           state={state.$.posterUrl}
           previewType="cover"

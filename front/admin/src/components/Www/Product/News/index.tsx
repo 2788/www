@@ -99,7 +99,7 @@ const PageContent = observer(function _PageContent() {
         scroll={{ x: 'max-content' }}
         className={style.table}
       >
-        <Table.Column title="所属产品" width={120} className={commonStyle.cellContent} dataIndex="product" render={renderProduct} filters={productFilters} onFilter={filterProduct} />
+        <Table.Column title="所属产品" width={140} className={commonStyle.cellContent} dataIndex="product" render={renderProduct} filters={productFilters} onFilter={filterProduct} />
         <Table.Column title="动态类型" width={150} dataIndex="type" render={(type: NewsType) => newsTypeTextMap[type]} filters={typeFilters} onFilter={filterType} />
         <Table.Column title="发布时间" width={120} dataIndex="releaseTime" render={timeFormatter('YYYY-MM-DD')} />
         <Table.Column title="动态标题" width={150} className={commonStyle.cellContent} dataIndex="title" />

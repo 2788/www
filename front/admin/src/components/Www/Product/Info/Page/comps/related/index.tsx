@@ -14,8 +14,6 @@ import { ProductComponentName } from 'constants/product/page/comp-common'
 import { ProductComponentRelatedConfig } from 'constants/product/page/comp-related'
 import SelectProducts, { createState as createSelectProductsState } from 'components/common/SelectProducts'
 
-import styles from './style.m.less'
-
 function createState(props?: ProductComponentRelatedConfig['props']) {
   return new FormState({
     products: createSelectProductsState(props?.products).withValidator(items => {
@@ -42,7 +40,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   return (
     <DrawerForm
       title={productModuleTitleMap[ProductModule.Related]}
-      width={700}
+      width={450}
       layout="horizontal"
       labelWidth="4em"
       visible
@@ -51,7 +49,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
       onCancel={() => { props.onCancel() }}
     >
       <FormItem label="产品列表" required>
-        <SelectProducts state={state.$.products} className={styles.select} />
+        <SelectProducts state={state.$.products} isVertical />
       </FormItem>
     </DrawerForm>
   )

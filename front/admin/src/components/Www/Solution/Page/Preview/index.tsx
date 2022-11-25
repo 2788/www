@@ -8,6 +8,7 @@ import React, { useMemo } from 'react'
 import { wwwHost } from 'constants/env'
 import { wwwSolutionPathPrefix } from 'constants/solution'
 import { SolutionInfo } from 'apis/solution'
+import { hasSolutionPage } from 'transforms/solution'
 import PreviewPage from 'components/common/PreviewPage'
 
 import styles from './style.m.less'
@@ -26,7 +27,7 @@ export default function Preview({ solutionInfo }: Props) {
     [solutionInfo]
   )
 
-  if (!solutionInfo.banner || !solutionInfo.sections.length) {
+  if (!hasSolutionPage(solutionInfo)) {
     return (
       <div className={styles.warning}>请配置 banner 和最少一个模块。</div>
     )

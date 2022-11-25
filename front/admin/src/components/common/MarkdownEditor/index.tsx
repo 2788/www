@@ -141,6 +141,7 @@ function BaseEditor(props: BaseProps) {
         className={`vditor-tooltipped vditor-tooltipped__n ${style.uploadImageEntry}`}
         aria-label={uploadImageToolbarMenuItemOptions.tip}
       >
+        {/* TODO: 增加 1 MB 图片体积上限 */}
         <UploadImage uploadBucketKeyRule={props.uploadBucketKeyRule} onUploaded={handleImageUploaded}>
           <Icon type="picture" theme="filled" className={style.pictureIcon} />
         </UploadImage>

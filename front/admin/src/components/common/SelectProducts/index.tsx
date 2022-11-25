@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { DebouncedFieldState } from 'formstate-x'
 import { Loading } from 'react-icecream'
 import { MultiSelect, SelectOption } from 'react-icecream-form'
@@ -23,10 +23,11 @@ export function createState(products: ProductId[] = []) {
 
 export interface Props {
   state: ReturnType<typeof createState>
+  isVertical?: boolean
   className?: string
 }
 
-export default observer(function SelectProducts({ state, className }: Props) {
+export default observer(function SelectProducts({ state, isVertical = false, className }: Props) {
   const toasterStore = useInjection(ToasterStore)
   const productInfoApis = useInjection(ProductInfoApis)
 
@@ -40,13 +41,13 @@ export default observer(function SelectProducts({ state, className }: Props) {
 
   return (
     // TODO: 如何把 loading 状态向上传递 / 暴露出去
-    <div className={classnames(className, styles.main)}>
+    <div className={classNames(className, styles.main)}>
       <Loading loading={productInfoList == null}>
         <MultiSelect
           state={state}
           searchable
           collapsed={false}
-          className={styles.select}
+          className={classNames(styles.select, isVertical && styles.tagsVertical)}
         >
           {productInfoList != null && productInfoList.map(({ path, name, keywords }) => (
             // TODO: 优化，用更科学的方式支持自定义搜索

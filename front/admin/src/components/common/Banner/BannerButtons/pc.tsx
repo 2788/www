@@ -47,7 +47,7 @@ export function createPcState(init: BannerButton['pc']) {
 export function renderPc(state: ReturnType<typeof createPcState>) {
   const fields = state.$.$
   return (
-    <FormItem label={platformMap.pc} state={state} labelWidth="3em">
+    <FormItem label={platformMap.pc} state={state} labelWidth="3em" labelVerticalAlign="text">
       <FormItem>
         <Switch state={fields.enabled} />
       </FormItem>

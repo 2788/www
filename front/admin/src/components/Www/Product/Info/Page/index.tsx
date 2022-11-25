@@ -16,7 +16,7 @@ import { ProductId } from 'constants/product'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
 import ProductInfoApis, { ProductInfo } from 'apis/product/info'
-import { getProductInfoPageUrl } from 'transforms/product/info'
+import { getProductInfoPageUrl, hasProductPage } from 'transforms/product/info'
 
 import Preview from './Preview'
 import List from './List'
@@ -89,16 +89,12 @@ export default observer(function PageInfo({ productId }: Props) {
 
   function submit() {
     if (!productInfo) {
+      toasterStore.error('暂无数据')
       return
     }
 
-    if (productInfo.banner == null) {
-      toasterStore.error('需要设置 banner')
-      return
-    }
-
-    if (productInfo.sections.length === 0) {
-      toasterStore.error('需要添加内容')
+    if (!hasProductPage(productInfo)) {
+      toasterStore.error('请配置 banner 和最少一个模块')
       return
     }
 

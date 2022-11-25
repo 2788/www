@@ -8,6 +8,7 @@ import { Product } from 'constants/products'
 import { NewsType } from 'constants/products/news'
 import { ComponentName } from 'constants/products/components'
 import { BannerButton } from 'hooks/product-btn'
+
 import { get as mongoGet, mongoApiPrefix, handleResponseData, listAll } from '.'
 
 export interface IPage {
@@ -118,7 +119,7 @@ export interface ProductIcons {
   glass: string
 }
 
-/** 产品信息 */
+/** 产品基本信息 */
 export interface ProductInfo {
   /** 产品页相对路径，全局唯一，同时用作产品 id */
   path: string
@@ -134,7 +135,9 @@ export interface ProductInfo {
 
   /** 产品图标 */
   icon: ProductIcons
+}
 
+export interface ProductPageInfo extends ProductInfo {
   /** 产品页 banner 配置 */
   banner?: {
     bgImgUrl: {
@@ -150,11 +153,17 @@ export interface ProductInfo {
   sections: SectionsConfig[]
 }
 
-// 获取产品页面配置
-export async function getProductInfo(path: string): Promise<ProductInfo | null> {
-  // catch 掉接口 404 错误
+function getProductBaseInfo({ banner, sections, ...productInfo }: ProductPageInfo): ProductInfo {
+  return productInfo
+}
+
+export function hasProductPage(info: ProductPageInfo): boolean {
+  return info.banner != null && info.sections.length > 0
+}
+
+async function getMongoProductInfo(path: string) {
   try {
-    return await mongoGet<ProductInfo>('www-product-info', path)
+    return await mongoGet<ProductPageInfo>('www-product-info', path)
   } catch (err) {
     if (Number(getCode(err)) === 404) {
       return null
@@ -163,6 +172,57 @@ export async function getProductInfo(path: string): Promise<ProductInfo | null> 
   }
 }
 
-export async function listAllProductInfos(ids?: string[]) {
-  return listAll<ProductInfo>('www-product-info', ids ? { query: { path: { $in: ids } } } : undefined)
+/** 获取产品基本信息 */
+export async function getProductInfo(path: string): Promise<ProductInfo | null> {
+  const info = await getMongoProductInfo(path)
+  return info == null ? null : getProductBaseInfo(info)
+}
+
+export async function normalizeProductPageRelatedComponentProps(info: ProductPageInfo): Promise<void> {
+  for (const section of info.sections) {
+    if (section.component.name !== ComponentName.Related) {
+      continue
+    }
+
+    const relatedProps = section.component.props as any
+    // eslint-disable-next-line no-await-in-loop
+    const relatedProductInfos = await listProductInfos(relatedProps.products)
+    relatedProductInfos.forEach((relatedInfo, index) => {
+      if (relatedInfo == null) {
+        throw new Error(`找不到该产品 ${relatedProps.products[index].path}`)
+      }
+    })
+    relatedProps.productInfos = relatedProductInfos
+  }
+}
+
+export async function getProductPageInfo(path: string): Promise<ProductPageInfo | null> {
+  const info = await getMongoProductInfo(path)
+
+  if (info == null || !hasProductPage(info)) {
+    return null
+  }
+
+  await normalizeProductPageRelatedComponentProps(info)
+
+  return info
+}
+
+async function listAllMongoProductInfos(ids?: string[]) {
+  return listAll<ProductPageInfo>(
+    'www-product-info',
+    ids ? { query: { path: { $in: ids } } } : undefined
+  )
+}
+
+export async function listProductInfos(ids: string[]): Promise<Array<ProductInfo | undefined>> {
+  const list = (await listAllMongoProductInfos(ids)).map(getProductBaseInfo)
+  return ids.map(path => list.find(info => info.path === path))
+}
+
+export async function listAllProductPagePaths(): Promise<string[]> {
+  const list = await listAllMongoProductInfos()
+  return list
+    .filter(hasProductPage)
+    .map(({ path }) => path)
 }

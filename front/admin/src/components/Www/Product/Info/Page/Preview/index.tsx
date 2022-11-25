@@ -8,6 +8,7 @@ import React, { useMemo } from 'react'
 import { wwwHost } from 'constants/env'
 import { wwwProductPathPrefix } from 'constants/product'
 import { ProductInfo } from 'apis/product/info'
+import { hasProductPage } from 'transforms/product/info'
 import PreviewPage from 'components/common/PreviewPage'
 
 import styles from './style.m.less'
@@ -26,7 +27,7 @@ export default function Preview({ productInfo }: Props) {
     [productInfo]
   )
 
-  if (!productInfo.banner || !productInfo.sections.length) {
+  if (!hasProductPage(productInfo)) {
     return (
       <div className={styles.warning}>请配置 banner 和最少一个模块。</div>
     )

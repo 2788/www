@@ -11,7 +11,7 @@ import PageBanner from 'components/Product/PageBanner'
 import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 
-import { getNews, getProductInfo } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import { urlForPrice } from 'utils/route'
@@ -27,10 +27,10 @@ import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { useBtns } from 'hooks/product-btn'
 import { Product } from 'constants/products'
-import { getIconMap } from 'apis/admin/icon-lib'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 
 import banner from './banner.png'
-import ProductPage, { hasProductPage } from '../[product]'
+import ProductPage from '../[product]'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -83,7 +83,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'produc
 }
 
 export default function OcrPage({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
-  if (productInfo && hasProductPage(productInfo)) {
+  if (productInfo != null) {
     return (
       <ProductPage
         notices={pageProps.notices}
@@ -106,13 +106,15 @@ export default function OcrPage({ globalBanners, productInfo, iconMap, ...pagePr
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('ocr')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Ocr),
       newsRes: await getNews({ product: Product.Ocr }),
-      productInfo: await getProductInfo(Product.Ocr),
+      productInfo,
       globalBanners: await getGlobalBanners(),
-      iconMap: await getIconMap()
+      iconMap: await getIconMap(icons)
     }
   }
 }

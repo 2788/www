@@ -12,9 +12,8 @@ import { InputWrapper, FormItem, RadioGroup, Radio } from 'react-icecream-form'
 import { isDark, getBgColor } from 'utils/color'
 import ColorPicker, { createState as createColorPickerState } from 'components/common/ColorPicker'
 import {
-  UploadImgInput, createState as createUploadImgState, IProps as UploadImgInputProps
+  UploadImgInput, createState as createUploadImgState, IProps as UploadImgInputProps, getDesc
 } from 'components/common/Upload/Img'
-import ClearableUploadBtn from 'components/common/Upload/Img/ClearableUploadBtn'
 
 function getDefaultBgColor(isLight: boolean) {
   return isLight ? '#B8DFFE' : '#213148'
@@ -123,7 +122,6 @@ export default observer(function Banner({ state, uploadLarge, uploadSmall }: Pro
           width={5120}
           height={960}
           maxSize={1024}
-          desc="推荐尺寸 5120 × 960 px (16:3)，最大 1 MB"
         />
       </FormItem>
       <FormItem label="背景小图" labelWidth="4em">
@@ -134,10 +132,8 @@ export default observer(function Banner({ state, uploadLarge, uploadSmall }: Pro
           previewType="cover"
           width={1536}
           height={500}
-          desc="针对移动端和小程序，推荐尺寸 1536 × 500 px，最大 500 KB"
-        >
-          <ClearableUploadBtn state={fields.bgImgUrl.$.small} />
-        </UploadImgInput>
+          desc={`针对移动端和小程序，${getDesc(1536, 500)}`}
+        />
       </FormItem>
     </InputWrapper>
   )

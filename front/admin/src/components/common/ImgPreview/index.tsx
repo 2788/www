@@ -16,7 +16,7 @@ interface Size {
 
 const iconMaxSize: Size = {
   width: 80,
-  height: 40
+  height: 32
 }
 
 const previewMaxSize: Size = {
@@ -89,8 +89,8 @@ export default function ImgPreview({ url, type, width, height, className }: Prop
         title={previewView ? '点击预览大图' : undefined}
         className={classnames(style.main, className)}
         style={{
-          width: `${iconMaxSize.width}px`,
-          height: `${iconMaxSize.height}px`,
+          maxWidth: `${iconMaxSize.width}px`,
+          maxHeight: `${iconMaxSize.height}px`,
           cursor: previewView ? 'pointer' : 'default'
         }}
         onClick={() => {

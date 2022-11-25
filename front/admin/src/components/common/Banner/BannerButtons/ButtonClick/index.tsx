@@ -148,17 +148,19 @@ export default observer(function ButtonClick({ state }: Props) {
   return (
     <InputWrapper state={state}>
       <div className={styles.inputGroup}>
-        <Select state={fields.type} className={styles.inputGroupSelect}>
-          {allows.webLink && (
-            <SelectOption<ButtonClickTypes['type']> value="webLink">{buttonClickTypeMap.webLink}</SelectOption>
-          )}
-          {allows.mpLink && (
-            <SelectOption<ButtonClickTypes['type']> value="mpLink">{buttonClickTypeMap.mpLink}</SelectOption>
-          )}
-          {allows.consult && (
-            <SelectOption<ButtonClickTypes['type']> value="consult">{buttonClickTypeMap.consult}</SelectOption>
-          )}
-        </Select>
+        <FormItem className={styles.inputGroupSelectForm}>
+          <Select state={fields.type} className={styles.inputGroupSelect}>
+            {allows.webLink && (
+              <SelectOption<ButtonClickTypes['type']> value="webLink">{buttonClickTypeMap.webLink}</SelectOption>
+            )}
+            {allows.mpLink && (
+              <SelectOption<ButtonClickTypes['type']> value="mpLink">{buttonClickTypeMap.mpLink}</SelectOption>
+            )}
+            {allows.consult && (
+              <SelectOption<ButtonClickTypes['type']> value="consult">{buttonClickTypeMap.consult}</SelectOption>
+            )}
+          </Select>
+        </FormItem>
         {type === 'webLink' && (
           <FormItem>
             <WwwUrlPath state={fields.webLinkUrl} />

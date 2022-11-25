@@ -127,7 +127,6 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
                 previewType="cover"
                 width={746}
                 height={394}
-                desc="推荐尺寸 746 × 394 px，最大 500 KB"
               />
             </FormItem>
           </FormItem>

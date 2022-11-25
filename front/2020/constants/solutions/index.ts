@@ -17,6 +17,7 @@ import socialLargeIconUrl from './images/large/social.png'
 import genLargeIconUrl from './images/large/gen.png'
 import entertainmentLargeIconUrl from './images/large/entertainment.png'
 import ApaasLargeIconUrl from './images/large/apaas.png'
+import AvatarLargeIconUrl from './images/large/avatar.png'
 
 export enum Solution {
   /** 金融行业 */
@@ -56,7 +57,9 @@ export enum Solution {
   /** 新媒体 */
   Medium = 'medium',
   /** 低代码音视频工厂 */
-  Apaas = 'Apaas'
+  Apaas = 'Apaas',
+  /** 虚拟数字人 */
+  Avatar = 'avatar'
 }
 
 export enum Category {
@@ -100,7 +103,7 @@ export const categoryEnNameMap = {
 } as const
 
 export const categorySolutionsMap = {
-  [Category.Media]: [Solution.Rtclive, Solution.Plsv, Solution.Entlive],
+  [Category.Media]: [Solution.Rtclive, Solution.Plsv, Solution.Entlive, Solution.Avatar],
   [Category.LowCode]: [Solution.Apaas],
   [Category.Storage]: [Solution.Kodoe, Solution.Ess, Solution.Storage],
   [Category.Industry]: [
@@ -154,7 +157,8 @@ export const nameMap: MapTo<string> = {
   [Solution.Vcs]: '视频冷存储',
   [Solution.Ess]: '监控视频边缘存储',
   [Solution.Storage]: '云存储一体机',
-  [Solution.Apaas]: '音视频低代码工厂'
+  [Solution.Apaas]: '音视频低代码工厂',
+  [Solution.Avatar]: '数字人解决方案'
 } as const
 
 export const urlMap: MapTo<string | null> = {
@@ -176,7 +180,8 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Gene]: '/solutions/gene',
   [Solution.Entertainment]: '/solutions/entertainment',
   [Solution.Medium]: null,
-  [Solution.Apaas]: '/solutions/apaas'
+  [Solution.Apaas]: '/solutions/apaas',
+  [Solution.Avatar]: '/solutions/avatar'
 } as const
 
 export const descMap: MapTo<string> = {
@@ -198,7 +203,8 @@ export const descMap: MapTo<string> = {
   [Solution.Gene]: '集计算和存储为一体的一站式基因测序解决方案',
   [Solution.Entertainment]: '丰富的内容生产工具和音视频服务，助力企业快速构建泛娱乐应用',
   [Solution.Medium]: '',
-  [Solution.Apaas]: '提供易接入、强扩展、高效部署和覆盖多场景的音视频服务，助力企业快速搭建业务平台'
+  [Solution.Apaas]: '提供易接入、强扩展、高效部署和覆盖多场景的音视频服务，助力企业快速搭建业务平台',
+  [Solution.Avatar]: '适用于多场景的虚拟数字人解决方案'
 } as const
 
 // 32px的icon，默认除导航栏均为该类型
@@ -221,7 +227,8 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Gene]: require('./images/default/gen.svg').default,
   [Solution.Entertainment]: require('./images/default/entertainment.svg').default,
   [Solution.Medium]: null,
-  [Solution.Apaas]: require('./images/default/apaas.svg').default
+  [Solution.Apaas]: require('./images/default/apaas.svg').default,
+  [Solution.Avatar]: require('./images/default/avatar.svg').default
 } as const
 
 // 24px的icon，导航栏使用
@@ -244,7 +251,8 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Gene]: require('./images/small/gen.svg').default,
   [Solution.Entertainment]: require('./images/small/entertainment.svg').default,
   [Solution.Medium]: null,
-  [Solution.Apaas]: require('./images/small/apaas.svg').default
+  [Solution.Apaas]: require('./images/small/apaas.svg').default,
+  [Solution.Avatar]: require('./images/small/avatar.svg').default
 } as const
 
 // 96px 的 icon，相关推荐用
@@ -267,7 +275,8 @@ export const largeIconMap: MapTo<string | null> = {
   [Solution.Gene]: genLargeIconUrl,
   [Solution.Entertainment]: entertainmentLargeIconUrl,
   [Solution.Medium]: null,
-  [Solution.Apaas]: ApaasLargeIconUrl
+  [Solution.Apaas]: ApaasLargeIconUrl,
+  [Solution.Avatar]: AvatarLargeIconUrl
 }
 
 export const allSolutions = categories.reduce(

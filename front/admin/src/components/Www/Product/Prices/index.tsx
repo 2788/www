@@ -99,7 +99,7 @@ const PageContent = observer(function _PageContent() {
         scroll={{ x: 'max-content' }}
         className={style.table}
       >
-        <Table.Column title="所属产品" width={120} className={commonStyle.cellContent} dataIndex="product" render={renderProduct} filters={productFilters} onFilter={filterProduct} />
+        <Table.Column title="所属产品" width={140} className={commonStyle.cellContent} dataIndex="product" render={renderProduct} filters={productFilters} onFilter={filterProduct} />
         <Table.Column title="文件" dataIndex="file" className={commonStyle.cellContent} render={renderFile} />
         <Table.Column title="创建人" width={100} dataIndex="creator" render={(val: string) => val || '-'} />
         <Table.Column title="更新人" width={100} dataIndex="modifier" render={(val: string) => val || '-'} />

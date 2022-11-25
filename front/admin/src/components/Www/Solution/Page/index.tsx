@@ -15,6 +15,7 @@ import { solutionRoute, solutionPageTitle } from 'constants/route'
 import { SolutionId } from 'constants/solution'
 import { SolutionModule, solutionModuleTitleMap, SolutionSection } from 'constants/solution/page'
 import { SolutionComponentName } from 'constants/solution/page/comp-common'
+import { hasSolutionPage } from 'transforms/solution'
 import SolutionApis, { SolutionInfo } from 'apis/solution'
 
 import Preview from './Preview'
@@ -82,16 +83,12 @@ export default observer(function PageInfo({ solutionId }: Props) {
 
   function submit() {
     if (!solutionInfo) {
+      toasterStore.error('暂无数据')
       return
     }
 
-    if (solutionInfo.banner == null) {
-      toasterStore.error('需要设置 banner')
-      return
-    }
-
-    if (solutionInfo.sections.length === 0) {
-      toasterStore.error('需要添加内容')
+    if (!hasSolutionPage(solutionInfo)) {
+      toasterStore.error('请配置 banner 和最少一个模块')
       return
     }
 

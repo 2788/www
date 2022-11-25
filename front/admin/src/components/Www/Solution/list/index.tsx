@@ -12,7 +12,7 @@ import { ShareIcon } from 'react-icecream/icons'
 
 import { timeFormatter } from 'utils/time'
 import { SolutionId, wwwSolutionPathPrefix } from 'constants/solution'
-import { getSolutionPageUrl } from 'transforms/solution'
+import { getSolutionPageUrl, hasSolutionPage } from 'transforms/solution'
 import SolutionApis, { SolutionInfo } from 'apis/solution'
 import { wwwHost } from 'constants/env'
 
@@ -77,19 +77,22 @@ export default function useSolutionList(editMetaInfo: (solutionId: SolutionId) =
       <SolutionTable.Column
         title="地址"
         accessor="path"
-        render={path => (
+        render={(path, record) => (
           <>
             <span>{wwwSolutionPathPrefix}{path} </span>
-            <Tooltip title="新 Tab 页访问">
-              <ButtonLink
-                type="link"
-                size="small"
-                to={wwwHost + wwwSolutionPathPrefix + path}
-                target="_blank"
-              >
-                <ShareIcon />
-              </ButtonLink>
-            </Tooltip>
+            {hasSolutionPage(record) && (
+              <Tooltip title="新 Tab 页访问">
+                <ButtonLink
+                  type="link"
+                  size="small"
+                  to={wwwHost + wwwSolutionPathPrefix + path}
+                  target="_blank"
+                  className={styles.shareBtn}
+                >
+                  <ShareIcon />
+                </ButtonLink>
+              </Tooltip>
+            )}
           </>
         )}
       />

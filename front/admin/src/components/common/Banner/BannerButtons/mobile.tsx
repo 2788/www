@@ -47,7 +47,7 @@ export function createMobileState(init: BannerButton['mobile']) {
 export function renderMobile(state: ReturnType<typeof createMobileState>) {
   const fields = state.$.$
   return (
-    <FormItem label={platformMap.mobile} state={state} labelWidth="3em">
+    <FormItem label={platformMap.mobile} state={state} labelWidth="3em" labelVerticalAlign="text">
       <FormItem>
         <Switch state={fields.enabled} />
       </FormItem>

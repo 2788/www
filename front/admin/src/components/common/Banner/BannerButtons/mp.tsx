@@ -50,7 +50,7 @@ export function createMpState(init: BannerButton['mp']) {
 export function renderMp(state: ReturnType<typeof createMpState>) {
   const fields = state.$.$
   return (
-    <FormItem label={platformMap.mp} state={state} labelWidth="3em">
+    <FormItem label={platformMap.mp} state={state} labelWidth="3em" labelVerticalAlign="text">
       <FormItem>
         <Switch state={fields.enabled} />
       </FormItem>

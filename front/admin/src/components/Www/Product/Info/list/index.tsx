@@ -12,7 +12,7 @@ import { ShareIcon } from 'react-icecream/icons'
 
 import { timeFormatter } from 'utils/time'
 import { ProductId, wwwProductPathPrefix } from 'constants/product'
-import { getProductPageInfoPageUrl } from 'transforms/product/info'
+import { getProductPageInfoPageUrl, hasProductPage } from 'transforms/product/info'
 import ProductInfoApis, { ProductInfo } from 'apis/product/info'
 import { wwwHost } from 'constants/env'
 
@@ -77,19 +77,22 @@ export default function useProductList(editMetaInfo: (productId: ProductId) => v
       <ProductTable.Column
         title="地址"
         accessor="path"
-        render={path => (
+        render={(path, record) => (
           <>
-            <span>{wwwProductPathPrefix}{path} </span>
-            <Tooltip title="新 Tab 页访问">
-              <ButtonLink
-                type="link"
-                size="small"
-                to={wwwHost + wwwProductPathPrefix + path}
-                target="_blank"
-              >
-                <ShareIcon />
-              </ButtonLink>
-            </Tooltip>
+            <span>{wwwProductPathPrefix}{path}</span>
+            {hasProductPage(record) && (
+              <Tooltip title="新 Tab 页访问">
+                <ButtonLink
+                  type="link"
+                  size="small"
+                  to={wwwHost + wwwProductPathPrefix + path}
+                  target="_blank"
+                  className={styles.shareBtn}
+                >
+                  <ShareIcon />
+                </ButtonLink>
+              </Tooltip>
+            )}
           </>
         )}
       />

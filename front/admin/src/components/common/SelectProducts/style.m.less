@@ -17,3 +17,11 @@
 .keywords {
   display: none;
 }
+
+.tagsVertical {
+  /** HACK */
+  :global(.icecream-select-content) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

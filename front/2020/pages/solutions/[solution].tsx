@@ -18,10 +18,9 @@ interface SolutionPageProps {
   solutionInfo: SolutionInfo | null
   iconMap?: IconMap
   globalBanners?: GlobalBanner[]
-  isPreview?: boolean
 }
 
-type PageContentProps = Omit<SolutionPageProps, 'iconMap' | 'globalBanners' | 'isPreview'> & { solutionInfo: SolutionInfo }
+type PageContentProps = Omit<SolutionPageProps, 'iconMap' | 'globalBanners'> & { solutionInfo: SolutionInfo }
 
 function PageContent({ solutionInfo }: PageContentProps) {
   const isMobile = useMobile()
@@ -61,7 +60,7 @@ function PageContent({ solutionInfo }: PageContentProps) {
 }
 
 export default function SolutionPage({
-  globalBanners, isPreview, solutionInfo, iconMap, ...otherProps
+  globalBanners, solutionInfo, iconMap, ...otherProps
 }: SolutionPageProps) {
   if (!solutionInfo || !hasSolutionPage(solutionInfo)) {
     return <NotFoundPage globalBanners={globalBanners} />
@@ -73,11 +72,7 @@ export default function SolutionPage({
     description: desc.detail
   }
 
-  return isPreview ? (
-    <Layout {...metaInfo} forceSimple iconMap={iconMap}>
-      <PageContent solutionInfo={solutionInfo} {...otherProps} />
-    </Layout>
-  ) : (
+  return (
     <Layout {...metaInfo} globalBanners={globalBanners || []} iconMap={iconMap}>
       <PageContent solutionInfo={solutionInfo} {...otherProps} />
     </Layout>
@@ -85,10 +80,7 @@ export default function SolutionPage({
 }
 
 export function hasSolutionPage(info: SolutionInfo) {
-  if (info.banner && info.sections.length) {
-    return true
-  }
-  return false
+  return info.banner != null && info.sections.length > 0
 }
 
 export async function getServerSideProps({ params, res }: GetServerSidePropsContext<{ solution: string }>) {
