@@ -79,7 +79,7 @@ export default function useSolutionList(editMetaInfo: (solutionId: SolutionId) =
         accessor="path"
         render={(path, record) => (
           <>
-            <span>{wwwSolutionPathPrefix}{path} </span>
+            <span>{wwwSolutionPathPrefix}{path}</span>
             {hasSolutionPage(record) && (
               <Tooltip title="新 Tab 页访问">
                 <ButtonLink

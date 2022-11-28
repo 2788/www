@@ -6,9 +6,9 @@
 import React, { useState, useMemo, useEffect } from 'react'
 
 import { ContentType, ContentDetail } from 'constants/pgc/content'
+import { isPreviewContext, usePreviewMessage } from 'utils/admin-preview'
 import { mdTextToHTMLAst, AstRootNode } from 'components/pgc/content/Article'
 
-import { usePreviewMessage } from 'hooks/admin-message'
 import Detail from '../[id]'
 
 const msgKey = 'QINIU_PGC_CONTENT_DETAIL_PREVIEW'
@@ -23,10 +23,19 @@ interface WwwPreview {
 export default function PgcDetailPreview() {
   const previewData = usePreviewMessage<WwwPreview>(msgKey)
   const [articleHtmlAst, setArticleHtmlAst] = useState<AstRootNode | null>(null)
+  const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
-    if (previewData && previewData.type === ContentType.Article) {
-      mdTextToHTMLAst(previewData.contentDetail.content).then(setArticleHtmlAst)
+    if (previewData == null) {
+      setIsReady(false)
+      return
+    }
+
+    if (previewData.type === ContentType.Article) {
+      setIsReady(false)
+      mdTextToHTMLAst(previewData.contentDetail.content).then(setArticleHtmlAst).then(() => { setIsReady(true) })
+    } else {
+      setIsReady(true)
     }
   }, [previewData])
 
@@ -36,18 +45,20 @@ export default function PgcDetailPreview() {
     : null
   ), [previewData])
 
-  if (!previewData) {
+  if (!isReady || preview == null || previewData == null) {
     return null
   }
 
   return (
-    <Detail
-      id={null}
-      type={previewData.type}
-      contentDetail={previewData.contentDetail}
-      articleHtmlAst={articleHtmlAst}
-      createdAt={previewData.createdAt ? Number(previewData.createdAt) : null}
-      preview={preview}
-    />
+    <isPreviewContext.Provider value>
+      <Detail
+        id={null}
+        type={previewData.type}
+        contentDetail={previewData.contentDetail}
+        articleHtmlAst={articleHtmlAst}
+        createdAt={previewData.createdAt ? Number(previewData.createdAt) : null}
+        preview={preview}
+      />
+    </isPreviewContext.Provider>
   )
 }

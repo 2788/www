@@ -1,4 +1,4 @@
-import { ComponentName } from 'constants/solutions/componetns'
+import { ComponentName } from 'constants/solutions/components'
 import { BannerButton } from 'hooks/product-btn'
 import { getCode } from 'utils/fetch'
 import { get as mongoGet, listAll } from '.'

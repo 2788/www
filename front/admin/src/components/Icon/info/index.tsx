@@ -63,6 +63,7 @@ interface Props {
   current?: BaseIconInfo
   icons: BaseIconInfo[]
   title: string
+  visible: boolean
   onSubmit(iconInfo: BaseIconInfo): Promise<void>
   onCancel(): void
 }
@@ -80,7 +81,7 @@ const IconModalForm = observer(function _IconModalForm(props: Props) {
       title={props.title}
       layout="horizontal"
       labelWidth="2em"
-      visible
+      visible={props.visible}
       state={state}
       onSubmit={submit}
       onCancel={() => { props.onCancel() }}
@@ -102,7 +103,7 @@ export default function useIconInfo(allIcons: IconInfo[]) {
   const toasterStore = useInjection(ToasterStore)
   const iconInfoApis = useInjection(IconInfoApis)
 
-  const { visible, resolve, reject, open } = useModalLike()
+  const { visible, resolve, reject, open, render } = useModalLike()
 
   const [iconId, setIconId] = useState<IconId | undefined>(undefined)
 
@@ -130,11 +131,12 @@ export default function useIconInfo(allIcons: IconInfo[]) {
     setIconId(undefined)
   }
 
-  const view = visible && (
+  const view = render(
     <IconModalForm
       current={currentIconInfo}
       icons={otherIconInfoList}
       title={iconId ? '修改' : '新增'}
+      visible={visible}
       onSubmit={submit}
       onCancel={cancel}
     />

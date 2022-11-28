@@ -36,26 +36,26 @@ export default function ProductRelated({ productInfos }: Props) {
   return (
     <>
       <Row>
-        {itemsRow1.map(item => <Item key={item.title} {...item} />)}
+        {itemsRow1.map(item => <Item key={item.name} {...item} />)}
       </Row>
 
       {!!itemsRow2.length && (
         <Row>
-          {itemsRow2.map(item => <Item key={item.title} {...item} />)}
+          {itemsRow2.map(item => <Item key={item.name} {...item} />)}
         </Row>
       )}
     </>
   )
 }
 
-export function Item({ title, path, desc, icon }: ProductInfo) {
+export function Item({ name, path, desc, icon }: ProductInfo) {
   const isMobile = useMobile()
   const productUrl = `/products/${path}`
   if (isMobile) {
     return (
       <Link className={style.mobileItemWrapper} href={productUrl}>
-        <LibIcon alt="相关产品" src={icon.line} />
-        <div className={style.content}>{title}</div>
+        <LibIcon alt="相关产品" src={icon.lineSmall} />
+        <div className={style.content}>{name}</div>
         <div className={style.icon}>
           <IconArrow />
         </div>
@@ -66,10 +66,10 @@ export function Item({ title, path, desc, icon }: ProductInfo) {
   return (
     <div className={style.pcItemWrapper}>
       <div className={style.icon}>
-        <LibIcon alt="相关产品" src={icon.line} />
+        <LibIcon alt="相关产品" src={icon.lineSmall} />
       </div>
       <div className={style.content}>
-        <h3 className={style.title}>{title}</h3>
+        <h3 className={style.title}>{name}</h3>
         <p className={style.desc}>{desc.brief}</p>
         <Link className={style.link} href={productUrl}>查看更多 &gt;</Link>
       </div>

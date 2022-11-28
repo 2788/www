@@ -124,12 +124,12 @@ export interface UploadImgInputProps extends IProps {
 }
 
 /** for react-icecream-form */
-export const UploadImgInput = observer(function _UploadImgInput(props: UploadImgInputProps) {
+export const UploadImgInput = observer(function _UploadImgInput({ children, ...props }: UploadImgInputProps) {
   const clearable = props.clearable ?? true
   const defaultChildren = clearable ? (<ClearableUploadBtn state={props.state} />) : undefined
   return (
     <InputWrapper state={props.state}>
-      <UploadImg {...props}>{props.children ?? defaultChildren}</UploadImg>
+      <UploadImg {...props}>{children ?? defaultChildren}</UploadImg>
     </InputWrapper>
   )
 })

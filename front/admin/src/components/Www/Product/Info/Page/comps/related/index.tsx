@@ -26,6 +26,7 @@ function createState(props?: ProductComponentRelatedConfig['props']) {
 
 interface Props {
   props?: ProductComponentRelatedConfig['props']
+  visible: boolean
   onSubmit(config: ProductComponentRelatedConfig['props']): void
   onCancel(): void
 }
@@ -43,7 +44,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
       width={450}
       layout="horizontal"
       labelWidth="4em"
-      visible
+      visible={props.visible}
       state={state}
       onSubmit={submit}
       onCancel={() => { props.onCancel() }}
@@ -57,7 +58,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
 
 export default function useCompRelated() {
   const [config, setConfig] = useState<ProductSection<ProductComponentRelatedConfig> | undefined>(undefined)
-  const { visible, resolve, reject, open } = useModalLike<ProductSection<ProductComponentRelatedConfig>>()
+  const { visible, resolve, reject, open, render } = useModalLike<ProductSection<ProductComponentRelatedConfig>>()
 
   async function start(initConfig?: ProductSection<ProductComponentRelatedConfig>) {
     setConfig(initConfig)
@@ -82,9 +83,10 @@ export default function useCompRelated() {
     setConfig(undefined)
   }
 
-  const view = visible && (
+  const view = render(
     <CompDrawerForm
       props={config?.component.props}
+      visible={visible}
       onSubmit={submit}
       onCancel={cancel}
     />

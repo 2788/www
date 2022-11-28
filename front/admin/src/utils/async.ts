@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback, ReactNode } from 'react'
 import { makeCancelled } from 'qn-fe-core/exception'
 
 // https://github.com/then/is-promise/blob/master/index.js
@@ -47,7 +47,7 @@ export function usePromise<T>() {
   }
 }
 
-export function useModalLike<T = undefined>() {
+function useModalLikeBase<T = undefined>() {
   const [visible, setVisible] = useState(false)
   const { resolve, reject, start } = usePromise<any>()
   return {
@@ -65,4 +65,25 @@ export function useModalLike<T = undefined>() {
       return start()
     }, [start])
   }
+}
+
+export function useModalLike<T = undefined>() {
+  const delay = 300 // 单位 ms，参考 ant.design
+
+  const { visible, resolve, reject: baseReject, open } = useModalLikeBase<T>()
+
+  const [isClosing, setIsClosing] = useState(false)
+
+  const reject = useCallback((...args: Parameters<typeof baseReject>): ReturnType<typeof baseReject> => {
+    setIsClosing(true)
+    setTimeout(() => { setIsClosing(false) }, delay) // 常见场景下在一个 delay 内无法再次 open modal
+    return baseReject(...args)
+  }, [baseReject])
+
+  /** 关闭弹窗后卸载组件主体 */
+  function render(modal: ReactNode): ReactNode {
+    return !visible && !isClosing ? null : modal
+  }
+
+  return { visible, resolve, reject, open, render }
 }

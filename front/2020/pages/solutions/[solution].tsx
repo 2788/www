@@ -10,7 +10,7 @@ import Section from 'components/Product/Section/v2'
 import PageBanner from 'components/Product/PageBanner'
 import { getSolutionInfo, listAllSolutionInfos, SolutionInfo } from 'apis/admin/solution'
 import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
-import { ComponentMap } from 'constants/solutions/componetns'
+import { ComponentMap } from 'constants/solutions/components'
 import { useMobile } from 'hooks/ua'
 import NotFoundPage from 'pages/404'
 

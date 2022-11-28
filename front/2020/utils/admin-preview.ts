@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
+
+export const isPreviewContext = createContext(false)
 
 export function usePreviewMessage<T>(key: string) {
   const [data, setData] = useState<T>()

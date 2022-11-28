@@ -71,6 +71,7 @@ export default observer(function PageInfo({ solutionId }: Props) {
       }
     }
 
+    // TODO: + on router change?
     window.addEventListener('beforeunload', confirmUnsaved, false)
     return () => { window.removeEventListener('beforeunload', confirmUnsaved, false) }
   }, [unsaved])

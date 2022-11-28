@@ -12,8 +12,8 @@ import { ToasterStore } from 'admin-base/common/toaster'
 import { wwwCenteredContentWidth } from 'constants/www'
 import { ContentId, ContentType, ContentDetail, Content } from 'constants/pgc/content'
 import { getWwwContentDetailPreviewUrl, getEditPageUrl } from 'transforms/pgc/content'
-import PgcContentApis from 'apis/pgc/content'
 import { useWwwPreviewMessage } from 'utils/www'
+import PgcContentApis from 'apis/pgc/content'
 
 import Form from './Form'
 
@@ -30,17 +30,15 @@ interface WwwPreview {
 
 interface PreviewProps {
   type: ContentType
-  contentDetail: ContentDetail | null
+  contentDetail: ContentDetail
   onRelease(): Promise<void>
   onClose(): void
 }
 
 function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
-  const toasterStore = useInjection(ToasterStore)
-
   const msgData: WwwPreview = useMemo(() => ({
     type,
-    contentDetail: contentDetail!,
+    contentDetail,
     editPagePrefix: `${window.location.origin}${getEditPageUrl('')}`
   }), [type, contentDetail])
 
@@ -53,7 +51,7 @@ function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
     }
   }
 
-  const previewContentView = contentDetail && (
+  const previewContentView = (
     <div className={style.previewPageContainer}>
       <div className={style.previewPage}>
         <iframe src={getWwwContentDetailPreviewUrl()} ref={iframeRef}></iframe>
@@ -62,11 +60,6 @@ function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
   )
 
   async function handleRelease(): Promise<void> {
-    if (!contentDetail) {
-      toasterStore.info('请预览确认后再发布')
-      throw new Error('cannot release')
-    }
-
     // TODO: 检查是否内嵌未发布内容、图文及 404
     // TODO: 二次确认？
 
@@ -77,7 +70,6 @@ function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
     <Modal
       title="预览"
       width={wwwCenteredContentWidth + 100 + 24 * 2} // @icecream-gap-lg = 24
-      visible={!!contentDetail}
       onOk={handleRelease}
       onCancel={() => { onClose() }}
       footer={
@@ -124,12 +116,14 @@ export const AddForm = observer(function _AddForm({ type, onSubmitted }: AddForm
         onSubmitDraft={contentDetail => submit(contentDetail, false)}
         onPreview={contentDetail => { setPreviewContentDetail(contentDetail) }}
       />
-      <Preview
-        type={type}
-        contentDetail={previewContentDetail}
-        onRelease={() => submit(previewContentDetail!, true)}
-        onClose={() => { setPreviewContentDetail(null) }}
-      />
+      {previewContentDetail != null && (
+        <Preview
+          type={type}
+          contentDetail={previewContentDetail}
+          onRelease={() => submit(previewContentDetail, true)}
+          onClose={() => { setPreviewContentDetail(null) }}
+        />
+      )}
     </div>
   )
 })
@@ -177,12 +171,14 @@ export const EditForm = observer(function _EditForm({ id, onSubmitted }: EditFor
         onSubmitDraft={contentDetail => submit(contentDetail, false)}
         onPreview={contentDetail => { setPreviewContentDetail(contentDetail) }}
       />
-      <Preview
-        type={initialContent.type}
-        contentDetail={previewContentDetail}
-        onRelease={() => submit(previewContentDetail!, true)}
-        onClose={() => { setPreviewContentDetail(null) }}
-      />
+      {previewContentDetail != null && (
+        <Preview
+          type={initialContent.type}
+          contentDetail={previewContentDetail}
+          onRelease={() => submit(previewContentDetail, true)}
+          onClose={() => { setPreviewContentDetail(null) }}
+        />
+      )}
     </div>
   )
 

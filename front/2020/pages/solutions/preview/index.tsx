@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-import { usePreviewMessage } from 'hooks/admin-message'
+import { isPreviewContext, usePreviewMessage } from 'utils/admin-preview'
 import { SolutionInfo } from 'apis/admin/solution'
 import { getIconMap, getIconIdsFromJson } from 'apis/admin/icon-lib'
 import { IconMap } from 'components/LibIcon'
@@ -36,9 +36,11 @@ export default function ProductPagePreview() {
   }
 
   return (
-    <SolutionPage
-      solutionInfo={previewData}
-      iconMap={iconMap}
-    />
+    <isPreviewContext.Provider value>
+      <SolutionPage
+        solutionInfo={previewData}
+        iconMap={iconMap}
+      />
+    </isPreviewContext.Provider>
   )
 }
