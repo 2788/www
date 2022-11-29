@@ -218,7 +218,8 @@ export const productCodeMap = {
   [Product.Ssl]: 'ssl',
   [Product.Svesdk]: 'svesdk',
   [Product.Tts]: 'tts',
-  [Product.WAF]: 'waf'
+  [Product.WAF]: 'waf',
+  [Product.QApp]: 'qapp'
 }
 
 /** 获取产品页 Banner 下方通知列表（新闻动态 & 福利活动） */
