@@ -11,11 +11,11 @@
     .slick-slider{
       .slick-dots.slick-dots-bottom {
         bottom: 34px;
-  
+
         li {
           margin: 0 4px;
         }
-  
+
         button, .slick-active button {
           width: 32px;
           height: 4px;
@@ -34,7 +34,7 @@
           background: @grey-5;
           opacity: 0.2;
         }
-  
+
         .slick-active button {
           background: @primary-color;
           opacity: 1;
@@ -51,7 +51,7 @@
             background: @grey-1;
             opacity: 0.5;
           }
-  
+
           .slick-active button {
             background: @grey-1;
             opacity: 1;
@@ -74,4 +74,14 @@
       }
     }
   });
+}
+
+:global(.big-event-gray) {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
 }

@@ -15,6 +15,7 @@ import PageBanner from 'components/pages/index/PageBanner'
 import { useApiWithParams } from 'hooks/api'
 import { luminanceOf } from 'utils/img'
 import { useTrackShow } from 'hooks/thallo'
+import useIsomorphicLayoutEffect from 'hooks/use-isomorphic-layout-effect'
 
 import { headerThemeContext } from 'components/Header/Pc'
 import Activities from 'components/pages/index/Activities'
@@ -124,7 +125,23 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
   )
 }
 
+function useBigEventGray() {
+  useIsomorphicLayoutEffect(() => {
+    const htmlRoot = document && document.documentElement
+    if (htmlRoot) {
+      htmlRoot.className += ' big-event-gray'
+    }
+    return () => {
+      if (htmlRoot) {
+        htmlRoot.className = (htmlRoot.className || '').replace(/(\s|^)big-event-gray(\s|$)/, ' ')
+      }
+    }
+  }, [])
+}
+
 export default function IndexPage({ globalBanners, banners, activities }: Props) {
+  useBigEventGray()
+
   const [dark, setDark] = useState(false)
   const bannerDark = useMemo(() => ({ dark, setDark }), [dark, setDark])
   return (
