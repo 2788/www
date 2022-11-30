@@ -15,9 +15,10 @@ import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -26,6 +27,8 @@ import ProductNews from 'components/Product/common/ProductNews'
 import Function from 'components/pages/voice/Function'
 import Advantage from 'components/pages/voice/Advantage'
 import Scene from 'components/pages/voice/Scene'
+
+import ProductPage from '../[product]'
 
 import imgBanner from './images/banner.png'
 
@@ -39,7 +42,7 @@ const pageInfo = {
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const priceUrl = urlForPrice(Product.Voice)
 
@@ -79,7 +82,19 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function Main({ globalBanners, ...pageProps }: Props) {
+export default function Main({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo != null) {
+    // TODO: 支持 news
+    return (
+      <ProductPage
+        notices={pageProps.notices}
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap}
+      />
+    )
+  }
+
   return (
     <Layout
       title={pageInfo.layoutTitle}
@@ -93,11 +108,15 @@ export default function Main({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('voice')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Voice),
       newsRes: await getNews({ product: Product.Voice }),
-      globalBanners: await getGlobalBanners()
+      globalBanners: await getGlobalBanners(),
+      productInfo,
+      iconMap: await getIconMap(icons)
     }
   }
 }

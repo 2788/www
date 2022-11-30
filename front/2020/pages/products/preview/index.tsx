@@ -30,7 +30,6 @@ export default function ProductPagePreview() {
       })
     } else {
       setProductInfo(null)
-      setIconMap({})
     }
   }, [previewData])
 

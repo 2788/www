@@ -15,9 +15,10 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -25,11 +26,13 @@ import DdosProduct from 'components/pages/ddos/Product'
 import Advantage from 'components/pages/ddos/Advantage'
 import QvmCommonCases from 'components/pages/qvm/Cases'
 
+import ProductPage from '../[product]'
+
 import banner from './banner.png'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
 
   const btns = useBtns(
     { children: '立即购买', href: 'https://portal.qiniu.com/qvm/security/bgpip/create', pcOnly: true },
@@ -72,7 +75,19 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function Ddos({ globalBanners, ...pageProps }: Props) {
+export default function Ddos({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo != null) {
+    // TODO: 支持 news
+    return (
+      <ProductPage
+        notices={pageProps.notices}
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap}
+      />
+    )
+  }
+
   return (
     <Layout
       title="DDoS 高防"
@@ -86,11 +101,15 @@ export default function Ddos({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('ddos')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Ddos),
       newsRes: await getNews({ product: Product.Ddos }),
-      globalBanners: await getGlobalBanners()
+      globalBanners: await getGlobalBanners(),
+      productInfo,
+      iconMap: await getIconMap(icons)
     }
   }
 }

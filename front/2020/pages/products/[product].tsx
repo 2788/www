@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { GetServerSidePropsContext } from 'next'
 
+import { getProduct, priceUrlMap } from 'constants/products'
+import { isPreviewContext } from 'utils/admin-preview'
 import { getProductPageInfo, listAllProductPagePaths, ProductPageInfo } from 'apis/admin/product'
 import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import { AdvertInfo, getProductPageNotices, productCodeMap, ProductPageNotice } from 'apis/thallo'
 import { useAdminBtns } from 'hooks/product-btn'
-import { useApiWithParams } from 'hooks/api'
-import { getProduct, priceUrlMap } from 'constants/products'
 import { IconMap } from 'components/LibIcon'
 
 import Layout from 'components/Product/Layout'
@@ -32,17 +32,27 @@ export interface ProductPageProps {
 type PageContentProps = Omit<ProductPageProps, 'iconMap' | 'globalBanners'> & { productInfo: ProductPageInfo }
 
 function PageContent({ notices, productInfo }: PageContentProps) {
+  const isPreview = useContext(isPreviewContext)
   const isMobile = useMobile()
 
   const { path, name, desc, banner, sections } = productInfo
   const product = getProduct(path)
 
-  const priceUrl = product ? priceUrlMap[product] || undefined : undefined
+  const priceUrl = product ? priceUrlMap[product] || undefined : undefined // TODO: 该用 urlForPrice?
 
   const btns = useAdminBtns(banner!.buttons, banner?.light)
-  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
-    params: notices ? [product as keyof typeof productCodeMap] : null
-  })
+
+  const [currentNotices, setCurrentNotices] = useState(notices)
+
+  useEffect(() => {
+    if (product && (notices || isPreview)) {
+      getProductPageNotices(product as keyof typeof productCodeMap).then(
+        newNotices => { setCurrentNotices(newNotices) },
+        // eslint-disable-next-line no-console
+        err => { console.error(err) }
+      )
+    }
+  }, [product, notices, isPreview])
 
   return (
     <>
@@ -56,7 +66,7 @@ function PageContent({ notices, productInfo }: PageContentProps) {
           light={banner.light} />
       )}
 
-      {(currentNotices && notices) && <ProductNotice {...(currentNotices || notices)} />}
+      {currentNotices && (<ProductNotice {...currentNotices} />)}
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 

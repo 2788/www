@@ -182,6 +182,7 @@ export interface ProductPageNotice {
  * 添加新产品时，这里的 code 定义需要与广告投放的同学确认下，原则上每个产品对应的
  * `productCode` 应当与该产品路由（`/product/${name}`）中的 `name` 一致。
  * 关于广告投放平台：https://cf.qiniu.io/pages/viewpage.action?pageId=80465650
+ * TODO: 核对确认地址一致后移除
  */
 export const productCodeMap = {
   [Product.Kodo]: 'kodo',

@@ -6,6 +6,7 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 
+import { urlForPrice } from 'utils/route'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 import { getNews } from 'apis/admin/product'
@@ -13,7 +14,7 @@ import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
-import { Product, priceUrlMap } from 'constants/products'
+import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import Navigator from 'components/Product/Navigator'
 import PageBanner from 'components/Product/PageBanner'
@@ -38,7 +39,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const bannerBtns = useBtns(
     { href: 'https://developer.qiniu.com/dora/6097/perceptive-transcoding-avsmart-1', children: '立即使用', pcOnly: true },
-    { children: '查看价格', href: priceUrlMap[Product.Dora] }
+    { children: '查看价格', href: urlForPrice(Product.Dora) }
   )
 
   const { $: currentNotices } = useApiWithParams(getProductPageNotices, {

@@ -38,7 +38,7 @@ export function hasPrice(product: Product) {
 export function urlForPrice(product: Product, calculator = false) {
   const params = calculator ? { tab: 'calc' } : undefined
   const url = priceUrlMap[product]
-  return url != null ? urlFor(url, params) : '#'
+  return url != null ? urlFor(url, params) : '#' // 前提：当对应界面可用时，url 不会为空
 }
 
 export function urlForSignin(redirectUrl: string) {

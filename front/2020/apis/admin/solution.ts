@@ -51,6 +51,7 @@ export interface SolutionInfo {
   /** 解决方案图标 */
   icon: SolutionIcons
 
+  // TODO: 后续用新的 mongo api 按需裁剪
   /** 解决方案页 banner 配置 */
   banner?: {
     bgImgUrl: {
@@ -68,7 +69,6 @@ export interface SolutionInfo {
 
 // 获取解决方案页面配置
 export async function getSolutionInfo(path: string): Promise<SolutionInfo | null> {
-  // catch 掉接口 404 错误
   try {
     return await mongoGet<SolutionInfo>('www-solution', path)
   } catch (err) {

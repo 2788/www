@@ -19,6 +19,7 @@ import entertainmentLargeIconUrl from './images/large/entertainment.png'
 import ApaasLargeIconUrl from './images/large/apaas.png'
 import AvatarLargeIconUrl from './images/large/avatar.png'
 
+/** @deprecated 参考 `/apis/admin/solution.ts` 的 `getSolutionInfo` */
 export enum Solution {
   /** 金融行业 */
   Fin = 'fin',

@@ -34,6 +34,7 @@ import {
 } from 'constants/route'
 
 import Provider from './Provider'
+import Logo from './Logo'
 
 function Sidebar({ collapsed }: { collapsed: boolean }) {
   return (
@@ -66,7 +67,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false)
   return (
     <BaseLayout
-      header={<Navbar header="官网 Admin" onCollapse={setCollapsed} />}
+      header={<Navbar header={<Logo />} onCollapse={setCollapsed} />}
       sidebar={<Sidebar collapsed={collapsed} />}
     >
       <Page>{children}</Page>

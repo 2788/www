@@ -1,5 +1,6 @@
 /**
  * 图标库
+ * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
 import React from 'react'

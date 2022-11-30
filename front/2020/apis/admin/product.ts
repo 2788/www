@@ -153,6 +153,7 @@ export interface ProductPageInfo extends ProductInfo {
   sections: SectionsConfig[]
 }
 
+// TODO: 后续用新的 mongo api 直接裁剪
 function getProductBaseInfo({ banner, sections, ...productInfo }: ProductPageInfo): ProductInfo {
   return productInfo
 }

@@ -16,7 +16,9 @@ export interface UrlIcon {
 export interface SvgInlineIcon {
   type: 'svg-inline'
   /** svg 源码 */
-  content: string // TODO: 未来体积太大还可能要进一步优化…
+  // TODO: 如果未来体积太大需要优化，考虑用新 mongo api 的裁剪能力，或把文件内容外置于 CDN （可参考价格页）
+  //       （外置需要解决跨域等问题，以及可能带来更高的使用侧复杂度 & 新的性能问题）
+  content: string
 }
 
 export type IconFile = UrlIcon | SvgInlineIcon

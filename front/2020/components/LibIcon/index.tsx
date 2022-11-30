@@ -22,8 +22,8 @@ function handleError(error: string, isPreview: boolean) {
     return
   }
 
-  // 首屏或非线上环境尽量报错
-  if (!isBrowser() || window.location.hostname !== 'www.qiniu.com') {
+  // 确保 ssr 首屏阶段静态渲染
+  if (!isBrowser()) {
     throw new Error(error)
   }
 

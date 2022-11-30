@@ -42,6 +42,7 @@ import documentLargeIconUrl from './icons/large/document.png'
 import enhancementLargeIconUrl from './icons/large/enhancement.png'
 import qappLargeIconUrl from './icons/large/qapp.png'
 
+/** @deprecated 参考 `/apis/admin/product.ts` 的 `getProductInfo` */
 export enum Product {
   /** 对象存储 Kodo */
   Kodo = 'kodo',
@@ -486,7 +487,7 @@ export type PartialProductData = Product | {
 /** 通过 path 反查 Product，用于 priceUrlMap[product] 和 getProductPageNotices */
 export function getProduct(path: string) {
   const products = Object.keys(urlMap) as Product[]
-  return products.find(product => urlMap[product] === `/product/${path}`) || null
+  return products.find(product => urlMap[product] === `/products/${path}`) || null
 }
 
 export function normalizeProduct(val: Product | PartialProductData): ProductData {
