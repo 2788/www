@@ -8,8 +8,5 @@
 - `google9873824db0729f54.html` `google` 的 `search console`
 - `googlea68cdff03883fe2f.html` `google` 的 `search console`
 - `ByteDanceVerify.html` 头条搜索站长验证文件
-- `sitemapindex.xml` `sitemap index` 文件
-  - 包含 `www.qiniu.com sitemap` 及云社区（`qfans`）`sitemap`
-  - 云社区（`qfans`）`sitemap`（`www.qiniu.com/qfans/sitemap_xxx.xml`）文件维护在云社区站点代码中
 
 `TODO`：还漏了一些文件，需要补一下
