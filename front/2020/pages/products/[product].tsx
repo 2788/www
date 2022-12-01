@@ -3,6 +3,7 @@ import { GetServerSidePropsContext } from 'next'
 
 import { getProduct, priceUrlMap } from 'constants/products'
 import { isPreviewContext } from 'utils/admin-preview'
+import { urlForPrice } from 'utils/route'
 import { getProductPageInfo, listAllProductPagePaths, ProductPageInfo } from 'apis/admin/product'
 import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import { AdvertInfo, getProductPageNotices, productCodeMap, ProductPageNotice } from 'apis/thallo'
@@ -38,7 +39,7 @@ function PageContent({ notices, productInfo }: PageContentProps) {
   const { path, name, desc, banner, sections } = productInfo
   const product = getProduct(path)
 
-  const priceUrl = product ? priceUrlMap[product] || undefined : undefined // TODO: 该用 urlForPrice?
+  const priceUrl = product && priceUrlMap[product] ? urlForPrice(product) : undefined
 
   const btns = useAdminBtns(banner!.buttons, banner?.light)
 
