@@ -125,7 +125,7 @@ const mikuInitScriptContent = `
   if ('serviceWorker' in navigator) {
     useMikuPromise.then(function (useMiku) {
       if (useMiku) {
-        miku.initProxy('/miku-sw-0.10.0.js', {
+        miku.initProxy('/miku-sw-0.10.1.js', {
           app: appInfo,
           domains: ['www-static.qbox.me'],
           client: {
@@ -158,8 +158,8 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
-          <script src={`${assetHost}/miku-perf-0.10.0.js`} />
-          <script src={`${assetHost}/miku-0.10.0.js`} />
+          <script src={`${assetHost}/miku-perf-0.10.1.js`} />
+          <script src={`${assetHost}/miku-0.10.1.js`} />
           <script dangerouslySetInnerHTML={{ __html: mikuInitScriptContent }} />
         </Head>
         <body>
