@@ -6,6 +6,7 @@ import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
 import { HomePageBanner, AdvertInfo } from 'apis/thallo'
 import { trackClick as trackThalloClick } from 'utils/sensors/thallo'
+import { imageslim } from 'utils/dora-img'
 
 import styles from './style.less'
 
@@ -16,7 +17,7 @@ export interface Props extends AdvertInfo<HomePageBanner> {
 export default function IndexPageBanner({ dark, ...advertInfo }: Props) {
   const { pPic, txt, subTxt, url, bTxt, mPic } = advertInfo.elements
   const isMobile = useMobile()
-  const bgImg = isMobile ? mPic.value : pPic.value
+  const bgImg = imageslim(isMobile ? mPic.value : pPic.value) // TODO: 可以考虑根据 mobile / pc 的尺寸对图片再做下缩放或裁剪（同样基于 dora 的能力）
   const backgroundColor = pPic.imgColorFill
 
   function renderBtnWrapper() {

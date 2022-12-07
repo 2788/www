@@ -52,3 +52,11 @@ export function process(imgUrl: string, ...methods: string[]) {
   const withHash = [withSearch, hash].filter(Boolean).join('#')
   return withHash
 }
+
+/**
+ * 图片瘦身
+ * https://developer.qiniu.com/dora/1271/image-thin-body-imageslim
+ */
+export function imageslim(imgUrl: string) {
+  return imgUrl + (imgUrl.includes('?') ? '&' : '?') + 'imageslim'
+}

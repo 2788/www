@@ -1,4 +1,4 @@
-import { scaleBy, withFormat, process } from './dora-img'
+import { scaleBy, withFormat, process, imageslim } from './dora-img'
 
 describe('scaleBy', () => {
   it('should scale well by width', () => {
@@ -43,4 +43,10 @@ describe('process', () => {
     expect(process('foo.jpg?bar=1', withFormat('png'))).toBe('foo.jpg?bar=1&imageMogr2/format/png')
     expect(process('https://www.qiniu.com/foo.jpg?bar=1&baz=abc#qux', withFormat('png'), scaleBy({ type: 'cover', width: 100, height: 200 }))).toBe('https://www.qiniu.com/foo.jpg?bar=1&baz=abc&imageMogr2/format/png/thumbnail/!100x200r#qux')
   })
+})
+
+describe('imageslim', () => {
+  expect(imageslim('https://static-file.qiniu.io/thallo/admin/1666538339')).toBe('https://static-file.qiniu.io/thallo/admin/1666538339?imageslim')
+  expect(imageslim('https://static-file.qiniu.io/thallo/admin/1666538339?a')).toBe('https://static-file.qiniu.io/thallo/admin/1666538339?a&imageslim')
+  expect(imageslim('https://static-file.qiniu.io/thallo/admin/1666538339?a=1&b=2')).toBe('https://static-file.qiniu.io/thallo/admin/1666538339?a=1&b=2&imageslim')
 })
