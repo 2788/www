@@ -15,7 +15,6 @@ import PageBanner from 'components/pages/index/PageBanner'
 import { useApiWithParams } from 'hooks/api'
 import { luminanceOf } from 'utils/img'
 import { useTrackShow } from 'hooks/thallo'
-import usePageGray from 'hooks/use-page-gray'
 
 import { headerThemeContext } from 'components/Header/Pc'
 import Activities from 'components/pages/index/Activities'
@@ -90,8 +89,6 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
 function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
-  usePageGray()
-
   const { $: currentActivities } = useApiWithParams(
     getHomePageActivities,
     { params: [] }

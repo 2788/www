@@ -30,7 +30,7 @@ const typeStyleMap = {
   'primary-hollow': style.typePrimaryHollow,
   'default-grey': style.typeDefaultGrey,
   'grey-hollow': style.typeGreyHollow,
-  link: style.link
+  link: style.typeLink
 }
 
 const sizeStyleMap = {
