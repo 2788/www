@@ -1,4 +1,9 @@
-import { IconMap } from 'components/LibIcon'
+/**
+ * @file 图标库相关 admin 接口
+ */
+
+import { uniq } from 'lodash'
+
 import { iconScheme } from 'constants/icon'
 import { listAll } from '.'
 
@@ -26,14 +31,16 @@ export interface SvgInlineIcon extends IconBase {
 
 export type Icon = UrlIcon | SvgInlineIcon
 
-export async function getIconMap(ids?: string[]) {
-  return listAll<Icon>('icon', ids ? { query: { id: { $in: ids } } } : undefined)
-    .then(icons => icons.reduce((pre, cur) => {
-      if (!pre[cur.id]) {
-        pre[cur.id] = cur
-      }
-      return pre
-    }, {} as IconMap))
+async function listAllMongoIcons(ids?: string[]) {
+  return listAll<Icon>(
+    'icon',
+    ids ? { query: { id: { $in: uniq(ids) } } } : undefined
+  )
+}
+
+export async function getIconMap<T extends string>(ids?: T[]): Promise<{ [P in T]: Icon }> {
+  const icons = await listAllMongoIcons(ids)
+  return Object.assign({}, ...icons.map(icon => icon && ({ [icon.id]: icon })))
 }
 
 /** 从 json 中取出所有的 icon id */

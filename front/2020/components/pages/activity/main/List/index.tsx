@@ -4,7 +4,15 @@ import { IActivity } from 'apis/admin/activity'
 import Button from 'components/UI/Button'
 import style from './style.less'
 
-export default function List({ activities }: { activities: IActivity[] }) {
+export default function Activities({ activities }: { activities: IActivity[] }) {
+  return (
+    <div className={style.wrapper}>
+      <ActivityList activities={activities} />
+    </div>
+  )
+}
+
+export function ActivityList({ activities }: { activities: IActivity[] }) {
   return (
     <div className={style.container}>
       {

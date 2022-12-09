@@ -37,6 +37,7 @@ export function useIsGrey() {
 
 export type SectionProps = Pick<BlockProps, 'name' | 'title' | 'render'> & {
   children?: ReactNode
+  subTitle?: ReactNode
   grey?: boolean
   style?: CSSProperties
   className?: string
@@ -45,7 +46,7 @@ export type SectionProps = Pick<BlockProps, 'name' | 'title' | 'render'> & {
 }
 
 export default function Section(props: SectionProps) {
-  const { name, title, children, grey: propGrey, withTailPadding, render, ...rest } = props
+  const { name, title, children, grey: propGrey, withTailPadding, render, subTitle, ...rest } = props
 
   const isMobile = useMobile()
   const isPc = !isMobile
@@ -71,6 +72,7 @@ export default function Section(props: SectionProps) {
       <div {...rest} className={wrapperClassName}>
         <div className={style.intro}>
           <div className={style.title}>{title}</div>
+          {subTitle ? <div className={style.subTitle}>{subTitle}</div> : null}
         </div>
         <sectionContext.Provider value={{ isGrey: grey }}>
           {render && subPaths ? render({ subPaths }) : children}

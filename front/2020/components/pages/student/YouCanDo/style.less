@@ -1,0 +1,129 @@
+@import '~utils/less/index.less';
+
+.mobileWrapper {
+  padding: 0 16px;
+}
+
+.pcWrapper .myCard {
+  border: 1px solid @border-color;
+  border-radius: 4px;
+  position: relative;
+  height: 526px;
+  box-shadow: none;
+  overflow: hidden;
+
+  .pcLg({
+    height: 590px;
+  });
+
+  img {
+    width: 100%;
+  }
+
+  .bg {
+    width: 100%;
+    position: absolute;
+    top: 220px;
+    height: 270px;
+    background: linear-gradient(180deg, #FFFFFF 75.7%, rgba(253, 253, 253, 0.926064) 82.62%, rgba(245, 245, 245, 0.596927) 92.24%, rgba(229, 229, 229, 0) 100%);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+
+    .pcLg({  
+      top: 270px;
+    });
+  }
+
+  .content {
+    position: absolute;
+    top: 300px;
+    padding: 0 24px;
+
+    .pcLg({  
+      top: 350px;
+    });
+
+    .title {
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: @grey-7;
+      .setFontSize(20px);
+    }
+  }
+}
+
+.mobileWrapper {
+  :global {
+    .rc-menu {
+      text-align: left;
+      
+      .rc-menu-submenu {
+        background: @grey-1;
+        border: 1px solid @border-color;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
+        border-radius: 2px;
+        margin-bottom: 12px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .rc-menu-sub {
+          padding: 0 16px 16px;
+        }
+      }
+    }
+  }
+
+  .img {
+    width: 100%;
+    margin-bottom: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.list {
+  .recommend {
+    font-weight: 500;
+    color: @grey-7;
+    margin-bottom: 8px;
+    .setFontSize(16px);
+  }
+}
+
+.productItem {
+  position: relative;
+  color: @grey-7;
+  font-weight: 400;
+  margin-bottom: 8px;
+  padding-left: 18px;
+  .setFontSize(16px);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .mobile({
+    .setFontSize(14px);
+  });
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 0;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border: 3px solid #00aae7;
+    border-radius: 50%;
+    opacity: .4;
+    font-size: 0;
+  }
+}

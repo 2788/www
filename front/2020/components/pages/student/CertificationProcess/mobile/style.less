@@ -1,0 +1,49 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  padding: 0 16px;
+
+  .step {
+    flex: 1 1;
+    
+    height: 46px;
+    background: #FFFFFF;
+    border: 1px solid @border-color;
+    border-radius: 2px;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 46px;
+    padding: 0 16px;
+
+    .iconWrapper {
+      margin-right: 12px;
+
+      svg {
+        height: 28px;
+        width: 28px;
+      }
+    }
+
+    .text {
+      flex: 1 1;
+      font-weight: 500;
+      color: @grey-7;
+      text-align: left;
+      .setFontSize(14px);
+    }
+
+    .numberIcon {
+      width: 32px;
+      text-align: center;
+    }
+  }
+}

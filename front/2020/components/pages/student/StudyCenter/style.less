@@ -1,0 +1,260 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  .mobile({
+    padding: 0 16px;
+  });
+}
+
+.quickStartWraper {
+  border: 1px solid @border-color;
+  background-color: #fff;
+
+  .notMobile({
+    display: flex;
+    height: 252px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .intro {
+      width: 210px;
+      padding: 24px;
+      text-align: left;
+      background-image: url(./images/quick_start.png);
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: cover;
+  
+      .introTitle {
+        font-weight: 500;
+        color: @grey-7;
+        .setFontSize(20px);
+      }
+  
+      .introDesc {
+        display: inline-block;
+        color: @grey-7;
+        margin-top: 12px;
+        .setFontSize(14px);
+      }
+    }
+  
+    .content {
+      flex: 1 1;
+      padding: 10px;
+  
+      .contentRow {
+        margin-top: 0;
+      }
+    }
+  });
+
+  .intro {
+    .pcLg({
+      width: 448px;
+      background-image: url(./images/quick_start_lg.png);
+    });
+  }
+
+  .mobile({
+    border-radius: 2px;
+
+    .intro {
+      text-align: left;
+      height: 136px;
+      width: 100%;
+      padding: 24px 16px 0;
+      background-image: url(./images/quick_start_mobile.png);
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: cover;
+    }
+
+    .introTitle {
+      font-weight: 500;
+      .setFontSize(16px);
+    }
+
+    .introDesc {
+      display: inline-block;
+      width: 100%;
+      margin-top: 12px;
+      color: @grey-7;
+      .setFontSize(14px);
+    }
+
+    .contentRow {
+      display: block;
+    }
+
+    .content {
+      padding: 16px;
+    }
+  });
+
+  
+}
+
+.quickStartItem {
+  display: flex;
+  flex: 1 1;
+  align-items: center;
+
+  height: 96px;
+  margin: 10px;
+  border-radius: 4px;
+  border: 1px solid @border-color;
+  padding-left: 30px;
+
+  .itemTitle {
+    font-weight: 500;
+    color: @grey-7;
+    margin-left: 20px;
+    .setFontSize(20px);
+  }
+
+  .mobile({
+    height: 64px;
+    margin: 0 0 12px;
+    border-radius: 2px;
+    padding: 0 25px 0 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .itemIcon {
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .itemTitle {
+      flex: 1 1;
+      text-align: left;
+      margin-left: 16px;
+      .setFontSize(16px);
+    }
+  });
+}
+
+.careerWrapper {
+  display: flex;
+
+  margin-top: 20px;
+  height: 226px;
+  border: 1px solid @border-color;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+
+  .mobile({
+    flex-direction: column;
+    border-radius: 2px;
+    margin-top: 16px;
+    height: auto;
+  });
+
+  .content {
+    flex: 1 1;
+    display: flex;
+
+    padding: 20px;
+
+    .mobile({
+      flex-direction: column;
+      padding: 16px;
+    });
+  }
+
+  .intro {
+    width: 210px;
+    color: #fff;
+    padding: 24px;
+    background-image: url(./images/career_bg.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    text-align: left;
+    
+    .introTitle {
+      .setFontSize(20px);
+      
+      .mobile({
+        .setFontSize(16px);
+      });
+    }
+    
+    .introDesc {
+      display: inline-block;
+      margin-top: 12px;
+      color: #E5E5E5;
+      .setFontSize(14px);
+
+      .mobile({
+        color: #fff;
+      });
+    }
+    
+    .mobile({
+      order: -1;
+
+      width: 100%;
+      height: 114px;
+      padding: 24px 16px;
+      background-image: url(./images/career_bg_mobile.png);
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: cover;
+      text-align: left;
+    });
+  }
+
+  .intro {
+    .pcLg({
+      width: 448px;
+      background-image: url(./images/career_bg_lg.png);
+    });
+  }
+}
+
+.careerItemWrapper {
+  flex: 1 1;
+
+  border: 1px solid @border-color;
+  border-radius: 4px;
+  margin-right: 20px;
+  overflow: hidden;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .img {
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+
+  .mobile({
+    height: 162px;
+    border-radius: 2px;
+    margin: 0 0 12px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  });
+
+  .text {
+    padding: 16px;
+    color: @grey-7;
+    font-weight: 500;
+    text-align: left;
+    .setFontSize(16px);
+  }
+}

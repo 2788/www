@@ -1,3 +1,7 @@
+/**
+ * @file 解决方案相关 admin 接口
+ */
+
 import { ComponentName } from 'constants/solutions/components'
 import { BannerButton } from 'hooks/product-btn'
 import { getCode } from 'utils/fetch'

@@ -12,6 +12,9 @@ export default function Overlay() {
           <ContentSectionItem href="/partner">
             合作伙伴与生态
           </ContentSectionItem>
+          <ContentSectionItem href="/student">
+            合作伙伴与生态
+          </ContentSectionItem>
         </ContentSection>
         <ContentSection title="开发合作">
           <ContentSectionItem href="/cooperations" hot>

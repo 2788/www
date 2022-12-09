@@ -2,6 +2,8 @@
  * @file 产品相关 admin 接口
  */
 
+import { uniq } from 'lodash'
+
 import { get, getCode } from 'utils/fetch'
 import { ignoreProductPriceError } from 'constants/env'
 import { Product } from 'constants/products'
@@ -219,6 +221,11 @@ async function listAllMongoProductInfos(ids?: string[]) {
 export async function listProductInfos(ids: string[]): Promise<Array<ProductInfo | undefined>> {
   const list = (await listAllMongoProductInfos(ids)).map(getProductBaseInfo)
   return ids.map(path => list.find(info => info.path === path))
+}
+
+export async function getProductInfoMap<T extends string>(ids: T[]): Promise<{ [P in T]: ProductInfo }> {
+  const productInfos = await listProductInfos(uniq(ids))
+  return Object.assign({}, ...productInfos.map(info => info && ({ [info.path]: info })))
 }
 
 export async function listAllProductPagePaths(): Promise<string[]> {

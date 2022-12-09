@@ -162,6 +162,26 @@
     }
   }
 
+  &.link {
+    width: auto;
+    height: auto;
+    line-height: normal;
+
+    .withColor(
+      @primary-color, transparent, transparent,
+      @primary-color, transparent, transparent,
+      @grey-4, transparent, transparent
+    );
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.disabled, &:disabled {
+      text-decoration: none;
+    }
+  }
+
   &.sizeSmall {
     .withSize(32px, 96px);
     // TODO: 移动端要不要再小一号？

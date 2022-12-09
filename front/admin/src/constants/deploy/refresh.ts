@@ -44,6 +44,7 @@ export const basePaths = unionStringsFrom([
   '/sla-sms',
   '/solutions',
   '/ssl',
+  '/student',
   '/user-agreement'
 ])
 

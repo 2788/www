@@ -1,0 +1,133 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  .mobile({
+    padding: 0 16px;
+  });
+
+  .myCard {
+    background: #FFFFFF;
+    border: 1px solid @border-color;
+    box-shadow: none;
+  
+    &.pcCard {
+      padding: 24px 0;
+      text-align: center;
+      border-radius: 4px;
+    
+      .iconWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+      }
+    
+      h3 {
+        margin-top: 20px;
+        color: @grey-7;
+        .setFontSize(20px);
+      }
+    
+      h5 {
+        margin-top: 12px;
+        font-weight: 400;
+        color: @grey-6;
+        .setFontSize(14px);
+      }
+    
+      .list {
+        display: inline-block;
+        text-align: left;
+        margin-top: 24px;
+    
+        .item {
+          .setFontSize(14px);
+        }
+      }
+    }
+    
+    &.mobileCard {
+      border-radius: 2px;
+      padding: 16px 0 16px 60px;
+      position: relative;
+    
+      .iconWrapper {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 16px;
+        left: 20px;
+    
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    
+      h3 {
+        color: @grey-7;
+        .setFontSize(14px);
+      }
+    
+      h5 {
+        margin-top: 4px;
+        font-weight: 400;
+        color: @grey-6;
+        .setFontSize(12px);
+      }
+    
+      .list {
+        margin-top: 16px;
+    
+        .item {
+          .setFontSize(12px);
+        }
+      }
+    }
+  }
+}
+
+.list {
+  display: inline-block;
+  text-align: left;
+
+  .item {
+    color: @grey-7;
+    margin-bottom: 12px;
+    padding-left: 24px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    background-image: url(./hook.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 16px 16px;
+  }
+}
+
+.getBtn {
+  width: 292px;
+  margin-top: 32px;
+
+  .mobile({
+    width: 96px;
+    margin-top: 16px;
+  });
+}
+
+.moreText {
+  color: @grey-7;
+  margin-top: 24px;
+
+  .setFontSize(14px);
+  .mobile({
+    margin-top: 12px;
+  });
+}
