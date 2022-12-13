@@ -24,13 +24,13 @@ import useActivityRuleModal from 'components/pages/student/useActivityRuleModal'
 import CertificationProcess, { Step } from 'components/pages/student/CertificationProcess'
 import Button from 'components/UI/Button'
 
-import bannerImg from './images/banner.png'
-import bannerMobileImg from './images/banner_mobile.png'
-import Step1 from './images/step1.svg'
-import Step2 from './images/step2.svg'
-import Step3 from './images/step3.svg'
-import Step4 from './images/step4.svg'
-import Step5 from './images/step5.svg'
+import bannerImg from './images/banner.jpg'
+import bannerMobileImg from './images/banner_mobile.jpg'
+import step1Url from './images/step1.png'
+import step2Url from './images/step2.png'
+import step3Url from './images/step3.png'
+import step4Url from './images/step4.png'
+import step5Url from './images/step5.png'
 
 import styles from './style.less'
 
@@ -52,11 +52,11 @@ function Page({ activities, productInfoMap }: Omit<Props, 'globalBanners' | 'ico
 
       <Section title="校园认证流程" name="certification" withTailPadding>
         <CertificationProcess>
-          <Step number={1} icon={<Step1 />} url="https://portal.qiniu.com/signup">注册/登录</Step>
-          <Step number={2} icon={<Step2 />} url="https://portal.qiniu.com/user/security">绑定校园邮箱</Step>
-          <Step number={3} icon={<Step3 />} url="https://portal.qiniu.com/user/profile">实名认证</Step>
-          <Step number={4} icon={<Step4 />} url="https://portal.qiniu.com/financial/coupons/coupon">查看抵用券</Step>
-          <Step number={5} icon={<Step5 />} url="https://marketing.qiniu.com/activity/student_growth">0 元下单资源包</Step>
+          <Step number={1} iconUrl={step1Url} url="https://portal.qiniu.com/signup">注册/登录</Step>
+          <Step number={2} iconUrl={step2Url} url="https://portal.qiniu.com/user/security">绑定校园邮箱</Step>
+          <Step number={3} iconUrl={step3Url} url="https://portal.qiniu.com/user/profile">实名认证</Step>
+          <Step number={4} iconUrl={step4Url} url="https://portal.qiniu.com/financial/coupons/coupon">查看抵用券</Step>
+          <Step number={5} iconUrl={step5Url} url="https://marketing.qiniu.com/activity/student_growth">0 元下单资源包</Step>
         </CertificationProcess>
         <Button type="link" className={styles.certificationLink} onClick={showModal}>活动细则 {'>'}</Button>
       </Section>
@@ -66,7 +66,7 @@ function Page({ activities, productInfoMap }: Omit<Props, 'globalBanners' | 'ico
         <div className={styles.youCanDoText}>更多场景等你创造</div>
       </Section>
 
-      <Section title="海量云资源免费领取" name="resources" subTitle={isMobile ? undefined : '完成校园邮箱绑定和使命认证后即可获取'} withTailPadding>
+      <Section title="海量云资源免费领取" name="resources" subTitle={isMobile ? undefined : '完成校园邮箱绑定和实名认证后即可获取'} withTailPadding>
         <Resources productInfoMap={productInfoMap} />
       </Section>
 

@@ -15,7 +15,7 @@
   .centeredWithLg();
 
   .mobile({
-    padding: 16px 0px;
+    padding: 16px 16px;
   });
 }
 
@@ -26,7 +26,6 @@
     margin: 0;
     padding: 24px;
     background: @grey-1;
-    border: 1px solid @grey-3;
     border: 1px solid @border-color;
     border-radius: 4px;
   });
@@ -34,9 +33,9 @@
   .mobile({
     width: 100%;
     height: auto;
-    padding: 0 16px;
-    border-radius: 4px;
+    border-radius: 2px;
     overflow: hidden;
+    border: 1px solid @border-color;
   });
 
   &:not(:first-child) {
@@ -53,13 +52,7 @@
   height: @icon-height;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-
-  .mobile({
-    border-radius: 4px;
-    overflow: hidden;
-  });
-
+  background-size: cover;
 
   .mobile({
     width: 100%;
@@ -79,8 +72,6 @@
   .mobile({
     padding: 16px;
     background: @grey-1;
-    border: 1px solid @grey-3;
-    border-radius: 0px 0px 4px 4px
   });
 
   .title {

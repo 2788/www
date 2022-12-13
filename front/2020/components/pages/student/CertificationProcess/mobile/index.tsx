@@ -17,12 +17,12 @@ import styles from './style.less'
 
 const NumberIcons = [No1Icon, No2Icon, No3Icon, No4Icon, No5Icon]
 
-export function Step({ icon, url, children, number }: PropsWithChildren<StepProps>) {
+export function Step({ url, iconUrl, children, number }: PropsWithChildren<StepProps>) {
   const StepNumber = number ? NumberIcons[number - 1] : null
 
   let content = (
     <div className={styles.content}>
-      <div className={styles.iconWrapper}>{icon}</div>
+      <img className={styles.icon} src={iconUrl} alt={String(children)} />
       <div className={styles.text}>{children}</div>
       <div className={styles.numberIcon}>
         {StepNumber && <StepNumber />}

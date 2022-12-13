@@ -17,10 +17,16 @@
     text-align: center;
     background: #F2FBFE;
     height: 134px;
-    padding: 20px 0 20px 6px;
+    padding: 20px 0;
 
-    .iconWrapper, .text {
+    .icon, .text {
       display: block;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto;
     }
   
     .text {
@@ -29,10 +35,6 @@
       font-size: 20px;
       margin-top: 12px;
     }
-  }
-
-  &:first-child .main {
-    padding-left: 14px;
   }
 
   &:first-child .arrowLeft {
@@ -67,13 +69,16 @@
       text-align: left;
       height: 100px;
       background: #F2FBFE;
+      padding-left: 16px;
   
-      .iconWrapper, .text {
+      .icon, .text {
         display: inline-block;
       }
     
-      .iconWrapper {
-        padding: 10px;
+      .icon {
+        margin: 0;
+        width: 52px;
+        height: 52px;
       }
   
       .text {
@@ -81,7 +86,12 @@
         color: @grey-7;
         font-size: 20px;
         margin: 0;
+        margin-left: 20px;
       }
+    }
+
+    &:first-child .main {
+      padding-left: 24px;
     }
   
     .arrowLeft {

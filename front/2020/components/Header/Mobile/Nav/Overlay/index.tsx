@@ -105,6 +105,7 @@ export default function Overlay() {
       <SubMenu key="sub4" title="生态合作">
         <SubMenu key="sub4-1" title="合作伙伴">
           <MenuItem><Link href="/partner">合作伙伴与生态</Link></MenuItem>
+          <MenuItem><Link href="/student">校园项目</Link></MenuItem>
         </SubMenu>
         <SubMenu key="sub4-2" title="开发合作">
           <MenuItem><Link href="/cooperations">工具插件 SDK 合作</Link></MenuItem>

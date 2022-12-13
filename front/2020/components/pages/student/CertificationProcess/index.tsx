@@ -12,6 +12,7 @@ export interface StepProps {
   icon?: ReactNode
   url?: string
   number?: number
+  iconUrl?: string
 }
 
 export function Step(props: PropsWithChildren<StepProps>) {

@@ -10,12 +10,12 @@ import { StepProps } from '..'
 
 import styles from './style.less'
 
-export function Step({ icon, url, children }: PropsWithChildren<StepProps>) {
+export function Step({ url, iconUrl, children }: PropsWithChildren<StepProps>) {
   let content = (
     <div className={styles.content}>
       <span className={styles.arrowLeft} />
       <div className={styles.main}>
-        <span className={styles.iconWrapper}>{icon}</span>
+        <img className={styles.icon} src={iconUrl} alt={String(children)} />
         <span className={styles.text}>{children}</span>
       </div>
       <span className={styles.arrowRight}></span>
