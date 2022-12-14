@@ -12,6 +12,8 @@ import Menu, { MenuItem, SubMenu } from 'components/UI/Menu'
 import { useIsGrey } from 'components/Product/Section/v2'
 import { useMobile } from 'hooks/ua'
 
+import Description from '../Description'
+
 import style from './style.less'
 
 interface Item {
@@ -65,15 +67,15 @@ function PcItem({ type, links }: Item) {
     <div className={style.item}>
       <h3 className={style.type}>{type}</h3>
 
-      <ul className={style.links}>
+      <div className={style.links}>
         {links.map(({ title, url }) => (
-          <li key={title} className={style.linkItem}>
+          <Description key={title} className={style.linkItem}>
             <Link title={title} href={url}>
               {title}
             </Link>
-          </li>
+          </Description>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }

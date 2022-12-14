@@ -3,10 +3,15 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { ProductComponentName, ProductComponentConfig } from './comp-common'
+import { ProductComponentName, ProductComponentConfig, ProductComponentProps } from './comp-common'
 
-export type ProductComponentArchitectureConfig = ProductComponentConfig<ProductComponentName.Architecture, {
+export type ProductComponentArchitectureProps = ProductComponentProps<{
   url: string
   title?: string
   alt?: string
 }>
+
+export type ProductComponentArchitectureConfig = ProductComponentConfig<
+  ProductComponentName.Architecture,
+  ProductComponentArchitectureProps
+>

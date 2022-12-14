@@ -98,6 +98,13 @@
   white-space: nowrap;
 }
 
+.line-break-word() {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 .ellipsis() {
   white-space: nowrap;
   overflow: hidden;
@@ -107,14 +114,17 @@
 // support webkit only
 // http://caniuse.com/#search=line-clamp
 // 使用时注意第二个参数
-.ellipsis-line-clamp(@n: 3, @maxheight: 80px) {
+.ellipsis-line-clamp(@n: 3, @maxheight: 80px, @wrap: true) {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: @n;
   -webkit-box-orient: vertical;
-  word-break: break-all;
   max-height: @maxheight; // 非 webkit 浏览器
+
+  & when (@wrap = true) {
+    word-break: break-all;
+  }
 }
 
 // 相比 ellipsis-line-clamp 不用提供最大高度，只需要提供字号，自动算最大高度

@@ -13,12 +13,14 @@ import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-
 import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
-import { ProductComponentFunctionConfig, FunctionItem } from 'constants/product/page/comp-function'
-import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/WwwUrlPath'
+import {
+  ProductComponentFunctionConfig, ProductComponentFunctionProps, FunctionItem
+} from 'constants/product/page/comp-function'
+import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/www/UrlPath'
 
 import styles from './style.m.less'
 
-function createState(props?: ProductComponentFunctionConfig['props']) {
+function createState(props?: ProductComponentFunctionProps) {
   return new FormState({
     items: new ArrayFormState(props?.items ?? [], item => (
       new FormState({
@@ -52,9 +54,9 @@ function createState(props?: ProductComponentFunctionConfig['props']) {
 }
 
 interface Props {
-  props?: ProductComponentFunctionConfig['props']
+  props?: ProductComponentFunctionProps
   visible: boolean
-  onSubmit(config: ProductComponentFunctionConfig['props']): void
+  onSubmit(config: ProductComponentFunctionProps): void
   onCancel(): void
 }
 
@@ -70,6 +72,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   function submit() {
     const { items, ...value } = state.value
     const result = {
+      type: 'default' as const,
       ...value,
       items: items.map(({ url, ...item }) => ({
         ...item,
@@ -147,7 +150,7 @@ export default function useCompAdvantage() {
     return open()
   }
 
-  function submit(props: ProductComponentFunctionConfig['props']) {
+  function submit(props: ProductComponentFunctionProps) {
     const newConfig: ProductSection<ProductComponentFunctionConfig> = {
       name: ProductModule.Function,
       title: productModuleTitleMap[ProductModule.Function],

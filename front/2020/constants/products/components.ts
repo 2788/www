@@ -5,8 +5,11 @@ import ProductDocs from 'components/Product/common/ProductDocs'
 import ProductFunction from 'components/Product/common/ProductFunction'
 import ProductRelated from 'components/Product/common/ProductRelated'
 import ProductScene from 'components/Product/common/ProductScene'
+import ProductNews from 'components/Product/common/ProductNews'
 
 export enum ComponentName {
+  // 产品动态
+  News = 'News',
   // 核心优势
   Advantage = 'Advantage',
   // 产品功能及服务
@@ -24,6 +27,7 @@ export enum ComponentName {
 }
 
 export const ComponentMap = {
+  [ComponentName.News]: ProductNews,
   [ComponentName.Advantage]: ProductAdvantage,
   [ComponentName.Function]: ProductFunction,
   [ComponentName.Architecture]: ProductArchitecture,

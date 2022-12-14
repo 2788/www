@@ -11,10 +11,10 @@ import { DrawerForm, FormItem, useFormstateX } from 'react-icecream-form'
 import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
-import { ProductComponentRelatedConfig } from 'constants/product/page/comp-related'
-import SelectProducts, { createState as createSelectProductsState } from 'components/common/SelectProducts'
+import { ProductComponentRelatedConfig, ProductComponentRelatedProps } from 'constants/product/page/comp-related'
+import SelectProducts, { createState as createSelectProductsState } from 'components/common/www/SelectProducts'
 
-function createState(props?: ProductComponentRelatedConfig['props']) {
+function createState(props?: ProductComponentRelatedProps) {
   return new FormState({
     products: createSelectProductsState(props?.products).withValidator(items => {
       if (![3, 4, 6].includes(items.length)) {
@@ -25,9 +25,9 @@ function createState(props?: ProductComponentRelatedConfig['props']) {
 }
 
 interface Props {
-  props?: ProductComponentRelatedConfig['props']
+  props?: ProductComponentRelatedProps
   visible: boolean
-  onSubmit(config: ProductComponentRelatedConfig['props']): void
+  onSubmit(config: ProductComponentRelatedProps): void
   onCancel(): void
 }
 
@@ -35,7 +35,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   const state = useFormstateX(createState, [props.props])
 
   function submit() {
-    props.onSubmit(state.value)
+    props.onSubmit({ type: 'default', ...state.value })
   }
 
   return (
@@ -65,7 +65,7 @@ export default function useCompRelated() {
     return open()
   }
 
-  function submit(props: ProductComponentRelatedConfig['props']) {
+  function submit(props: ProductComponentRelatedProps) {
     const newConfig: ProductSection<ProductComponentRelatedConfig> = {
       name: ProductModule.Related,
       title: productModuleTitleMap[ProductModule.Related],

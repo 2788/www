@@ -13,12 +13,14 @@ import { DrawerForm, FormItem, useFormstateX, TextInput } from 'react-icecream-f
 import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
-import { ProductComponentCaseConfig, CaseItem } from 'constants/product/page/comp-case'
+import {
+  ProductComponentCaseConfig, ProductComponentCaseProps, CaseItem
+} from 'constants/product/page/comp-case'
 import { UploadImgInput, createState as createUploadImgState } from 'components/common/Upload/Img'
 
 import styles from './style.m.less'
 
-function createState(props?: ProductComponentCaseConfig['props']) {
+function createState(props?: ProductComponentCaseProps) {
   return new FormState({
     items: new ArrayFormState(props?.items ?? [], item => (
       new FormState({
@@ -45,9 +47,9 @@ function createState(props?: ProductComponentCaseConfig['props']) {
 }
 
 interface Props {
-  props?: ProductComponentCaseConfig['props']
+  props?: ProductComponentCaseProps
   visible: boolean
-  onSubmit(config: ProductComponentCaseConfig['props']): void
+  onSubmit(config: ProductComponentCaseProps): void
   onCancel(): void
 }
 
@@ -61,7 +63,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   }, [props.visible, state])
 
   function submit() {
-    props.onSubmit(state.value)
+    props.onSubmit({ type: 'default', ...state.value })
   }
 
   function addItem() {
@@ -135,7 +137,7 @@ export default function useCompCase() {
     return open()
   }
 
-  function submit(props: ProductComponentCaseConfig['props']) {
+  function submit(props: ProductComponentCaseProps) {
     const newConfig: ProductSection<ProductComponentCaseConfig> = {
       name: ProductModule.Case,
       title: productModuleTitleMap[ProductModule.Case],

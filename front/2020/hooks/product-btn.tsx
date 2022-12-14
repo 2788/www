@@ -88,16 +88,16 @@ export enum ButtonClickType {
   MpLink = 'mpLink'
 }
 
-interface ButtonClickConsult {
+export interface ButtonClickConsult {
   type: ButtonClickType.Consult
 }
 
-interface ButtonClickWebLink {
+export interface ButtonClickWebLink {
   type: ButtonClickType.WebLink
   url: string
 }
 
-interface ButtonClickMpLink {
+export interface ButtonClickMpLink {
   type: ButtonClickType.MpLink
   url: string
 }
@@ -120,7 +120,7 @@ export interface BannerButton {
 /**
  * @param dark 次要按钮是否为深色风格按钮，默认浅色风格
  */
-export function useAdminBtns(buttons: BannerButton[], dark?: boolean) {
+export function useAdminBtns(buttons: BannerButton[], dark = false) {
   const isMobile = useMobile()
   const isPc = !isMobile
   const isMp = useMp()

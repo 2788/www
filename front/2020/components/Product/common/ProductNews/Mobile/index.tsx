@@ -8,7 +8,14 @@ import { nameMap } from 'constants/products/news'
 import styles from './style.less'
 import { formatTime } from '..'
 
-export default function ProductNews({ news, count, maxNum }: { news: INews[], count: number, maxNum: number }) {
+export interface Props {
+  news: INews[]
+  count: number
+  maxNum: number
+  withTailPadding?: boolean
+}
+
+export default function ProductNews({ news, count, maxNum, withTailPadding }: Props) {
   if (count <= 1) return null
 
   const itemsView = news.map((item, index) => (
@@ -29,7 +36,7 @@ export default function ProductNews({ news, count, maxNum }: { news: INews[], co
   )
 
   return (
-    <Section title="产品动态" name="product-news">
+    <Section title="产品动态" name="product-news" withTailPadding={withTailPadding}>
       {itemsView}
       {linkView}
     </Section >

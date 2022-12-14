@@ -67,7 +67,7 @@ export function Item(props: ItemProps) {
         <div className={styles.itemIcon}>{icon}</div>
         <div className={styles.itemContent}>
           <h3 className={styles.itemTitle}>{title}</h3>
-          <p className={styles.desc}>{desc}</p>
+          <div className={styles.desc}>{desc}</div>
         </div>
       </div>
     </div>

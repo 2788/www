@@ -14,7 +14,7 @@ import styles from './style.m.less'
 
 export interface ItemProps {
   name: string
-  onEdit(): void
+  onEdit?(): void
   onRemove?(): void
   onMove?(offset: number): void
 }
@@ -24,16 +24,30 @@ function Item({ name, onEdit, onRemove, onMove }: ItemProps) {
     <tr>
       <td>{name}</td>
       <td className={styles.btns}>
-        <Button type="link" icon={<EditIcon />} onClick={() => { onEdit() }} />
-        {onMove != null && (
-          <>
-            <Button type="link" icon={<UpTriangleIcon />} onClick={() => { onMove(-1) }} />
-            <Button type="link" icon={<DownTriangleIcon />} onClick={() => { onMove(1) }} />
-          </>
-        )}
-        {onRemove != null && (
-          <Button type="link" icon={<DeleteIcon />} onClick={() => { onRemove() }} />
-        )}
+        <Button
+          type="link"
+          icon={<EditIcon />}
+          onClick={() => { onEdit?.() }}
+          className={onEdit ? undefined : styles.hide}
+        />
+        <Button
+          type="link"
+          icon={<UpTriangleIcon />}
+          onClick={() => { onMove?.(-1) }}
+          className={onMove ? undefined : styles.hide}
+        />
+        <Button
+          type="link"
+          icon={<DownTriangleIcon />}
+          onClick={() => { onMove?.(1) }}
+          className={onMove ? undefined : styles.hide}
+        />
+        <Button
+          type="link"
+          icon={<DeleteIcon />}
+          onClick={() => { onRemove?.() }}
+          className={onRemove ? undefined : styles.hide}
+        />
       </td>
     </tr>
   )
@@ -42,12 +56,16 @@ function Item({ name, onEdit, onRemove, onMove }: ItemProps) {
 export interface Props {
   productInfo: ProductInfo
   onBannerEdit(): void
+  onUsageGuideEdit(): void
+  onUsageGuideRemove(): void
   onSectionEdit(index: number): void
   /** move / remove */
   onSectionsChange(sections: ProductSection[]): void
 }
 
-export default function List({ productInfo, onBannerEdit, onSectionEdit, onSectionsChange }: Props) {
+export default function List({
+  productInfo, onBannerEdit, onUsageGuideEdit, onUsageGuideRemove, onSectionEdit, onSectionsChange
+}: Props) {
 
   function move(index: number, offset: number) {
     const sections = [...productInfo.sections]
@@ -73,18 +91,25 @@ export default function List({ productInfo, onBannerEdit, onSectionEdit, onSecti
         {productInfo.banner != null && (
           <Item
             name={productModuleTitleMap[ProductModule.Banner]}
-            onEdit={onBannerEdit}
+            onEdit={() => { onBannerEdit() }}
           />
         )}
         {productInfo.sections.map((item, index) => (
           <Item
             key={item.name}
             name={item.title}
-            onEdit={() => { onSectionEdit(index) }}
+            onEdit={item.name === ProductModule.News ? undefined : () => { onSectionEdit(index) }}
             onMove={offset => { move(index, offset) }}
             onRemove={() => { remove(index) }}
           />
         ))}
+        {productInfo.usageGuide != null && (
+          <Item
+            name={productModuleTitleMap[ProductModule.UsageGuide]}
+            onEdit={() => { onUsageGuideEdit() }}
+            onRemove={() => { onUsageGuideRemove() }}
+          />
+        )}
       </tbody>
     </table>
   )

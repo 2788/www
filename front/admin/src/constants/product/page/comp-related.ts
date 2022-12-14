@@ -4,9 +4,13 @@
  */
 
 import { ProductId } from '..'
-import { ProductComponentName, ProductComponentConfig } from './comp-common'
+import { ProductComponentName, ProductComponentConfig, ProductComponentProps } from './comp-common'
 
-export type ProductComponentRelatedConfig = ProductComponentConfig<ProductComponentName.Related, {
-  /** 分别是 3 组、4 组、6 组 */
+export type ProductComponentRelatedProps = ProductComponentProps<{
   products: ProductId[]
 }>
+
+export type ProductComponentRelatedConfig = ProductComponentConfig<
+  ProductComponentName.Related,
+  ProductComponentRelatedProps
+>

@@ -13,12 +13,14 @@ import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-
 import { useModalLike } from 'utils/async'
 import { SolutionModule, solutionModuleTitleMap, SolutionSection } from 'constants/solution/page'
 import { SolutionComponentName } from 'constants/solution/page/comp-common'
-import { SolutionComponentFunctionConfig, FunctionItem } from 'constants/solution/page/comp-function'
-import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/WwwUrlPath'
+import {
+  SolutionComponentFunctionConfig, SolutionComponentFunctionProps, FunctionItem
+} from 'constants/solution/page/comp-function'
+import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/www/UrlPath'
 
 import styles from './style.m.less'
 
-function createState(props?: SolutionComponentFunctionConfig['props']) {
+function createState(props?: SolutionComponentFunctionProps) {
   return new FormState({
     items: new ArrayFormState(props?.items ?? [], item => (
       new FormState({
@@ -34,8 +36,8 @@ function createState(props?: SolutionComponentFunctionConfig['props']) {
           if (desc.trim() === '') {
             return '不能为空'
           }
-          if (desc.length > 70) {
-            return '不能超过 70 个字'
+          if (desc.length > 75) {
+            return '不能超过 75 个字'
           }
         }),
         url: createWwwUrlPathState(item.url ?? '')
@@ -52,9 +54,9 @@ function createState(props?: SolutionComponentFunctionConfig['props']) {
 }
 
 interface Props {
-  props?: SolutionComponentFunctionConfig['props']
+  props?: SolutionComponentFunctionProps
   visible: boolean
-  onSubmit(config: SolutionComponentFunctionConfig['props']): void
+  onSubmit(config: SolutionComponentFunctionProps): void
   onCancel(): void
 }
 
@@ -70,6 +72,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   function submit() {
     const { items, ...value } = state.value
     const result = {
+      type: 'default' as const,
       ...value,
       items: items.map(({ url, ...item }) => ({
         ...item,
@@ -125,7 +128,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
               <TextInput state={itemState.$.title} />
             </FormItem>
             <FormItem label="副标题" required>
-              <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 4 }} />
+              <TextArea state={itemState.$.desc} maxCount={75} textareaProps={{ rows: 4 }} />
             </FormItem>
             <FormItem label={<div className={styles.urlLabel}>立即体验<br />跳转地址</div>}>
               <WwwUrlPath state={itemState.$.url} />
@@ -147,7 +150,7 @@ export default function useCompAdvantage() {
     return open()
   }
 
-  function submit(props: SolutionComponentFunctionConfig['props']) {
+  function submit(props: SolutionComponentFunctionProps) {
     const newConfig: SolutionSection<SolutionComponentFunctionConfig> = {
       name: SolutionModule.Function,
       title: solutionModuleTitleMap[SolutionModule.Function],

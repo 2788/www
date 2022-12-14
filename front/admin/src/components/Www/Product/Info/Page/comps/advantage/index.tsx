@@ -13,12 +13,14 @@ import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-
 import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
-import { ProductComponentAdvantageConfig, AdvantageItem } from 'constants/product/page/comp-advantage'
+import {
+  ProductComponentAdvantageConfig, ProductComponentAdvantageProps, AdvantageItem
+} from 'constants/product/page/comp-advantage'
 import ImgIconInput, { createState as createImgIconState } from 'components/common/ImgIcon'
 
 import styles from './style.m.less'
 
-function createState(props?: ProductComponentAdvantageConfig['props']) {
+function createState(props?: ProductComponentAdvantageProps) {
   return new FormState({
     items: new ArrayFormState(props?.items ?? [], item => (
       new FormState({
@@ -34,8 +36,8 @@ function createState(props?: ProductComponentAdvantageConfig['props']) {
           if (desc.trim() === '') {
             return '不能为空'
           }
-          if (desc.length > 70) {
-            return '不能超过 70 个字'
+          if (desc.length > 100) {
+            return '不能超过 100 个字'
           }
         }),
         iconUrl: createImgIconState(item.iconUrl).withValidator(iconUrl => {
@@ -53,9 +55,9 @@ function createState(props?: ProductComponentAdvantageConfig['props']) {
 }
 
 interface Props {
-  props?: ProductComponentAdvantageConfig['props']
+  props?: ProductComponentAdvantageProps
   visible: boolean
-  onSubmit(config: ProductComponentAdvantageConfig['props']): void
+  onSubmit(config: ProductComponentAdvantageProps): void
   onCancel(): void
 }
 
@@ -69,7 +71,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   }, [props.visible, state])
 
   function submit() {
-    props.onSubmit(state.value)
+    props.onSubmit({ type: 'default', ...state.value })
   }
 
   function addItem() {
@@ -119,7 +121,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
               <TextInput state={itemState.$.title} />
             </FormItem>
             <FormItem label="副标题" required>
-              <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 3 }} />
+              <TextArea state={itemState.$.desc} maxCount={100} textareaProps={{ rows: 4 }} />
             </FormItem>
             <FormItem label="图标地址" required>
               <ImgIconInput state={itemState.$.iconUrl} />
@@ -141,7 +143,7 @@ export default function useCompAdvantage() {
     return open()
   }
 
-  function submit(props: ProductComponentAdvantageConfig['props']) {
+  function submit(props: ProductComponentAdvantageProps) {
     const newConfig: ProductSection<ProductComponentAdvantageConfig> = {
       name: ProductModule.Advantage,
       title: productModuleTitleMap[ProductModule.Advantage],

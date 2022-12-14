@@ -11,6 +11,8 @@ import Link from 'components/Link'
 import { Row } from 'components/UI/Card'
 import { useMobile } from 'hooks/ua'
 
+import Description from '../Description'
+
 import IconArrowRight from './arrow-right.svg'
 import style from './style.less'
 
@@ -65,7 +67,7 @@ function Item({ item }: { item: Item | null }) {
     <div className={style.item}>
       <div className={style.left}>
         <h3 className={style.title}>{title}</h3>
-        <p className={style.desc}>{desc}</p>
+        <Description className={style.desc}>{desc}</Description>
         {url && !isMobile && <Link className={style.link} href={url} blue>立即体验 &gt;&gt;</Link>}
       </div>
 

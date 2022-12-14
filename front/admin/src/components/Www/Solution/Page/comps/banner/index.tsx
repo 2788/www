@@ -11,8 +11,8 @@ import { useModalLike } from 'utils/async'
 import { SolutionComponentBannerProps } from 'constants/solution/page/comp-banner'
 import { SolutionModule, solutionModuleTitleMap } from 'constants/solution/page'
 import { SolutionInfo } from 'apis/solution'
-import Banner, { createState as createBannerBaseState } from 'components/common/Banner'
-import BannerButtons, { createState as createButtonsState } from 'components/common/Banner/BannerButtons'
+import Banner, { createState as createBannerBaseState } from 'components/common/www/Banner'
+import BannerButtons, { createState as createButtonsState } from 'components/common/www/Banner/BannerButtons'
 
 import styles from './style.m.less'
 
@@ -42,7 +42,7 @@ export default function useCompBanner(solutionInfo: SolutionInfo | undefined) {
       labelWidth="4em"
       visible={visible}
       state={state}
-      onSubmit={() => { resolve(state.value) }}
+      onSubmit={() => { resolve({ type: 'default', ...state.value }) }}
       onCancel={() => { reject() }}
     >
       <FormItem label="方案名" tip="在解决方案基本信息里配置" labelVerticalAlign="text">

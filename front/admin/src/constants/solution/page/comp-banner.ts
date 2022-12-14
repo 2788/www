@@ -3,8 +3,8 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { Value as BannerValue } from 'components/common/Banner'
-import { BannerButton } from 'components/common/Banner/BannerButtons'
+import { Value as BannerValue } from 'components/common/www/Banner'
+import { BannerButton } from 'components/common/www/Banner/BannerButtons'
 
 import { SolutionComponentProps } from './comp-common'
 

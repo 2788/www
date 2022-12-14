@@ -10,34 +10,34 @@
     margin-right: 20px;
     text-align: left;
     padding: 24px 20px;
-  
+
     &:last-child {
       margin-right: 0;
     }
-  
+
     .type {
       .setFontSize(20px);
       color: @grey-7;
     }
-  
+
     .links {
       margin-top: 20px;
-  
+
       .linkItem {
         position: relative;
         margin-bottom: 12px;
         padding-left: 18px;
         .setFontSize(16px);
         color: @grey-7;
-  
+
         &:last-child {
           margin-bottom: 0;
         }
-  
+
         .notMobile({
-          .ellipsis-line-clamp(3, 72px);
+          .ellipsis-line-clamp(3, 72px, false);
         });
-  
+
         &:before {
           content: '';
           position: absolute;

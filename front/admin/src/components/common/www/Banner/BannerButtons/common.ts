@@ -4,8 +4,7 @@
  */
 
 import { unionStringsFrom } from 'utils/ts'
-
-import { ButtonClickType, ButtonClickTypes } from './ButtonClick'
+import { ButtonClickType, ButtonClickTypes } from 'components/common/www/ButtonClick'
 
 export const buttonPcTypes = unionStringsFrom(['webLink', 'consult'])
 export const buttonMobileTypes = unionStringsFrom(['webLink', 'consult'])
@@ -18,7 +17,7 @@ interface ButtonClick<T extends ButtonClickTypes> {
 type ButtonPlatform<BC extends ButtonClickTypes> = ButtonClick<BC>
 
 export type ButtonPc = ButtonPlatform<ButtonClickType<(typeof buttonPcTypes)[number]>>
-export type ButtonMobile = ButtonPlatform<ButtonClickType<(typeof buttonPcTypes)[number]>>
+export type ButtonMobile = ButtonPlatform<ButtonClickType<(typeof buttonMobileTypes)[number]>>
 export type ButtonMp = ButtonPlatform<ButtonClickType<(typeof buttonMpTypes)[number]>>
 
 export interface BannerButton {
@@ -33,3 +32,6 @@ export const platformMap = {
   mobile: '移动端',
   mp: '小程序'
 } as const
+
+export const labelOuterWidth = '3em'
+export const labelInnerWidth = '2em'

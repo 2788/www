@@ -83,9 +83,10 @@ export interface Props {
   state: ReturnType<typeof createState>
   uploadLarge?: UploadImgConfig
   uploadSmall?: UploadImgConfig
+  labelWidth?: string
 }
 
-export default observer(function Banner({ state, uploadLarge, uploadSmall }: Props) {
+export default observer(function Banner({ state, uploadLarge, uploadSmall, labelWidth = '4em' }: Props) {
   const fields = state.$.$
 
   const [colors, setColors] = useState<string[]>(() => normalizeColors([
@@ -104,16 +105,16 @@ export default observer(function Banner({ state, uploadLarge, uploadSmall }: Pro
 
   return (
     <InputWrapper state={state}>
-      <FormItem label="主题色" required labelVerticalAlign="text" labelWidth="4em">
+      <FormItem label="主题色" required labelVerticalAlign="text" labelWidth={labelWidth}>
         <RadioGroup state={fields.light}>
           <Radio value={false}>深色</Radio>
           <Radio value>浅色</Radio>
         </RadioGroup>
       </FormItem>
-      <FormItem label="背景色" required labelWidth="4em">
+      <FormItem label="背景色" required labelWidth={labelWidth}>
         <ColorPicker state={fields.bgColor} colors={colors} />
       </FormItem>
-      <FormItem label="背景大图" required labelWidth="4em">
+      <FormItem label="背景大图" required labelWidth={labelWidth}>
         <UploadImgInput
           {...uploadLarge}
           state={fields.bgImgUrl.$.large}
@@ -124,7 +125,7 @@ export default observer(function Banner({ state, uploadLarge, uploadSmall }: Pro
           maxSize={1024}
         />
       </FormItem>
-      <FormItem label="背景小图" labelWidth="4em">
+      <FormItem label="背景小图" labelWidth={labelWidth}>
         <UploadImgInput
           {...uploadSmall}
           state={fields.bgImgUrl.$.small}

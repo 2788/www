@@ -22,6 +22,7 @@ import Preview from './Preview'
 import List from './List'
 
 import useCompBanner from './comps/banner'
+import useCompUsageGuide from './comps/usage-guide'
 import useCompAdvantage from './comps/advantage'
 import useCompArchitecture from './comps/architecture'
 import useCompFunction from './comps/function'
@@ -77,6 +78,7 @@ export default observer(function PageInfo({ solutionId }: Props) {
   }, [unsaved])
 
   const [configCompBanner, compBannerView] = useCompBanner(solutionInfo)
+  const [configCompUsageGuide, compUsageGuideView] = useCompUsageGuide(solutionInfo)
   const [configCompAdvantage, compAdvantageView] = useCompAdvantage()
   const [configCompArchitecture, compArchitectureView] = useCompArchitecture()
   const [configCompFunction, compFunctionView] = useCompFunction()
@@ -117,6 +119,16 @@ export default observer(function PageInfo({ solutionId }: Props) {
         toasterStore.promise(
           configCompBanner().then(banner => {
             setSolutionInfo({ ...info, banner })
+            setUnsaved(true)
+          }).finally(() => {
+            setIsEditingComp(false)
+          })
+        )
+        return
+      case SolutionModule.UsageGuide:
+        toasterStore.promise(
+          configCompUsageGuide().then(usageGuide => {
+            setSolutionInfo({ ...info, usageGuide })
             setUnsaved(true)
           }).finally(() => {
             setIsEditingComp(false)
@@ -193,11 +205,17 @@ export default observer(function PageInfo({ solutionId }: Props) {
   const modules = useMemo(
     () => (
       solutionInfo
-      ? Object.values(SolutionModule).filter(module => (
-        module === SolutionModule.Banner
-        ? solutionInfo.banner == null
-        : !solutionInfo.sections.some(section => section.name === module)
-      ))
+      ? Object.values(SolutionModule).filter(module => {
+        if (module === SolutionModule.Banner) {
+          return solutionInfo.banner == null
+        }
+
+        if (module === SolutionModule.UsageGuide) {
+          return solutionInfo.usageGuide == null
+        }
+
+        return !solutionInfo.sections.some(section => section.name === module)
+      })
       : []
     ),
     [solutionInfo]
@@ -225,6 +243,21 @@ export default observer(function PageInfo({ solutionId }: Props) {
               setIsEditingComp(false)
             })
           )
+        }}
+        onUsageGuideEdit={() => {
+          setIsEditingComp(true)
+          toasterStore.promise(
+            configCompUsageGuide().then(usageGuide => {
+              setSolutionInfo({ ...solutionInfo, usageGuide })
+              setUnsaved(true)
+            }).finally(() => {
+              setIsEditingComp(false)
+            })
+          )
+        }}
+        onUsageGuideRemove={() => {
+          setSolutionInfo({ ...solutionInfo, usageGuide: null })
+          setUnsaved(true)
         }}
         onSectionEdit={edit}
         onSectionsChange={sections => {
@@ -297,6 +330,7 @@ export default observer(function PageInfo({ solutionId }: Props) {
       </Dialog>
 
       {compBannerView}
+      {compUsageGuideView}
       {compAdvantageView}
       {compArchitectureView}
       {compFunctionView}

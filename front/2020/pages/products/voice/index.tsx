@@ -84,13 +84,13 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'produc
 
 export default function Main({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
   if (productInfo != null) {
-    // TODO: 支持 news
     return (
       <ProductPage
-        notices={pageProps.notices}
         productInfo={productInfo}
         globalBanners={globalBanners}
         iconMap={iconMap}
+        notices={pageProps.notices}
+        news={pageProps.newsRes}
       />
     )
   }

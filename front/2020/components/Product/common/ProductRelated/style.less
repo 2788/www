@@ -3,7 +3,7 @@
 .pcItemWrapper {
   flex: 1 1;
   display: flex;
-  
+
   padding: 20px;
   border: 1px solid @border-color;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
@@ -39,7 +39,7 @@
     }
 
     .desc {
-      .ellipsis-line-clamp(3, 66px);
+      .ellipsis-line-clamp(3, 66px, false);
 
       margin: 8px 0 12px;
       font-weight: 400;
@@ -80,7 +80,7 @@
   .content {
     .ellipsis();
     flex: 1 1;
-    
+
     padding: 0 15px;
     text-align: left;
     font-weight: 500;

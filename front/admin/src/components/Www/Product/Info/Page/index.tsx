@@ -22,6 +22,8 @@ import Preview from './Preview'
 import List from './List'
 
 import useCompBanner from './comps/banner'
+import useCompUsageGuide from './comps/usage-guide'
+import useCompNews from './comps/news'
 import useCompAdvantage from './comps/advantage'
 import useCompArchitecture from './comps/architecture'
 import useCompCase from './comps/case'
@@ -80,6 +82,8 @@ export default observer(function PageInfo({ productId }: Props) {
   }, [unsaved])
 
   const [configCompBanner, compBannerView] = useCompBanner(productInfo)
+  const [configCompUsageGuide, compUsageGuideView] = useCompUsageGuide(productInfo)
+  const [configCompNews, compNewsView] = useCompNews()
   const [configCompAdvantage, compAdvantageView] = useCompAdvantage()
   const [configCompArchitecture, compArchitectureView] = useCompArchitecture()
   const [configCompCase, compCaseView] = useCompCase()
@@ -129,6 +133,19 @@ export default observer(function PageInfo({ productId }: Props) {
           })
         )
         return
+      case ProductModule.UsageGuide:
+        toasterStore.promise(
+          configCompUsageGuide().then(usageGuide => {
+            setProductInfo({ ...info, usageGuide })
+            setUnsaved(true)
+          }).finally(() => {
+            setIsEditingComp(false)
+          })
+        )
+        return
+      case ProductModule.News:
+        configSectionComp = configCompNews()
+        break
       case ProductModule.Advantage:
         configSectionComp = configCompAdvantage()
         break
@@ -176,6 +193,9 @@ export default observer(function PageInfo({ productId }: Props) {
 
     let configComp: Promise<ProductSection>
     switch (currentSection.component.name) {
+      case ProductComponentName.News:
+        toasterStore.error(`暂不支持编辑 ${currentSection.name}`)
+        return
       case ProductComponentName.Advantage:
         configComp = configCompAdvantage({ ...currentSection, component: currentSection.component })
         break
@@ -217,11 +237,22 @@ export default observer(function PageInfo({ productId }: Props) {
   const modules = useMemo(
     () => (
       productInfo
-      ? Object.values(ProductModule).filter(module => (
-        module === ProductModule.Banner
-        ? productInfo.banner == null
-        : !productInfo.sections.some(section => section.name === module)
-      ))
+      ? Object.values(ProductModule).filter(module => {
+        if (module === ProductModule.Banner) {
+          return productInfo.banner == null
+        }
+
+        if (module === ProductModule.UsageGuide) {
+          return productInfo.usageGuide == null
+        }
+
+        // TODO: 微调后重新放出来
+        if (module === ProductModule.News) {
+          return false
+        }
+
+        return !productInfo.sections.some(section => section.name === module)
+      })
       : []
     ),
     [productInfo]
@@ -249,6 +280,21 @@ export default observer(function PageInfo({ productId }: Props) {
               setIsEditingComp(false)
             })
           )
+        }}
+        onUsageGuideEdit={() => {
+          setIsEditingComp(true)
+          toasterStore.promise(
+            configCompUsageGuide().then(usageGuide => {
+              setProductInfo({ ...productInfo, usageGuide })
+              setUnsaved(true)
+            }).finally(() => {
+              setIsEditingComp(false)
+            })
+          )
+        }}
+        onUsageGuideRemove={() => {
+          setProductInfo({ ...productInfo, usageGuide: null })
+          setUnsaved(true)
         }}
         onSectionEdit={edit}
         onSectionsChange={sections => {
@@ -321,6 +367,8 @@ export default observer(function PageInfo({ productId }: Props) {
       </Dialog>
 
       {compBannerView}
+      {compUsageGuideView}
+      {compNewsView}
       {compAdvantageView}
       {compArchitectureView}
       {compCaseView}

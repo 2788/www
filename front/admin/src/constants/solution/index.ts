@@ -7,6 +7,7 @@ import { IconId } from 'constants/icon'
 
 import { SolutionSection } from './page'
 import { SolutionComponentBannerProps } from './page/comp-banner'
+import { SolutionComponentUsageGuideProps } from './page/comp-usage-guide'
 
 /** 解决方案唯一 id，跟解决方案所在页面的路径一一对应 */
 export type SolutionId = string
@@ -32,8 +33,18 @@ export interface SolutionIcon {
   glass: IconId
 }
 
+/** 解决方案页具体内容配置 */
+interface SolutionPageContent {
+  /** 解决方案页 banner 配置 */
+  banner?: SolutionComponentBannerProps | null
+  /** 解决方案页底部使用引导模块 */
+  usageGuide?: SolutionComponentUsageGuideProps | null
+  /** 解决方案页组件列表配置 */
+  sections: SolutionSection[]
+}
+
 /** 解决方案信息 */
-export interface SolutionInfo {
+export interface SolutionInfo extends SolutionPageContent {
   /** 解决方案页相对路径，全局唯一，同时用作解决方案 id */
   path: SolutionId
   /** 解决方案名字，全局唯一 */
@@ -48,9 +59,4 @@ export interface SolutionInfo {
 
   /** 解决方案图标 */
   icon: SolutionIcon
-
-  /** 解决方案页 banner 配置 */
-  banner: SolutionComponentBannerProps | null
-  /** 解决方案页组件列表配置 */
-  sections: SolutionSection[]
 }

@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { ProductComponentName, ProductComponentConfig } from './comp-common'
+import { ProductComponentName, ProductComponentConfig, ProductComponentProps } from './comp-common'
 
 export interface DocumentLink {
   title: string
@@ -16,6 +16,11 @@ export interface DocumentItem {
   links: DocumentLink[]
 }
 
-export type ProductComponentDocumentConfig = ProductComponentConfig<ProductComponentName.Document, {
+export type ProductComponentDocumentProps = ProductComponentProps<{
   items: DocumentItem[]
 }>
+
+export type ProductComponentDocumentConfig = ProductComponentConfig<
+  ProductComponentName.Document,
+  ProductComponentDocumentProps
+>

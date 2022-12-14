@@ -3,16 +3,17 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { ProductComponentName, ProductComponentConfig } from './comp-common'
+import { SceneType, VerticalSceneConfig, HorizontalDetailSceneConfig } from 'components/common/www/Scene'
 
-export interface SceneItem {
-  /** 场景名称 */
-  title: string
-  /** 场景描述 */
-  desc: string
-  imgUrl: string
-}
+import { ProductComponentName, ProductComponentConfig, ProductComponentProps } from './comp-common'
 
-export type ProductComponentSceneConfig = ProductComponentConfig<ProductComponentName.Scene, {
-  items: SceneItem[]
-}>
+export type ProductComponentSceneProps = (
+  | ProductComponentProps<VerticalSceneConfig>
+  | ProductComponentProps<SceneType.Vertical, VerticalSceneConfig>
+  | ProductComponentProps<SceneType.HorizontalDetail, HorizontalDetailSceneConfig>
+)
+
+export type ProductComponentSceneConfig = ProductComponentConfig<
+  ProductComponentName.Scene,
+  ProductComponentSceneProps
+>

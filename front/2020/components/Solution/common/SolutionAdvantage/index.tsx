@@ -8,9 +8,10 @@ import React from 'react'
 import {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Raw as FeratureRaw
+  Raw as FeatureRaw
 } from 'components/Product/Feature/v2'
 import { LibIcon } from 'components/LibIcon'
+import Description from 'components/Product/common/Description'
 
 interface Item {
   title: string
@@ -38,14 +39,14 @@ export default function SolutionAdvantage({ items }: Props) {
   }
 
   return (
-    <FeratureRaw>
+    <FeatureRaw>
       <FeatureGroup>
         {itemsRow1.map(({ title, desc, iconUrl }) => (
           <FeatureItem
             key={title}
             icon={<LibIcon alt="方案优势" src={iconUrl} />}
             title={title}
-            desc={desc}
+            desc={<Description>{desc}</Description>}
             pos="top-down"
           />
         ))}
@@ -58,12 +59,12 @@ export default function SolutionAdvantage({ items }: Props) {
               key={title}
               icon={<LibIcon alt="方案优势" src={iconUrl} />}
               title={title}
-              desc={desc}
+              desc={<Description>{desc}</Description>}
               pos="top-down"
             />
           ))}
         </FeatureGroup>
       )}
-    </FeratureRaw>
+    </FeatureRaw>
   )
 }

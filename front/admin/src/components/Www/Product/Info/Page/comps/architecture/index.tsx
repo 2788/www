@@ -11,10 +11,12 @@ import { DrawerForm, FormItem, useFormstateX, TextInput } from 'react-icecream-f
 import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
-import { ProductComponentArchitectureConfig } from 'constants/product/page/comp-architecture'
+import {
+  ProductComponentArchitectureConfig, ProductComponentArchitectureProps
+} from 'constants/product/page/comp-architecture'
 import { UploadImgInput, createState as createUploadImgState } from 'components/common/Upload/Img'
 
-function createState(props?: ProductComponentArchitectureConfig['props']) {
+function createState(props?: ProductComponentArchitectureProps) {
   return new FormState({
     title: new DebouncedFieldState(props?.title ?? ''),
     url: createUploadImgState(props?.url ?? '').withValidator(url => {
@@ -27,9 +29,9 @@ function createState(props?: ProductComponentArchitectureConfig['props']) {
 }
 
 interface Props {
-  props?: ProductComponentArchitectureConfig['props']
+  props?: ProductComponentArchitectureProps
   visible: boolean
-  onSubmit(config: ProductComponentArchitectureConfig['props']): void
+  onSubmit(config: ProductComponentArchitectureProps): void
   onCancel(): void
 }
 
@@ -45,6 +47,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   function submit() {
     const { title, alt, ...value } = state.value
     const result = {
+      type: 'default' as const,
       ...value,
       ...(title && ({ title })),
       ...(alt && ({ alt }))
@@ -91,7 +94,7 @@ export default function useCompArchitecture() {
     return open()
   }
 
-  function submit(props: ProductComponentArchitectureConfig['props']) {
+  function submit(props: ProductComponentArchitectureProps) {
     const newConfig: ProductSection<ProductComponentArchitectureConfig> = {
       name: ProductModule.Architecture,
       title: productModuleTitleMap[ProductModule.Architecture],

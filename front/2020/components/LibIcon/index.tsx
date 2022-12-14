@@ -4,6 +4,7 @@
 
 import React, { createContext, useContext, useState, useMemo } from 'react'
 
+// TODO: 补充 `iconScheme` 相关文档；简化使用方式
 import { iconScheme } from 'constants/icon'
 import { isBrowser } from 'utils'
 import { isPreviewContext } from 'utils/admin-preview'
@@ -31,6 +32,7 @@ function handleError(error: string, isPreview: boolean) {
   console.error(error)
 }
 
+// TODO: 考虑通过更类型安全的方式来使用
 export function LibIcon({ src, alt, className }: { src: string, className?: string, alt: string }) {
   const isPreview = useContext(isPreviewContext)
 

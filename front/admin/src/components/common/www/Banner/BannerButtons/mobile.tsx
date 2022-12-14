@@ -7,8 +7,9 @@ import React from 'react'
 import { FormState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { FormItem, Switch } from 'react-icecream-form'
 
-import { BannerButton, buttonMobileTypes, platformMap } from './common'
-import ButtonClick, { createState as createButtonClickState } from './ButtonClick'
+import ButtonClick, { createState as createButtonClickState } from 'components/common/www/ButtonClick'
+
+import { BannerButton, buttonMobileTypes, platformMap, labelOuterWidth, labelInnerWidth } from './common'
 
 function getBaseValue(mobile: BannerButton['mobile']) {
   return {
@@ -47,12 +48,12 @@ export function createMobileState(init: BannerButton['mobile']) {
 export function renderMobile(state: ReturnType<typeof createMobileState>) {
   const fields = state.$.$
   return (
-    <FormItem label={platformMap.mobile} state={state} labelWidth="3em" labelVerticalAlign="text">
+    <FormItem label={platformMap.mobile} state={state} labelWidth={labelOuterWidth} labelVerticalAlign="text">
       <FormItem>
         <Switch state={fields.enabled} />
       </FormItem>
       {fields.enabled.value && (
-        <FormItem label="点击" required labelWidth="2em">
+        <FormItem label="点击" required labelWidth={labelInnerWidth}>
           <ButtonClick state={fields.click} />
         </FormItem>
       )}

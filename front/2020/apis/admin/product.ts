@@ -5,11 +5,12 @@
 import { uniq } from 'lodash'
 
 import { get, getCode } from 'utils/fetch'
+import { ReplaceBy } from 'utils/type'
 import { ignoreProductPriceError } from 'constants/env'
 import { Product } from 'constants/products'
 import { NewsType } from 'constants/products/news'
 import { ComponentName } from 'constants/products/components'
-import { BannerButton } from 'hooks/product-btn'
+import { BannerButton, ButtonClickWebLink, ButtonClickConsult } from 'hooks/product-btn'
 
 import { get as mongoGet, mongoApiPrefix, handleResponseData, listAll } from '.'
 
@@ -139,7 +140,7 @@ export interface ProductInfo {
   icon: ProductIcons
 }
 
-export interface ProductPageInfo extends ProductInfo {
+export interface MongoProductInfo extends ProductInfo {
   /** 产品页 banner 配置 */
   banner?: {
     bgImgUrl: {
@@ -151,22 +152,35 @@ export interface ProductPageInfo extends ProductInfo {
     light: boolean
     buttons: BannerButton[]
   } | null
+  /** 产品页底部使用引导模块 */
+  usageGuide?: {
+    title: string
+    desc?: string
+    button: {
+      text: string
+      click: ButtonClickWebLink | ButtonClickConsult
+    }
+  } | null
   /** 产品页组件列表配置 */
   sections: SectionsConfig[]
 }
 
+export type ProductPageInfo = ReplaceBy<MongoProductInfo, {
+  banner: NonNullable<MongoProductInfo['banner']>
+}>
+
 // TODO: 后续用新的 mongo api 直接裁剪
-function getProductBaseInfo({ banner, sections, ...productInfo }: ProductPageInfo): ProductInfo {
+function getProductBaseInfo({ banner, sections, usageGuide, ...productInfo }: MongoProductInfo): ProductInfo {
   return productInfo
 }
 
-export function hasProductPage(info: ProductPageInfo): boolean {
+export function hasProductPage(info: MongoProductInfo): info is ProductPageInfo {
   return info.banner != null && info.sections.length > 0
 }
 
 async function getMongoProductInfo(path: string) {
   try {
-    return await mongoGet<ProductPageInfo>('www-product-info', path)
+    return await mongoGet<MongoProductInfo>('www-product-info', path)
   } catch (err) {
     if (Number(getCode(err)) === 404) {
       return null
@@ -181,6 +195,7 @@ export async function getProductInfo(path: string): Promise<ProductInfo | null> 
   return info == null ? null : getProductBaseInfo(info)
 }
 
+/** 把产品页所需信息补充完整，主要包括相关产品模块里的其他产品信息等 */
 export async function normalizeProductPageRelatedComponentProps(info: ProductPageInfo): Promise<void> {
   for (const section of info.sections) {
     if (section.component.name !== ComponentName.Related) {
@@ -212,20 +227,30 @@ export async function getProductPageInfo(path: string): Promise<ProductPageInfo 
 }
 
 async function listAllMongoProductInfos(ids?: string[]) {
-  return listAll<ProductPageInfo>(
+  if (ids && ids.length === 0) {
+    return []
+  }
+
+  return listAll<MongoProductInfo>(
     'www-product-info',
-    ids ? { query: { path: { $in: ids } } } : undefined
+    ids ? { query: { path: { $in: uniq(ids) } } } : undefined
   )
 }
 
-export async function listProductInfos(ids: string[]): Promise<Array<ProductInfo | undefined>> {
-  const list = (await listAllMongoProductInfos(ids)).map(getProductBaseInfo)
-  return ids.map(path => list.find(info => info.path === path))
+export async function listProductInfos(ids: string[]): Promise<ProductInfo[]> {
+  const list = await listAllMongoProductInfos(ids)
+  return ids.map(path => {
+    const productInfo = list.find(info => info.path === path)
+    if (productInfo == null) {
+      throw new Error(`找不到该产品：${productInfo}`)
+    }
+    return getProductBaseInfo(productInfo)
+  })
 }
 
 export async function getProductInfoMap<T extends string>(ids: T[]): Promise<{ [P in T]: ProductInfo }> {
-  const productInfos = await listProductInfos(uniq(ids))
-  return Object.assign({}, ...productInfos.map(info => info && ({ [info.path]: info })))
+  const productInfos = await listProductInfos(ids)
+  return Object.assign({}, ...productInfos.map(info => ({ [info.path]: info })))
 }
 
 export async function listAllProductPagePaths(): Promise<string[]> {

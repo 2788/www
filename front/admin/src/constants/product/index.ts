@@ -7,6 +7,7 @@ import { IconId } from 'constants/icon'
 
 import { ProductSection } from './page'
 import { ProductComponentBannerProps } from './page/comp-banner'
+import { ProductComponentUsageGuideProps } from './page/comp-usage-guide'
 
 /** 产品唯一 id，跟产品所在页面的路径一一对应 */
 export type ProductId = string
@@ -32,8 +33,18 @@ export interface ProductIcon {
   glass: IconId
 }
 
+/** 产品页具体内容配置 */
+interface ProductPageContent {
+  /** 产品页 banner 配置 */
+  banner?: ProductComponentBannerProps | null
+  /** 产品页底部使用引导模块 */
+  usageGuide?: ProductComponentUsageGuideProps | null
+  /** 产品页组件列表配置 */
+  sections: ProductSection[]
+}
+
 /** 产品信息 */
-export interface ProductInfo {
+export interface ProductInfo extends ProductPageContent {
   /** 产品页相对路径，全局唯一，同时用作产品 id */
   path: ProductId
   /** 产品名字，全局唯一 */
@@ -48,9 +59,4 @@ export interface ProductInfo {
 
   /** 产品图标 */
   icon: ProductIcon
-
-  /** 产品页 banner 配置 */
-  banner: ProductComponentBannerProps | null
-  /** 产品页组件列表配置 */
-  sections: ProductSection[]
 }

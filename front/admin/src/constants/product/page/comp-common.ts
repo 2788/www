@@ -5,6 +5,8 @@
 
 export enum ProductComponentName {
   Banner = 'Banner',
+  UsageGuide = 'UsageGuide',
+  News = 'News',
   Advantage = 'Advantage',
   Function = 'Function',
   Architecture = 'Architecture',
@@ -14,19 +16,27 @@ export enum ProductComponentName {
   Related = 'Related'
 }
 
-export type ProductComponentProps<P, T extends string = 'default'> = {
-  /** 组件类型 */
-  type?: T
-} & P
+/**
+ * @example `ProductComponentProps<XxxProps>`
+ * @example `ProductComponentProps<'xxxType', XxxProps>`
+ */
+export type ProductComponentProps<TP, P = undefined> = (
+  P extends undefined ? (
+    {
+      /** 组件默认类型 */
+      type: 'default'
+    } & TP
+  ) : TP extends string ? (
+    {
+      /** 组件类型 */
+      type: TP
+    } & P
+  ) : never
+)
 
-interface ProductComponentConfigType<N extends ProductComponentName, P, T extends string = 'default'> {
+export type ProductComponentConfig<N extends ProductComponentName, P> = ({
   /** 组件名称，组件被 Section 包裹 */
   name: N
-  props: ProductComponentProps<P, T>
-}
-
-export type ProductComponentConfig<N extends ProductComponentName, TP, P = unknown> = (
-  TP extends string
-  ? ProductComponentConfigType<N, P, TP>
-  : ProductComponentConfigType<N, TP>
-)
+  /** `ProductComponentProps` */
+  props: P
+})

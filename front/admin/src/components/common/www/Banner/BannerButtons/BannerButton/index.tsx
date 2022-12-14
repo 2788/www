@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 import { FormState, DebouncedFieldState } from 'formstate-x'
 import { InputWrapper, FormItem, TextInput } from 'react-icecream-form'
 
-import { BannerButton as BannerButtonValue } from '../common'
+import { BannerButton as BannerButtonValue, labelOuterWidth } from '../common'
 import { createPcState, renderPc } from '../pc'
 import { createMobileState, renderMobile } from '../mobile'
 import { createMpState, renderMp } from '../mp'
@@ -40,7 +40,7 @@ export interface Props {
 export default observer(function BannerButton({ state }: Props) {
   return (
     <InputWrapper state={state}>
-      <FormItem label="文案" required labelWidth="2em">
+      <FormItem label="文案" required labelWidth={labelOuterWidth}>
         <TextInput state={state.$.text} />
       </FormItem>
       {renderPc(state.$.pc)}

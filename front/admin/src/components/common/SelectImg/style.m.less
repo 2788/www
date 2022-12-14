@@ -1,0 +1,61 @@
+/**
+ * @file 组件样式
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/common.less";
+
+@radius: @icecream-gap-xs;
+@gap: @icecream-gap-xs;
+
+.item {
+  display: inline-flex;
+  flex-direction: column;
+
+  .radio {
+    padding: @gap;
+    border-radius: (@radius + @gap) !important;
+  }
+
+  .name {
+    text-align: center;
+    line-height: 3;
+  }
+
+  & + & {
+    margin-left: @icecream-gap-md;
+  }
+}
+
+.smallImgWrapper,
+.largeImgWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+}
+
+.smallImgWrapper {
+  width: 100px;
+  height: 100px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: @radius;
+  }
+}
+
+.largeImgWrapper {
+  width: 400px;
+  height: 400px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.overlay {
+  max-width: none;
+}

@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import { isPreviewContext, usePreviewMessage } from 'utils/admin-preview'
 import { SolutionInfo } from 'apis/admin/solution'
 import { getIconMap, getIconIdsFromJson } from 'apis/admin/icon-lib'
+import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import { IconMap } from 'components/LibIcon'
 
 import SolutionPage, { hasSolutionPage } from '../[solution]'
@@ -19,11 +20,14 @@ const msgKey = 'QINIU_SOLUTION_PAGE_PREVIEW'
 export default function ProductPagePreview() {
   const previewData = usePreviewMessage<SolutionInfo>(msgKey)
   const [iconMap, setIconMap] = useState<IconMap>({})
+  const [globalBanners, setGlobalBanners] = useState<GlobalBanner[]>([])
 
   useEffect(() => {
     if (previewData != null) {
       const icons = getIconIdsFromJson(previewData)
-      getIconMap(icons).then(setIconMap)
+      getIconMap(icons).then(newIconMap => { setIconMap(newIconMap) })
+
+      getGlobalBanners().then(newGlobalBanners => { setGlobalBanners(newGlobalBanners) })
     }
   }, [previewData])
 
@@ -40,6 +44,7 @@ export default function ProductPagePreview() {
       <SolutionPage
         solutionInfo={previewData}
         iconMap={iconMap}
+        globalBanners={globalBanners}
       />
     </isPreviewContext.Provider>
   )

@@ -13,12 +13,14 @@ import { DrawerForm, FormItem, useFormstateX, TextInput } from 'react-icecream-f
 import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
-import { ProductComponentDocumentConfig, DocumentItem, DocumentLink } from 'constants/product/page/comp-document'
-import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/WwwUrlPath'
+import {
+  ProductComponentDocumentConfig, ProductComponentDocumentProps, DocumentItem, DocumentLink
+} from 'constants/product/page/comp-document'
+import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/www/UrlPath'
 
 import styles from './style.m.less'
 
-function createState(props?: ProductComponentDocumentConfig['props']) {
+function createState(props?: ProductComponentDocumentProps) {
   return new FormState({
     items: new ArrayFormState(props?.items ?? [], item => (
       new FormState({
@@ -67,9 +69,9 @@ function createState(props?: ProductComponentDocumentConfig['props']) {
 }
 
 interface Props {
-  props?: ProductComponentDocumentConfig['props']
+  props?: ProductComponentDocumentProps
   visible: boolean
-  onSubmit(config: ProductComponentDocumentConfig['props']): void
+  onSubmit(config: ProductComponentDocumentProps): void
   onCancel(): void
 }
 
@@ -83,7 +85,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   }, [props.visible, state])
 
   function submit() {
-    props.onSubmit(state.value)
+    props.onSubmit({ type: 'default', ...state.value })
   }
 
   function addItem() {
@@ -193,7 +195,7 @@ export default function useCompAdvantage() {
     return open()
   }
 
-  function submit(props: ProductComponentDocumentConfig['props']) {
+  function submit(props: ProductComponentDocumentProps) {
     const newConfig: ProductSection<ProductComponentDocumentConfig> = {
       name: ProductModule.Document,
       title: productModuleTitleMap[ProductModule.Document],

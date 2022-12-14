@@ -5,25 +5,34 @@
 
 export enum SolutionComponentName {
   Banner = 'Banner',
+  UsageGuide = 'UsageGuide',
   Advantage = 'Advantage',
   Function = 'Function',
   Architecture = 'Architecture',
   Scene = 'Scene'
 }
 
-export type SolutionComponentProps<P, T extends string = 'default'> = {
-  /** 组件类型 */
-  type?: T
-} & P
+/**
+ * @example `SolutionComponentProps<XxxProps>`
+ * @example `SolutionComponentProps<'xxxType', XxxProps>`
+ */
+export type SolutionComponentProps<TP, P = undefined> = (
+  P extends undefined ? (
+    {
+      /** 组件默认类型 */
+      type: 'default'
+    } & TP
+  ) : TP extends string ? (
+    {
+      /** 组件类型 */
+      type: TP
+    } & P
+  ) : never
+)
 
-interface SolutionComponentConfigType<N extends SolutionComponentName, P, T extends string = 'default'> {
+export type SolutionComponentConfig<N extends SolutionComponentName, P> = ({
   /** 组件名称，组件被 Section 包裹 */
   name: N
-  props: SolutionComponentProps<P, T>
-}
-
-export type SolutionComponentConfig<N extends SolutionComponentName, TP, P = unknown> = (
-  TP extends string
-  ? SolutionComponentConfigType<N, P, TP>
-  : SolutionComponentConfigType<N, TP>
-)
+  /** `SolutionComponentProps` */
+  props: P
+})

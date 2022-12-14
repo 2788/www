@@ -3,23 +3,16 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { SolutionComponentName, SolutionComponentConfig } from './comp-common'
+import { SceneType, HorizontalDetailSceneConfig } from 'components/common/www/Scene'
 
-export interface SceneProblem {
-  name: string
-  desc: string
-}
+import { SolutionComponentName, SolutionComponentConfig, SolutionComponentProps } from './comp-common'
 
-export interface SceneItem {
-  /** 场景名称 */
-  name: string
-  /** 场景描述 */
-  desc: string
-  imgUrl: string
-  /** 能够解决的问题 */
-  problems: SceneProblem[]
-}
+export type SolutionComponentSceneProps = (
+  | SolutionComponentProps<HorizontalDetailSceneConfig>
+  | SolutionComponentProps<SceneType.HorizontalDetail, HorizontalDetailSceneConfig>
+)
 
-export type SolutionComponentSceneConfig = SolutionComponentConfig<SolutionComponentName.Scene, {
-  items: SceneItem[]
-}>
+export type SolutionComponentSceneConfig = SolutionComponentConfig<
+  SolutionComponentName.Scene,
+  SolutionComponentSceneProps
+>

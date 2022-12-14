@@ -13,12 +13,14 @@ import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-
 import { useModalLike } from 'utils/async'
 import { SolutionModule, solutionModuleTitleMap, SolutionSection } from 'constants/solution/page'
 import { SolutionComponentName } from 'constants/solution/page/comp-common'
-import { SolutionComponentAdvantageConfig, AdvantageItem } from 'constants/solution/page/comp-advantage'
+import {
+  SolutionComponentAdvantageConfig, SolutionComponentAdvantageProps, AdvantageItem
+} from 'constants/solution/page/comp-advantage'
 import ImgIconInput, { createState as createImgIconState } from 'components/common/ImgIcon'
 
 import styles from './style.m.less'
 
-function createState(props?: SolutionComponentAdvantageConfig['props']) {
+function createState(props?: SolutionComponentAdvantageProps) {
   return new FormState({
     items: new ArrayFormState(props?.items ?? [], item => (
       new FormState({
@@ -53,9 +55,9 @@ function createState(props?: SolutionComponentAdvantageConfig['props']) {
 }
 
 interface Props {
-  props?: SolutionComponentAdvantageConfig['props']
+  props?: SolutionComponentAdvantageProps
   visible: boolean
-  onSubmit(config: SolutionComponentAdvantageConfig['props']): void
+  onSubmit(config: SolutionComponentAdvantageProps): void
   onCancel(): void
 }
 
@@ -69,7 +71,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   }, [props.visible, state])
 
   function submit() {
-    props.onSubmit(state.value)
+    props.onSubmit({ type: 'default', ...state.value })
   }
 
   function addItem() {
@@ -141,7 +143,7 @@ export default function useCompAdvantage() {
     return open()
   }
 
-  function submit(props: SolutionComponentAdvantageConfig['props']) {
+  function submit(props: SolutionComponentAdvantageProps) {
     const newConfig: SolutionSection<SolutionComponentAdvantageConfig> = {
       name: SolutionModule.Advantage,
       title: solutionModuleTitleMap[SolutionModule.Advantage],

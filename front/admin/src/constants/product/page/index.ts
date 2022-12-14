@@ -12,6 +12,7 @@ import { ProductComponentSceneConfig } from './comp-scene'
 import { ProductComponentDocumentConfig } from './comp-document'
 import { ProductComponentCaseConfig } from './comp-case'
 import { ProductComponentRelatedConfig } from './comp-related'
+import { ProductComponentNewsConfig } from './comp-news'
 
 export type ProductComponent = (
   | ProductComponentAdvantageConfig
@@ -21,10 +22,14 @@ export type ProductComponent = (
   | ProductComponentDocumentConfig
   | ProductComponentCaseConfig
   | ProductComponentRelatedConfig
+  | ProductComponentNewsConfig
 )
 
+/** 模块 id，会用作 section 内容的 key（当前区块在可导航区域中的唯一标示），同时用作 URL hash 的值（如果有锚点） */
 export enum ProductModule {
   Banner = 'banner',
+  UsageGuide = 'usage-guide',
+  News = 'product-news',
   Advantage = 'advantage',
   Function = 'function',
   Architecture = 'architecture',
@@ -36,6 +41,8 @@ export enum ProductModule {
 
 export const productModuleTitleMap = {
   [ProductModule.Banner]: '顶部 banner',
+  [ProductModule.News]: '产品动态',
+  [ProductModule.UsageGuide]: '底部引导',
   [ProductModule.Advantage]: '核心优势',
   [ProductModule.Function]: '产品功能',
   [ProductModule.Architecture]: '产品架构',
@@ -45,11 +52,11 @@ export const productModuleTitleMap = {
   [ProductModule.Related]: '相关产品'
 } as const
 
-export type ProductSection<T extends ProductComponent = ProductComponent> = T extends ProductComponent ? {
+export interface ProductSection<T extends ProductComponent = ProductComponent> {
   /** section 内容的 key，当前区块在可导航区域中的唯一标示，也会用来作为 URL hash 的值 */
   name: string
   /** section 内容标题，即对应 tab 项中的文本内容 */
   title: string
   /** 组件参数 */
   component: T
-} : never
+}

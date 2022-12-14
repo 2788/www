@@ -9,8 +9,10 @@ import { useMobile } from 'hooks/ua'
 import Link from 'components/Link'
 import { Row } from 'components/UI/Card'
 import { LibIcon } from 'components/LibIcon'
-
 import { ProductInfo } from 'apis/admin/product'
+
+import Description from '../Description'
+
 import IconArrow from './arrow.svg'
 import style from './style.less'
 
@@ -70,7 +72,7 @@ export function Item({ name, path, desc, icon }: ProductInfo) {
       </div>
       <div className={style.content}>
         <h3 className={style.title}>{name}</h3>
-        <p className={style.desc}>{desc.brief}</p>
+        <Description className={style.desc}>{desc.brief}</Description>
         <Link className={style.link} href={productUrl}>查看更多 &gt;</Link>
       </div>
     </div>

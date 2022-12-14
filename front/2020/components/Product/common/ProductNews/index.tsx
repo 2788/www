@@ -13,12 +13,30 @@ import ForMobile from './Mobile'
 
 const maxNum = 4
 
-export default function ProductNews({ newsRes }: { newsRes: INewsResponse }) {
+export interface Props {
+  newsRes: INewsResponse
+  withTailPadding?: boolean
+}
+
+export default function ProductNews({ newsRes, withTailPadding }: Props) {
   const isMobile = useMobile()
   return (
     isMobile
-      ? <ForMobile news={newsRes.data} count={newsRes.count} maxNum={maxNum} />
-      : <ForPc news={newsRes.data.slice().reverse()} count={newsRes.count} maxNum={maxNum} />
+      ? (
+        <ForMobile
+          news={newsRes.data}
+          count={newsRes.count}
+          maxNum={maxNum}
+          withTailPadding={withTailPadding}
+        />
+      ) : (
+        <ForPc
+          news={newsRes.data.slice().reverse()}
+          count={newsRes.count}
+          maxNum={maxNum}
+          withTailPadding={withTailPadding}
+        />
+      )
   )
 }
 

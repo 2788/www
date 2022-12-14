@@ -11,10 +11,12 @@ import { DrawerForm, FormItem, useFormstateX, TextInput } from 'react-icecream-f
 import { useModalLike } from 'utils/async'
 import { SolutionModule, solutionModuleTitleMap, SolutionSection } from 'constants/solution/page'
 import { SolutionComponentName } from 'constants/solution/page/comp-common'
-import { SolutionComponentArchitectureConfig } from 'constants/solution/page/comp-architecture'
+import {
+  SolutionComponentArchitectureConfig, SolutionComponentArchitectureProps
+} from 'constants/solution/page/comp-architecture'
 import { UploadImgInput, createState as createUploadImgState } from 'components/common/Upload/Img'
 
-function createState(props?: SolutionComponentArchitectureConfig['props']) {
+function createState(props?: SolutionComponentArchitectureProps) {
   return new FormState({
     title: new DebouncedFieldState(props?.title ?? ''),
     url: createUploadImgState(props?.url ?? '').withValidator(url => {
@@ -27,9 +29,9 @@ function createState(props?: SolutionComponentArchitectureConfig['props']) {
 }
 
 interface Props {
-  props?: SolutionComponentArchitectureConfig['props']
+  props?: SolutionComponentArchitectureProps
   visible: boolean
-  onSubmit(config: SolutionComponentArchitectureConfig['props']): void
+  onSubmit(config: SolutionComponentArchitectureProps): void
   onCancel(): void
 }
 
@@ -45,6 +47,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   function submit() {
     const { title, alt, ...value } = state.value
     const result = {
+      type: 'default' as const,
       ...value,
       ...(title && ({ title })),
       ...(alt && ({ alt }))
@@ -91,7 +94,7 @@ export default function useCompArchitecture() {
     return open()
   }
 
-  function submit(props: SolutionComponentArchitectureConfig['props']) {
+  function submit(props: SolutionComponentArchitectureProps) {
     const newConfig: SolutionSection<SolutionComponentArchitectureConfig> = {
       name: SolutionModule.Architecture,
       title: solutionModuleTitleMap[SolutionModule.Architecture],

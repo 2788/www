@@ -58,7 +58,7 @@
       }
     }
   });
-  
+
   .title {
     color: @grey-7;
     .setFontSize(20px);
@@ -73,11 +73,11 @@
     color: @grey-6;
     text-align: start;
     .setFontSize(14px);
-    
+
     .notMobile({
-      .ellipsis-line-clamp(3, 66px);
+      .ellipsis-line-clamp(3, 66px, false);
     });
-    
+
     .mobile({
       margin-top: 4px;
       .setFontSize(12px);

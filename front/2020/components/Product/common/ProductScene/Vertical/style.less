@@ -5,7 +5,7 @@
   :global {
     .rc-menu {
       text-align: left;
-      
+
       .rc-menu-submenu {
         background: @grey-1;
         border: 1px solid @border-color;
@@ -71,11 +71,11 @@
 
       .desc {
         margin-top: 12px;
-        .ellipsis-line-clamp(2, 44px);
+        .ellipsis-line-clamp(2, 44px, false);
         .setFontSize(14px);
       }
 
-      &.actived {
+      &.active {
         border-left: 3px solid @primary-color;
         color: @primary-color;
       }

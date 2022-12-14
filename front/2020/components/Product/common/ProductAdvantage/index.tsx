@@ -9,8 +9,9 @@ import { LibIcon } from 'components/LibIcon'
 import {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Raw as FeratureRaw
+  Raw as FeatureRaw
 } from '../../Feature/v2'
+import Description from '../Description'
 
 interface Props {
   /** advantage 分别是 2 组、3 组、4 组、6组 */
@@ -33,14 +34,14 @@ export default function ProductAdvantage({ items }: Props) {
   const itemsRow2 = items.slice(items.length / row)
 
   return (
-    <FeratureRaw>
+    <FeatureRaw>
       <FeatureGroup>
         {itemsRow1.map(({ title, desc, iconUrl }) => (
           <FeatureItem
             key={title}
             icon={<LibIcon alt="核心优势" src={iconUrl} />}
             title={title}
-            desc={desc}
+            desc={<Description>{desc}</Description>}
             pos="left-right"
           />
         ))}
@@ -53,12 +54,12 @@ export default function ProductAdvantage({ items }: Props) {
               key={title}
               icon={<LibIcon alt="核心优势" src={iconUrl} />}
               title={title}
-              desc={desc}
+              desc={<Description>{desc}</Description>}
               pos="left-right"
             />
           ))}
         </FeatureGroup>
       )}
-    </FeratureRaw>
+    </FeatureRaw>
   )
 }

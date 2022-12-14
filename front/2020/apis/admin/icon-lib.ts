@@ -32,15 +32,25 @@ export interface SvgInlineIcon extends IconBase {
 export type Icon = UrlIcon | SvgInlineIcon
 
 async function listAllMongoIcons(ids?: string[]) {
+  if (ids && ids.length === 0) {
+    return []
+  }
+
   return listAll<Icon>(
     'icon',
     ids ? { query: { id: { $in: uniq(ids) } } } : undefined
   )
 }
 
-export async function getIconMap<T extends string>(ids?: T[]): Promise<{ [P in T]: Icon }> {
+export async function getIconMap<T extends string>(ids: T[]): Promise<{ [P in T]: Icon }> {
   const icons = await listAllMongoIcons(ids)
-  return Object.assign({}, ...icons.map(icon => icon && ({ [icon.id]: icon })))
+  return Object.assign({}, ...ids.map(id => {
+    const icon = icons.find(iconInfo => iconInfo.id === id)
+    if (icon == null) {
+      throw new Error(`找不到该图标：${id}`)
+    }
+    return { [id]: icon }
+  }))
 }
 
 /** 从 json 中取出所有的 icon id */

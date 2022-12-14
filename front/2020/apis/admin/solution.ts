@@ -3,7 +3,7 @@
  */
 
 import { ComponentName } from 'constants/solutions/components'
-import { BannerButton } from 'hooks/product-btn'
+import { BannerButton, ButtonClickWebLink, ButtonClickConsult } from 'hooks/product-btn'
 import { getCode } from 'utils/fetch'
 import { get as mongoGet, listAll } from '.'
 
@@ -55,7 +55,7 @@ export interface SolutionInfo {
   /** 解决方案图标 */
   icon: SolutionIcons
 
-  // TODO: 后续用新的 mongo api 按需裁剪
+  // TODO: 后续用新的 mongo api 按需裁剪，相关升级参考产品配置页
   /** 解决方案页 banner 配置 */
   banner?: {
     bgImgUrl: {
@@ -66,6 +66,15 @@ export interface SolutionInfo {
     /** 是否为浅色风格（默认深色风格）；浅色风格对应深色按钮和深色文字，深色风格反之 */
     light?: boolean
     buttons: BannerButton[]
+  } | null
+  /** 解决方案页底部使用引导模块 */
+  usageGuide?: {
+    title: string
+    desc?: string
+    button: {
+      text: string
+      click: ButtonClickWebLink | ButtonClickConsult
+    }
   } | null
   /** 解决方案页组件列表配置 */
   sections: SectionsConfig[]

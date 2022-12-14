@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 import { FormState, FieldState, DebouncedFieldState, TransformedState } from 'formstate-x'
 import { InputWrapper, FormItem, TextInput, Select, SelectOption } from 'react-icecream-form'
 
-import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/WwwUrlPath'
+import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/www/UrlPath'
 
 import styles from './style.m.less'
 
@@ -87,7 +87,7 @@ function createBaseState<T extends ButtonClickTypes['type']>(
   const typeState = new FieldState(click.type)
   return new FormState({
     type: typeState,
-    allows: new FieldState(click.allows),
+    allows: new FieldState(click.allows), // TODO: 优化实现方式？
     webLinkUrl: createWwwUrlPathState(click.webLinkUrl)
       .withValidator(webLinkUrl => validateUrl(webLinkUrl))
       .disableWhen(() => !(typeState.value === 'webLink' && click.allows.webLink)),

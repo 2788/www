@@ -8,6 +8,8 @@ import Layout from 'components/Product/Layout'
 import Navigator from 'components/Product/Navigator'
 import Section from 'components/Product/Section/v2'
 import PageBanner from 'components/Product/PageBanner'
+import SolutionUsageGuide from 'components/Solution/common/SolutionUsageGuide'
+import { headerThemeContext } from 'components/Header/Pc'
 import { getSolutionInfo, listAllSolutionInfos, SolutionInfo } from 'apis/admin/solution'
 import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import { ComponentMap } from 'constants/solutions/components'
@@ -16,8 +18,8 @@ import NotFoundPage from 'pages/404'
 
 interface SolutionPageProps {
   solutionInfo: SolutionInfo | null
-  iconMap?: IconMap
-  globalBanners?: GlobalBanner[]
+  iconMap: IconMap
+  globalBanners: GlobalBanner[]
 }
 
 type PageContentProps = Omit<SolutionPageProps, 'iconMap' | 'globalBanners'> & { solutionInfo: SolutionInfo }
@@ -25,9 +27,9 @@ type PageContentProps = Omit<SolutionPageProps, 'iconMap' | 'globalBanners'> & {
 function PageContent({ solutionInfo }: PageContentProps) {
   const isMobile = useMobile()
 
-  const { name, desc, banner, sections } = solutionInfo
+  const { name, desc, banner, usageGuide, sections } = solutionInfo
 
-  const btns = useAdminBtns(banner!.buttons)
+  const btns = useAdminBtns(banner?.buttons ?? [], !banner?.light)
 
   return (
     <>
@@ -38,7 +40,8 @@ function PageContent({ solutionInfo }: PageContentProps) {
           bgImgUrl={isMobile ? (banner.bgImgUrl.small || banner.bgImgUrl.large) : banner.bgImgUrl.large}
           bgColor={banner.bgColor}
           btns={btns.banner}
-          light={banner.light} />
+          light={banner.light}
+        />
       )}
 
       <Navigator>{btns.nav}</Navigator>
@@ -55,6 +58,8 @@ function PageContent({ solutionInfo }: PageContentProps) {
           </Section>
         )
       })}
+
+      {usageGuide && (<SolutionUsageGuide {...usageGuide} />)}
     </>
   )
 }
@@ -65,6 +70,7 @@ export default function SolutionPage({
   if (!solutionInfo || !hasSolutionPage(solutionInfo)) {
     return <NotFoundPage globalBanners={globalBanners} />
   }
+
   const { title, keywords, desc } = solutionInfo
   const metaInfo = {
     title,
@@ -72,10 +78,17 @@ export default function SolutionPage({
     description: desc.detail
   }
 
+  // eslint-disable-next-line no-nested-ternary
+  const theme = solutionInfo.banner?.light == null
+    ? 'default'
+    : (solutionInfo.banner.light ? 'light' : 'dark')
+
   return (
-    <Layout {...metaInfo} globalBanners={globalBanners || []} iconMap={iconMap}>
-      <PageContent solutionInfo={solutionInfo} {...otherProps} />
-    </Layout>
+    <headerThemeContext.Provider value={theme}>
+      <Layout {...metaInfo} globalBanners={globalBanners} iconMap={iconMap}>
+        <PageContent solutionInfo={solutionInfo} {...otherProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

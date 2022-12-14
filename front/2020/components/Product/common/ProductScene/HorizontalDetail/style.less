@@ -31,7 +31,7 @@
   :global {
     .rc-menu {
       text-align: left;
-      
+
       .rc-menu-submenu {
         background: @grey-1;
         border: 1px solid @border-color;
@@ -59,7 +59,7 @@
 
 .detail {
   flex: 1 1;
-  
+
   .title {
     margin-bottom: 12px;
     font-weight: 500;
@@ -77,7 +77,7 @@
     .setFontSize(14px);
 
     .notMobile({
-      .ellipsis-line-clamp(2, 44px);
+      .ellipsis-line-clamp(2, 44px, false);
     });
 
     .mobile({
@@ -102,7 +102,7 @@
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   .problemTitle {
     margin-bottom: 2px;
     color: @grey-7;
