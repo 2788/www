@@ -29,7 +29,7 @@ function PageContent({ solutionInfo }: PageContentProps) {
 
   const { name, desc, banner, usageGuide, sections } = solutionInfo
 
-  const btns = useAdminBtns(banner?.buttons ?? [], !banner?.light)
+  const btns = useAdminBtns(banner?.buttons ?? [], banner?.light)
 
   return (
     <>

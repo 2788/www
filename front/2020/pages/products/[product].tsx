@@ -48,7 +48,7 @@ function PageContent({ productInfo, notices, news }: PageContentProps) {
 
   const priceUrl = product && priceUrlMap[product] ? urlForPrice(product) : undefined
 
-  const btns = useAdminBtns(banner.buttons, !banner.light)
+  const btns = useAdminBtns(banner.buttons, banner.light)
 
   const [currentNotices, setCurrentNotices] = useState(notices)
 
