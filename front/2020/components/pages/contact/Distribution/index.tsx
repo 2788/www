@@ -24,7 +24,7 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={beijing} />
           <Title className={style.title}>北京分部</Title>
-          <Desc className={style.desc}>北京市朝阳区太阳宫中路 12 号冠城大厦 1506 室</Desc>
+          <Desc className={style.desc}>北京市朝阳区新源南路 3 号平安国际金融中心 A 座 10-05 单元</Desc>
         </LayoutCard>
         <LayoutCard>
           <Img className={style.image} src={hangzhou} />
@@ -41,7 +41,7 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={guangzhou} />
           <Title className={style.title}>广州分部</Title>
-          <Desc className={style.desc}>广东省广州市天河区黄埔大道中 662 号金融城绿地中心 704 单元</Desc>
+          <Desc className={style.desc}>广东省深圳市南山区粤海街道高新区社区科技南十二路 28 号康佳研发大厦十八层</Desc>
         </LayoutCard>
         <LayoutCard>
           <Img className={style.image} src={chengdu} />
