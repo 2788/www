@@ -36,12 +36,12 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={shenzhen} />
           <Title className={style.title}>深圳分部</Title>
-          <Desc className={style.desc}>广东省深圳市南山区科发路 91 号华润置地 D 座 1307 室</Desc>
+          <Desc className={style.desc}>广东省深圳市南山区粤海街道高新区社区科技南十二路 28 号康佳研发大厦十八层</Desc>
         </LayoutCard>
         <LayoutCard>
           <Img className={style.image} src={guangzhou} />
           <Title className={style.title}>广州分部</Title>
-          <Desc className={style.desc}>广东省深圳市南山区粤海街道高新区社区科技南十二路 28 号康佳研发大厦十八层</Desc>
+          <Desc className={style.desc}>广东省广州市天河区黄埔大道中 662 号金融城绿地中心 704 单元</Desc>
         </LayoutCard>
         <LayoutCard>
           <Img className={style.image} src={chengdu} />
