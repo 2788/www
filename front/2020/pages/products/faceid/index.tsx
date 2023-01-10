@@ -56,7 +56,6 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const priceUrl = urlForPrice(Product.FaceID)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/faceid', children: '开始使用', pcOnly: true },
     { href: 'https://jinshuju.net/f/fgideP', children: '立即咨询' },
     { href: 'https://developer.qiniu.com/dora/6874/seven-niuyun-face-check-products-use-is-introduced', children: '使用文档' }
   )
