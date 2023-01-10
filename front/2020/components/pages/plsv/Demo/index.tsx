@@ -4,7 +4,7 @@ import Demo from 'components/Product/Demo'
 export default function PlsvSDKDemo() {
   return (
     <Demo
-      iosUrl="http://fir.qnsdk.com/plsviui"
+      iosUrl="https://testflight.apple.com/join/A7BUwhD2"
       androidUrl="http://fir.qnsdk.com/plsvaui"
     />
   )
