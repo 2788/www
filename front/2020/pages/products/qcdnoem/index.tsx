@@ -5,6 +5,7 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
@@ -14,20 +15,23 @@ import Advantages from 'components/pages/qcdnoem/Advantages'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { useMobile } from 'hooks/ua'
 
-import AccessStep1 from './_images/accessstep1.svg'
-import AccessStep2 from './_images/accessstep2.svg'
-import AccessStep3 from './_images/accessstep3.svg'
-import AccessStep4 from './_images/accessstep4.svg'
+import accessStep1 from './_images/accessstep1.png'
+import accessStep2 from './_images/accessstep2.png'
+import accessStep3 from './_images/accessstep3.png'
+import accessStep4 from './_images/accessstep4.png'
 
-import imgBanner from './_images/banner.png'
-import SiteCustomize from './_images/sitecustomize.svg'
-import FullSceneCoverage from './_images/fullscenecoverage.svg'
-import HighQualityLine from './_images/highqualityline.svg'
-import TechSupport from './_images/techsupport.svg'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
+import siteCustomize from './_images/sitecustomize.png'
+import fullSceneCoverage from './_images/fullscenecoverage.png'
+import highQualityLine from './_images/highqualityline.png'
+import techSupport from './_images/techsupport.png'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -35,6 +39,7 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
+  const isMobile = useMobile()
 
   const btns = useBtns(
     { onClick: showWechatConsultModal, children: '咨询详情' }
@@ -45,9 +50,9 @@ function PageContent() {
       <PageBanner
         title="CDN OEM"
         desc="成为七牛 CDN OEM 合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的 CDN 服务能力，我们期待与您合作共赢。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <Navigator>
         {btns.nav}
@@ -57,14 +62,14 @@ function PageContent() {
         <FeatureGroup>
           <FeatureItem
             pos="left-right"
-            icon={<SiteCustomize />}
+            icon={<FeatureIcon src={siteCustomize} />}
             title="全站定制"
           >
             <FeatureDesc>拥有自己的品牌，定制全站 Logo，定制访问域名和线路 CNAME。</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="left-right"
-            icon={<HighQualityLine />}
+            icon={<FeatureIcon src={highQualityLine} />}
             title="优质线路资源"
           >
             <FeatureDesc>依托七牛底层 CDN 融合技术，精选主流厂商 1600+ 优质节点，全面覆盖 20+ 运营商，全网无盲区。</FeatureDesc>
@@ -74,14 +79,14 @@ function PageContent() {
         <FeatureGroup>
           <FeatureItem
             pos="left-right"
-            icon={<TechSupport />}
+            icon={<FeatureIcon src={techSupport} />}
             title="技术保证"
           >
             <FeatureDesc>七牛自研融合能力，全网实时精选调度，有效提高访问响应速度，防止劫持，全方位立体品控。</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="left-right"
-            icon={<FullSceneCoverage />}
+            icon={<FeatureIcon src={fullSceneCoverage} />}
             title="全场景覆盖"
           >
             <FeatureDesc>支持图片小文件，下载分发点、点播、动态加速等多种业务场景，针对资源特性进行线路优化。 HDFS 访问方式，为大数据和机器学习的海量高速读写场景进行了大量优化。</FeatureDesc>
@@ -92,10 +97,10 @@ function PageContent() {
       <Advantages />
 
       <AccessProcess>
-        <Step icon={<AccessStep1 />}>服务咨询</Step>
-        <Step icon={<AccessStep2 />}>商务洽谈</Step>
-        <Step icon={<AccessStep3 />}>平台对接</Step>
-        <Step icon={<AccessStep4 />}>上线运营</Step>
+        <Step icon={<FeatureIcon src={accessStep1} />}>服务咨询</Step>
+        <Step icon={<FeatureIcon src={accessStep2} />}>商务洽谈</Step>
+        <Step icon={<FeatureIcon src={accessStep3} />}>平台对接</Step>
+        <Step icon={<FeatureIcon src={accessStep4} />}>上线运营</Step>
       </AccessProcess>
     </>
   )
@@ -103,14 +108,16 @@ function PageContent() {
 
 export default function CdnOemPage({ globalBanners }: Props) {
   return (
-    <Layout
-      title="CDN OEM"
-      keywords="cdn, oem, cdnoem"
-      description="成为七牛 CDN OEM 合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的 CDN 服务能力，我们期待与您合作共赢。"
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="light">
+      <Layout
+        title="CDN OEM"
+        keywords="cdn, oem, cdnoem"
+        description="成为七牛 CDN OEM 合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的 CDN 服务能力，我们期待与您合作共赢。"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

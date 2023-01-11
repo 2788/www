@@ -16,6 +16,7 @@ import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
@@ -32,7 +33,8 @@ import Core from 'components/pages/qvs/Core'
 import Scene from 'components/pages/qvs/Scene'
 import Process from 'components/pages/qvs/Process'
 
-import imgBanner from './images/banner.png'
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -57,7 +59,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         title="视频监控 QVS"
         desc="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -93,14 +96,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function Main({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="视频监控 QVS_音视频监控存储_智能多媒体"
-      keywords="视频监控, QVS, qvs"
-      description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="light">
+      <Layout
+        title="视频监控 QVS_音视频监控存储_智能多媒体"
+        keywords="视频监控, QVS, qvs"
+        description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

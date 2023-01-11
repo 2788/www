@@ -8,6 +8,7 @@ import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import PageBanner from 'components/Product/PageBanner'
@@ -16,13 +17,15 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Cases, { Case } from 'components/Solution/Cases'
 
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Architecture from 'components/pages/automobile/Architecture'
 import Scene from 'components/pages/automobile/Scene'
 import Advantage from 'components/pages/automobile/Advantage'
 
-import imgBanner from './_images/banner.png'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
 import imgCase1 from './_images/case1.png'
 import imgCase2 from './_images/case2.png'
 import imgCase3 from './_images/case3.png'
@@ -34,6 +37,7 @@ const desc = '在汽车产业加速走向智能、网联和共享的时代背景
   + '七牛云携手合作伙伴基于直播与实时互动、大数据、云计算等技术打造可视化安全出行、车联网大数据运营运维服务等场景化解决方案，帮助车企实现数字化转型和升级，加快产品和服务创新。'
 
 function PageContent() {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
@@ -45,9 +49,8 @@ function PageContent() {
       <PageBanner
         title={title}
         desc={desc}
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <Navigator>{btns.nav}</Navigator>
@@ -96,14 +99,16 @@ const layoutDescription = '“数智赋能，洞见出行新未来”，在汽�
 
 export default function AutomobilePage({ globalBanners }: Props) {
   return (
-    <Layout
-      title="汽车行业解决方案"
-      keywords="汽车, 数字化转型, 安全出行, 车联网, 车载监控, 大数据运营运维"
-      description={layoutDescription}
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="汽车行业解决方案"
+        keywords="汽车, 数字化转型, 安全出行, 车联网, 车载监控, 大数据运营运维"
+        description={layoutDescription}
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

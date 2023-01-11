@@ -12,6 +12,7 @@ import { useApiWithParams } from 'hooks/api'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
@@ -30,13 +31,14 @@ import QvmCommonCases from 'components/pages/qvm/Cases'
 import { useMobile } from 'hooks/ua'
 import { getStarterSpecs, getMetaInfo, getEnterpriseSpecs } from 'apis/qvm'
 
-import imgBanner from './banner.png'
-import IconFeatureEasy from './_icons/feature/easy.svg'
-import IconFeatureFlexibility from './_icons/feature/flexibility.svg'
-import IconFeatureHighPerf from './_icons/feature/high-perf.svg'
-import IconFeatureSafe from './_icons/feature/safe.svg'
-import IconFeatureScalable from './_icons/feature/scalable.svg'
-import IconFeatureStable from './_icons/feature/stable.svg'
+import imgBannerPc from './banner-pc.jpg'
+import imgBannerMobile from './banner-mobile.jpg'
+import IconFeatureEasy from './_icons/feature/easy.png'
+import IconFeatureFlexibility from './_icons/feature/flexibility.png'
+import IconFeatureHighPerf from './_icons/feature/high-perf.png'
+import IconFeatureSafe from './_icons/feature/safe.png'
+import IconFeatureScalable from './_icons/feature/scalable.png'
+import IconFeatureStable from './_icons/feature/stable.png'
 import style from './style.less'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
@@ -77,9 +79,8 @@ function PageContent(props: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="云主机服务 QVM"
         desc={descView}
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <ProductNotice {...(currentNotices || props.notices)} />
@@ -96,24 +97,24 @@ function PageContent(props: Omit<Props, 'globalBanners'>) {
 
       <Feature>
         <feature.Group>
-          <feature.Item title="弹性" icon={<IconFeatureFlexibility />}>
+          <feature.Item title="弹性" icon={<feature.Icon src={IconFeatureFlexibility} />}>
             <feature.Desc className={style.featureDesc}>支持分钟级别创建 1000 台实例，多种弹性付费选择更贴合业务现状，支持弹性扩容，实例、带宽和云盘随时升配</feature.Desc>
           </feature.Item>
-          <feature.Item title="稳定" icon={<IconFeatureStable />}>
+          <feature.Item title="稳定" icon={<feature.Icon src={IconFeatureStable} />}>
             <feature.Desc className={style.featureDesc}>单实例可用性达 99.95%，多可用区多实例可用性达 99.99%，云盘可靠性达 99.9999999%，可实现自动宕机迁移</feature.Desc>
           </feature.Item>
-          <feature.Item title="安全" icon={<IconFeatureSafe />}>
+          <feature.Item title="安全" icon={<feature.Icon src={IconFeatureSafe} />}>
             <feature.Desc className={style.featureDesc}>通过多方国际安全认证，免费提供 DDoS 基础防护、专用网络服务，可结合七牛云其它安全产品进一步保障数据和服务</feature.Desc>
           </feature.Item>
         </feature.Group>
         <feature.Group>
-          <feature.Item title="易用" icon={<IconFeatureEasy />}>
+          <feature.Item title="易用" icon={<feature.Icon src={IconFeatureEasy} />}>
             <feature.Desc className={style.featureDesc}>丰富的操作系统，通过镜像可一键简单部署，同一镜像可在多台实例中快速复制环境，轻松扩展</feature.Desc>
           </feature.Item>
-          <feature.Item title="可拓展" icon={<IconFeatureScalable />}>
+          <feature.Item title="可拓展" icon={<feature.Icon src={IconFeatureScalable} />}>
             <feature.Desc className={style.featureDesc}>与七牛云各种丰富的云产品无缝衔接，可持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
           </feature.Item>
-          <feature.Item title="高性能" icon={<IconFeatureHighPerf />}>
+          <feature.Item title="高性能" icon={<feature.Icon src={IconFeatureHighPerf} />}>
             <feature.Desc className={style.featureDesc}>单实例最高可选 208 vCPU，内存 4096 GB，单实例性能最高可达到 1000 万 PPS 网络收发包，40 Gbps 带宽</feature.Desc>
           </feature.Item>
         </feature.Group>
@@ -164,14 +165,16 @@ function PageContent(props: Omit<Props, 'globalBanners'>) {
 
 export default function QvmPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="云主机服务 QVM_云服务器_云主机_弹性计算_云主机合伙人_0 元主机"
-      keywords="七牛云, 云服务器, 云主机, 云数据库, 高防"
-      description="七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="云主机服务 QVM_云服务器_云主机_弹性计算_云主机合伙人_0 元主机"
+        keywords="七牛云, 云服务器, 云主机, 云数据库, 高防"
+        description="七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

@@ -36,7 +36,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const isMobile = useMobile()
   const priceUrl = urlForPrice(Product.RiskControl)
   const btns = useBtns(
-    { href: 'https://jinshuju.net/f/cwtofb', children: '立即申请', type: 'primary' },
+    { href: 'https://jinshuju.net/f/cwtofb', children: '立即申请' },
     { children: '查看价格', href: priceUrl }
   )
 
@@ -49,7 +49,6 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="智能风控"
         desc="智能风控产品利用 AI 人工智能算法精准评估金融、租赁、营销等业务风险，帮助企业建立事前防范、事中监控及事后分析的全流程风控体系，识别和防范注册、交易、贷款等关键环节中的欺诈问题，减少企业损失。"
-        bgColor="#213149"
         btns={btns.banner}
         bgImgUrl={isMobile ? mobileBgImgUrl : pcBgImgUrl}
       />

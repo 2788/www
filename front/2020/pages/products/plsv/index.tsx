@@ -12,8 +12,10 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { Product } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
@@ -31,11 +33,13 @@ import PriceList from 'components/pages/plsv/PriceList'
 import Demo from 'components/pages/plsv/Demo'
 import Scene from 'components/pages/plsv/Scene'
 
-import imgBanner from './images/banner.png'
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const btns = useBtns(
     { children: '免费体验', href: 'https://qmall.qiniu.com/template/MTE1', pcOnly: true },
@@ -52,7 +56,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         title="短视频 SDK"
         desc="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -86,14 +91,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function PlsvPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="短视频 SDK_短视频特效 SDK"
-      keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
-      description="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="短视频 SDK_短视频特效 SDK"
+        keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
+        description="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

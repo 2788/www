@@ -16,7 +16,7 @@ import {
 } from 'components/common/Upload/Img'
 
 function getDefaultBgColor(isLight: boolean) {
-  return isLight ? '#B8DFFE' : '#213148'
+  return isLight ? '#B8DFFE' : '#213149'
 }
 
 function normalizeColors(colors: string[]) {

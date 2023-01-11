@@ -7,6 +7,7 @@ import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 
@@ -24,8 +25,10 @@ import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 import { Product } from 'constants/products'
+import { useMobile } from 'hooks/ua'
 
-import banner from './banner.png'
+import imgBannerPc from './banner-pc.jpg'
+import imgBannerMobile from './banner-mobile.jpg'
 
 const desc = '基于七牛计算机视觉与深度学习技术，提供视频画质增强服务，通过超分辨率、降噪、去模糊、去马赛克等手段，显著提升图片和视频的主观画质评价，可广泛应用于互联网媒体、直播、短视频、在线教育、广电传媒等行业应用。'
 
@@ -33,6 +36,7 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
+  const isMobile = useMobile()
 
   const btns = useBtns(
     { onClick: showWechatConsultModal, children: '立即咨询' }
@@ -47,9 +51,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="画质增强"
         desc={desc}
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={banner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{btns.nav}</Navigator>
@@ -63,14 +66,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function EnhancementPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="画质增强"
-      keywords="超分辨率, 降噪, 去模糊, 去马赛克, 画质增强, 画质修复, 提升画质"
-      description={desc}
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="画质增强"
+        keywords="超分辨率, 降噪, 去模糊, 去马赛克, 画质增强, 画质修复, 提升画质"
+        description={desc}
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

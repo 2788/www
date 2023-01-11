@@ -27,14 +27,14 @@ import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 import { useMobile } from 'hooks/ua'
 
-import Customer1Icon from './_images/客户-聚美.png'
-import Customer2Icon from './_images/客户-大疆.png'
-import Customer3Icon from './_images/客户-blue.png'
-import Customer4Icon from './_images/客户-流利说.png'
-import Customer5Icon from './_images/客户-唱吧.png'
-import Customer6Icon from './_images/客户-虎扑.png'
-import Customer7Icon from './_images/客户-房多多.png'
-import Customer8Icon from './_images/客户-小红书.png'
+import customer1Icon from './_images/客户-聚美.png'
+import customer2Icon from './_images/客户-大疆.png'
+import customer3Icon from './_images/客户-blue.png'
+import customer4Icon from './_images/客户-流利说.png'
+import customer5Icon from './_images/客户-唱吧.png'
+import customer6Icon from './_images/客户-虎扑.png'
+import customer7Icon from './_images/客户-房多多.png'
+import customer8Icon from './_images/客户-小红书.png'
 
 import pcBgImgUrl from './_images/banner.jpg'
 import mobileBgImgUrl from './_images/banner-mobile.jpg'
@@ -49,8 +49,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const priceUrl = urlForPrice(Product.Dora)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/dora/media-gate/overview', children: '立即使用', pcOnly: true, type: 'primary' },
-    { href: priceUrl, children: '产品价格', type: isMobile ? 'primary' : 'primary-hollow' },
+    { href: 'https://portal.qiniu.com/dora/media-gate/overview', children: '立即使用', pcOnly: true },
+    { href: priceUrl, children: '产品价格' },
     { href: 'https://developer.qiniu.com/dora?source_page=dora', children: '帮助文档' }
   )
 
@@ -63,9 +63,9 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="智能多媒体服务"
         desc="智能多媒体服务（Dora），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
-        bgColor="#18243C"
         btns={btns.banner}
-        bgImgUrl={isMobile ? mobileBgImgUrl : pcBgImgUrl} />
+        bgImgUrl={isMobile ? mobileBgImgUrl : pcBgImgUrl}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -80,14 +80,14 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <DoraScene />
 
       <CustomerCaseGroup>
-        <CustomerCase pic={Customer1Icon} />
-        <CustomerCase pic={Customer2Icon} />
-        <CustomerCase pic={Customer3Icon} />
-        <CustomerCase pic={Customer4Icon} />
-        <CustomerCase pic={Customer5Icon} />
-        <CustomerCase pic={Customer6Icon} />
-        <CustomerCase pic={Customer7Icon} />
-        <CustomerCase pic={Customer8Icon} />
+        <CustomerCase pic={customer1Icon} />
+        <CustomerCase pic={customer2Icon} />
+        <CustomerCase pic={customer3Icon} />
+        <CustomerCase pic={customer4Icon} />
+        <CustomerCase pic={customer5Icon} />
+        <CustomerCase pic={customer6Icon} />
+        <CustomerCase pic={customer7Icon} />
+        <CustomerCase pic={customer8Icon} />
       </CustomerCaseGroup>
 
       <ProductNews newsRes={newsRes} />

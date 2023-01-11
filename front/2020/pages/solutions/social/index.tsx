@@ -9,6 +9,7 @@ import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -17,12 +18,14 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Cases, { Case } from 'components/Solution/Cases'
 
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Scene from 'components/pages/social/Scene'
 import Advantage from 'components/pages/social/Advantage'
 
-import imgBanner from './_images/banner.png'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
 import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.png'
 
@@ -31,6 +34,7 @@ const title = `${nameMap[Solution.Social]}解决方案`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
@@ -42,9 +46,8 @@ function PageContent() {
       <PageBanner
         title={title}
         desc="七牛云社交解决方案提供端到端的一站式解决方案，助力客户快速打造属于自己的社交产品。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <Navigator>{btns.nav}</Navigator>
@@ -85,14 +88,16 @@ function PageContent() {
 
 export default function SocialPage({ globalBanners }: Props) {
   return (
-    <Layout
-      title="社交_图片社交_短视频社交_直播连麦_视频相亲_互动游戏_语音聊天室"
-      keywords="社交, 图片社交, 短视频社交, 直播连麦, 视频相亲, 互动游戏, 语音聊天室"
-      description="七牛云社交解决方案提供端到端的一站式解决方案，助力客户快速打造属于自己的社交产品。"
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="社交_图片社交_短视频社交_直播连麦_视频相亲_互动游戏_语音聊天室"
+        keywords="社交, 图片社交, 短视频社交, 直播连麦, 视频相亲, 互动游戏, 语音聊天室"
+        description="七牛云社交解决方案提供端到端的一站式解决方案，助力客户快速打造属于自己的社交产品。"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

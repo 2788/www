@@ -48,7 +48,7 @@ function PageContent({ productInfo, notices, news }: PageContentProps) {
 
   const priceUrl = product && priceUrlMap[product] ? urlForPrice(product) : undefined
 
-  const btns = useAdminBtns(banner.buttons, banner.light)
+  const btns = useAdminBtns(banner.buttons)
 
   const [currentNotices, setCurrentNotices] = useState(notices)
 
@@ -71,7 +71,6 @@ function PageContent({ productInfo, notices, news }: PageContentProps) {
           bgImgUrl={isMobile ? (banner.bgImgUrl.small || banner.bgImgUrl.large) : banner.bgImgUrl.large}
           bgColor={banner.bgColor}
           btns={btns.banner}
-          light={banner.light}
         />
       )}
 

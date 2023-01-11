@@ -9,10 +9,12 @@ import { InferGetServerSidePropsType } from 'next'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { Product } from 'constants/products'
+import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
@@ -22,7 +24,9 @@ import QnPlayerCase from 'components/pages/qnplayer/Case'
 import Document from 'components/pages/qnplayer/Document'
 import Feature from 'components/pages/qnplayer/Feature'
 import { getGlobalBanners } from 'apis/admin/global-banners'
-import bannerImg from './banner.png'
+
+import bannerImgPc from './banner-pc.jpg'
+import bannerImgMobile from './banner-mobile.jpg'
 
 const pageInfo = {
   layoutTitle: '播放器 SDK_点播播放器_直播播放器_多媒体播放器',
@@ -35,6 +39,7 @@ const pageInfo = {
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const bannerBtns = useBtns(
@@ -54,9 +59,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title={pageInfo.bannerTitle}
         desc={pageInfo.description}
-        bgColor="#34A1EC"
         btns={bannerBtns.banner}
-        icon={bannerImg}
+        bgImgUrl={isMobile ? bannerImgMobile : bannerImgPc}
       />
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{bannerBtns.nav}</Navigator>
@@ -71,14 +75,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function QnPlayerPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title={pageInfo.layoutTitle}
-      keywords={pageInfo.keywords}
-      description={pageInfo.description}
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title={pageInfo.layoutTitle}
+        keywords={pageInfo.keywords}
+        description={pageInfo.description}
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

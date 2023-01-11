@@ -29,7 +29,7 @@ function PageContent({ solutionInfo }: PageContentProps) {
 
   const { name, desc, banner, usageGuide, sections } = solutionInfo
 
-  const btns = useAdminBtns(banner?.buttons ?? [], banner?.light)
+  const btns = useAdminBtns(banner?.buttons ?? [])
 
   return (
     <>
@@ -40,7 +40,6 @@ function PageContent({ solutionInfo }: PageContentProps) {
           bgImgUrl={isMobile ? (banner.bgImgUrl.small || banner.bgImgUrl.large) : banner.bgImgUrl.large}
           bgColor={banner.bgColor}
           btns={btns.banner}
-          light={banner.light}
         />
       )}
 

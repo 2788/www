@@ -9,13 +9,14 @@ import React from 'react'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import AdvantageIconOne from './advantage-icon-one.svg'
-import AdvantageIconTwo from './advantage-icon-two.svg'
-import AdvantageIconThree from './advantage-icon-three.svg'
-import AdvantageIconFour from './advantage-icon-four.svg'
+import advantageIconOne from './advantage-icon-one.png'
+import advantageIconTwo from './advantage-icon-two.png'
+import advantageIconThree from './advantage-icon-three.png'
+import advantageIconFour from './advantage-icon-four.png'
 
 import styles from './style.less'
 
@@ -25,7 +26,7 @@ export default function PlsvAdvantage() {
       <FeatureGroup>
         <FeatureItem
           className={styles.item}
-          icon={<AdvantageIconOne className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconOne} />}
           title="功能完善，兼容性强"
           align="left"
         >
@@ -33,7 +34,7 @@ export default function PlsvAdvantage() {
         </FeatureItem>
         <FeatureItem
           className={styles.item}
-          icon={<AdvantageIconTwo className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconTwo} />}
           title="包体轻盈，性能优异"
           align="left"
         >
@@ -42,7 +43,7 @@ export default function PlsvAdvantage() {
 
         <FeatureItem
           className={styles.item}
-          icon={<AdvantageIconThree className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconThree} />}
           title="接入简单，方便二次开发"
           align="left"
         >
@@ -51,7 +52,7 @@ export default function PlsvAdvantage() {
 
         <FeatureItem
           className={styles.item}
-          icon={<AdvantageIconFour className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconFour} />}
           title="一站式云端方案"
           align="left"
         >

@@ -4,11 +4,12 @@
  */
 
 import React from 'react'
-import Feature, { Desc, Group, Item } from 'components/Product/Feature'
-import Advantage1 from './advantage1.svg'
-import Advantage2 from './advantage2.svg'
-import Advantage3 from './advantage3.svg'
-import Advantage4 from './advantage4.svg'
+import Feature, { Desc, Group, Item, Icon } from 'components/Product/Feature'
+
+import advantage1 from './advantage1.png'
+import advantage2 from './advantage2.png'
+import advantage3 from './advantage3.png'
+import advantage4 from './advantage4.png'
 
 export default function Advantage() {
   return (
@@ -17,7 +18,7 @@ export default function Advantage() {
         <Item
           pos="top-down"
           align="left"
-          icon={<Advantage1 />}
+          icon={<Icon src={advantage1} />}
           title="算法领先"
         >
           <Desc>拥有完善的标签体系，业内领先的大规模多标签算法。</Desc>
@@ -25,7 +26,7 @@ export default function Advantage() {
         <Item
           pos="top-down"
           align="left"
-          icon={<Advantage2 />}
+          icon={<Icon src={advantage2} />}
           title="方案优选"
         >
           <Desc>提供功能组合定制方案，契合实际业务场景。</Desc>
@@ -33,7 +34,7 @@ export default function Advantage() {
         <Item
           pos="top-down"
           align="left"
-          icon={<Advantage3 />}
+          icon={<Icon src={advantage3} />}
           title="服务稳定"
         >
           <Desc>提供弹性服务，扩展性好，算法持续迭代优化。</Desc>
@@ -41,7 +42,7 @@ export default function Advantage() {
         <Item
           pos="top-down"
           align="left"
-          icon={<Advantage4 />}
+          icon={<Icon src={advantage4} />}
           title="接入方便"
         >
           <Desc>服务使用简单快捷，兼容性强，并提供全流程技术支持。</Desc>

@@ -9,13 +9,14 @@ import React from 'react'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import AdvantageIconOne from './advantage-icon-one.svg'
-import AdvantageIconTwo from './advantage-icon-two.svg'
-import AdvantageIconThree from './advantage-icon-three.svg'
-import AdvantageIconFour from './advantage-icon-four.svg'
+import advantageIconOne from './advantage-icon-one.png'
+import advantageIconTwo from './advantage-icon-two.png'
+import advantageIconThree from './advantage-icon-three.png'
+import advantageIconFour from './advantage-icon-four.png'
 
 import styles from './style.less'
 
@@ -24,14 +25,14 @@ export default function VcsAdvantage() {
     <Feature name="advantage" title="方案优势" grey>
       <FeatureGroup>
         <FeatureItem
-          icon={<AdvantageIconOne className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconOne} className={styles.icon} />}
           title="高可用低成本"
           pos="left-right"
         >
           <FeatureDesc>七牛云独有的三机房纠删码方案，生命周期管理，相较于常规存储方案，存储成本降低 60%</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<AdvantageIconTwo className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconTwo} className={styles.icon} />}
           title="高吞吐低时延"
           pos="left-right"
         >
@@ -41,14 +42,14 @@ export default function VcsAdvantage() {
 
       <FeatureGroup>
         <FeatureItem
-          icon={<AdvantageIconThree className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconThree} className={styles.icon} />}
           title="增量数据同步"
           pos="left-right"
         >
           <FeatureDesc>七牛云支持与源站同步保持数据更新，异步的拉取数据，且时间、带宽、并发均可控</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<AdvantageIconFour className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconFour} className={styles.icon} />}
           title="无忧数据迁移"
           pos="left-right"
         >

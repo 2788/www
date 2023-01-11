@@ -9,28 +9,27 @@ import React from 'react'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import AdvantageIconOne from './advantage-icon-one.svg'
-import AdvantageIconTwo from './advantage-icon-two.svg'
-import AdvantageIconThree from './advantage-icon-three.svg'
-
-import styles from './style.less'
+import advantageIconOne from './advantage-icon-one.png'
+import advantageIconTwo from './advantage-icon-two.png'
+import advantageIconThree from './advantage-icon-three.png'
 
 export default function EssAdvantage() {
   return (
     <Feature name="advantage" title="方案优势" grey>
       <FeatureGroup>
         <FeatureItem
-          icon={<AdvantageIconOne className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconOne} />}
           title="传输高速可靠"
           align="left"
         >
           <FeatureDesc>多维调度策略选取传输链路，保障传输高速可靠，可充分利用链路带宽</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<AdvantageIconTwo className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconTwo} />}
           title="数据多重保护"
           align="left"
         >
@@ -38,7 +37,7 @@ export default function EssAdvantage() {
         </FeatureItem>
 
         <FeatureItem
-          icon={<AdvantageIconThree className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconThree} />}
           title="全面兼容扩展"
           align="left"
         >

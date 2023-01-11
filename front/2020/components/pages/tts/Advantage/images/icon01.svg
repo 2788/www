@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="62" height="60" viewBox="0 0 62 60">
-  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 1)">
-    <polygon stroke="#00AAE7" points="60 0 26 0 26 28 36 20 60 20"/>
-    <circle cx="48" cy="34" r="6" stroke="#333"/>
-    <circle cx="12" cy="34" r="6" stroke="#333"/>
-    <path stroke="#333" d="M24 58L24 52.035C24 50.615 23.255 49.309 22.033 48.586 20.088 47.435 16.716 46 12 46 7.223 46 3.873 47.426 1.948 48.575.736 49.299 0 50.601 0 52.013L0 58 24 58zM60 58L60 52.035C60 50.615 59.255 49.309 58.033 48.586 56.088 47.435 52.716 46 48 46 43.223 46 39.873 47.426 37.948 48.575 36.736 49.299 36 50.601 36 52.013L36 58 60 58z"/>
-  </g>
-</svg>

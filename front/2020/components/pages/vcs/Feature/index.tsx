@@ -6,10 +6,12 @@
 
 import React from 'react'
 import BannerFooter from 'components/Solution/BannerFooter'
-import FeatureIconOne from './feature-icon-one.svg'
-import FeatureIconTwo from './feature-icon-two.svg'
-import FeatureIconThree from './feature-icon-three.svg'
-import FeatureIconFour from './feature-icon-four.svg'
+import { Icon } from 'components/Product/Feature'
+
+import featureIconOne from './feature-icon-one.png'
+import featureIconTwo from './feature-icon-two.png'
+import featureIconThree from './feature-icon-three.png'
+import featureIconFour from './feature-icon-four.png'
 
 import styles from './style.less'
 
@@ -17,22 +19,22 @@ export default function VcsFeature() {
   return (
     <BannerFooter className={styles.wrapper}>
       <div className={styles.item}>
-        <FeatureIconOne className={styles.icon} />
+        <Icon src={featureIconOne} className={styles.icon} />
         <p className={styles.desc}>成本下降 60%</p>
       </div>
 
       <div className={styles.item}>
-        <FeatureIconTwo className={styles.icon} />
+        <Icon src={featureIconTwo} className={styles.icon} />
         <p className={styles.desc}>时延 ≤ 50 ms</p>
       </div>
 
       <div className={styles.item}>
-        <FeatureIconThree className={styles.icon} />
+        <Icon src={featureIconThree} className={styles.icon} />
         <p className={styles.desc}>突发流量承载 100 Gbps +</p>
       </div>
 
       <div className={styles.item}>
-        <FeatureIconFour className={styles.icon} />
+        <Icon src={featureIconFour} className={styles.icon} />
         <p className={styles.desc}>写入性能 50 Gbps +</p>
       </div>
     </BannerFooter>

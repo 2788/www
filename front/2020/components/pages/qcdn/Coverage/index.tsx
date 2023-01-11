@@ -3,14 +3,14 @@
  * @author zhuhao <zhuhao@qiniu.com>
  */
 
-import React, { ReactNode, PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import Section from 'components/Product/Section'
 
-import NodeIcon1 from './images/node1.svg'
-import NodeIcon2 from './images/node2.svg'
-import NodeIcon3 from './images/node3.svg'
-import NodeIcon4 from './images/node4.svg'
+import nodeIcon1 from './images/node1.png'
+import nodeIcon2 from './images/node2.png'
+import nodeIcon3 from './images/node3.png'
+import nodeIcon4 from './images/node4.png'
 
 // import ChinaMapImage from './images/map_china.png'
 // import WorldMapImage from './images/map_world.png'
@@ -33,13 +33,13 @@ import styles from './style.less'
 // }
 
 interface PointProps {
-  icon: ReactNode
+  icon: string
 }
 
 function Point({ icon, children }: PropsWithChildren<PointProps>) {
   return (
     <li className={styles.point}>
-      <div className={styles.icon}>{icon}</div>
+      <img src={icon} className={styles.icon} alt="icon" />
       <div className={styles.text}>{children}</div>
     </li>
   )
@@ -51,10 +51,10 @@ export default function Coverage() {
     <Section header="国内外优质节点覆盖，用户随处可用" title="节点覆盖" name="coverage">
       <div className={styles.coverage}>
         <ul className={styles.container}>
-          <Point icon={<NodeIcon1 />}>全球 <span className={styles.highlight}>2000</span> 节点</Point>
-          <Point icon={<NodeIcon2 />}><span className={styles.highlight}>20+</span> 运营商覆盖</Point>
-          <Point icon={<NodeIcon3 />}>访问提速 <span className={styles.highlight}>80%</span></Point>
-          <Point icon={<NodeIcon4 />}><span className={styles.highlight}>100 万</span> 客户选择</Point>
+          <Point icon={nodeIcon1}>全球 <span className={styles.highlight}>2000</span> 节点</Point>
+          <Point icon={nodeIcon2}><span className={styles.highlight}>20+</span> 运营商覆盖</Point>
+          <Point icon={nodeIcon3}>访问提速 <span className={styles.highlight}>80%</span></Point>
+          <Point icon={nodeIcon4}><span className={styles.highlight}>100 万</span> 客户选择</Point>
         </ul>
         {/* 网信办要检查，暂时隐藏中国地图和世界地图 */}
         {/* <div className={classnames(styles.map, coverageType === CoverageType.China ? styles.china : styles.world)}>

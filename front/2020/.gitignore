@@ -1,12 +1,12 @@
-node_modules
-.next
-out
-dist
-spock/docker/dist
+/node_modules
+/.next
+/out
+/dist
+/spock/docker/dist
 .DS_Store
-.env.local
-coverage
+/.env.local
+/coverage
 
 # IDE Configuration
-.vscode
-.idea
+/.vscode
+/.idea

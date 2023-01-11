@@ -7,6 +7,7 @@ import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import PlsvAdvantage from 'components/pages/plsv-solution/Advantage'
@@ -20,14 +21,17 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 
-import imgBanner from './images/banner.png'
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const title = `${nameMap[Solution.Plsv]}解决方案`
 
 function PageContent() {
+  const isMobile = useMobile()
 
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
@@ -43,9 +47,8 @@ function PageContent() {
         title={title}
         desc="七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，
         集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <Navigator>{btns.nav}</Navigator>
@@ -88,14 +91,16 @@ function PageContent() {
 
 export default function PlsvPage({ globalBanners }: Props) {
   return (
-    <Layout
-      title="短视频解决方案_短视频服务_短视频"
-      keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
-      description="七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。"
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="短视频解决方案_短视频服务_短视频"
+        keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
+        description="七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

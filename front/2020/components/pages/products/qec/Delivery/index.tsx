@@ -8,12 +8,13 @@ import { Row } from 'components/UI/Card'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 import { useMobile } from 'hooks/ua'
 
-import Img1 from './img1.svg'
-import Img2 from './img2.svg'
+import img1 from './img1.png'
+import img2 from './img2.png'
 
 import styles from './style.less'
 
@@ -25,8 +26,8 @@ export default function Delivery() {
   return (
     <Section name="delivery" title="交付模式">
       <Row>
-        <Card img={<Img1 />} title="订阅模式" desc="无需自建资源池，无需动手运维，省时省力，价格实惠。" />
-        <Card img={<Img2 />} title="授权模式" desc="一体机或 License 授权交付，提供企业云化的基础环境，快速改造上云。" />
+        <Card img={<FeatureIcon src={img1} />} title="订阅模式" desc="无需自建资源池，无需动手运维，省时省力，价格实惠。" />
+        <Card img={<FeatureIcon src={img2} />} title="授权模式" desc="一体机或 License 授权交付，提供企业云化的基础环境，快速改造上云。" />
       </Row>
     </Section>
   )
@@ -49,14 +50,14 @@ function Mobile() {
     <Feature name="delivery" title="交付模式" withTailPadding>
       <FeatureGroup>
         <FeatureItem
-          icon={<Img1 />}
+          icon={<FeatureIcon src={img1} />}
           title="订阅模式"
           align="left"
         >
           <FeatureDesc>无需自建资源池，无需动手运维，省时省力，价格实惠。</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<Img2 />}
+          icon={<FeatureIcon src={img2} />}
           title="授权模式"
           align="left"
         >

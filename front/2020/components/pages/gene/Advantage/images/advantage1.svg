@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62">
-  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
-    <path stroke="#00AAE7" d="M36,38 L36,46 C36,49.314 41.373,52 48,52 C54.627,52 60,49.314 60,46 L60,38"/>
-    <path stroke="#00AAE7" d="M36,46 L36,54 C36,57.314 41.373,60 48,60 C54.627,60 60,57.314 60,54 L60,46"/>
-    <ellipse cx="48" cy="38" stroke="#00AAE7" stroke-linecap="square" rx="12" ry="6"/>
-    <polyline stroke="#333" stroke-linecap="square" points="26 12 26 26 11 26"/>
-    <path stroke="#333" stroke-linecap="square" d="M30.001,51.694 C28.696,51.896 27.36,52 26,52 C11.641,52 0,40.359 0,26 C0,11.641 11.641,0 26,0 C40.359,0 52,11.641 52,26"/>
-  </g>
-</svg>

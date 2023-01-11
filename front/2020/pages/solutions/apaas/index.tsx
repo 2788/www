@@ -45,7 +45,7 @@ function Page() {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: showWechatConsultModal, children: '立即咨询', type: 'primary' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   return (
@@ -53,9 +53,9 @@ function Page() {
       <PageBanner
         title={title}
         desc="七牛音视频低代码工厂覆盖泛娱乐互动直播、电商直播带货、语聊房、在线教育等多应用场景，基于七牛云音视频、AI智能算法和网络等先进技术，提供易接入、强扩展、高效部署和覆盖多场景的音视频服务，助力企业快速搭建高品质的专属音视频业务平台。"
-        bgColor="#213149"
         btns={btns.banner}
-        bgImgUrl={isMobile ? mobileBanner : pcBanner} />
+        bgImgUrl={isMobile ? mobileBanner : pcBanner}
+      />
 
       <Navigator>{btns.nav}</Navigator>
 

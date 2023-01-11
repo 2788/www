@@ -9,28 +9,27 @@ import React from 'react'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import IndustryIconOne from './industry-icon-one.svg'
-import IndustryIconTwo from './industry-icon-two.svg'
-import IndustryIconThree from './industry-icon-three.svg'
-
-import styles from './style.less'
+import industryIconOne from './industry-icon-one.png'
+import industryIconTwo from './industry-icon-two.png'
+import industryIconThree from './industry-icon-three.png'
 
 export default function EssIndustry() {
   return (
     <Feature name="industry" title="行业痛点" grey>
       <FeatureGroup>
         <FeatureItem
-          icon={<IndustryIconOne className={styles.icon} />}
+          icon={<FeatureIcon src={industryIconOne} />}
           title="网络链路容错差"
           align="left"
         >
           <FeatureDesc>监控视频直接上传至中心云存储，因链路路由和网络抖动等问题造成网络容错性低，链路不可靠</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<IndustryIconTwo className={styles.icon} />}
+          icon={<FeatureIcon src={industryIconTwo} />}
           title="带宽利用率低"
           align="left"
         >
@@ -38,7 +37,7 @@ export default function EssIndustry() {
         </FeatureItem>
 
         <FeatureItem
-          icon={<IndustryIconThree className={styles.icon} />}
+          icon={<FeatureIcon src={industryIconThree} />}
           title="本地存储受限"
           align="left"
         >

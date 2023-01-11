@@ -15,8 +15,10 @@ import { host } from 'constants/env'
 import { Product, urlMap } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
+import { useMobile } from 'hooks/ua'
 import { useUserInfo } from 'components/UserInfo'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import Navigator from 'components/Product/Navigator'
 import PageBanner from 'components/Product/PageBanner'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -25,7 +27,8 @@ import FeatureList from 'components/pages/geek/Feature'
 import SceneList from 'components/pages/geek/Scene'
 import Comparison from 'components/pages/geek/Comparison'
 
-import BannerIcon from './banner.png'
+import bannerPc from './banner-pc.jpg'
+import bannerMobile from './banner-mobile.jpg'
 
 const pageInfo = {
   layoutTitle: '低延时直播 Geek_快直播',
@@ -71,6 +74,7 @@ function getUrls() {
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
   const user = useUserInfo()
   const urls = getUrls()
 
@@ -92,9 +96,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title={pageInfo.bannerTitle}
         desc={pageInfo.description}
-        bgColor="#34A1EC"
         btns={bannerBtns.banner}
-        icon={BannerIcon}
+        bgImgUrl={isMobile ? bannerMobile : bannerPc}
       />
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{bannerBtns.nav}</Navigator>
@@ -108,14 +111,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function GeekPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title={pageInfo.layoutTitle}
-      keywords={pageInfo.keywords}
-      description={pageInfo.description}
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title={pageInfo.layoutTitle}
+        keywords={pageInfo.keywords}
+        description={pageInfo.description}
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

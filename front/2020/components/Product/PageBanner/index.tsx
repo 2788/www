@@ -4,8 +4,9 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React, { ReactNode, CSSProperties } from 'react'
+import React, { ReactNode, CSSProperties, useContext } from 'react'
 import classnames from 'classnames'
+import { headerThemeContext } from 'components/Header/Pc'
 
 import { useMobile } from 'hooks/ua'
 
@@ -19,21 +20,23 @@ export interface IPageBannerProps {
   /** @deprecated 后面 icon 会删掉，全部替换成背景图 `bgImgUrl` 的方式 */
   icon?: ReactNode
   bgImgUrl?: string
-  /** 是否浅色风格，默认为深色风格 light = fasle（浅色风格文字为深色） */
-  light?: boolean
 }
 
-export const defaultProps: IPageBannerProps = {
+export const defaultProps: Partial<IPageBannerProps> = {
   title: '七牛云',
   desc: '连接数据，重塑价值',
-  bgColor: '#34A1EC',
   btns: [],
   icon: null,
   bgImgUrl: ''
 }
 
 export default function PageBanner(props: IPageBannerProps) {
-  const { title, desc, bgColor, btns, icon, bgImgUrl, light = false } = { ...defaultProps, ...props }
+  const themeType = useContext(headerThemeContext)
+  const light = themeType === 'light'
+  const {
+    title, desc, btns, icon, bgImgUrl,
+    bgColor = (light ? '#B8DFFE' : '#213149')
+  } = { ...defaultProps, ...props }
   const isMobile = useMobile()
   const isBtnsValid = btns && btns.length
   const pcBanner = bgImgUrl && !isMobile

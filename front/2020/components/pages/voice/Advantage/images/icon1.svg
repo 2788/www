@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="59" height="49" viewBox="0 0 59 49">
-  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(2 2)">
-    <polyline stroke="#00AAE7" points="0 31 13 42 45 0"/>
-    <line x1="56" x2="48" y1="16" y2="16" stroke="#333"/>
-    <line x1="56" x2="41" y1="26" y2="26" stroke="#333"/>
-    <line x1="56" x2="33" y1="36" y2="36" stroke="#333"/>
-    <line x1="56" x2="26" y1="46" y2="46" stroke="#333"/>
-  </g>
-</svg>

@@ -223,8 +223,8 @@ export function Link(props: IFeatureLinkProps) {
   return renderMain()
 }
 
-export function Icon({ src, alt }: { src: string, alt: string }) {
+export function Icon({ src, alt, className }: { src: string, alt?: string, className?: string }) {
   return (
-    <img className={styles.icon} src={src} alt={alt} />
+    <img className={classnames(styles.icon, className)} src={src} alt={alt ?? 'icon'} />
   )
 }

@@ -11,16 +11,15 @@ import { useMobile } from 'hooks/ua'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import AdvantageIconOne from './advantage-icon-one.svg'
-import AdvantageIconTwo from './advantage-icon-two.svg'
-import AdvantageIconThree from './advantage-icon-three.svg'
-import AdvantageIconFour from './advantage-icon-four.svg'
-import AdvantageIconFive from './advantage-icon-five.svg'
-
-import styles from './style.less'
+import advantageIconOne from './advantage-icon-one.png'
+import advantageIconTwo from './advantage-icon-two.png'
+import advantageIconThree from './advantage-icon-three.png'
+import advantageIconFour from './advantage-icon-four.png'
+import advantageIconFive from './advantage-icon-five.png'
 
 export default function KodoeAdvantage() {
   const isMobile = useMobile()
@@ -29,7 +28,7 @@ export default function KodoeAdvantage() {
     <Feature name="advantage" title="方案优势" header="私有云存储优势">
       <FeatureGroup>
         <FeatureItem
-          icon={<AdvantageIconOne className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconOne} />}
           title="灵活的扩展性"
           align="left"
         >
@@ -37,7 +36,7 @@ export default function KodoeAdvantage() {
           <FeatureDesc preIcon="check">随着节点数的增加，性能可以随容量增长线性扩展</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<AdvantageIconTwo className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconTwo} />}
           title="加速企业 IT 架构革新"
           align="left"
         >
@@ -47,7 +46,7 @@ export default function KodoeAdvantage() {
         </FeatureItem>
 
         <FeatureItem
-          icon={<AdvantageIconThree className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconThree} />}
           title="成熟可靠的存储"
           align="left"
         >
@@ -59,7 +58,7 @@ export default function KodoeAdvantage() {
 
       <FeatureGroup>
         <FeatureItem
-          icon={<AdvantageIconFour className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconFour} />}
           title="集成多媒体计算"
           align="left"
         >
@@ -67,7 +66,7 @@ export default function KodoeAdvantage() {
           <FeatureDesc preIcon="check">支持自定义数据处理应用、兼容接口协议即可集成</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<AdvantageIconFive className={styles.icon} />}
+          icon={<FeatureIcon src={advantageIconFive} />}
           title="显著降低成本"
           align="left"
         >

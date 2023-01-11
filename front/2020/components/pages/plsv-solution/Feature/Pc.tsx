@@ -7,13 +7,19 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 
-import FeatureIconFilter from './feature-icon-filter.svg'
-import FeatureIconFace from './feature-icon-face.svg'
-import FeatureIconTiktok from './feature-icon-tiktok.svg'
-import FeatureIconAR from './feature-icon-ar.svg'
-import FeatureIconTime from './feature-icon-time.svg'
+import featureIconFilter from './feature-icon-filter.png'
+import featureIconFace from './feature-icon-face.png'
+import featureIconTiktok from './feature-icon-tiktok.png'
+import featureIconAR from './feature-icon-ar.png'
+import featureIconTime from './feature-icon-time.png'
 
 import styles from './style.less'
+
+function Icon({ src }: { src: string }) {
+  return (
+    <img className={styles.tabIcon} src={src} alt="icon" />
+  )
+}
 
 export default function Pc() {
   const [active, setActive] = useState<string>('filter')
@@ -100,7 +106,7 @@ export default function Pc() {
               setActive('filter')
             }}
           >
-            <FeatureIconFilter className={styles.tabIcon} />
+            <Icon src={featureIconFilter} />
             <div className={styles.tabTitle}>专业滤镜</div>
           </div>
           <div
@@ -109,7 +115,7 @@ export default function Pc() {
               setActive('face')
             }}
           >
-            <FeatureIconFace className={styles.tabIcon} />
+            <Icon src={featureIconFace} />
             <div className={styles.tabTitle}>人脸识别</div>
           </div>
           <div
@@ -118,7 +124,7 @@ export default function Pc() {
               setActive('tiktok')
             }}
           >
-            <FeatureIconTiktok className={styles.tabIcon} />
+            <Icon src={featureIconTiktok} />
             <div className={styles.tabTitle}>抖音特效</div>
           </div>
           <div
@@ -127,7 +133,7 @@ export default function Pc() {
               setActive('ar')
             }}
           >
-            <FeatureIconAR className={styles.tabIcon} />
+            <Icon src={featureIconAR} />
             <div className={styles.tabTitle}>AR 特效</div>
           </div>
           <div
@@ -136,7 +142,7 @@ export default function Pc() {
               setActive('time')
             }}
           >
-            <FeatureIconTime className={styles.tabIcon} />
+            <Icon src={featureIconTime} />
             <div className={styles.tabTitle}>时光轴特效</div>
           </div>
         </div>

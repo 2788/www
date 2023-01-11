@@ -9,28 +9,27 @@ import React from 'react'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import UniqueIconOne from './unique-icon-one.svg'
-import UniqueIconTwo from './unique-icon-two.svg'
-import UniqueIconThree from './unique-icon-three.svg'
-
-import styles from './style.less'
+import uniqueIconOne from './unique-icon-one.png'
+import uniqueIconTwo from './unique-icon-two.png'
+import uniqueIconThree from './unique-icon-three.png'
 
 export default function EssUnique() {
   return (
     <Feature name="unique" title="独特功能">
       <FeatureGroup>
         <FeatureItem
-          icon={<UniqueIconOne className={styles.icon} />}
+          icon={<FeatureIcon src={uniqueIconOne} />}
           title="就近高速上传"
           align="left"
         >
           <FeatureDesc>选取就近边缘节点，多维调度智能选取优质链路，保障监控视频数据上传至边缘</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<UniqueIconTwo className={styles.icon} />}
+          icon={<FeatureIcon src={uniqueIconTwo} />}
           title="自动同步中心"
           align="left"
         >
@@ -38,7 +37,7 @@ export default function EssUnique() {
         </FeatureItem>
 
         <FeatureItem
-          icon={<UniqueIconThree className={styles.icon} />}
+          icon={<FeatureIcon src={uniqueIconThree} />}
           title="全网实时查看"
           align="left"
         >

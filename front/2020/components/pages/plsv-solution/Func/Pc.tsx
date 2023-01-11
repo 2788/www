@@ -9,54 +9,60 @@ import React from 'react'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 
 // 采集处理 tab icon
-import FuncIconTabOneOne from './func-icon-tab-1-1.svg'
-import FuncIconTabOneTwo from './func-icon-tab-1-2.svg'
-import FuncIconTabOneThree from './func-icon-tab-1-3.svg'
-import FuncIconTabOneFour from './func-icon-tab-1-4.svg'
-import FuncIconTabOneFive from './func-icon-tab-1-5.svg'
-import FuncIconTabOneSix from './func-icon-tab-1-6.svg'
-import FuncIconTabOneSeven from './func-icon-tab-1-7.svg'
-import FuncIconTabOneEight from './func-icon-tab-1-8.svg'
-import FuncIconTabOneNine from './func-icon-tab-1-9.svg'
-import FuncIconTabOneTen from './func-icon-tab-1-10.svg'
+import funcIconTabOneOne from './func-icon-tab-1/1.png'
+import funcIconTabOneTwo from './func-icon-tab-1/2.png'
+import funcIconTabOneThree from './func-icon-tab-1/3.png'
+import funcIconTabOneFour from './func-icon-tab-1/4.png'
+import funcIconTabOneFive from './func-icon-tab-1/5.png'
+import funcIconTabOneSix from './func-icon-tab-1/6.png'
+import funcIconTabOneSeven from './func-icon-tab-1/7.png'
+import funcIconTabOneEight from './func-icon-tab-1/8.png'
+import funcIconTabOneNine from './func-icon-tab-1/9.png'
+import funcIconTabOneTen from './func-icon-tab-1/10.png'
 
 // 编辑上传 tab icon
-import FuncIconTabTwoOne from './func-icon-tab-2-1.svg'
-import FuncIconTabTwoTwo from './func-icon-tab-2-2.svg'
-import FuncIconTabTwoThree from './func-icon-tab-2-3.svg'
-import FuncIconTabTwoFour from './func-icon-tab-2-4.svg'
-import FuncIconTabTwoFive from './func-icon-tab-2-5.svg'
-import FuncIconTabTwoSix from './func-icon-tab-2-6.svg'
-import FuncIconTabTwoSeven from './func-icon-tab-2-7.svg'
-import FuncIconTabTwoEight from './func-icon-tab-2-8.svg'
-import FuncIconTabTwoNine from './func-icon-tab-2-9.svg'
-import FuncIconTabTwoTen from './func-icon-tab-2-10.svg'
+import funcIconTabTwoOne from './func-icon-tab-2/1.png'
+import funcIconTabTwoTwo from './func-icon-tab-2/2.png'
+import funcIconTabTwoThree from './func-icon-tab-2/3.png'
+import funcIconTabTwoFour from './func-icon-tab-2/4.png'
+import funcIconTabTwoFive from './func-icon-tab-2/5.png'
+import funcIconTabTwoSix from './func-icon-tab-2/6.png'
+import funcIconTabTwoSeven from './func-icon-tab-2/7.png'
+import funcIconTabTwoEight from './func-icon-tab-2/8.png'
+import funcIconTabTwoNine from './func-icon-tab-2/9.png'
+import funcIconTabTwoTen from './func-icon-tab-2/10.png'
 
 // 服务端功能 tab icon
-import FuncIconTabThreeOne from './func-icon-tab-3-1.svg'
-import FuncIconTabThreeTwo from './func-icon-tab-3-2.svg'
-import FuncIconTabThreeThree from './func-icon-tab-3-3.svg'
-import FuncIconTabThreeFour from './func-icon-tab-3-4.svg'
-import FuncIconTabThreeFive from './func-icon-tab-3-5.svg'
-import FuncIconTabThreeSix from './func-icon-tab-3-6.svg'
-import FuncIconTabThreeSeven from './func-icon-tab-3-7.svg'
-import FuncIconTabThreeEight from './func-icon-tab-3-8.svg'
-import FuncIconTabThreeNine from './func-icon-tab-3-9.svg'
-import FuncIconTabThreeTen from './func-icon-tab-3-10.svg'
+import funcIconTabThreeOne from './func-icon-tab-3/1.png'
+import funcIconTabThreeTwo from './func-icon-tab-3/2.png'
+import funcIconTabThreeThree from './func-icon-tab-3/3.png'
+import funcIconTabThreeFour from './func-icon-tab-3/4.png'
+import funcIconTabThreeFive from './func-icon-tab-3/5.png'
+import funcIconTabThreeSix from './func-icon-tab-3/6.png'
+import funcIconTabThreeSeven from './func-icon-tab-3/7.png'
+import funcIconTabThreeEight from './func-icon-tab-3/8.png'
+import funcIconTabThreeNine from './func-icon-tab-3/9.png'
+import funcIconTabThreeTen from './func-icon-tab-3/10.png'
 
 // 播放器功能 tab icon
-import FuncIconTabFourOne from './func-icon-tab-4-1.svg'
-import FuncIconTabFourTwo from './func-icon-tab-4-2.svg'
-import FuncIconTabFourThree from './func-icon-tab-4-3.svg'
-import FuncIconTabFourFour from './func-icon-tab-4-4.svg'
-import FuncIconTabFourFive from './func-icon-tab-4-5.svg'
-import FuncIconTabFourSix from './func-icon-tab-4-6.svg'
-import FuncIconTabFourSeven from './func-icon-tab-4-7.svg'
-import FuncIconTabFourEight from './func-icon-tab-4-8.svg'
-import FuncIconTabFourNine from './func-icon-tab-4-9.svg'
-import FuncIconTabFourTen from './func-icon-tab-4-10.svg'
+import funcIconTabFourOne from './func-icon-tab-4/1.png'
+import funcIconTabFourTwo from './func-icon-tab-4/2.png'
+import funcIconTabFourThree from './func-icon-tab-4/3.png'
+import funcIconTabFourFour from './func-icon-tab-4/4.png'
+import funcIconTabFourFive from './func-icon-tab-4/5.png'
+import funcIconTabFourSix from './func-icon-tab-4/6.png'
+import funcIconTabFourSeven from './func-icon-tab-4/7.png'
+import funcIconTabFourEight from './func-icon-tab-4/8.png'
+import funcIconTabFourNine from './func-icon-tab-4/9.png'
+import funcIconTabFourTen from './func-icon-tab-4/10.png'
 
 import styles from './style.less'
+
+function Icon({ src }: { src: string }) {
+  return (
+    <img className={styles.icon} src={src} alt="icon" />
+  )
+}
 
 export default function Pc() {
   return (
@@ -64,45 +70,45 @@ export default function Pc() {
       <TabPane tab="采集处理" value="1">
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabOneOne className={styles.icon} />
+            <Icon src={funcIconTabOneOne} />
             <p className={styles.desc}>大眼瘦脸</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneTwo className={styles.icon} />
+            <Icon src={funcIconTabOneTwo} />
             <p className={styles.desc}>动态贴纸</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneThree className={styles.icon} />
+            <Icon src={funcIconTabOneThree} />
             <p className={styles.desc}>AR 特效</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneFour className={styles.icon} />
+            <Icon src={funcIconTabOneFour} />
             <p className={styles.desc}>倍数拍摄</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneFive className={styles.icon} />
+            <Icon src={funcIconTabOneFive} />
             <p className={styles.desc}>分段回删</p>
           </div>
         </div>
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabOneSix className={styles.icon} />
+            <Icon src={funcIconTabOneSix} />
             <p className={styles.desc}>美颜滤镜</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneSeven className={styles.icon} />
+            <Icon src={funcIconTabOneSeven} />
             <p className={styles.desc}>面部识别</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneEight className={styles.icon} />
+            <Icon src={funcIconTabOneEight} />
             <p className={styles.desc}>片头片尾</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneNine className={styles.icon} />
+            <Icon src={funcIconTabOneNine} />
             <p className={styles.desc}>水印功能</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabOneTen className={styles.icon} />
+            <Icon src={funcIconTabOneTen} />
             <p className={styles.desc}>特效字幕</p>
           </div>
         </div>
@@ -110,45 +116,45 @@ export default function Pc() {
       <TabPane tab="编辑上传" value="2">
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabTwoOne className={styles.icon} />
+            <Icon src={funcIconTabTwoOne} />
             <p className={styles.desc}>抖音特效</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoTwo className={styles.icon} />
+            <Icon src={funcIconTabTwoTwo} />
             <p className={styles.desc}>背景音乐</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoThree className={styles.icon} />
+            <Icon src={funcIconTabTwoThree} />
             <p className={styles.desc}>配音录制</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoFour className={styles.icon} />
+            <Icon src={funcIconTabTwoFour} />
             <p className={styles.desc}>时光特效</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoFive className={styles.icon} />
+            <Icon src={funcIconTabTwoFive} />
             <p className={styles.desc}>本地转码</p>
           </div>
         </div>
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabTwoSix className={styles.icon} />
+            <Icon src={funcIconTabTwoSix} />
             <p className={styles.desc}>断点续传</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoSeven className={styles.icon} />
+            <Icon src={funcIconTabTwoSeven} />
             <p className={styles.desc}>视频剪裁</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoEight className={styles.icon} />
+            <Icon src={funcIconTabTwoEight} />
             <p className={styles.desc}>视频拼接</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoNine className={styles.icon} />
+            <Icon src={funcIconTabTwoNine} />
             <p className={styles.desc}>音频裁剪</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabTwoTen className={styles.icon} />
+            <Icon src={funcIconTabTwoTen} />
             <p className={styles.desc}>转场动画</p>
           </div>
         </div>
@@ -156,45 +162,45 @@ export default function Pc() {
       <TabPane tab="服务端功能" value="3">
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabThreeOne className={styles.icon} />
+            <Icon src={funcIconTabThreeOne} />
             <p className={styles.desc}>播放鉴权</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeTwo className={styles.icon} />
+            <Icon src={funcIconTabThreeTwo} />
             <p className={styles.desc}>CDN 加速</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeThree className={styles.icon} />
+            <Icon src={funcIconTabThreeThree} />
             <p className={styles.desc}>DRM 数字版权保护</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeFour className={styles.icon} />
+            <Icon src={funcIconTabThreeFour} />
             <p className={styles.desc}>服务端转码</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeFive className={styles.icon} />
+            <Icon src={funcIconTabThreeFive} />
             <p className={styles.desc}>回源鉴权</p>
           </div>
         </div>
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabThreeSix className={styles.icon} />
+            <Icon src={funcIconTabThreeSix} />
             <p className={styles.desc}>鉴黄监控</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeSeven className={styles.icon} />
+            <Icon src={funcIconTabThreeSeven} />
             <p className={styles.desc}>媒体管理</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeEight className={styles.icon} />
+            <Icon src={funcIconTabThreeEight} />
             <p className={styles.desc}>秒开支持</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeNine className={styles.icon} />
+            <Icon src={funcIconTabThreeNine} />
             <p className={styles.desc}>视频存储</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabThreeTen className={styles.icon} />
+            <Icon src={funcIconTabThreeTen} />
             <p className={styles.desc}>水印功能</p>
           </div>
         </div>
@@ -202,45 +208,45 @@ export default function Pc() {
       <TabPane tab="播放器功能" value="4">
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabFourOne className={styles.icon} />
+            <Icon src={funcIconTabFourOne} />
             <p className={styles.desc}>倍数播放</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourTwo className={styles.icon} />
+            <Icon src={funcIconTabFourTwo} />
             <p className={styles.desc}>变速不变调</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourThree className={styles.icon} />
+            <Icon src={funcIconTabFourThree} />
             <p className={styles.desc}>边下边播</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourFour className={styles.icon} />
+            <Icon src={funcIconTabFourFour} />
             <p className={styles.desc}>播放缓存</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourFive className={styles.icon} />
+            <Icon src={funcIconTabFourFive} />
             <p className={styles.desc}>DRM 数字保护</p>
           </div>
         </div>
         <div className={styles.group}>
           <div className={styles.item}>
-            <FuncIconTabFourSix className={styles.icon} />
+            <Icon src={funcIconTabFourSix} />
             <p className={styles.desc}>H.265</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourSeven className={styles.icon} />
+            <Icon src={funcIconTabFourSeven} />
             <p className={styles.desc}>鉴黄监控</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourEight className={styles.icon} />
+            <Icon src={funcIconTabFourEight} />
             <p className={styles.desc}>截取封面</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourNine className={styles.icon} />
+            <Icon src={funcIconTabFourNine} />
             <p className={styles.desc}>秒开支持</p>
           </div>
           <div className={styles.item}>
-            <FuncIconTabFourTen className={styles.icon} />
+            <Icon src={funcIconTabFourTen} />
             <p className={styles.desc}>软硬解自动</p>
           </div>
         </div>

@@ -2,8 +2,10 @@ import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
+import { useMobile } from 'hooks/ua'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -19,11 +21,14 @@ import Advantage from 'components/pages/waf/Advantage'
 import Scenes from 'components/pages/waf/Scene'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import Section from 'components/Product/Section'
-import imgBanner from './images/banner.png'
+
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const btns = useBtns(
     { children: '立即购买', href: 'https://portal.qiniu.com/qvm/security/waf' },
@@ -40,7 +45,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         title="Web 应用防火墙"
         desc="Web 应用防火墙对网站或者 APP 的业务流量进行恶意特征识别及防护，将正常、安全的流量回源到服务器。避免网站服务器被恶意入侵，保障业务的核心数据安全，解决因恶意攻击导致的服务器性能异常问题。"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{btns.nav}</Navigator>
@@ -75,14 +80,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function Page({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="Web 应用防火墙"
-      keywords="Web 应用防火墙, WAF, Web 应用防火墙价格, 网站防火墙, 网站安全防护"
-      description="Web 应用防火墙对网站或者 APP 的业务流量进行恶意特征识别及防护，将正常、安全的流量回源到服务器。避免网站服务器被恶意入侵，保障业务的核心数据安全，解决因恶意攻击导致的服务器性能异常问题。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="light">
+      <Layout
+        title="Web 应用防火墙"
+        keywords="Web 应用防火墙, WAF, Web 应用防火墙价格, 网站防火墙, 网站安全防护"
+        description="Web 应用防火墙对网站或者 APP 的业务流量进行恶意特征识别及防护，将正常、安全的流量回源到服务器。避免网站服务器被恶意入侵，保障业务的核心数据安全，解决因恶意攻击导致的服务器性能异常问题。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

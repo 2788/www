@@ -6,13 +6,13 @@ import React, { useState } from 'react'
 import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
 import { RawAccessProcess as AccessProcess, Step as AccessStep } from 'components/Product/AccessProcess'
 import Section from 'components/Product/Section'
-import IconStep1 from './step-1.svg'
-import IconStep2 from './step-2.svg'
-import IconStep3 from './step-3.svg'
-import IconStep4 from './step-4.svg'
-import IconStep5 from './step-5.svg'
-import IconStep6 from './step-6.svg'
-import IconStep7 from './step-7.svg'
+import iconStep1 from './step-1.png'
+import iconStep2 from './step-2.png'
+import iconStep3 from './step-3.png'
+import iconStep4 from './step-4.png'
+import iconStep5 from './step-5.png'
+import iconStep6 from './step-6.png'
+import iconStep7 from './step-7.png'
 import style from './style.less'
 
 enum ProcessType {
@@ -27,6 +27,12 @@ const typeTextMap = {
   [ProcessType.CardCompare]: '人证对比'
 }
 
+function Icon({ src }: { src: string }) {
+  return (
+    <img src={src} alt="icon" />
+  )
+}
+
 export default function FaceIdUsage() {
 
   const [activeType, setActiveType] = useState(ProcessType.IdAuth)
@@ -34,19 +40,19 @@ export default function FaceIdUsage() {
   const processIdAuthView = (
     <div style={{ display: activeType === ProcessType.IdAuth ? 'block' : 'none' }}>
       <AccessProcess>
-        <AccessStep icon={<IconStep1 />}>
+        <AccessStep icon={<Icon src={iconStep1} />}>
           扫描身份证
           <p className={style.op}>OCR</p>
         </AccessStep>
-        <AccessStep icon={<IconStep2 />}>
+        <AccessStep icon={<Icon src={iconStep2} />}>
           活体检测自拍视频
           <p className={style.op}>活体识别</p>
         </AccessStep>
-        <AccessStep icon={<IconStep3 />}>
+        <AccessStep icon={<Icon src={iconStep3} />}>
           公安权威核验
           <p className={style.op}>身份验证/人脸对比</p>
         </AccessStep>
-        <AccessStep icon={<IconStep4 />}>认证成功</AccessStep>
+        <AccessStep icon={<Icon src={iconStep4} />}>认证成功</AccessStep>
       </AccessProcess>
     </div>
   )
@@ -54,15 +60,15 @@ export default function FaceIdUsage() {
   const processFaceCompareView = (
     <div style={{ display: activeType === ProcessType.FaceCompare ? 'block' : 'none' }}>
       <AccessProcess>
-        <AccessStep icon={<IconStep2 />}>
+        <AccessStep icon={<Icon src={iconStep2} />}>
           活体检测自拍视频
           <p className={style.op}>活体识别</p>
         </AccessStep>
-        <AccessStep icon={<IconStep5 />}>
+        <AccessStep icon={<Icon src={iconStep5} />}>
           客户预留照片
           <p className={style.op}>人脸对比</p>
         </AccessStep>
-        <AccessStep icon={<IconStep4 />}>认证成功</AccessStep>
+        <AccessStep icon={<Icon src={iconStep4} />}>认证成功</AccessStep>
       </AccessProcess>
     </div>
   )
@@ -70,18 +76,18 @@ export default function FaceIdUsage() {
   const processCardCompareView = (
     <div style={{ display: activeType === ProcessType.CardCompare ? 'block' : 'none' }}>
       <AccessProcess>
-        <AccessStep icon={<IconStep1 />}>
+        <AccessStep icon={<Icon src={iconStep1} />}>
           扫描身份证
           <p className={style.op}>OCR</p>
         </AccessStep>
-        <AccessStep icon={<IconStep6 />}>
+        <AccessStep icon={<Icon src={iconStep6} />}>
           自拍视频/自拍照片
         </AccessStep>
-        <AccessStep icon={<IconStep7 />}>
+        <AccessStep icon={<Icon src={iconStep7} />}>
           人证对比
           <p className={style.op}>人脸对比</p>
         </AccessStep>
-        <AccessStep icon={<IconStep4 />}>
+        <AccessStep icon={<Icon src={iconStep4} />}>
           认证成功
         </AccessStep>
       </AccessProcess>

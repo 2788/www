@@ -7,6 +7,7 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 
 import { Product } from 'constants/products'
@@ -17,6 +18,7 @@ import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
@@ -26,11 +28,13 @@ import Scene from 'components/pages/cloud-sql/Scene'
 import ProductChoose from 'components/pages/cloud-sql/ProductChoose'
 import QvmCommonCases from 'components/pages/qvm/Cases'
 
-import banner from './banner.png'
+import bannerPc from './banner-pc.jpg'
+import bannerMobile from './banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const priceCalculatorUrl = urlForPrice(Product.Qvm, true)
   const priceUrl = urlForPrice(Product.Qvm)
@@ -50,9 +54,9 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="云数据库"
         desc="基于七牛云积累多年的数据库研发、搭建和维护经验，为您打造高可用、高性能、即开即用、弹性伸缩的云数据库服务，拥有容灾、备份、恢复、安防、监控、迁移等全方位解决方案。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={banner} />
+        bgImgUrl={isMobile ? bannerMobile : bannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -88,14 +92,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function CloudSql({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="云数据库"
-      keywords="七牛云, 数据库, 云数据库, 高可用, 高性能, 弹性伸缩, 容灾, 备份, 恢复, 安防, 监控, 迁移, PolarDB, RDS MySQL, RDS SQL, Redis, MongoDB"
-      description="基于七牛云积累多年的数据库研发、搭建和维护经验，为您打造高可用、高性能、即开即用、弹性伸缩的云数据库服务，拥有容灾、备份、恢复、安防、监控、迁移等全方位解决方案。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="云数据库"
+        keywords="七牛云, 数据库, 云数据库, 高可用, 高性能, 弹性伸缩, 容灾, 备份, 恢复, 安防, 监控, 迁移, PolarDB, RDS MySQL, RDS SQL, Redis, MongoDB"
+        description="基于七牛云积累多年的数据库研发、搭建和维护经验，为您打造高可用、高性能、即开即用、弹性伸缩的云数据库服务，拥有容灾、备份、恢复、安防、监控、迁移等全方位解决方案。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

@@ -9,8 +9,10 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
+import { useMobile } from 'hooks/ua'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
@@ -30,7 +32,8 @@ import Scene from 'components/pages/voice/Scene'
 
 import ProductPage from '../[product]'
 
-import imgBanner from './images/banner.png'
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
 
 const pageInfo = {
   layoutTitle: '智能语音_语音识别_录音识别_一句话识别_实时语音识别_语音合成_声纹识别',
@@ -43,6 +46,7 @@ const pageInfo = {
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const priceUrl = urlForPrice(Product.Voice)
 
@@ -60,9 +64,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'produc
       <PageBanner
         title={pageInfo.bannerTitle}
         desc={pageInfo.description}
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <ProductNotice {...(currentNotices || notices)} />
@@ -96,14 +99,16 @@ export default function Main({ globalBanners, productInfo, iconMap, ...pageProps
   }
 
   return (
-    <Layout
-      title={pageInfo.layoutTitle}
-      keywords={pageInfo.keywords}
-      description={pageInfo.description}
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title={pageInfo.layoutTitle}
+        keywords={pageInfo.keywords}
+        description={pageInfo.description}
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

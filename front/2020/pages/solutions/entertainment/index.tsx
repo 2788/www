@@ -7,6 +7,7 @@ import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -14,12 +15,14 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Cases, { Case } from 'components/Solution/Cases'
 
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Scene from 'components/pages/entertainment/Scene'
 import Advantage from 'components/pages/entertainment/Advantage'
 
-import imgBanner from './_images/banner.png'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
 import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.png'
 
@@ -28,6 +31,7 @@ const title = `${nameMap[Solution.Entertainment]}解决方案`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
@@ -39,9 +43,8 @@ function PageContent() {
       <PageBanner
         title={title}
         desc="七牛云提供泛娱乐一站式解决方案，覆盖内容生产、处理、审核、存储、分发的全业务流程，助力企业快速构建泛娱乐应用。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <Navigator>{btns.nav}</Navigator>
@@ -72,14 +75,16 @@ function PageContent() {
 
 export default function EntertainmentPage({ globalBanners }: Props) {
   return (
-    <Layout
-      title="泛娱乐_兴趣社区_长视频点播_秀场直播_游戏直播_赛事直播_电台播客"
-      keywords="泛娱乐, 兴趣社区, 长视频点播, 秀场直播, 游戏直播, 赛事直播, 电台播客"
-      description="七牛云提供泛娱乐一站式解决方案，覆盖内容生产、处理、审核、存储、分发的全业务流程，助力企业快速构建泛娱乐应用。"
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="泛娱乐_兴趣社区_长视频点播_秀场直播_游戏直播_赛事直播_电台播客"
+        keywords="泛娱乐, 兴趣社区, 长视频点播, 秀场直播, 游戏直播, 赛事直播, 电台播客"
+        description="七牛云提供泛娱乐一站式解决方案，覆盖内容生产、处理、审核、存储、分发的全业务流程，助力企业快速构建泛娱乐应用。"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

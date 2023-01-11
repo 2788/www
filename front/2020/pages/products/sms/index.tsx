@@ -61,7 +61,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const priceUrl = urlForPrice(Product.Sms)
 
   const btns = useBtns(
-    { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true, type: 'primary' },
+    { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true },
     { children: '售前咨询', onClick: showWechatConsultModal },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
@@ -75,7 +75,6 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="云短信 SMS"
         desc="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
-        bgColor="#213149"
         btns={btns.banner}
         bgImgUrl={isMobile ? mobileBanner : pcBanner}
       />

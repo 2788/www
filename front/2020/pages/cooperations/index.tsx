@@ -5,39 +5,38 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Layout'
+import PageBanner from 'components/Product/PageBanner'
+import { headerThemeContext } from 'components/Header/Pc'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
 import Section from 'components/Product/Section'
 import { Navigatable } from 'components/Product/Navigator'
 import ApplyForm from 'components/pages/cooperations/ApplyForm'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { useMobile } from 'hooks/ua'
 
 import IconStep1 from './_icons/step-1.svg'
 import IconStep2 from './_icons/step-2.svg'
 import IconStep3 from './_icons/step-3.svg'
 
+import imgBannerPc from './banner-pc.jpg'
+import imgBannerMobile from './banner-mobile.jpg'
+
 import style from './style.less'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-export default function CooperationsPage({ globalBanners }: Props) {
+function PageContent() {
+  const isMobile = useMobile()
+
   return (
-    <Layout
-      title="工具、插件、SDK 合作"
-      keywords="工具, 插件, SDK, 开发者, 合作"
-      description="七牛云欢迎广大开发者提交工具、插件、SDK，我们会及时跟进您的提交申请。通过审核的工具、插件、SDK 将会在七牛云开发者中心社区资源上线。并且，您可以免费享受一定额度的云服务一整年。"
-      globalBanners={globalBanners}
-    >
+    <>
       <Navigatable>
-        <div className={style.banner}>
-          <div className={style.bannerContent}>
-            <h1 className={style.title}>工具、插件、SDK 合作</h1>
-            <p className={style.desc}>
-              七牛云欢迎广大开发者提交工具、插件、SDK，我们会及时跟进您的提交申请。
-              通过审核的工具、插件、SDK 将会在七牛云开发者中心社区资源上线。
-              并且，您可以免费享受一定额度的云服务一整年。
-            </p>
-          </div>
-        </div>
+        <PageBanner
+          title="工具、插件、SDK 合作"
+          desc="七牛云欢迎广大开发者提交工具、插件、SDK，我们会及时跟进您的提交申请。通过审核的工具、插件、SDK 将会在七牛云开发者中心社区资源上线。并且，您可以免费享受一定额度的云服务一整年。"
+          bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+        />
+
         <AccessProcess name="process" title="合作流程" grey>
           <Step icon={<IconStep1 />}>
             提交申请
@@ -56,7 +55,22 @@ export default function CooperationsPage({ globalBanners }: Props) {
           <ApplyForm />
         </Section>
       </Navigatable>
-    </Layout>
+    </>
+  )
+}
+
+export default function CooperationsPage({ globalBanners }: Props) {
+  return (
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="工具、插件、SDK 合作"
+        keywords="工具, 插件, SDK, 开发者, 合作"
+        description="七牛云欢迎广大开发者提交工具、插件、SDK，我们会及时跟进您的提交申请。通过审核的工具、插件、SDK 将会在七牛云开发者中心社区资源上线。并且，您可以免费享受一定额度的云服务一整年。"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

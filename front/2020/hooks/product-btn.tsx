@@ -3,10 +3,13 @@
  * @desc 同时生成给 banner & navigator 用的 button
  */
 
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useContext } from 'react'
+
+import { headerThemeContext } from 'components/Header/Pc'
 import Button, { Props } from 'components/UI/Button'
 import { Button as NavButton } from 'components/Product/Navigator'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
+
 import { useMobile, useMp } from './ua'
 
 export type BtnOptions = {
@@ -34,6 +37,7 @@ export type BtnOptions = {
 }
 
 export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
+  const themeType = useContext(headerThemeContext)
   const isMobile = useMobile()
   const isPc = !isMobile
   const isMp = useMp()
@@ -62,9 +66,9 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
 
   // 确保只有一个主要按钮（面形），其余的都为次要按钮（线形）
   const bannerBtnViews = [
-    firstBtnProps && <Button key={0} {...firstBtnProps} />,
+    firstBtnProps && <Button key={0} {...firstBtnProps} type="primary" />,
     ...otherBtnsProps.map((otherBtn, i) => (
-      <Button key={i + 1} type="primary-hollow" withBorder {...otherBtn} />
+      <Button key={i + 1} type={themeType === 'light' ? 'grey-hollow' : 'primary-hollow'} withBorder {...otherBtn} />
     ))
   ].filter(Boolean)
 
@@ -117,10 +121,8 @@ export interface BannerButton {
   mp?: ButtonPlatform<ButtonClickWebLink | ButtonClickMpLink>
 }
 
-/**
- * @param dark 次要按钮是否为深色风格按钮，默认浅色风格
- */
-export function useAdminBtns(buttons: BannerButton[], dark = false) {
+export function useAdminBtns(buttons: BannerButton[]) {
+  const themeType = useContext(headerThemeContext)
   const isMobile = useMobile()
   const isPc = !isMobile
   const isMp = useMp()
@@ -163,7 +165,7 @@ export function useAdminBtns(buttons: BannerButton[], dark = false) {
   const bannerBtnViews = [
     firstBtnProps && <Button key={0} type="primary" {...firstBtnProps} />,
     ...otherBtnsProps.map((otherBtn, i) => (
-      <Button key={i + 1} type={dark ? 'grey-hollow' : 'primary-hollow'} withBorder {...otherBtn} />
+      <Button key={i + 1} type={themeType === 'light' ? 'grey-hollow' : 'primary-hollow'} withBorder {...otherBtn} />
     ))
   ].filter(Boolean)
 

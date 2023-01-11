@@ -8,6 +8,7 @@ import { InferGetServerSidePropsType } from 'next'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
@@ -20,6 +21,7 @@ import ProductNews from 'components/Product/common/ProductNews'
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
+import { useMobile } from 'hooks/ua'
 import Coverage from 'components/pages/qcdn/Coverage'
 import Packages from 'components/pages/qcdn/Packages'
 import CustomerRemarks from 'components/pages/qcdn/CustomerRemarks'
@@ -29,7 +31,8 @@ import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCase
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 import { MpPage } from 'constants/mp'
 
@@ -42,19 +45,21 @@ import QiCheZhiJia from './_images/customer-qichezhijia.png'
 import TanTan from './_images/customer-tantan.png'
 import ZhongXin from './_images/customer-zhongxin.png'
 
-import imgBanner from './_images/banner.png'
-import Advantage1Icon from './_images/advantage1.svg'
-import Advantage2Icon from './_images/advantage2.svg'
-import Advantage3Icon from './_images/advantage3.svg'
-import Advantage4Icon from './_images/advantage4.svg'
-import Advantage5Icon from './_images/advantage5.svg'
-import Advantage6Icon from './_images/advantage6.svg'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
+import advantage1Icon from './_images/advantage1.png'
+import advantage2Icon from './_images/advantage2.png'
+import advantage3Icon from './_images/advantage3.png'
+import advantage4Icon from './_images/advantage4.png'
+import advantage5Icon from './_images/advantage5.png'
+import advantage6Icon from './_images/advantage6.png'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const priceUrl = urlForPrice(Product.Cdn)
 
@@ -73,9 +78,9 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
       <PageBanner
         title="CDN"
         desc="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -92,7 +97,7 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Advantage1Icon />}
+            icon={<FeatureIcon src={advantage1Icon} />}
             title="无盲区覆盖"
           >
             <FeatureDesc>精选主流厂商高质量节点，全面覆盖各地区、各运营商的网络，实现全地域无盲区的覆盖</FeatureDesc>
@@ -100,7 +105,7 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Advantage2Icon />}
+            icon={<FeatureIcon src={advantage2Icon} />}
             title="零故障品控"
           >
             <FeatureDesc>基于第三方 APM 的全网覆盖和七牛自研的监控数据，打造七牛 CDN 零故障质量保障体系</FeatureDesc>
@@ -108,7 +113,7 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Advantage3Icon />}
+            icon={<FeatureIcon src={advantage3Icon} />}
             title="精准智能调度"
           >
             <FeatureDesc>支持 DNS、HTTPDNS、HTTP302 调度模式，有效提高访问响应速度，防止劫持，实现全网实时精准调度</FeatureDesc>
@@ -119,7 +124,7 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Advantage4Icon />}
+            icon={<FeatureIcon src={advantage4Icon} />}
             title="降低回源成本"
           >
             <FeatureDesc>自建中间源，消除跨运营商回源慢甚至不可达等问题，保护源站不受边缘节点请求波动影响，节省回源成本</FeatureDesc>
@@ -127,7 +132,7 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Advantage5Icon />}
+            icon={<FeatureIcon src={advantage5Icon} />}
             title="灵活分时计费"
           >
             <FeatureDesc>日间、闲时、忙时可分开计费，根据使用场景精细化运营，为用户最大化降低成本费用</FeatureDesc>
@@ -135,7 +140,7 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Advantage6Icon />}
+            icon={<FeatureIcon src={advantage6Icon} />}
             title="私有协议优化"
           >
             <FeatureDesc>使用私有传输协议作为 CDN 内部数据交换的基础，确保客户资源在 CDN 内部安全、快速的传输到各个节点，实现客户内容高效、可靠的进行分发</FeatureDesc>
@@ -189,14 +194,16 @@ function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBann
 export default function CdnPage({ globalBanners, ...pageProps }: Props) {
 
   return (
-    <Layout
-      title="CDN_内容分发网络_CDN 网站加速_CDN 服务器_国内 CDN 加速"
-      keywords="高防CDN, 动态CDN, 静态CDN, CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器, 内容分发, 云加速, CDN, 图片CDN, 视频CDN"
-      description="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="light">
+      <Layout
+        title="CDN_内容分发网络_CDN 网站加速_CDN 服务器_国内 CDN 加速"
+        keywords="高防CDN, 动态CDN, 静态CDN, CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器, 内容分发, 云加速, CDN, 图片CDN, 视频CDN"
+        description="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

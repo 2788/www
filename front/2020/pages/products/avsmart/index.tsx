@@ -8,6 +8,7 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
@@ -16,6 +17,7 @@ import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import Navigator from 'components/Product/Navigator'
 import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
@@ -24,7 +26,8 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 import Function from 'components/pages/avsmart/Function'
 import Scene from 'components/pages/avsmart/Scene'
 
-import bannerImg from './banner.png'
+import bannerImgPc from './banner-pc.jpg'
+import bannerImgMobile from './banner-mobile.jpg'
 
 const pageInfo = {
   layoutTitle: '锐智转码_窄带高清_高清低码_画质增强',
@@ -36,6 +39,7 @@ const pageInfo = {
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const bannerBtns = useBtns(
     { href: 'https://developer.qiniu.com/dora/6097/perceptive-transcoding-avsmart-1', children: '立即使用', pcOnly: true },
@@ -51,9 +55,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title={pageInfo.bannerTitle}
         desc={pageInfo.description}
-        bgColor="#34A1EC"
         btns={bannerBtns.banner}
-        icon={bannerImg}
+        bgImgUrl={isMobile ? bannerImgMobile : bannerImgPc}
       />
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{bannerBtns.nav}</Navigator>
@@ -76,14 +79,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function Page({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title={pageInfo.layoutTitle}
-      keywords={pageInfo.keywords}
-      description={pageInfo.description}
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="light">
+      <Layout
+        title={pageInfo.layoutTitle}
+        keywords={pageInfo.keywords}
+        description={pageInfo.description}
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

@@ -36,7 +36,8 @@
       align-items: center;
 
       .itemIcon {
-        width: 120px;
+        width: 80px;
+        line-height: 0;
       }
 
       .itemContent {
@@ -50,9 +51,9 @@
 
   .itemIcon {
     text-align: center;
-    height: 120px;
+    height: 80px;
     font-size: 0;
-    line-height: 120px;
+    line-height: 80px;
   }
 
   .itemContent {
@@ -135,12 +136,6 @@
 }
 
 .mobile {
-  .itemIcon {
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
   .linkItem {
     outline: none;
 
@@ -177,10 +172,15 @@
     flex: 0 1;
     width: 50px;
     height: 60px;
+
     > svg {
       width: 50px;
       height: 60px;
       padding: 0 10px;
+    }
+
+    .icon {
+      margin-top: 10px;
     }
   }
 

@@ -6,10 +6,12 @@ import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import Advantages from 'components/pages/products/qec/Advantages'
@@ -22,11 +24,13 @@ import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNews from 'components/Product/common/ProductNews'
 
-import banner from './_images/banner.png'
+import bannerPc from './_images/banner-pc.jpg'
+import bannerMobile from './_images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
@@ -43,7 +47,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         title="专有云计算 Qiniu Enterprise Cloud"
         desc="七牛专有云计算（QEC）是七牛云为政企、金融、能源等行业提供的，部署在客户本地数据中心或七牛云机房的云基础设施。七牛专有云计算的架构设计和公有云保持一致，兼顾公有云的快速创新能力和私有云的可管可控，以满足企业对业务信息化高性能、高可靠、可扩展、简单易用的诉求。"
         btns={btns.banner}
-        icon={banner} />
+        bgImgUrl={isMobile ? bannerMobile : bannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -62,14 +67,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function Main({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="专有云计算"
-      keywords="专有云计算, QEC, 专有, 云计算"
-      description="七牛专有云计算（QEC）是七牛云为政企、金融、能源等行业提供的，部署在客户本地数据中心或七牛云机房的云基础设施。七牛专有云计算的架构设计和公有云保持一致，兼顾公有云的快速创新能力和私有云的可管可控，以满足企业对业务信息化高性能、高可靠、可扩展、简单易用的诉求。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="专有云计算"
+        keywords="专有云计算, QEC, 专有, 云计算"
+        description="七牛专有云计算（QEC）是七牛云为政企、金融、能源等行业提供的，部署在客户本地数据中心或七牛云机房的云基础设施。七牛专有云计算的架构设计和公有云保持一致，兼顾公有云的快速创新能力和私有云的可管可控，以满足企业对业务信息化高性能、高可靠、可扩展、简单易用的诉求。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

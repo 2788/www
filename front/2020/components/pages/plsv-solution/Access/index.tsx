@@ -8,12 +8,18 @@ import React from 'react'
 
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
 
-import AccessIconOne from './access-icon-one.svg'
-import AccessIconTwo from './access-icon-two.svg'
-import AccessIconThree from './access-icon-three.svg'
+import accessIconOne from './access-icon-one.png'
+import accessIconTwo from './access-icon-two.png'
+import accessIconThree from './access-icon-three.png'
 import ArrowIcon from './arrow.svg'
 
 import styles from './style.less'
+
+function Icon({ src }: { src: string }) {
+  return (
+    <img className={styles.tabIcon} src={src} alt="icon" />
+  )
+}
 
 interface Props {
   onConsult: () => void
@@ -23,15 +29,15 @@ export default function PlsvAccess({ onConsult }: Props) {
   return (
     <>
       <AccessProcess name="access" title="快速接入" header="接入流程">
-        <Step icon={<AccessIconOne />}>
+        <Step icon={<Icon src={accessIconOne} />}>
           <p className={styles.title}>定制方案</p>
           <p className={styles.desc}>1V1 专业咨询，提供定制化解决方案</p>
         </Step>
-        <Step icon={<AccessIconTwo />}>
+        <Step icon={<Icon src={accessIconTwo} />}>
           <p className={styles.title}>测试对接</p>
           <p className={styles.desc}>免费测试，全程监控，快速响应迭代</p>
         </Step>
-        <Step icon={<AccessIconThree />}>
+        <Step icon={<Icon src={accessIconThree} />}>
           <p className={styles.title}>正式上线</p>
           <p className={styles.desc}>1V1 售后服务，确保业务稳定运行</p>
         </Step>

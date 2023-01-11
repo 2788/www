@@ -42,7 +42,7 @@ function Page() {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: showWechatConsultModal, children: '立即咨询', type: 'primary' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   return (
@@ -50,9 +50,9 @@ function Page() {
       <PageBanner
         title={title}
         desc="七牛云企业直播解决方案，覆盖营销、带货、企业培训、活动直播等场景。无需开发即可使用，帮助企业快速集成和接入直播服务，支持与企业自有的会员系统、商城系统进行对接。丰富的互营销互动及数据分析能力，帮助企业实现内容生产、直播数据与流量三方面的闭环。"
-        bgColor="#213149"
         btns={btns.banner}
-        bgImgUrl={isMobile ? mobileBanner : pcBanner} />
+        bgImgUrl={isMobile ? mobileBanner : pcBanner}
+      />
 
       <Navigator>{btns.nav}</Navigator>
 

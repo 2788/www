@@ -3,6 +3,7 @@ import { InferGetServerSidePropsType } from 'next'
 import { Modal } from 'react-icecream'
 
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import { useUserInfo } from 'components/UserInfo'
 import { useUrl } from 'hooks/url'
@@ -12,14 +13,17 @@ import Benefit from 'components/pages/openapi-partner/Benefit'
 import Process from 'components/pages/openapi-partner/Process'
 import Cases from 'components/pages/openapi-partner/Cases'
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 
-import banner from './banner.png'
+import imgBannerPc from './banner-pc.jpg'
+import imgBannerMobile from './banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
   const currentUrl = useUrl()
   const userInfo = useUserInfo()
+  const isMobile = useMobile()
   const handelClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     // 未登录
     if (!userInfo || !userInfo.signedIn) {
@@ -40,9 +44,9 @@ function PageContent() {
       <PageBanner
         title="让我们成为合作伙伴"
         desc="加入我们成为合作伙伴，让我们一起为用户提供更加优质和便捷的服务"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={banner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <Benefit />
 
@@ -55,14 +59,16 @@ function PageContent() {
 
 export default function Partner({ globalBanners }: Props) {
   return (
-    <Layout
-      title="合作申请_合作伙伴_服务商"
-      keywords="合作申请, 合作伙伴, 服务商"
-      description="加入我们成为合作伙伴，让我们一起为用户提供更加优质和便捷的服务"
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="合作申请_合作伙伴_服务商"
+        keywords="合作申请, 合作伙伴, 服务商"
+        description="加入我们成为合作伙伴，让我们一起为用户提供更加优质和便捷的服务"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

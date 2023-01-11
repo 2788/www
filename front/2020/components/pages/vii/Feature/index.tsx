@@ -7,9 +7,9 @@ import React from 'react'
 import { useMobile } from 'hooks/ua'
 import { Card } from 'components/UI/Card'
 import Button from 'components/UI/Button'
-import Feature, { Item, Desc, Link, Group } from 'components/Product/Feature'
-import FeatureIcon1 from './feature1.svg'
-import FeatureIcon2 from './feature2.svg'
+import Feature, { Item, Desc, Link, Group, Icon } from 'components/Product/Feature'
+import featureIcon1 from './feature1.png'
+import featureIcon2 from './feature2.png'
 import styles from './style.less'
 
 interface IFeatureItem {
@@ -31,13 +31,13 @@ const featureGroups: IFeatureGroup[] = [
     children: [
       {
         key: 'feature-1-1',
-        icon: (<FeatureIcon1 />),
+        icon: (<Icon src={featureIcon1} />),
         title: '智能视频/图片标签',
         desc: '通过视频/图片数据的分析挖掘，准确识别视频/图片所包含的内容信息，提取为标签。',
         moreUrl: 'https://developer.qiniu.com/dora/7045/image-video-tag'
       }, {
         key: 'feature-1-2',
-        icon: (<FeatureIcon2 />),
+        icon: (<Icon src={featureIcon2} />),
         title: '语音识别',
         desc: '将已经录制完成的录音文件，识别为文字。',
         moreUrl: 'https://developer.qiniu.com/dora/api/7099/ali-audio-trans'

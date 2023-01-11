@@ -3,7 +3,9 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { useApiWithParams } from 'hooks/api'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -19,11 +21,13 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 import Section from 'components/Product/Section'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 
-import imgBanner from './images/banner.png'
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
@@ -41,7 +45,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         title="美颜特效 SDK"
         desc="美颜特效 SDK 提供包括美颜滤镜、美妆美型、贴纸特效、美体、手势识别、背景分割等功能。可结合七牛云强大的音视频能力，应用于各类短视频拍摄与编辑、直播与实时互动等场景，帮助开发者快速打造一站式视频类业务平台。"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{btns.nav}</Navigator>
@@ -62,14 +67,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function Page({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="美颜特效 SDK_短视频特效 SDK_直播特效 SDK_实时音视频特效"
-      keywords="美颜特效，滤镜，手势识别，贴纸，AR，美妆，美型，美体、背景分割、短视频，直播"
-      description="美颜特效 SDK 提供包括美颜滤镜、美妆美型、贴纸特效、美体、手势识别、背景分割等功能。可结合七牛云强大的音视频能力，应用于各类短视频拍摄与编辑、直播与实时互动等场景，帮助开发者快速打造一站式视频类业务平台。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="美颜特效 SDK_短视频特效 SDK_直播特效 SDK_实时音视频特效"
+        keywords="美颜特效，滤镜，手势识别，贴纸，AR，美妆，美型，美体、背景分割、短视频，直播"
+        description="美颜特效 SDK 提供包括美颜滤镜、美妆美型、贴纸特效、美体、手势识别、背景分割等功能。可结合七牛云强大的音视频能力，应用于各类短视频拍摄与编辑、直播与实时互动等场景，帮助开发者快速打造一站式视频类业务平台。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

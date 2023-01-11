@@ -9,12 +9,13 @@ import React from 'react'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import IndustryIconOne from './industry-icon-one.svg'
-import IndustryIconTwo from './industry-icon-two.svg'
-import IndustryIconThree from './industry-icon-three.svg'
+import industryIconOne from './industry-icon-one.png'
+import industryIconTwo from './industry-icon-two.png'
+import industryIconThree from './industry-icon-three.png'
 
 import styles from './style.less'
 
@@ -23,14 +24,14 @@ export default function VcsIndustry() {
     <Feature name="industry" title="行业痛点">
       <FeatureGroup>
         <FeatureItem
-          icon={<IndustryIconOne className={styles.icon} />}
+          icon={<FeatureIcon src={industryIconOne} className={styles.icon} />}
           title=""
           align="left"
         >
           <FeatureDesc>归档与合规需求和数据资产化趋势使得存储规模和成本增加，自建存储的研发、管理成本上升</FeatureDesc>
         </FeatureItem>
         <FeatureItem
-          icon={<IndustryIconTwo className={styles.icon} />}
+          icon={<FeatureIcon src={industryIconTwo} className={styles.icon} />}
           title=""
           align="left"
         >
@@ -38,7 +39,7 @@ export default function VcsIndustry() {
         </FeatureItem>
 
         <FeatureItem
-          icon={<IndustryIconThree className={styles.icon} />}
+          icon={<FeatureIcon src={industryIconThree} className={styles.icon} />}
           title=""
           align="left"
         >

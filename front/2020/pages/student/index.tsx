@@ -47,8 +47,9 @@ function Page({ activities, productInfoMap }: Omit<Props, 'globalBanners' | 'ico
       <PageBanner
         title="校园开发者成长计划"
         desc="助力开发者全生命周期成长，培育数字时代的创新人才。七牛云校园开发者成长几计划免费提供音视频资源，助力云上实践、云上成长，创建生产及应用。"
-        bgColor="#F4F6FB"
-        bgImgUrl={isMobile ? bannerMobileImg : bannerImg} />
+        bgImgUrl={isMobile ? bannerMobileImg : bannerImg}
+        btns={[]}
+      />
 
       <Section title="校园认证流程" name="certification" withTailPadding>
         <CertificationProcess>

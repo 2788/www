@@ -8,6 +8,7 @@ import { InferGetServerSidePropsType } from 'next'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
@@ -18,6 +19,7 @@ import ProductNews from 'components/Product/common/ProductNews'
 
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 import Packages from 'components/pages/ssl/Packages'
 import SslScene from 'components/pages/ssl/Scene'
@@ -27,18 +29,19 @@ import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCase
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 
-import EncryptionTransmission from './_images/encryption-transmission.svg'
-import PreventTrafficHijack from './_images/prevent-traffic-hijack.svg'
-import EnhanceBrandInfluence from './_images/enhance-brand-influence.svg'
-import ImproveSearchRanking from './_images/improve-search-ranking.svg'
+import encryptionTransmission from './_images/encryption-transmission.png'
+import preventTrafficHijack from './_images/prevent-traffic-hijack.png'
+import enhanceBrandInfluence from './_images/enhance-brand-influence.png'
+import improveSearchRanking from './_images/improve-search-ranking.png'
 
-import TopBrandCooperation from './_images/top-brand-cooperation.svg'
-import EasyDeploymentToCDN from './_images/easy-deployment-to-cdn.svg'
-import HighCompatibility from './_images/high-compatibility.svg'
-import OneStepManagement from './_images/one-step-management.svg'
+import topBrandCooperation from './_images/top-brand-cooperation.png'
+import easyDeploymentToCDN from './_images/easy-deployment-to-cdn.png'
+import highCompatibility from './_images/high-compatibility.png'
+import oneStepManagement from './_images/one-step-management.png'
 
 import AnXing from './_images/customer-anxing.png'
 import HuangYou from './_images/customer-huangyou.png'
@@ -49,13 +52,15 @@ import QiCheZhiJia from './_images/customer-qichezhijia.png'
 import TanTan from './_images/customer-tantan.png'
 import ZhongXin from './_images/customer-zhongxin.png'
 
-import imgBanner from './_images/banner.png'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
   const priceUrl = urlForPrice(Product.Ssl)
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/ssl', children: '立即使用', pcOnly: true },
@@ -71,9 +76,9 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="SSL 证书"
         desc="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -86,7 +91,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<EncryptionTransmission />}
+            icon={<FeatureIcon src={encryptionTransmission} />}
             title="数据加密传输"
           >
             <FeatureDesc>HTTPS 是加密传输网络协议，可防止数据在传输过程中不被窃取、改变，确保数据的完整性</FeatureDesc>
@@ -94,7 +99,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<PreventTrafficHijack />}
+            icon={<FeatureIcon src={preventTrafficHijack} />}
             title="防止流量劫持"
           >
             <FeatureDesc>全站 HTTPS 是根治运营商、中间人流量劫持的解决方案，防止网页中被插入的广告，保护用户隐私安全</FeatureDesc>
@@ -102,7 +107,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<EnhanceBrandInfluence />}
+            icon={<FeatureIcon src={enhanceBrandInfluence} />}
             title="提升品牌影响力"
           >
             <FeatureDesc>浏览器标注网站为安全站点，可以放心的进行操作和交易，EV 高级证书会在浏览器显示企业名称</FeatureDesc>
@@ -110,7 +115,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<ImproveSearchRanking />}
+            icon={<FeatureIcon src={improveSearchRanking} />}
             title="提升搜索排名"
           >
             <FeatureDesc>在搜索引擎 SEO 中，比起同等 HTTP 网站，采用 HTTPS 加密的网站在搜索结果中的排名将会更高</FeatureDesc>
@@ -127,7 +132,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<TopBrandCooperation />}
+            icon={<FeatureIcon src={topBrandCooperation} />}
             title="顶级品牌合作"
           >
             <FeatureDesc>七牛云携手 TrustAsia 与国际顶级数字证书提供商 Digicert、GeoTrust 合作</FeatureDesc>
@@ -135,7 +140,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<EasyDeploymentToCDN />}
+            icon={<FeatureIcon src={easyDeploymentToCDN} />}
             title="轻松部署至 CDN"
           >
             <FeatureDesc>支持 CDN 中 HTTP 一键升级 HTTPS，更换证书等功能直接调用用户证书，帮助用户更快速的完成操作</FeatureDesc>
@@ -143,7 +148,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<HighCompatibility />}
+            icon={<FeatureIcon src={highCompatibility} />}
             title="高兼容性"
           >
             <FeatureDesc>兼容性强，收费证书支持目前所有主流的浏览器和移动设备</FeatureDesc>
@@ -151,7 +156,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<OneStepManagement />}
+            icon={<FeatureIcon src={oneStepManagement} />}
             title="一站式管理"
           >
             <FeatureDesc>支持申购的证书和用户上传的证书在七牛云平台上集中统一管理</FeatureDesc>
@@ -201,14 +206,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function SslPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="SSL 证书_证书服务_SSL 数字证书_HTTPS 加密_服务器证书_CA 认证"
-      keywords="ssl, ssl 证书, ssl 证书申请, ssl 企业证书, ssl 数字证书, 免费 ssl 证书, 企业 ssl 证书, ssl 证书购买, ssl 证书服务, ssl 证书价格, ev ssl 证书, dv ssl 证书, ov ssl 证书, https 证书"
-      description="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="SSL 证书_证书服务_SSL 数字证书_HTTPS 加密_服务器证书_CA 认证"
+        keywords="ssl, ssl 证书, ssl 证书申请, ssl 企业证书, ssl 数字证书, 免费 ssl 证书, 企业 ssl 证书, ssl 证书购买, ssl 证书服务, ssl 证书价格, ev ssl 证书, dv ssl 证书, ov ssl 证书, https 证书"
+        description="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

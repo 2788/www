@@ -9,6 +9,7 @@ import { Product } from 'constants/products'
 import { Solution, urlMap as solutionUrlMap, smallIconMap as solutionIconMap, descMap as solutionDescMap } from 'constants/solutions'
 import Swiper from 'components/UI/Swiper'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
+import { headerThemeContext } from 'components/Header/Pc'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
@@ -19,19 +20,21 @@ import Cases, { Case } from 'components/Solution/Cases'
 import Related, { Item as RelatedItem, ProductItem as RelatedProduct } from 'components/Solution/Related'
 
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
-import imgBanner from './_images/banner.png'
-import IconValue1 from './_images/value-1.svg'
-import IconValue2 from './_images/value-2.svg'
-import IconValue3 from './_images/value-3.svg'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
+import iconValue1 from './_images/value-1.png'
+import iconValue2 from './_images/value-2.png'
+import iconValue3 from './_images/value-3.png'
 import imgScreenshotPersonal from './_images/screenshot-personal.png'
 import imgScreenshotEnterprise from './_images/screenshot-enterprise.png'
 import imgScreenshotMobile from './_images/screenshot-mobile.png'
-import IconAdvan1 from './_images/advan-1.svg'
-import IconAdvan2 from './_images/advan-2.svg'
-import IconAdvan3 from './_images/advan-3.svg'
-import IconAdvan4 from './_images/advan-4.svg'
+import iconAdvan1 from './_images/advan-1.png'
+import iconAdvan2 from './_images/advan-2.png'
+import iconAdvan3 from './_images/advan-3.png'
+import iconAdvan4 from './_images/advan-4.png'
 import imgArchitecture from './_images/architecture.png'
 import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.jpg'
@@ -45,6 +48,7 @@ const IconKodoe = solutionIconMap[Solution.Kodoe]!
 const title = '金融行业银行合规解决方案'
 
 function PageContent() {
+  const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
@@ -56,9 +60,8 @@ function PageContent() {
       <PageBanner
         title={title}
         desc="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和稳健地开展各项金融业务。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <Navigator>{btns.nav}</Navigator>
@@ -69,13 +72,13 @@ function PageContent() {
         subtitle="建立信息安全体系，提高信息科技风险管理水平，强化监管的全面性和时效性，满足行业合规要求"
       >
         <feature.Group className={style.valueGroup}>
-          <feature.Item icon={<IconValue1 />}>
+          <feature.Item icon={<feature.Icon src={iconValue1} />}>
             <feature.Desc className={style.valueDesc}>通过多种灵活的策略采集资金交易、账户系统、金融理财等多系统的实时数据</feature.Desc>
           </feature.Item>
-          <feature.Item icon={<IconValue2 />}>
+          <feature.Item icon={<feature.Icon src={iconValue2} />}>
             <feature.Desc className={style.valueDesc}>支持对所有不同数据源的数据直接分析处理，产出各种符合监管要求的报送数据</feature.Desc>
           </feature.Item>
-          <feature.Item icon={<IconValue3 />}>
+          <feature.Item icon={<feature.Icon src={iconValue3} />}>
             <feature.Desc className={style.valueDesc}>数据分析平台的高性能和实时计算，保证报送数据稳定、按时地汇总到监管系统</feature.Desc>
           </feature.Item>
         </feature.Group>
@@ -97,16 +100,16 @@ function PageContent() {
 
       <Feature>
         <feature.Group className={style.featureGroup}>
-          <feature.Item className={style.featureItem} title="零难度采集" icon={<IconAdvan1 />}>
+          <feature.Item className={style.featureItem} title="零难度采集" icon={<feature.Icon src={iconAdvan1} />}>
             <feature.Desc className={style.featureDesc}>可视化配置，实时采集，支持数百种数据源，Schema On Read 能力极大降低数据接入成本</feature.Desc>
           </feature.Item>
-          <feature.Item className={style.featureItem} title="数据归一化" icon={<IconAdvan2 />}>
+          <feature.Item className={style.featureItem} title="数据归一化" icon={<feature.Icon src={iconAdvan2} />}>
             <feature.Desc className={style.featureDesc}>多数据源的异构数据归一化处理，获取关联业务的整体视图，为企业决策提供可靠支撑</feature.Desc>
           </feature.Item>
-          <feature.Item className={style.featureItem} title="高级计算分析" icon={<IconAdvan3 />}>
+          <feature.Item className={style.featureItem} title="高级计算分析" icon={<feature.Icon src={iconAdvan3} />}>
             <feature.Desc className={style.featureDesc}>支持 SPL 高级搜索分析语法，提供上百种命令来实时监测、探索、预测、可视化数据</feature.Desc>
           </feature.Item>
-          <feature.Item className={style.featureItem} title="数据安全" icon={<IconAdvan4 />}>
+          <feature.Item className={style.featureItem} title="数据安全" icon={<feature.Icon src={iconAdvan4} />}>
             <feature.Desc className={style.featureDesc}>细粒度多维度授权机制，精确控制用户对平台知识的操作权限，保障数据及操作的安全</feature.Desc>
           </feature.Item>
         </feature.Group>
@@ -144,14 +147,16 @@ function PageContent() {
 
 export default function FinPage({ globalBanners }: Props) {
   return (
-    <Layout
-      title={title}
-      keywords="金融, 银行, 合规, 行业解决方案"
-      description="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和稳健地开展各项金融业务。"
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title={title}
+        keywords="金融, 银行, 合规, 行业解决方案"
+        description="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和稳健地开展各项金融业务。"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

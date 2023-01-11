@@ -6,6 +6,7 @@ import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import VcsFeature from 'components/pages/vcs/Feature'
 import Navigator from 'components/Product/Navigator'
@@ -18,8 +19,10 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import { useBtns } from 'hooks/product-btn'
+import { useMobile } from 'hooks/ua'
 
-import imgBanner from './images/banner.png'
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -27,6 +30,7 @@ const title = `${nameMap[Solution.Vcs]}解决方案`
 
 function PageContent() {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
+  const isMobile = useMobile()
 
   const btns = useBtns(
     { onClick: showWechatConsultModal, children: '立即咨询' },
@@ -39,9 +43,8 @@ function PageContent() {
         title={title}
         desc="七牛云视频冷存储解决方案是专为综合视频平台打造的 EB 级数据存储解决方案，
         低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
       />
 
       <VcsFeature />
@@ -67,14 +70,16 @@ function PageContent() {
 
 export default function VcsPage({ globalBanners }: Props) {
   return (
-    <Layout
-      title={title}
-      keywords="视频冷存储, 冷备, 冷存储, 归档存储, 点播存储, 高清视频原片, 媒体资源库"
-      description="七牛云视频冷存储解决方案是专为综合视频平台打造的 EB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
-      globalBanners={globalBanners}
-    >
-      <PageContent />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title={title}
+        keywords="视频冷存储, 冷备, 冷存储, 归档存储, 点播存储, 高清视频原片, 媒体资源库"
+        description="七牛云视频冷存储解决方案是专为综合视频平台打造的 EB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
+        globalBanners={globalBanners}
+      >
+        <PageContent />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

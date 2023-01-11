@@ -6,10 +6,12 @@ import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
+import { useMobile } from 'hooks/ua'
 import RtcScene from 'components/pages/rtc/Scene'
 import RtcDemo from 'components/pages/rtc/Demo'
 import AcceleratedNetwork from 'components/pages/rtc/AcceleratedNetwork'
@@ -17,7 +19,8 @@ import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
-  Desc as FeatureDesc
+  Desc as FeatureDesc,
+  Icon as FeatureIcon
 } from 'components/Product/Feature'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
@@ -31,14 +34,15 @@ import ProductNews from 'components/Product/common/ProductNews'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 
-import ServerSideMergeIcon from './_images/feature-serverside-merge.svg'
-import RealtimeRecordIcon from './_images/feature-realtime-record.svg'
-import PersonalManagementIcon from './_images/feature-personal-management.svg'
-import RichMediaIcon from './_images/feature-richmedia.svg'
-import SideWayIcon from './_images/feature-sideway.svg'
-import YellowIdIcon from './_images/feature-yellow-identification.svg'
+import serverSideMergeIcon from './_images/feature-serverside-merge.png'
+import realtimeRecordIcon from './_images/feature-realtime-record.png'
+import personalManagementIcon from './_images/feature-personal-management.png'
+import richMediaIcon from './_images/feature-richmedia.png'
+import sideWayIcon from './_images/feature-sideway.png'
+import yellowIdIcon from './_images/feature-yellow-identification.png'
 
-import imgBanner from './_images/banner.png'
+import imgBannerPc from './_images/banner-pc.jpg'
+import imgBannerMobile from './_images/banner-mobile.jpg'
 
 import style from './index.less'
 
@@ -47,6 +51,7 @@ import style from './index.less'
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
@@ -67,9 +72,9 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="实时音视频"
         desc="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、互动直播、语音聊天室等多种业务场景。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -84,7 +89,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<ServerSideMergeIcon />}
+            icon={<FeatureIcon src={serverSideMergeIcon} />}
             title="服务端合流"
             className={style.feature}
           >
@@ -93,7 +98,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<SideWayIcon />}
+            icon={<FeatureIcon src={sideWayIcon} />}
             title="旁路直播"
             className={style.feature}
           >
@@ -102,7 +107,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<RealtimeRecordIcon />}
+            icon={<FeatureIcon src={realtimeRecordIcon} />}
             title="实时录制"
             className={style.feature}
           >
@@ -114,7 +119,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<PersonalManagementIcon />}
+            icon={<FeatureIcon src={personalManagementIcon} />}
             title="个性化管理"
             className={style.feature}
           >
@@ -123,7 +128,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<RichMediaIcon />}
+            icon={<FeatureIcon src={richMediaIcon} />}
             title="智能富媒体处理"
             className={style.feature}
           >
@@ -132,7 +137,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<YellowIdIcon />}
+            icon={<FeatureIcon src={yellowIdIcon} />}
             title="鉴黄鉴暴恐"
             className={style.feature}
           >
@@ -175,14 +180,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function RtcPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="实时音视频_音视频通信 RTC_视频会议_音频通话_互动直播_WebRTC 服务"
-      keywords="互动直播, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
-      description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、互动直播、语音聊天室等多种业务场景。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="light">
+      <Layout
+        title="实时音视频_音视频通信 RTC_视频会议_音频通话_互动直播_WebRTC 服务"
+        keywords="互动直播, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
+        description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、互动直播、语音聊天室等多种业务场景。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 
