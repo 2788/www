@@ -17,17 +17,20 @@ import Advantages from 'components/pages/products/qoe/Advantages'
 import Functions from 'components/pages/products/qoe/Functions'
 import Scenes from 'components/pages/products/qoe/Scenes'
 import { Product } from 'constants/products'
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import ProductNews from 'components/Product/common/ProductNews'
+
+import ProductPage from '../[product]'
 
 import bannerPc from './_images/banner-pc.jpg'
 import bannerMobile from './_images/banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
   const isMobile = useMobile()
   const btns = useBtns(
     { href: 'https://www.wjx.top/vm/hKK7Jeq.aspx', target: '_blank', children: '申请测试' }
@@ -60,7 +63,19 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function Main({ globalBanners, ...pageProps }: Props) {
+export default function Main({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo != null) {
+    return (
+      <ProductPage
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap}
+        notices={pageProps.notices}
+        news={pageProps.newsRes}
+      />
+    )
+  }
+
   return (
     <headerThemeContext.Provider value="dark">
       <Layout
@@ -76,11 +91,15 @@ export default function Main({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('qoe')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Qoe),
       newsRes: await getNews({ product: Product.Qoe }),
-      globalBanners: await getGlobalBanners()
+      globalBanners: await getGlobalBanners(),
+      productInfo,
+      iconMap: await getIconMap(icons)
     }
   }
 }

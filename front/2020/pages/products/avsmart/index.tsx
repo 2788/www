@@ -10,7 +10,8 @@ import { urlForPrice } from 'utils/route'
 import { useBtns } from 'hooks/product-btn'
 import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -26,6 +27,8 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 import Function from 'components/pages/avsmart/Function'
 import Scene from 'components/pages/avsmart/Scene'
 
+import ProductPage from '../[product]'
+
 import bannerImgPc from './banner-pc.jpg'
 import bannerImgMobile from './banner-mobile.jpg'
 
@@ -38,7 +41,7 @@ const pageInfo = {
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
   const isMobile = useMobile()
 
   const bannerBtns = useBtns(
@@ -77,7 +80,19 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function Page({ globalBanners, ...pageProps }: Props) {
+export default function Page({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo != null) {
+    return (
+      <ProductPage
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap}
+        notices={pageProps.notices}
+        news={pageProps.newsRes}
+      />
+    )
+  }
+
   return (
     <headerThemeContext.Provider value="light">
       <Layout
@@ -93,11 +108,15 @@ export default function Page({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('avsmart')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Avsmart),
       newsRes: await getNews({ product: Product.Avsmart }),
-      globalBanners: await getGlobalBanners()
+      globalBanners: await getGlobalBanners(),
+      productInfo,
+      iconMap: await getIconMap(icons)
     }
   }
 }

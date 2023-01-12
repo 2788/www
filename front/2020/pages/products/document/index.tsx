@@ -16,9 +16,10 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -26,13 +27,15 @@ import Feature from 'components/pages/document/Feature'
 import Advantage from 'components/pages/document/Advantage'
 import Scene from 'components/pages/document/Scene'
 
+import ProductPage from '../[product]'
+
 import banner from './banner.png'
 
 const desc = '文档处理依托先进的自然语言处理技术，提供文档预览、文档转换、文档翻译等多种文档处理服务，可广泛应用于在线教育、OA 系统、在线网盘等多种使用场景。'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
 
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
@@ -76,7 +79,19 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function Document({ globalBanners, ...pageProps }: Props) {
+export default function Document({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo != null) {
+    return (
+      <ProductPage
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap}
+        notices={pageProps.notices}
+        news={pageProps.newsRes}
+      />
+    )
+  }
+
   return (
     <Layout
       title="文档处理_文档转换_文档预览_文档翻译"
@@ -90,11 +105,15 @@ export default function Document({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('document')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Document),
       newsRes: await getNews({ product: Product.Document }),
-      globalBanners: await getGlobalBanners()
+      globalBanners: await getGlobalBanners(),
+      productInfo,
+      iconMap: await getIconMap(icons)
     }
   }
 }

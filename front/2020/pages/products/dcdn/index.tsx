@@ -9,9 +9,10 @@ import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -24,11 +25,13 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 
+import ProductPage from '../[product]'
+
 import banner from './banner.png'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/dcdn/domain', children: '立即配置' },
@@ -80,7 +83,19 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function DcdnPage({ globalBanners, ...pageProps }: Props) {
+export default function DcdnPage({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo != null) {
+    return (
+      <ProductPage
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap}
+        notices={pageProps.notices}
+        news={pageProps.newsRes}
+      />
+    )
+  }
+
   return (
     <Layout
       title="全站加速_动态加速_混合加速"
@@ -94,11 +109,15 @@ export default function DcdnPage({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('dcdn')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Dcdn),
       newsRes: await getNews({ product: Product.Dcdn }),
-      globalBanners: await getGlobalBanners()
+      globalBanners: await getGlobalBanners(),
+      productInfo,
+      iconMap: await getIconMap(icons)
     }
   }
 }

@@ -12,9 +12,10 @@ import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { Product, nameMap } from 'constants/products'
 
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductPageInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import { getIconIdsFromJson, getIconMap } from 'apis/admin/icon-lib'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -28,6 +29,8 @@ import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 import { useMobile } from 'hooks/ua'
 
+import ProductPage from '../[product]'
+
 import bannerPc from './banner-pc.jpg'
 import bannerMobile from './banner-mobile.jpg'
 
@@ -35,7 +38,7 @@ const title = nameMap[Product.Storage]
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
   const isMobile = useMobile()
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
@@ -78,7 +81,19 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function StoragePage({ globalBanners, ...pageProps }: Props) {
+export default function StoragePage({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo != null) {
+    return (
+      <ProductPage
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap}
+        notices={pageProps.notices}
+        news={pageProps.newsRes}
+      />
+    )
+  }
+
   return (
     <headerThemeContext.Provider value="dark">
       <Layout
@@ -94,11 +109,15 @@ export default function StoragePage({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
+  const productInfo = await getProductPageInfo('storage')
+  const icons = getIconIdsFromJson(productInfo)
   return {
     props: {
       notices: await getProductPageNotices(Product.Storage),
       newsRes: await getNews({ product: Product.Storage }),
-      globalBanners: await getGlobalBanners()
+      globalBanners: await getGlobalBanners(),
+      productInfo,
+      iconMap: await getIconMap(icons)
     }
   }
 }
