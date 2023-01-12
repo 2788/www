@@ -211,7 +211,7 @@ export const urlMap = {
   [Product.Qec]: '/products/qec',
   [Product.Document]: '/products/document',
   [Product.Enhancement]: '/products/enhancement',
-  [Product.QApp]: '/products/qapp#document'
+  [Product.QApp]: '/products/qapp'
 } as const
 
 export const priceUrlMap = {
