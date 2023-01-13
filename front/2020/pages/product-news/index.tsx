@@ -10,7 +10,8 @@ import { InferGetServerSidePropsType } from 'next'
 import { chunk } from 'lodash'
 
 import Layout from 'components/Product/Layout'
-import Banner, { Title, Desc } from 'components/Banner'
+import { headerThemeContext } from 'components/Header/Pc'
+import PageBanner from 'components/Product/PageBanner'
 import Link from 'components/Link'
 import { Row } from 'components/UI/Card'
 import Pagination from 'components/UI/Pagination'
@@ -22,7 +23,9 @@ import { useMobile } from 'hooks/ua'
 import { withLoading } from 'utils/loading'
 import ResultEmpty from 'components/UI/ResultEmpty'
 
-import banner from './images/banner.png'
+import imgBannerPc from './images/banner-pc.jpg'
+import imgBannerMobile from './images/banner-mobile.jpg'
+
 import styles from './style.less'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
@@ -105,10 +108,11 @@ function Page({ pages }: Omit<Props, 'globalBanners'>) {
 
   return (
     <div className={styles.wrapper}>
-      <Banner background={banner} backgroundSize="contain" backgroundPosition="right bottom">
-        <Title>产品动态</Title>
-        <Desc className={styles.desc}>了解行业最新技术，七牛云产品最新权威动态</Desc>
-      </Banner>
+      <PageBanner
+        title="产品动态"
+        desc="了解行业最新技术，七牛云产品最新权威动态"
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <div className={styles.categories}>
         <Category
@@ -208,14 +212,16 @@ function fillSpace(num: number): string {
 
 export default function ProductNews({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="产品动态"
-      keywords="产品, 动态, 产品动态, 最新, 科技趋势, 新产品, 实时动态"
-      description="了解行业最新技术，七牛云产品最新权威动态"
-      globalBanners={globalBanners}
-    >
-      <Page {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="产品动态"
+        keywords="产品, 动态, 产品动态, 最新, 科技趋势, 新产品, 实时动态"
+        description="了解行业最新技术，七牛云产品最新权威动态"
+        globalBanners={globalBanners}
+      >
+        <Page {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

@@ -7,6 +7,7 @@ import { InferGetServerSidePropsType } from 'next'
 import { Product } from 'constants/products'
 
 import Layout from 'components/Product/Layout'
+import { headerThemeContext } from 'components/Header/Pc'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNews, getProductPageInfo } from 'apis/admin/product'
@@ -24,14 +25,17 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
+import { useMobile } from 'hooks/ua'
 
 import ProductPage from '../[product]'
 
-import banner from './banner.png'
+import imgBannerPc from './banner-pc.jpg'
+import imgBannerMobile from './banner-mobile.jpg'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
+  const isMobile = useMobile()
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/dcdn/domain', children: '立即配置' },
@@ -47,9 +51,9 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'produc
       <PageBanner
         title="全站加速"
         desc="七牛全站加速 DCDN 在 CDN 静态加速的基础上融合了动态加速的能力，通过资源动静态分离、智能缓存、路由优化等核心技术一站式解决动静态资源混合站点内容分发慢的问题。适用于动态资源或动静态资源混合的加速场景。"
-        bgColor="#34A1EC"
         btns={btns.banner}
-        icon={banner} />
+        bgImgUrl={isMobile ? imgBannerMobile : imgBannerPc}
+      />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -97,14 +101,16 @@ export default function DcdnPage({ globalBanners, productInfo, iconMap, ...pageP
   }
 
   return (
-    <Layout
-      title="全站加速_动态加速_混合加速"
-      keywords="全站加速,动态加速,混合加速,dcdn,cdn,Dynamic acceleration"
-      description="七牛全站加速 DCDN 在 CDN 静态加速的基础上融合了动态加速的能力，通过资源动静态分离、智能缓存、路由优化等核心技术一站式解决动静态资源混合站点内容分发慢的问题。适用于动态资源或动静态资源混合的加速场景。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="light">
+      <Layout
+        title="全站加速_动态加速_混合加速"
+        keywords="全站加速,动态加速,混合加速,dcdn,cdn,Dynamic acceleration"
+        description="七牛全站加速 DCDN 在 CDN 静态加速的基础上融合了动态加速的能力，通过资源动静态分离、智能缓存、路由优化等核心技术一站式解决动静态资源混合站点内容分发慢的问题。适用于动态资源或动静态资源混合的加速场景。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 
