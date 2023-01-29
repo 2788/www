@@ -30,7 +30,7 @@ import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 
 import imgBannerPc from './banner-pc.jpg'
-import imgBannerMobile from './banner-mobile.jpg'
+import imgBannerMobile from './banner-mobile.jpeg'
 import iconAdvan1 from './_icons/advan-1.png'
 import iconAdvan2 from './_icons/advan-2.png'
 import iconAdvan3 from './_icons/advan-3.png'
