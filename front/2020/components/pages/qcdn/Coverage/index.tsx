@@ -51,8 +51,8 @@ export default function Coverage() {
     <Section header="国内外优质节点覆盖，用户随处可用" title="节点覆盖" name="coverage">
       <div className={styles.coverage}>
         <ul className={styles.container}>
-          <Point icon={nodeIcon1}>全球 <span className={styles.highlight}>2000</span> 节点</Point>
-          <Point icon={nodeIcon2}><span className={styles.highlight}>20+</span> 运营商覆盖</Point>
+          <Point icon={nodeIcon1}>全球 <span className={styles.highlight}>3000+</span> 节点</Point>
+          <Point icon={nodeIcon2}><span className={styles.highlight}>60Tbps+</span> 带宽储备</Point>
           <Point icon={nodeIcon3}>访问提速 <span className={styles.highlight}>80%</span></Point>
           <Point icon={nodeIcon4}><span className={styles.highlight}>100 万</span> 客户选择</Point>
         </ul>
