@@ -18,12 +18,7 @@ import ApiResult, { getResultByName } from './ApiResult'
 
 import style from './index.less'
 import idCard from './images/idCard.base64.jpg'
-import carBd from './images/carBd.base64.jpg'
 import bs from './images/bs.base64.jpg'
-import cz from './images/cz.base64.jpg'
-import newCar from './images/newCar.base64.jpg'
-import singleInvoice from './images/singleInvoice.base64.png'
-import multipleInvoice from './images/multipleInvoice.base64.png'
 
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg'
@@ -31,13 +26,8 @@ const imgRegex = /^data:(image\/)?(png|jpg|jpeg)?;base64,/
 
 export default function Function() {
   const panelArr = [
-    { name: OcrDemo.singleInvoice, title: '单张发票识别' },
-    { name: OcrDemo.multipleInvoice, title: '多张发票识别' },
-    { name: OcrDemo.IdCard, title: '身份证' },
-    { name: OcrDemo.CarBd, title: '车险保单' },
-    { name: OcrDemo.Bs, title: '营业执照' },
-    { name: OcrDemo.NewCar, title: '新车发票' },
-    { name: OcrDemo.Cz, title: '车辆登记证' }
+    { name: OcrDemo.IdCard, title: '身份证识别' },
+    { name: OcrDemo.Bs, title: '营业执照识别' }
   ]
   return (
     <Scene name="demo" title="Demo 体验">
@@ -189,18 +179,8 @@ function getImgByName(name: OcrDemo) {
   switch (name) {
     case OcrDemo.IdCard:
       return idCard
-    case OcrDemo.CarBd:
-      return carBd
     case OcrDemo.Bs:
       return bs
-    case OcrDemo.NewCar:
-      return newCar
-    case OcrDemo.Cz:
-      return cz
-    case OcrDemo.singleInvoice:
-      return singleInvoice
-    case OcrDemo.multipleInvoice:
-      return multipleInvoice
     default:
       return idCard
   }

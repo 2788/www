@@ -121,36 +121,6 @@ export const handpickServices: HandpickValue = [
     ]
   },
   {
-    key: '智能图片处理',
-    group: [
-      {
-        title: 'Versa',
-        list: [
-          {
-            title: '风格迁移',
-            desc: '将图片风格转换成目标图片风格。',
-            href: 'https://portal.qiniu.com/openapi/mkr_style_trans'
-          },
-          {
-            title: '人像分割',
-            desc: '将图片中人物与背景单独分离开。',
-            href: 'https://portal.qiniu.com/openapi/mkr_seg_human'
-          },
-          {
-            title: '实例分割',
-            desc: '将图片中不同实例分别与背景分离。',
-            href: 'https://portal.qiniu.com/openapi/mkr_seg_ins'
-          },
-          {
-            title: '智能填充',
-            desc: '将图像中的指定区域进行修复重建或者去除图像中的多余物体。',
-            href: 'https://portal.qiniu.com/openapi/mkr_inpainting'
-          }
-        ]
-      }
-    ]
-  },
-  {
     key: '智能语音分析',
     group: [
       {
@@ -160,21 +130,6 @@ export const handpickServices: HandpickValue = [
             title: '语音转文字',
             desc: '将音频文件中的语音识别为文字。',
             href: 'https://portal.qiniu.com/openapi/ali_audio_trans'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    key: '智能文档处理',
-    group: [
-      {
-        title: '翻译狗',
-        list: [
-          {
-            title: '翻译狗文档翻译',
-            desc: '提供多格式、多语种、高质量的文档翻译服务，支持源语言自动检测，只需指定文档链接并指定目标语言、文档格式、需要存储至七牛 kodo 的 bucket 等参数，即可在七牛云存储 kodo 中获取翻译后的文档。',
-            href: 'https://developer.qiniu.com/dora/9907/to-translate-documents'
           }
         ]
       }

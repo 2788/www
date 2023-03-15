@@ -19,7 +19,6 @@ import doraLargeIconUrl from './icons/large/dora.png'
 import doraImageLargeIconUrl from './icons/large/dora-image.png'
 import censorLargeIconUrl from './icons/large/censor.png'
 import faceidLargeIconUrl from './icons/large/faceid.png'
-import riskcontrolLargeIconUrl from './icons/large/riskcontrol.png'
 import rtnLargeIconUrl from './icons/large/rtn.png'
 import plsvLargeIconUrl from './icons/large/plsv.png'
 import plmsLargeIconUrl from './icons/large/plms.png'
@@ -38,7 +37,6 @@ import beautysdkLargeIconUrl from './icons/large/beautysdk.png'
 import wafLargeIconUrl from './icons/large/waf.png'
 import qoeLargeIconUrl from './icons/large/qoe.png'
 import qecLargeIconUrl from './icons/large/qec.png'
-import documentLargeIconUrl from './icons/large/document.png'
 import enhancementLargeIconUrl from './icons/large/enhancement.png'
 import qappLargeIconUrl from './icons/large/qapp.png'
 
@@ -75,7 +73,7 @@ export enum Product {
   /** 人脸核验 */
   FaceID = 'faceid',
   /** 智能风控 */
-  RiskControl = 'riskcontrol',
+  // RiskControl = 'riskcontrol',
   /** 实时音视频 */
   Rtn = 'rtn',
   /** 短视频 SDK */
@@ -119,7 +117,7 @@ export enum Product {
   /** 专有云计算 */
   Qec = 'qec',
   /** 文档处理 */
-  Document = 'document',
+  // Document = 'document',
   /** 画质增强 */
   Enhancement = 'enhancement',
   /** 容器轻应用平台 */
@@ -144,7 +142,6 @@ export const nameMap = {
   [Product.DoraImage]: '图片处理',
   [Product.Censor]: '内容审核',
   [Product.FaceID]: '人脸核验',
-  [Product.RiskControl]: '智能风控',
   [Product.Rtn]: '实时音视频 QRTC',
   [Product.Plsv]: '短视频 SDK',
   [Product.Plms]: '直播推流 SDK',
@@ -166,7 +163,6 @@ export const nameMap = {
   [Product.WAF]: 'Web 应用防火墙',
   [Product.Qoe]: '音画质量分析',
   [Product.Qec]: '专有云计算',
-  [Product.Document]: '文档处理',
   [Product.Enhancement]: '画质增强',
   [Product.QApp]: '容器轻应用平台'
 } as const
@@ -187,7 +183,6 @@ export const urlMap = {
   [Product.DoraImage]: '/products/dora#functions',
   [Product.Censor]: '/products/censor',
   [Product.FaceID]: '/products/faceid',
-  [Product.RiskControl]: '/products/risk-control',
   [Product.Rtn]: '/products/rtn',
   [Product.Plsv]: '/products/plsv',
   [Product.Plms]: '/products/plms',
@@ -209,7 +204,6 @@ export const urlMap = {
   [Product.WAF]: '/products/waf',
   [Product.Qoe]: '/products/qoe',
   [Product.Qec]: '/products/qec',
-  [Product.Document]: '/products/document',
   [Product.Enhancement]: '/products/enhancement',
   [Product.QApp]: '/products/qapp'
 } as const
@@ -230,7 +224,6 @@ export const priceUrlMap = {
   [Product.DoraImage]: null,
   [Product.Censor]: '/prices/censor',
   [Product.FaceID]: '/prices/faceid',
-  [Product.RiskControl]: '/prices/risk-control',
   [Product.Rtn]: '/prices/rtc',
   [Product.Plsv]: '/prices/plsv',
   [Product.Plms]: null,
@@ -252,7 +245,6 @@ export const priceUrlMap = {
   [Product.WAF]: null,
   [Product.Qoe]: null,
   [Product.Qec]: null,
-  [Product.Document]: null,
   [Product.Enhancement]: null,
   [Product.QApp]: '/prices/qapp'
 } as const
@@ -278,7 +270,6 @@ export const descMap = {
   [Product.Plsv]: '集合视频拍摄、编辑、上传等全套功能，快速打造手机 Vlog 制作神器',
   [Product.Plms]: '支持手机端 RTMP & QUIC 推流，简单易上手，马上开播',
   [Product.FaceID]: '利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证',
-  [Product.RiskControl]: '精准识别业务风险和欺诈问题，助力企业建立全流程风控体系',
   [Product.Qvs]: '面向视频监控设备提供视频流接入、存储、分发服务',
 
   // TODO 需要加入到顶部导航或者相关产品再补充
@@ -299,7 +290,6 @@ export const descMap = {
   [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击',
   [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统',
   [Product.Qec]: '针对企业级市场使用特点，为客户量身打造的开放、统一、可信的云计算平台',
-  [Product.Document]: '基于文档预览，文档转换，文档翻译等技术，对文档实现智能处理',
   [Product.Enhancement]: '基于七牛领先的深度学习技术，提供视频画质增强服务',
   [Product.QApp]: '为多媒体开发客户提供稳定、可靠、弹性、轻量的容器应用平台，实现业务容器化'
 } as const
@@ -319,7 +309,6 @@ export const iconMap = {
   [Product.DoraImage]: require('./icons/default/dora-image.svg').default,
   [Product.Censor]: require('./icons/default/censor.svg').default,
   [Product.FaceID]: require('./icons/default/faceid.svg').default,
-  [Product.RiskControl]: require('./icons/default/risk-control.svg').default,
   [Product.Rtn]: require('./icons/default/rtn.svg').default,
   [Product.Plsv]: require('./icons/default/plsv.svg').default,
   [Product.Plms]: require('./icons/default/plms.svg').default,
@@ -342,7 +331,6 @@ export const iconMap = {
   [Product.Tts]: require('./icons/default/tts.svg').default,
   [Product.Qoe]: require('./icons/default/qoe.svg').default,
   [Product.Qec]: require('./icons/default/qec.svg').default,
-  [Product.Document]: null,
   [Product.Enhancement]: null,
   [Product.QApp]: require('./icons/default/qapp.svg').default
 }
@@ -362,7 +350,6 @@ export const smallIconMap = {
   [Product.DoraImage]: require('./icons/small/dora-image.svg').default,
   [Product.Censor]: require('./icons/small/censor.svg').default,
   [Product.FaceID]: require('./icons/small/faceid.svg').default,
-  [Product.RiskControl]: require('./icons/small/risk-control.svg').default,
   [Product.Rtn]: require('./icons/small/rtn.svg').default,
   [Product.Plsv]: require('./icons/small/plsv.svg').default,
   [Product.Plms]: require('./icons/small/plms.svg').default,
@@ -385,7 +372,6 @@ export const smallIconMap = {
   [Product.Tts]: require('./icons/small/tts.svg').default,
   [Product.Qoe]: require('./icons/small/qoe.svg').default,
   [Product.Qec]: require('./icons/small/qec.svg').default,
-  [Product.Document]: null,
   [Product.Enhancement]: null,
   [Product.QApp]: require('./icons/small/qapp.svg').default
 }
@@ -406,7 +392,6 @@ export const largeIconMap: Record<Product, string | null> = {
   [Product.DoraImage]: doraImageLargeIconUrl,
   [Product.Censor]: censorLargeIconUrl,
   [Product.FaceID]: faceidLargeIconUrl,
-  [Product.RiskControl]: riskcontrolLargeIconUrl,
   [Product.Rtn]: rtnLargeIconUrl,
   [Product.Plsv]: plsvLargeIconUrl,
   [Product.Plms]: plmsLargeIconUrl,
@@ -428,7 +413,6 @@ export const largeIconMap: Record<Product, string | null> = {
   [Product.WAF]: wafLargeIconUrl,
   [Product.Qoe]: qoeLargeIconUrl,
   [Product.Qec]: qecLargeIconUrl,
-  [Product.Document]: documentLargeIconUrl,
   [Product.Enhancement]: enhancementLargeIconUrl,
   [Product.QApp]: qappLargeIconUrl
 }
@@ -528,9 +512,9 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   ],
   [SubCategory.LiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
   [SubCategory.Dora]: [
-    Product.DoraImage, Product.Document, Product.Avsmart, Product.Censor,
+    Product.DoraImage, Product.Avsmart, Product.Censor,
     Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.Qoe,
-    Product.RiskControl, Product.Enhancement, Product.OpenAPI
+    Product.Enhancement, Product.OpenAPI
   ],
   [SubCategory.Sdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk]
 }
@@ -616,7 +600,6 @@ export const categoryMedia = [
   Product.Ocr,
   Product.Vii,
   Product.Voice,
-  Product.RiskControl,
   Product.OpenAPI,
   Product.Pili,
   Product.Geek,

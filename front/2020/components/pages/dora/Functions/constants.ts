@@ -112,22 +112,6 @@ export const productFunctions: FunctionValue = [
             link: 'https://developer.qiniu.com/dora/3687/ufop-directions-for-use'
           }
         ]
-      },
-      {
-        title: '文档处理',
-        link: urlMap[Product.Document],
-        content: [
-          {
-            name: '文档转换',
-            link: `${urlMap[Product.Document]}#features`,
-            label: 'NEW'
-          },
-          {
-            name: '文档翻译',
-            link: `${urlMap[Product.Document]}#features`,
-            label: 'NEW'
-          }
-        ]
       }
     ]
   },
@@ -198,47 +182,6 @@ export const productFunctions: FunctionValue = [
             label: 'NEW'
           }
         ]
-      },
-      {
-        title: '智能风控',
-        content: [
-          {
-            name: '先享后付',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '汽车金融',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '信贷风险洞察',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '申请欺诈防护',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '租赁风控',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '注册保护',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '账户保护',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '营销保护',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          },
-          {
-            name: '营销价值分层',
-            link: `${urlMap[Product.RiskControl]}#functions`
-          }
-        ]
       }
     ]
   },
@@ -267,27 +210,6 @@ export const productFunctions: FunctionValue = [
         title: '票证识别',
         link: urlMap[Product.Ocr],
         content: [
-          {
-            name: '车险保单识别',
-            extra: {
-              title: '立即体验',
-              link: `${urlMap[Product.Ocr]}#demo`
-            }
-          },
-          {
-            name: '新车发票识别',
-            extra: {
-              title: '立即体验',
-              link: `${urlMap[Product.Ocr]}#demo`
-            }
-          },
-          {
-            name: '车辆登记证识别',
-            extra: {
-              title: '立即体验',
-              link: `${urlMap[Product.Ocr]}#demo`
-            }
-          },
           {
             name: '营业执照识别',
             extra: {
@@ -455,27 +377,6 @@ export const productFunctions: FunctionValue = [
         ]
       },
       {
-        title: '智能图片处理',
-        content: [
-          {
-            name: 'Versa 风格迁移',
-            link: 'https://developer.qiniu.com/dora/6293/marca-dragon-style-transfer-service'
-          },
-          {
-            name: 'Versa 人像分割',
-            link: 'https://developer.qiniu.com/dora/6294/marca-dragon-portrait-division-services'
-          },
-          {
-            name: 'Versa 实例分割',
-            link: 'https://developer.qiniu.com/dora/6321/versa-example-service'
-          },
-          {
-            name: 'Versa 智能填充',
-            link: 'https://developer.qiniu.com/dora/6322/versa-smart-fill-service'
-          }
-        ]
-      },
-      {
         title: '智能语音分析',
         content: [
           {
@@ -483,13 +384,6 @@ export const productFunctions: FunctionValue = [
             link: 'https://developer.qiniu.com/dora/7099/ali-audio-trans'
           }
         ]
-      },
-      {
-        title: '智能文档处理',
-        content: [{
-          name: '翻译狗文档翻译',
-          link: 'https://developer.qiniu.com/dora/9907/to-translate-documents'
-        }]
       }
     ],
     extra: {

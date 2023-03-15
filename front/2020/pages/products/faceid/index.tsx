@@ -103,7 +103,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         <feature.Group>
           <feature.Item
             pos="left-right"
-            title={<LinkTitle title="活体检测" href="https://developer.qiniu.com/dora/6797/face-flashlive" />}
+            title={<LinkTitle title="活体检测" href="https://developer.qiniu.com/dora/6795/face-actlive" />}
             icon={<feature.Icon src={iconFeat1} />}
           >
             <feature.Desc>检测识别设备前的用户是否为真人，而非打印照片/3D 面具等伪造的攻击，支持光线活体检测、动作活体检测、数字活体检测等多种模式</feature.Desc>
