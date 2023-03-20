@@ -3,13 +3,16 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
+import { observable, computed, action, when } from 'mobx'
 import { DebouncedFieldState, TransformedState } from 'formstate-x'
 import { Loading } from 'react-icecream'
-import { Select, SelectOption, InputWrapper } from 'react-icecream-form'
-import { useInjection } from 'qn-fe-core/di'
+import { Select, SelectOptionItems, InputWrapper } from 'react-icecream-form'
+import Store, { observeInjectable } from 'qn-fe-core/store'
+import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
 
 import { getIconId, withIconScheme } from 'transforms/icon'
 import IconInfoApis, { IconInfo } from 'apis/icon'
@@ -29,50 +32,121 @@ export interface Props {
   state: ReturnType<typeof createState>
 }
 
-export default observer(function SelectIcon({ state }: Props) {
-  const toasterStore = useInjection(ToasterStore)
-  const iconInfoApis = useInjection(IconInfoApis)
+const LoadingIconsAction = 'LoadingIconsAction'
 
-  const [icons, setIcons] = useState<IconInfo[] | undefined>(undefined)
+function matchKeyword(keyword: string, text: string): boolean {
+  keyword = keyword.trim().toLowerCase()
+  text = text.trim().toLowerCase()
+  return text.includes(keyword)
+}
 
-  const iconInfo = useMemo(
-    () => (icons ?? []).find(({ id }) => id === state.$.value),
-    [icons, state.$.value]
+@observeInjectable()
+class LocalStore extends Store {
+
+  constructor(
+    @injectProps() private props: Props,
+    toasterStore: ToasterStore,
+    private iconInfoApis: IconInfoApis
+  ) {
+    super()
+    ToasterStore.bindTo(this, toasterStore)
+    this.loadings.start(LoadingIconsAction)
+  }
+
+  loadings = Loadings.collectFrom(this)
+
+  @observable.ref icons: IconInfo[] | undefined
+
+  @computed get isLoadingIcons() {
+    return this.loadings.isLoading(LoadingIconsAction)
+  }
+
+  @computed get currentIconInfo() {
+    const { value } = this.props.state.$
+    return (this.icons ?? []).find(({ id }) => id === value)
+  }
+
+  @action
+  updateIcons(icons: IconInfo[]) {
+    this.icons = icons
+  }
+
+  async matchIcons(keyword: string): Promise<IconInfo[]> {
+    // start searching while necessary (retry)
+    if (!this.isLoadingIcons && this.icons == null) {
+      this.fetchIcons()
+    }
+
+    // waiting result of searching
+    await when(() => !this.isLoadingIcons)
+    const { icons } = this
+
+    // search failed
+    if (icons == null) {
+      return []
+    }
+
+    // return matched icon-infos
+    const matchedIcons = keyword === ''
+      ? icons
+      : icons.filter(({ name, id }) => (
+        matchKeyword(keyword, name) || matchKeyword(keyword, id)
+      ))
+    return matchedIcons
+  }
+
+  @Loadings.handle(LoadingIconsAction)
+  @ToasterStore.handle()
+  async fetchIcons() {
+    const icons = await this.iconInfoApis.listAll()
+    this.updateIcons(icons)
+  }
+
+  async init() {
+    await this.fetchIcons()
+  }
+}
+
+export default observer(function SelectIcon(props: Props) {
+  const localStore = useLocalStore(LocalStore, props)
+
+  // 升级 icecream 后可去掉 useCallback
+  const matchOptions = useCallback(
+    async (keyword: string): Promise<SelectOptionItems<string>> => {
+      const icons = await localStore.matchIcons(keyword)
+      return icons.map(icon => ({
+        value: icon.id,
+        content: (
+          <div className={styles.item}>
+            <IconPreviewNano icon={icon} />
+            <span className={styles.name}>{icon.name}</span>
+          </div>
+        ),
+        rootHtmlProps: { title: icon.id }
+      }))
+    },
+    [localStore]
   )
 
-  useEffect(() => {
-    toasterStore.promise(
-      iconInfoApis.listAll().then(list => { setIcons(list) })
-    )
-  }, [iconInfoApis, toasterStore])
-
   return (
-    // TODO: 如何把 loading 状态向上传递 / 暴露出去
-    <Loading loading={icons == null}>
-      <div className={styles.main}>
-        <InputWrapper state={state}>
-          <Select
-            state={state.$}
-            searchable
-            clearable
-            className={styles.select}
-          >
-            {icons != null && icons.map(icon => (
-              // TODO: 优化，用更科学的方式支持自定义搜索
-              <SelectOption value={icon.id} key={icon.id} rootHtmlProps={{ title: icon.id }}>
-                <div className={styles.item}>
-                  <IconPreviewNano icon={icon} />
-                  <span className={styles.name}> {icon.name}</span>
-                  <span className={styles.id}> {icon.id}</span>
-                </div>
-              </SelectOption>
-            ))}
-          </Select>
-        </InputWrapper>
-        {iconInfo && (
-          <IconPreview icon={iconInfo} className={styles.iconSelected} />
-        )}
-      </div>
-    </Loading>
+    <div className={styles.main}>
+      <InputWrapper state={props.state}>
+        <Select
+          state={props.state.$}
+          searchable
+          clearable
+          className={styles.select}
+          fetch={matchOptions}
+        />
+      </InputWrapper>
+      {/* TODO: 如果是组件整体的 loading，如何把 loading 状态向上传递 / 暴露出去 */}
+      {
+        localStore.isLoadingIcons
+        ? (<Loading className={styles.iconSelected} />)
+        : localStore.currentIconInfo != null && (
+          <IconPreview icon={localStore.currentIconInfo} className={styles.iconSelected} />
+        )
+      }
+    </div>
   )
 })
