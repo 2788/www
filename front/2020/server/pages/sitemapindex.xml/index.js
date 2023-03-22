@@ -15,7 +15,7 @@ function getDate() {
 // TODO: 改为从 `qfans` 动态获取，方案参考 https://cf.qiniu.io/pages/viewpage.action?pageId=107322875
 async function getQfansSitemaps() {
   const now = getDate()
-  return Array.from(Array(25), (_, i) => i + 1).map(index => (`
+  return Array.from(Array(36), (_, i) => i + 1).map(index => (`
       <sitemap>
         <loc>${process.env.NEXT_PUBLIC_HOST}/qfans/sitemap_${index}.xml</loc>
         <lastmod>${now}</lastmod>
