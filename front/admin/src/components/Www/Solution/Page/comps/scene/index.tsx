@@ -60,7 +60,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   return (
     <DrawerForm
       title={solutionModuleTitleMap[SolutionModule.Scene]}
-      width={725}
+      width={740}
       layout="horizontal"
       visible={props.visible}
       state={state}

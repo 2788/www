@@ -1,5 +1,6 @@
 import React, { ReactNode, PropsWithChildren } from 'react'
 import classnames from 'classnames'
+import { chunk } from 'lodash'
 
 import { useMobile } from 'hooks/ua'
 
@@ -15,27 +16,35 @@ export interface ItemProps {
   pos?: PosType
 }
 
-export function Raw({ children }: PropsWithChildren<{}>) {
+interface RawProps {
+  children: ReactNode[]
+  maxColumnsPerRow: number
+}
+
+export function Raw({ children, maxColumnsPerRow }: RawProps) {
   const isMobile = useMobile()
+
+  const itemsRows: ReactNode[][] = chunk(children, maxColumnsPerRow)
 
   if (!children) {
     return null
   }
 
-  return isMobile
-    ? (
-      <div className={styles.mobileWrapper}>
-        {children}
-      </div>
-    )
-    : (
-      <div className={styles.pcWrapper}>
-        {children}
-      </div>
-    )
+  return (
+    <div className={isMobile ? styles.mobileWrapper : styles.pcWrapper}>
+      {itemsRows.map((items, index) => (
+        <Group key={index}>
+          {items}
+          {index === itemsRows.length - 1 && index !== 0 && items.length < maxColumnsPerRow && (
+            [...new Array(maxColumnsPerRow - items.length).keys()].map(item => <EmptyItem key={item} />)
+          )}
+        </Group>
+      ))}
+    </div>
+  )
 }
 
-export function Group({ children }: PropsWithChildren<{}>) {
+function Group({ children }: PropsWithChildren<{}>) {
   if (!children) {
     return null
   }
@@ -44,6 +53,12 @@ export function Group({ children }: PropsWithChildren<{}>) {
     <div className={styles.groupWrapper}>
       {children}
     </div>
+  )
+}
+
+function EmptyItem() {
+  return (
+    <div className={styles.itemWrapper}></div>
   )
 }
 

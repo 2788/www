@@ -22,6 +22,8 @@ interface Item {
   name: string
   /** 场景描述 */
   desc: string
+  /** problems 的标题，通常为「能够解决的问题」 */
+  problemsTitle?: string
   /** 能够解决的问题，最多三组 */
   problems: Array<{
     name: string
@@ -41,11 +43,11 @@ export default function SolutionScene({ items }: Props) {
     return (
       <div className={style.mobileWrapper}>
         <Menu mode="inline">
-          {items.map(({ name, imgUrl, desc, problems }) => (
+          {items.map(({ name, imgUrl, desc, problemsTitle, problems }) => (
             <SubMenu title={name} key={name}>
               <img className={style.img} src={imgUrl} alt={name} />
 
-              <Detail desc={desc} problems={problems.slice(0, 3)} />
+              <Detail desc={desc} problemsTitle={problemsTitle} problems={problems.slice(0, 3)} />
             </SubMenu>
           ))}
         </Menu>
@@ -56,11 +58,11 @@ export default function SolutionScene({ items }: Props) {
   return (
     <div className={style.pcWrapper}>
       <Tabs defaultValue={items[0].name}>
-        {items.map(({ name, desc, problems, imgUrl }) => (
+        {items.map(({ name, desc, problemsTitle, problems, imgUrl }) => (
           <TabPane key={name} value={name} tab={name}>
             <div className={style.wrapper}>
 
-              <Detail desc={desc} problems={problems.slice(0, 3)} />
+              <Detail desc={desc} problemsTitle={problemsTitle} problems={problems.slice(0, 3)} />
 
               <div className={style.scene}>
                 <div className={style.img} style={{ backgroundImage: `url("${imgUrl}")` }} />
@@ -74,7 +76,7 @@ export default function SolutionScene({ items }: Props) {
   )
 }
 
-function Detail({ desc, problems }: Omit<Item, 'name' | 'imgUrl'>) {
+function Detail({ desc, problemsTitle, problems }: Omit<Item, 'name' | 'imgUrl'>) {
   return (
     <div className={style.detail}>
       <div className={style.desc}>
@@ -83,7 +85,7 @@ function Detail({ desc, problems }: Omit<Item, 'name' | 'imgUrl'>) {
       </div>
 
       <div className={style.problems}>
-        <div className={style.title}>能够解决的问题</div>
+        <div className={style.title}>{problemsTitle?.trim().length ? problemsTitle : '能够解决的问题'}</div>
         {problems.slice(0, 3).map(propblem => <Problem key={propblem.name} {...propblem} />)}
       </div>
     </div>

@@ -6,7 +6,6 @@
 import React from 'react'
 
 import {
-  Group as FeatureGroup,
   Item as FeatureItem,
   Raw as FeatureRaw
 } from 'components/Product/Feature/v2'
@@ -20,51 +19,36 @@ interface Item {
 }
 
 interface Props {
-  /** advantage 分别是 4 组、6组 */
+  /** advantage 组数应该不少于3个，不多于8个 */
   items: Item[]
 }
 
 export default function SolutionAdvantage({ items }: Props) {
+  // 每行的 Item 个数
+  let maxColumnsPerRow = 3
+
+  // 等于 4 或者 大于 6 时，每行 4 个，其余情况每行 3 个
+  if (items.length === 4) {
+    maxColumnsPerRow = 4
+  } else if (items.length > 6) {
+    maxColumnsPerRow = 4
+  }
+
   if (!items.length) {
     return null
   }
 
-  let itemsRow1: Item[] = items
-  let itemsRow2: Item[] = []
-
-  // advantage 是 4 组时，一行展示；6 组时，两行展示
-  if (items.length === 6) {
-    itemsRow1 = items.slice(0, 3)
-    itemsRow2 = items.slice(3, 6)
-  }
-
   return (
-    <FeatureRaw>
-      <FeatureGroup>
-        {itemsRow1.map(({ title, desc, iconUrl }) => (
-          <FeatureItem
-            key={title}
-            icon={<LibIcon alt="方案优势" src={iconUrl} />}
-            title={title}
-            desc={<Description>{desc}</Description>}
-            pos="top-down"
-          />
-        ))}
-      </FeatureGroup>
-
-      {!!itemsRow2.length && (
-        <FeatureGroup>
-          {itemsRow2.map(({ title, desc, iconUrl }) => (
-            <FeatureItem
-              key={title}
-              icon={<LibIcon alt="方案优势" src={iconUrl} />}
-              title={title}
-              desc={<Description>{desc}</Description>}
-              pos="top-down"
-            />
-          ))}
-        </FeatureGroup>
-      )}
+    <FeatureRaw maxColumnsPerRow={maxColumnsPerRow}>
+      {items.map(({ title, desc, iconUrl }) => (
+        <FeatureItem
+          key={title}
+          icon={<LibIcon alt="方案优势" src={iconUrl} />}
+          title={title}
+          desc={<Description>{desc}</Description>}
+          pos="top-down"
+        />
+      ))}
     </FeatureRaw>
   )
 }

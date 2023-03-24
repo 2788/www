@@ -47,8 +47,11 @@ function createState(props?: SolutionComponentAdvantageProps) {
         })
       })
     )).withValidator(items => {
-      if (![4, 6].includes(items.length)) {
-        return '数量只能为 4 6'
+      if (items.length < 3) {
+        return '最少 3 个'
+      }
+      if (items.length > 8) {
+        return '最多 8 个'
       }
     })
   })

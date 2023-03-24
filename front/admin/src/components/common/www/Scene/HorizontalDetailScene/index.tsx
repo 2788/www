@@ -28,6 +28,8 @@ interface SceneItem {
   /** 场景描述 */
   desc: string
   imgUrl: string
+  /** problems 的标题，通常为「能够解决的问题」 */
+  problemsTitle?: string
   /** 能够解决的问题 */
   problems: SceneProblem[]
 }
@@ -59,6 +61,11 @@ export function createState(config?: SceneConfig) {
         imgUrl: createUploadImgState(item.imgUrl).withValidator(imgUrl => {
           if (imgUrl === '') {
             return '不能为空'
+          }
+        }),
+        problemsTitle: new DebouncedFieldState(item.problemsTitle ?? '').withValidator(problemsTitle => {
+          if (problemsTitle.length > 50) {
+            return '不能超过 50 个字'
           }
         }),
         problems: new ArrayFormState(item.problems, problem => (
@@ -103,7 +110,7 @@ export interface Props {
 }
 
 export default observer(function HorizontalDetailScene({ state, labelWidth = '2em' }: Props) {
-  const midWidth = '4em'
+  const midWidth = '6em'
   const innerWidth = '2em'
 
   function addItem() {
@@ -111,6 +118,7 @@ export default observer(function HorizontalDetailScene({ state, labelWidth = '2e
       name: '',
       desc: '',
       imgUrl: '',
+      problemsTitle: '',
       problems: []
     }
     state.$.items.append(item)
@@ -171,7 +179,10 @@ export default observer(function HorizontalDetailScene({ state, labelWidth = '2e
                 height={328}
               />
             </FormItem>
-            <FormItem label="解决问题" labelWidth={midWidth} required state={itemState.$.problems}>
+            <FormItem label="解决问题标题" labelWidth={midWidth}>
+              <TextInput state={itemState.$.problemsTitle} />
+            </FormItem>
+            <FormItem label="解决问题列表" labelWidth={midWidth} required state={itemState.$.problems}>
               {itemState.$.problems.$.map((problemState, problemIndex) => (
                 <FormItem
                   key={problemIndex}
