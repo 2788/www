@@ -5,6 +5,8 @@
 import { ComponentName } from 'constants/solutions/components'
 import { BannerButton, ButtonClickWebLink, ButtonClickConsult } from 'hooks/product-btn'
 import { getCode } from 'utils/fetch'
+
+import { listProductInfos } from './product'
 import { get as mongoGet, listAll } from '.'
 
 /** 解决方案图标 */
@@ -83,7 +85,9 @@ export interface SolutionInfo {
 // 获取解决方案页面配置
 export async function getSolutionInfo(path: string): Promise<SolutionInfo | null> {
   try {
-    return await mongoGet<SolutionInfo>('www-solution', path)
+    const info = await mongoGet<SolutionInfo>('www-solution', path)
+    await normalizeSolutionRelatedComponentProps(info)
+    return info
   } catch (err) {
     if (Number(getCode(err)) === 404) {
       return null
@@ -94,4 +98,23 @@ export async function getSolutionInfo(path: string): Promise<SolutionInfo | null
 
 export async function listAllSolutionInfos() {
   return listAll<SolutionInfo>('www-solution')
+}
+
+/** 把解决方案页所需信息补充完整，主要包括相关产品模块里的产品信息等 */
+export async function normalizeSolutionRelatedComponentProps(info: SolutionInfo): Promise<void> {
+  for (const section of info.sections) {
+    if (section.component.name !== ComponentName.RelatedProducts) {
+      continue
+    }
+
+    const relatedProps = section.component.props as any
+    // eslint-disable-next-line no-await-in-loop
+    const relatedProductInfos = await listProductInfos(relatedProps.products)
+    relatedProductInfos.forEach((relatedInfo, index) => {
+      if (relatedInfo == null) {
+        throw new Error(`找不到该产品 ${relatedProps.products[index].path}`)
+      }
+    })
+    relatedProps.productInfos = relatedProductInfos
+  }
 }

@@ -19,8 +19,8 @@ export type Props = (
 
 export default function ProductScene(props: Props) {
   if (props.type == null || props.type === 'default' || props.type === 'vertical') {
-    const { type, ...horizontalDetailSceneProps } = props
-    return (<VerticalScene {...horizontalDetailSceneProps} />)
+    const { type, ...verticalSceneProps } = props
+    return (<VerticalScene {...verticalSceneProps} />)
   }
 
   if (props.type === 'horizontal-detail') {

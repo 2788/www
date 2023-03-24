@@ -9,12 +9,16 @@ import { SolutionComponentAdvantageConfig } from './comp-advantage'
 import { SolutionComponentFunctionConfig } from './comp-function'
 import { SolutionComponentArchitectureConfig } from './comp-architecture'
 import { SolutionComponentSceneConfig } from './comp-scene'
+import { SolutionComponentRelatedProductsConfig } from './comp-related-products'
+import { SolutionComponentDemoConfig } from './comp-demo'
 
 export type SolutionComponent = (
   | SolutionComponentAdvantageConfig
   | SolutionComponentFunctionConfig
   | SolutionComponentArchitectureConfig
   | SolutionComponentSceneConfig
+  | SolutionComponentRelatedProductsConfig
+  | SolutionComponentDemoConfig
 )
 
 /** 模块 id，会用作 section 内容的 key（当前区块在可导航区域中的唯一标示），同时用作 URL hash 的值（如果有锚点） */
@@ -24,7 +28,9 @@ export enum SolutionModule {
   Advantage = 'advantage',
   Function = 'function',
   Architecture = 'architecture',
-  Scene = 'scene'
+  Scene = 'scene',
+  RelatedProducts = 'related-products',
+  Demo = 'demo'
 }
 
 export const solutionModuleTitleMap = {
@@ -33,7 +39,9 @@ export const solutionModuleTitleMap = {
   [SolutionModule.Advantage]: '方案优势',
   [SolutionModule.Function]: '方案功能',
   [SolutionModule.Architecture]: '方案架构',
-  [SolutionModule.Scene]: '应用场景'
+  [SolutionModule.Scene]: '应用场景',
+  [SolutionModule.RelatedProducts]: '相关产品',
+  [SolutionModule.Demo]: 'Demo 体验'
 } as const
 
 export interface SolutionSection<T extends SolutionComponent = SolutionComponent> {

@@ -27,6 +27,8 @@ import useCompAdvantage from './comps/advantage'
 import useCompArchitecture from './comps/architecture'
 import useCompFunction from './comps/function'
 import useCompScene from './comps/scene'
+import useCompRelatedProducts from './comps/related-products'
+import useCompDemo from './comps/demo'
 
 import styles from './style.m.less'
 
@@ -83,6 +85,8 @@ export default observer(function PageInfo({ solutionId }: Props) {
   const [configCompArchitecture, compArchitectureView] = useCompArchitecture()
   const [configCompFunction, compFunctionView] = useCompFunction()
   const [configCompScene, compSceneView] = useCompScene()
+  const [configCompRelatedProducts, compRelatedProductsView] = useCompRelatedProducts()
+  const [configCompDemo, compDemoView] = useCompDemo()
 
   function submit() {
     if (!solutionInfo) {
@@ -147,6 +151,12 @@ export default observer(function PageInfo({ solutionId }: Props) {
       case SolutionModule.Scene:
         configSectionComp = configCompScene()
         break
+      case SolutionModule.RelatedProducts:
+        configSectionComp = configCompRelatedProducts()
+        break
+      case SolutionModule.Demo:
+        configSectionComp = configCompDemo()
+        break
       default:
         toasterStore.error(`未知模块 ${solutionModule}`)
         return
@@ -184,6 +194,12 @@ export default observer(function PageInfo({ solutionId }: Props) {
         break
       case SolutionComponentName.Scene:
         configComp = configCompScene({ ...currentSection, component: currentSection.component })
+        break
+      case SolutionComponentName.RelatedProducts:
+        configComp = configCompRelatedProducts({ ...currentSection, component: currentSection.component })
+        break
+      case SolutionComponentName.Demo:
+        configComp = configCompDemo({ ...currentSection, component: currentSection.component })
         break
       default:
         toasterStore.error(`未知组件 ${currentSection.name}`)
@@ -335,6 +351,8 @@ export default observer(function PageInfo({ solutionId }: Props) {
       {compArchitectureView}
       {compFunctionView}
       {compSceneView}
+      {compRelatedProductsView}
+      {compDemoView}
     </div>
   )
 })

@@ -6,7 +6,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { isPreviewContext, usePreviewMessage } from 'utils/admin-preview'
-import { SolutionInfo } from 'apis/admin/solution'
+import { SolutionInfo, normalizeSolutionRelatedComponentProps } from 'apis/admin/solution'
 import { getIconMap, getIconIdsFromJson } from 'apis/admin/icon-lib'
 import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import { IconMap } from 'components/LibIcon'
@@ -17,21 +17,28 @@ import styles from './style.less'
 
 const msgKey = 'QINIU_SOLUTION_PAGE_PREVIEW'
 
-export default function ProductPagePreview() {
+export default function SolutionPagePreview() {
   const previewData = usePreviewMessage<SolutionInfo>(msgKey)
+  const [solutionInfo, setSolutionInfo] = useState<SolutionInfo | null>(null)
   const [iconMap, setIconMap] = useState<IconMap>({})
   const [globalBanners, setGlobalBanners] = useState<GlobalBanner[]>([])
 
   useEffect(() => {
-    if (previewData != null) {
-      const icons = getIconIdsFromJson(previewData)
-      getIconMap(icons).then(newIconMap => { setIconMap(newIconMap) })
+    if (previewData != null && hasSolutionPage(previewData)) {
+      normalizeSolutionRelatedComponentProps(previewData).then(() => {
+        setSolutionInfo(previewData)
 
-      getGlobalBanners().then(newGlobalBanners => { setGlobalBanners(newGlobalBanners) })
+        const icons = getIconIdsFromJson(previewData)
+        getIconMap(icons).then(newIconMap => { setIconMap(newIconMap) })
+
+        getGlobalBanners().then(newGlobalBanners => { setGlobalBanners(newGlobalBanners) })
+      })
+    } else {
+      setSolutionInfo(null)
     }
   }, [previewData])
 
-  if (previewData == null) {
+  if (previewData == null || solutionInfo == null) {
     return (<p className={styles.info}>加载中</p>)
   }
 
@@ -42,7 +49,7 @@ export default function ProductPagePreview() {
   return (
     <isPreviewContext.Provider value>
       <SolutionPage
-        solutionInfo={previewData}
+        solutionInfo={solutionInfo}
         iconMap={iconMap}
         globalBanners={globalBanners}
       />

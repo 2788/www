@@ -10,7 +10,7 @@ import { DebouncedFieldState, TransformedState } from 'formstate-x'
 import { Loading } from 'react-icecream'
 import { Select, SelectOptionItems, InputWrapper } from 'react-icecream-form'
 import Store, { observeInjectable } from 'qn-fe-core/store'
-import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
+import { useLocalStore, injectProps } from 'admin-base/common/utils/store'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Loadings } from 'admin-base/common/loading'
 
@@ -45,11 +45,10 @@ class LocalStore extends Store {
 
   constructor(
     @injectProps() private props: Props,
-    toasterStore: ToasterStore,
+    private toasterStore: ToasterStore,
     private iconInfoApis: IconInfoApis
   ) {
     super()
-    ToasterStore.bindTo(this, toasterStore)
     this.loadings.start(LoadingIconsAction)
   }
 
@@ -74,7 +73,7 @@ class LocalStore extends Store {
   async matchIcons(keyword: string): Promise<IconInfo[]> {
     // start searching while necessary (retry)
     if (!this.isLoadingIcons && this.icons == null) {
-      this.fetchIcons()
+      this.toasterStore.promise(this.fetchIcons())
     }
 
     // waiting result of searching
@@ -96,7 +95,6 @@ class LocalStore extends Store {
   }
 
   @Loadings.handle(LoadingIconsAction)
-  @ToasterStore.handle()
   async fetchIcons() {
     const icons = await this.iconInfoApis.listAll()
     this.updateIcons(icons)

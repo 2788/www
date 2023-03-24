@@ -1,0 +1,24 @@
+@import "~utils/less/index.less";
+
+.demoWrapper {
+  padding: 0 20px;
+}
+
+.itemWrapper {
+  border-bottom: 1px solid @border-color;
+
+  &:last-child {
+    border-bottom-color: transparent;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: @icecream-gap-sm 0 @icecream-gap-sm 4px;
+  text-align: left;
+  font-size: @icecream-font-size-lg;
+  font-weight: 500;
+  color: @grey-7;
+}

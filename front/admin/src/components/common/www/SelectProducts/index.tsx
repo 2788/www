@@ -11,7 +11,7 @@ import { DebouncedFieldState } from 'formstate-x'
 import { Loading } from 'react-icecream'
 import { MultiSelect, SelectOptionItems } from 'react-icecream-form'
 import Store, { observeInjectable } from 'qn-fe-core/store'
-import { useLocalStore } from 'qn-fe-core/local-store'
+import { useLocalStore } from 'admin-base/common/utils/store'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Loadings } from 'admin-base/common/loading'
 
@@ -42,11 +42,10 @@ function matchKeyword(keyword: string, text: string): boolean {
 class LocalStore extends Store {
 
   constructor(
-    toasterStore: ToasterStore,
+    private toasterStore: ToasterStore,
     private productInfoApis: ProductInfoApis
   ) {
     super()
-    ToasterStore.bindTo(this, toasterStore)
     this.loadings.start(LoadingProductsAction)
   }
 
@@ -66,7 +65,7 @@ class LocalStore extends Store {
   async matchProducts(keyword: string): Promise<ProductInfo[]> {
     // start searching while necessary (retry)
     if (!this.isLoadingProducts && this.products == null) {
-      this.fetchProducts()
+      this.toasterStore.promise(this.fetchProducts())
     }
 
     // waiting result of searching
@@ -90,7 +89,6 @@ class LocalStore extends Store {
   }
 
   @Loadings.handle(LoadingProductsAction)
-  @ToasterStore.handle()
   async fetchProducts() {
     const products = await this.productInfoApis.listAll()
     this.updateProducts(products)

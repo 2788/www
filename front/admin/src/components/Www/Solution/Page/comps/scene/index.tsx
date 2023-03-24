@@ -14,7 +14,7 @@ import { SolutionComponentSceneConfig, SolutionComponentSceneProps } from 'const
 import Scene, { SceneType, SceneConfig, createState as createSceneState } from 'components/common/www/Scene'
 
 function createState(props?: SolutionComponentSceneProps) {
-  function getSceneConfig(): SceneConfig<SceneType.HorizontalDetail> | undefined {
+  function getSceneConfig(): SceneConfig<SceneType.HorizontalDetail | SceneType.Vertical> | undefined {
     if (props == null) {
       return undefined
     }
@@ -32,7 +32,7 @@ function createState(props?: SolutionComponentSceneProps) {
   }
 
   return createSceneState(
-    [SceneType.HorizontalDetail],
+    [SceneType.HorizontalDetail, SceneType.Vertical],
     getSceneConfig()
   )
 }
@@ -68,7 +68,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
       onCancel={() => { props.onCancel() }}
     >
       <FormItem>
-        <Scene state={state} />
+        <Scene state={state} labelWidth="4em" previewTypeSize={{ width: '700px', height: '400px' }} />
       </FormItem>
     </DrawerForm>
   )

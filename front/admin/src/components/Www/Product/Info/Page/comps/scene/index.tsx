@@ -14,7 +14,7 @@ import { ProductComponentSceneConfig, ProductComponentSceneProps } from 'constan
 import Scene, { SceneType, SceneConfig, createState as createSceneState } from 'components/common/www/Scene'
 
 function createState(props?: ProductComponentSceneProps) {
-  function getSceneConfig(): SceneConfig | undefined {
+  function getSceneConfig(): SceneConfig<SceneType.Vertical | SceneType.HorizontalDetail> | undefined {
     if (props == null) {
       return undefined
     }
@@ -60,7 +60,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   return (
     <DrawerForm
       title={productModuleTitleMap[ProductModule.Scene]}
-      width={725}
+      width={740}
       layout="horizontal"
       visible={props.visible}
       state={state}

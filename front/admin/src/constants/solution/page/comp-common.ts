@@ -9,7 +9,9 @@ export enum SolutionComponentName {
   Advantage = 'Advantage',
   Function = 'Function',
   Architecture = 'Architecture',
-  Scene = 'Scene'
+  Scene = 'Scene',
+  RelatedProducts = 'RelatedProducts',
+  Demo = 'Demo'
 }
 
 /**
