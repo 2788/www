@@ -79,7 +79,7 @@ const mikuDeliveryInitScriptContent = `
   const debug = window.location.search.includes('debug')
   const appInfo = { appID: 'ao89rvrjpyi4gn57', appSalt: 'reimp7tnc2y9p11hckwz10lt3tigw8e7' }
   mikuDeliveryPerf.init(appInfo)
-  mikuDelivery.initProxy('/miku-delivery-sw-0.11.0.js', {
+  mikuDelivery.initProxy('/miku-delivery-sw-1.0.0.js', {
     app: appInfo,
     domains: ['www-static.qbox.me'],
     debug
@@ -98,8 +98,8 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
-          <script src={`${assetHost}/miku-delivery-perf-0.11.0.js`} />
-          <script src={`${assetHost}/miku-delivery-0.11.0.js`} />
+          <script src={`${assetHost}/miku-delivery-perf-1.0.0.js`} />
+          <script src={`${assetHost}/miku-delivery-1.0.0.js`} />
           <script dangerouslySetInnerHTML={{ __html: mikuDeliveryInitScriptContent }} />
         </Head>
         <body>
