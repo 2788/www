@@ -19,8 +19,8 @@ export function createState(button: BannerButtonValue) {
       if (text.trim() === '') {
         return '不能为空'
       }
-      if (text.length > 4) {
-        return '不能超过 4 个字'
+      if (text.length > 8) {
+        return '不能超过 8 个字'
       }
     }),
     pc: createPcState(button.pc),

@@ -46,8 +46,8 @@ export default function SolutionScene({ items }: Props) {
           {items.map(({ name, imgUrl, desc, problemsTitle, problems }) => (
             <SubMenu title={name} key={name}>
               <img className={style.img} src={imgUrl} alt={name} />
-
-              <Detail desc={desc} problemsTitle={problemsTitle} problems={problems.slice(0, 3)} />
+              {/* TODO: 由于市场部需求仍未确定，先删去数量限制，后续确定了再加上 */}
+              <Detail desc={desc} problemsTitle={problemsTitle} problems={problems} />
             </SubMenu>
           ))}
         </Menu>
@@ -62,7 +62,7 @@ export default function SolutionScene({ items }: Props) {
           <TabPane key={name} value={name} tab={name}>
             <div className={style.wrapper}>
 
-              <Detail desc={desc} problemsTitle={problemsTitle} problems={problems.slice(0, 3)} />
+              <Detail desc={desc} problemsTitle={problemsTitle} problems={problems} />
 
               <div className={style.scene}>
                 <div className={style.img} style={{ backgroundImage: `url("${imgUrl}")` }} />
@@ -86,7 +86,7 @@ function Detail({ desc, problemsTitle, problems }: Omit<Item, 'name' | 'imgUrl'>
 
       <div className={style.problems}>
         <div className={style.title}>{problemsTitle?.trim().length ? problemsTitle : '能够解决的问题'}</div>
-        {problems.slice(0, 3).map(propblem => <Problem key={propblem.name} {...propblem} />)}
+        {problems.map(propblem => <Problem key={propblem.name} {...propblem} />)}
       </div>
     </div>
   )
