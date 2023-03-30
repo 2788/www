@@ -138,7 +138,7 @@ function Icp() {
         24 小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com
         <br />
         沪公网安备31011502000961号&nbsp;
-        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer noopener">沪ICP备11037377号-5</a>
+        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer noopener">沪ICP备11037377号</a>
       </p>
     </section>
   )
