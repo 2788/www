@@ -11,7 +11,8 @@ export enum SolutionComponentName {
   Architecture = 'Architecture',
   Scene = 'Scene',
   RelatedProducts = 'RelatedProducts',
-  Demo = 'Demo'
+  Demo = 'Demo',
+  Case = 'Case'
 }
 
 /**

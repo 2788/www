@@ -4,6 +4,7 @@ import SolutionFunction from 'components/Solution/common/SolutionFunction'
 import SolutionScene from 'components/Solution/common/SolutionScene'
 import SolutionRelatedProducts from 'components/Solution/common/SolutionRelatedProducts'
 import SolutionDemos from 'components/Solution/common/SolutionDemos'
+import SolutionCase from 'components/Solution/common/SolutionCase'
 
 export enum ComponentName {
   // 应用场景
@@ -18,6 +19,8 @@ export enum ComponentName {
   RelatedProducts = 'RelatedProducts',
   // Demo 体验
   Demo = 'Demo',
+  // 客户案例
+  Case = 'Case'
 }
 
 export const ComponentMap = {
@@ -26,5 +29,6 @@ export const ComponentMap = {
   [ComponentName.Advantage]: SolutionAdvantage,
   [ComponentName.Function]: SolutionFunction,
   [ComponentName.RelatedProducts]: SolutionRelatedProducts,
-  [ComponentName.Demo]: SolutionDemos
+  [ComponentName.Demo]: SolutionDemos,
+  [ComponentName.Case]: SolutionCase
 }
