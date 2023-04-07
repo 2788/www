@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { SceneType, HorizontalDetailSceneConfig, VerticalSceneConfig } from 'components/common/www/Scene'
+import { SceneType, HorizontalDetailSceneConfig, VerticalSceneConfig, HorizontalSimpleSceneConfig } from 'components/common/www/Scene'
 
 import { SolutionComponentName, SolutionComponentConfig, SolutionComponentProps } from './comp-common'
 
@@ -11,6 +11,7 @@ export type SolutionComponentSceneProps = (
   | SolutionComponentProps<HorizontalDetailSceneConfig>
   | SolutionComponentProps<SceneType.HorizontalDetail, HorizontalDetailSceneConfig>
   | SolutionComponentProps<SceneType.Vertical, VerticalSceneConfig>
+  | SolutionComponentProps<SceneType.HorizontalSimple, HorizontalSimpleSceneConfig>
 )
 
 export type SolutionComponentSceneConfig = SolutionComponentConfig<

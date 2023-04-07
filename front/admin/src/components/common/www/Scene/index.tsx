@@ -10,6 +10,11 @@ import { FormItem, InputWrapper } from 'react-icecream-form'
 
 import SelectImg, { createState as createSelectImgState, ImgItem } from 'components/common/SelectImg'
 
+import HorizontalSimpleScene, {
+  SceneConfig as HorizontalSimpleSceneConfig,
+  createState as createHorizontalSimpleSceneState,
+  previewImg as horizontalSimpleScenePreviewImg
+} from './HorizontalSimpleScene'
 import HorizontalDetailScene, {
   SceneConfig as HorizontalDetailSceneConfig,
   createState as createHorizontalDetailSceneState,
@@ -22,19 +27,20 @@ import VerticalScene, {
 } from './VerticalScene'
 
 export enum SceneType {
-  // TODO: HorizontalSimple = 'horizontal-simple'
+  HorizontalSimple = 'horizontal-simple',
   HorizontalDetail = 'horizontal-detail',
   Vertical = 'vertical'
 }
 
 type SceneConfigWithType<T extends SceneType, U> = { type: T } & U
 
-export { HorizontalDetailSceneConfig, VerticalSceneConfig }
+export { HorizontalSimpleSceneConfig, HorizontalDetailSceneConfig, VerticalSceneConfig }
 
 export type SceneConfig<T extends SceneType = SceneType> = (
   T extends SceneType.HorizontalDetail ? SceneConfigWithType<SceneType.HorizontalDetail, HorizontalDetailSceneConfig>
-  : T extends SceneType.Vertical ? SceneConfigWithType<SceneType.Vertical, VerticalSceneConfig>
-  : never
+  : T extends SceneType.HorizontalSimple ? SceneConfigWithType<SceneType.HorizontalSimple, HorizontalSimpleSceneConfig>
+    : T extends SceneType.Vertical ? SceneConfigWithType<SceneType.Vertical, VerticalSceneConfig>
+      : never
 )
 
 export function createState<T extends SceneType>(allowSceneTypes: T[], initSceneConfig?: SceneConfig<T>) {
@@ -42,6 +48,7 @@ export function createState<T extends SceneType>(allowSceneTypes: T[], initScene
   const init: SceneConfig | undefined = initSceneConfig
 
   const allows: Record<SceneType, boolean> = {
+    [SceneType.HorizontalSimple]: allowTypes.includes(SceneType.HorizontalSimple),
     [SceneType.HorizontalDetail]: allowTypes.includes(SceneType.HorizontalDetail),
     [SceneType.Vertical]: allowTypes.includes(SceneType.Vertical)
   }
@@ -51,6 +58,9 @@ export function createState<T extends SceneType>(allowSceneTypes: T[], initScene
   const state = new FormState({
     allows: new FieldState(allows), // TODO: 优化实现方式？
     type: typeState,
+    horizontalSimple: createHorizontalSimpleSceneState(
+      init?.type === SceneType.HorizontalSimple ? init : undefined
+    ),
     horizontalDetail: createHorizontalDetailSceneState(
       init?.type === SceneType.HorizontalDetail ? init : undefined
     ).disableWhen(() => typeState.value !== SceneType.HorizontalDetail),
@@ -62,6 +72,13 @@ export function createState<T extends SceneType>(allowSceneTypes: T[], initScene
   function stateValueToSceneConfig(value: typeof state.value): SceneConfig<T>
   function stateValueToSceneConfig(value: typeof state.value): SceneConfig {
     const type: SceneType = value.type
+
+    if (type === SceneType.HorizontalSimple) {
+      return {
+        type,
+        ...value.horizontalSimple
+      }
+    }
 
     if (type === SceneType.HorizontalDetail) {
       return {
@@ -82,13 +99,26 @@ export function createState<T extends SceneType>(allowSceneTypes: T[], initScene
 
   function sceneConfigToStateValue(sceneConfig: SceneConfig<T>): (typeof state.value)
   function sceneConfigToStateValue(sceneConfig: SceneConfig): (typeof state.value) {
+
+    if (sceneConfig.type === SceneType.HorizontalSimple) {
+      const { type, ...horizontalSimple } = sceneConfig
+      return {
+        allows,
+        type: type as T,
+        horizontalSimple,
+        vertical: state.$.vertical.value,
+        horizontalDetail: state.$.horizontalDetail.value
+      }
+    }
+
     if (sceneConfig.type === SceneType.HorizontalDetail) {
       const { type, ...horizontalDetail } = sceneConfig
       return {
         allows,
         type: type as T,
         horizontalDetail,
-        vertical: state.$.vertical.value
+        vertical: state.$.vertical.value,
+        horizontalSimple: state.$.horizontalSimple.value
       }
     }
 
@@ -98,7 +128,8 @@ export function createState<T extends SceneType>(allowSceneTypes: T[], initScene
         allows,
         type: type as T,
         vertical,
-        horizontalDetail: state.$.horizontalDetail.value
+        horizontalDetail: state.$.horizontalDetail.value,
+        horizontalSimple: state.$.horizontalSimple.value
       }
     }
 
@@ -129,6 +160,14 @@ export default observer(function Scene({ state, labelWidth = '4em', previewTypeS
       {Object.values(allows).filter(Boolean).length > 1 && (
         <FormItem label="样式类型" required labelWidth={labelWidth}>
           <SelectImg state={fields.type}>
+            {allows[SceneType.HorizontalSimple] && (
+              <ImgItem<SceneType>
+                value={SceneType.HorizontalSimple}
+                src={horizontalSimpleScenePreviewImg}
+                width={previewTypeSize?.width}
+                height={previewTypeSize?.height}
+              />
+            )}
             {allows[SceneType.HorizontalDetail] && (
               <ImgItem<SceneType>
                 value={SceneType.HorizontalDetail}
@@ -146,6 +185,11 @@ export default observer(function Scene({ state, labelWidth = '4em', previewTypeS
               />
             )}
           </SelectImg>
+        </FormItem>
+      )}
+      {fields.type.value === SceneType.HorizontalSimple && (
+        <FormItem>
+          <HorizontalSimpleScene state={fields.horizontalSimple} labelWidth={labelWidth} />
         </FormItem>
       )}
       {fields.type.value === SceneType.HorizontalDetail && (

@@ -11,6 +11,9 @@ import HorizontalDetailScene, {
 import VerticalScene, {
   Props as VerticalSceneProps
 } from 'components/Product/common/ProductScene/Vertical'
+import HorizontalSimpleScene, {
+  Props as HorizontalSimpleSceneProps
+} from 'components/Product/common/ProductScene/HorizontalSimple'
 
 export type Props = (
   | ({
@@ -19,6 +22,9 @@ export type Props = (
   | ({
     type: 'vertical'
   } & VerticalSceneProps)
+  | ({
+    type: 'horizontal-simple'
+  } & HorizontalSimpleSceneProps)
 )
 
 export default function SolutionScene(props: Props) {
@@ -30,6 +36,11 @@ export default function SolutionScene(props: Props) {
   if (props.type === 'vertical') {
     const { type, ...verticalSceneProps } = props
     return (<VerticalScene {...verticalSceneProps} />)
+  }
+
+  if (props.type === 'horizontal-simple') {
+    const { type, ...horizontalSimpleSceneProps } = props
+    return (<HorizontalSimpleScene {...horizontalSimpleSceneProps} />)
   }
 
   return null

@@ -14,7 +14,11 @@ import { ProductComponentSceneConfig, ProductComponentSceneProps } from 'constan
 import Scene, { SceneType, SceneConfig, createState as createSceneState } from 'components/common/www/Scene'
 
 function createState(props?: ProductComponentSceneProps) {
-  function getSceneConfig(): SceneConfig<SceneType.Vertical | SceneType.HorizontalDetail> | undefined {
+  function getSceneConfig(): SceneConfig<
+    SceneType.Vertical
+    | SceneType.HorizontalDetail
+    | SceneType.HorizontalSimple
+  > | undefined {
     if (props == null) {
       return undefined
     }
@@ -32,7 +36,7 @@ function createState(props?: ProductComponentSceneProps) {
   }
 
   return createSceneState(
-    [SceneType.Vertical, SceneType.HorizontalDetail],
+    [SceneType.Vertical, SceneType.HorizontalDetail, SceneType.HorizontalSimple],
     getSceneConfig()
   )
 }
