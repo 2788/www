@@ -7,7 +7,6 @@ import beijing from './images/beijing.png'
 import chengdu from './images/chengdu.png'
 import guangzhou from './images/guangzhou.png'
 import hangzhou from './images/hangzhou.png'
-import nanjing from './images/nanjing.png'
 import shenzhen from './images/shenzhen.png'
 
 import style from './index.less'
@@ -48,15 +47,6 @@ export default function Distribution() {
           <Title className={style.title}>成都分部</Title>
           <Desc className={style.desc}>四川省成都市高新区希顿国际 C 座 2504 室</Desc>
         </LayoutCard>
-      </Row>
-      <Row>
-        <LayoutCard>
-          <Img className={style.image} src={nanjing} />
-          <Title className={style.title}>南京分部</Title>
-          <Desc className={style.desc}>江苏省南京市雨花区软件大道 106 号极客站</Desc>
-        </LayoutCard>
-        <LayoutCard />
-        <LayoutCard />
       </Row>
     </Section>
   )
