@@ -17,7 +17,7 @@ import { urlForPrice } from 'utils/route'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
-import Demo from 'components/pages/tts/Demo'
+// import Demo from 'components/pages/tts/Demo'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import Section from 'components/Product/Section'
 
@@ -52,7 +52,8 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{btns.nav}</Navigator>
-      {isPc && <Demo />}
+      {/* TODO: 暂时隐藏 Demo, 换接口了再放上，现在已经不能用了 */}
+      {/* {isPc && <Demo />} */}
       <Advantage />
       <Scene />
       <ProductNews newsRes={newsRes} />
