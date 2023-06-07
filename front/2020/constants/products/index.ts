@@ -28,7 +28,6 @@ import ocrLargeIconUrl from './icons/large/ocr.png'
 import dcdnLargeIconUrl from './icons/large/dcdn.png'
 import pcdnLargeIconUrl from './icons/large/pcdn.png'
 import geekLargeIconUrl from './icons/large/geek.png'
-import viiLargeIconUrl from './icons/large/vii.png'
 import qnPlayerLargeIconUrl from './icons/large/qn-player.png'
 import voiceLargeIconUrl from './icons/large/voice.png'
 import storageLargeIconUrl from './icons/large/storage.png'
@@ -95,7 +94,7 @@ export enum Product {
   /** 低延时直播 Geek */
   Geek = 'geek',
   /** 视频智能分析 */
-  Vii = 'vii',
+  // Vii = 'vii',
   /** 播放器 SDK */
   QnPlayer = 'qnPlayer',
   /** 短视频特效 SDK */
@@ -152,7 +151,6 @@ export const nameMap = {
   [Product.Pcdn]: '边缘加速',
   [Product.Plesdk]: '直播特效 SDK',
   [Product.Geek]: '低延时直播 Geek',
-  [Product.Vii]: '视频智能分析',
   [Product.QnPlayer]: '播放器 SDK',
   [Product.Svesdk]: '短视频特效 SDK',
   [Product.Voice]: '智能语音',
@@ -193,7 +191,6 @@ export const urlMap = {
   [Product.Pcdn]: '/products/pcdn',
   [Product.Plesdk]: '/products/plesdk',
   [Product.Geek]: '/products/geek',
-  [Product.Vii]: '/products/vii',
   [Product.QnPlayer]: '/products/qnplayer',
   [Product.Svesdk]: '/products/svesdk',
   [Product.Voice]: '/products/voice',
@@ -234,7 +231,6 @@ export const priceUrlMap = {
   [Product.Pcdn]: null,
   [Product.Plesdk]: null,
   [Product.Geek]: null,
-  [Product.Vii]: '/prices/vii',
   [Product.QnPlayer]: null,
   [Product.Svesdk]: null,
   [Product.Voice]: '/prices/voice',
@@ -279,7 +275,6 @@ export const descMap = {
   [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
   [Product.Plesdk]: '提供直播推流场景下的美颜滤镜、大眼瘦脸、美妆美形等特效功能',
   [Product.Geek]: '构建了全新的低延时直播互动体验',
-  [Product.Vii]: '通过视频、图片、音频的多维理解，实现多媒体内容的管理，搜索和推荐',
   [Product.QnPlayer]: '全自研点直播多媒体播放器',
   [Product.Svesdk]: '',
   [Product.Voice]: '基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互',
@@ -320,7 +315,6 @@ export const iconMap = {
   [Product.Plesdk]: require('./icons/default/plesdk.svg').default,
   [Product.CloudSql]: require('./icons/default/cloud-sql.svg').default,
   [Product.Geek]: require('./icons/default/geek.svg').default,
-  [Product.Vii]: require('./icons/default/vii.svg').default,
   [Product.QnPlayer]: require('./icons/default/qnplayer.svg').default,
   [Product.Svesdk]: null,
   [Product.Voice]: require('./icons/default/voice.svg').default,
@@ -361,7 +355,6 @@ export const smallIconMap = {
   [Product.Plesdk]: require('./icons/small/plesdk.svg').default,
   [Product.CloudSql]: require('./icons/small/cloud-sql.svg').default,
   [Product.Geek]: require('./icons/small/geek.svg').default,
-  [Product.Vii]: require('./icons/small/vii.svg').default,
   [Product.QnPlayer]: require('./icons/small/qnplayer.svg').default,
   [Product.Svesdk]: null,
   [Product.Voice]: require('./icons/small/voice.svg').default,
@@ -402,7 +395,6 @@ export const largeIconMap: Record<Product, string | null> = {
   [Product.Pcdn]: pcdnLargeIconUrl,
   [Product.Plesdk]: null,
   [Product.Geek]: geekLargeIconUrl,
-  [Product.Vii]: viiLargeIconUrl,
   [Product.QnPlayer]: qnPlayerLargeIconUrl,
   [Product.Svesdk]: null,
   [Product.Voice]: voiceLargeIconUrl,
@@ -513,7 +505,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   [SubCategory.LiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
   [SubCategory.Dora]: [
     Product.DoraImage, Product.Avsmart, Product.Censor,
-    Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.Qoe,
+    Product.FaceID, Product.Ocr, Product.Voice, Product.Qoe,
     Product.Enhancement, Product.OpenAPI
   ],
   [SubCategory.Sdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk]
@@ -598,7 +590,6 @@ export const categoryMedia = [
   Product.Censor,
   Product.FaceID,
   Product.Ocr,
-  Product.Vii,
   Product.Voice,
   Product.OpenAPI,
   Product.Pili,

@@ -200,7 +200,7 @@ export const productCodeMap = {
   [Product.Censor]: 'censor',
   [Product.FaceID]: 'faceid',
   [Product.Ocr]: 'ocr',
-  [Product.Vii]: 'vii',
+  // [Product.Vii]: 'vii',
   [Product.Voice]: 'voice',
   [Product.Qoe]: 'qoe',
   // [Product.RiskControl]: 'risk-control',

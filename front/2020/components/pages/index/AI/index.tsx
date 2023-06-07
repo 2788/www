@@ -17,7 +17,6 @@ import Arrow from './images/arrow.svg'
 
 import image1 from './images/beauty.png'
 import image2 from './images/censor.png'
-import image3 from './images/camera.png'
 import image4 from './images/quality.png'
 
 import styles from './style.less'
@@ -41,13 +40,6 @@ export default function AI() {
     />,
     <Card
       key="3"
-      title="摄像头智能识别"
-      desc="摄像头视频流上云，提供基于深度学习的图像智能分析算法、智能分析处理和智能识别功能。"
-      src={image3}
-      link={urlMap[Product.Vii]}
-    />,
-    <Card
-      key="4"
       title="音画质量提升"
       desc="提供一站式音画质量优化方案，精准获取音视频资源的客观质量分值，快速诊断并提升音画质量。"
       src={image4}

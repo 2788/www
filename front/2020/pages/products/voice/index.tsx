@@ -77,7 +77,6 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'produc
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
           <RelatedProduct product={Product.Censor} />
-          <RelatedProduct product={Product.Vii} />
           <RelatedProduct product={Product.FaceID} />
         </Related>
       </Section>
