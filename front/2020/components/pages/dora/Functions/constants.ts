@@ -223,6 +223,27 @@ export const productFunctions: FunctionValue = [
               title: '立即体验',
               link: `${urlMap[Product.Ocr]}#demo`
             }
+          },
+          {
+            name: '增值税发票',
+            extra: {
+              title: '立即体验',
+              link: 'https://developer.qiniu.com/dora/12446/the-vat-invoice-ocr'
+            }
+          },
+          {
+            name: '驾驶证 OCR',
+            extra: {
+              title: '立即体验',
+              link: 'https://developer.qiniu.com/dora/12444/driving-license-ocr'
+            }
+          },
+          {
+            name: '行驶证 OCR',
+            extra: {
+              title: '立即体验',
+              link: 'https://developer.qiniu.com/dora/12445/vehicle-license-ocr'
+            }
           }
         ]
       },
@@ -239,14 +260,11 @@ export const productFunctions: FunctionValue = [
           },
           {
             name: '语音合成',
-            extra: {
-              title: '立即体验',
-              link: `${urlMap[Product.Tts]}#demo`
-            }
+            link: `${urlMap[Product.Tts]}#demo`
           },
           {
-            name: '一句话识别',
-            link: 'https://developer.qiniu.com/dora/8336/a-word-recognition'
+            name: '短语音听写',
+            link: 'https://developer.qiniu.com/dora/11869/short-dictation'
           },
           {
             name: '录音文件识别',
@@ -263,21 +281,8 @@ export const productFunctions: FunctionValue = [
         ]
       },
       {
-        title: '图像识别',
-        content: [
-          {
-            name: '图像分类',
-            link: 'https://developer.qiniu.com/dora/7045/image-video-tag'
-          }
-        ]
-      },
-      {
         title: '视频识别',
         content: [
-          {
-            name: '视频智能分析',
-            link: urlMap[Product.Vii]
-          },
           {
             name: '人车宠识别',
             label: '敬请期待'
@@ -293,23 +298,6 @@ export const productFunctions: FunctionValue = [
       {
         title: '内容审核',
         group: [
-          {
-            type: '阿里',
-            content: [
-              {
-                name: '阿里图片审核',
-                link: 'https://developer.qiniu.com/dora/7855/ali-image-audit-service'
-              },
-              {
-                name: '阿里文本反垃圾',
-                link: 'https://developer.qiniu.com/dora/5995/ali-text-anti-spam-service'
-              },
-              {
-                name: '阿里音频审核',
-                link: 'https://developer.qiniu.com/dora/6392/ali-audio-audit-service'
-              }
-            ]
-          },
           {
             type: '数美',
             content: [
@@ -328,31 +316,6 @@ export const productFunctions: FunctionValue = [
             ]
           },
           {
-            type: '图普',
-            content: [
-              {
-                name: '图普图片鉴黄',
-                link: 'https://developer.qiniu.com/dora/1290/image-as-a-yellow-services-nrop'
-              },
-              {
-                name: '图普视频鉴黄',
-                link: 'https://developer.qiniu.com/dora/1310/short-video-jian-huang-services-tupu-video'
-              },
-              {
-                name: '图普图片鉴暴恐',
-                link: 'https://developer.qiniu.com/dora/1309/image-as-a-critical-could-service-terror'
-              },
-              {
-                name: '图普广告过滤',
-                link: 'https://developer.qiniu.com/dora/1244/advertising-filtering-service-ad'
-              },
-              {
-                name: '图普广告过滤增强版',
-                link: 'https://developer.qiniu.com/dora/1243/advertising-filtering-service-enhanced-version-ad-plus'
-              }
-            ]
-          },
-          {
             type: '依图',
             content: [
               {
@@ -360,28 +323,6 @@ export const productFunctions: FunctionValue = [
                 link: 'https://developer.qiniu.com/dora/7100/yitu-audio'
               }
             ]
-          },
-          {
-            type: '达观',
-            content: [
-              {
-                name: '达观文本鉴黄鉴政',
-                link: 'https://developer.qiniu.com/dora/1258/text-as-jian-zheng-huang-service'
-              },
-              {
-                name: '达观垃圾评论过滤',
-                link: 'https://developer.qiniu.com/dora/1259/comment-spam-filtering-services-dg-spam-filter-v1'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        title: '智能语音分析',
-        content: [
-          {
-            name: '阿里音频转文字',
-            link: 'https://developer.qiniu.com/dora/7099/ali-audio-trans'
           }
         ]
       }
