@@ -131,10 +131,8 @@ function Icp() {
       <p>
         <a href="https://www.12377.cn/" target="_blank" rel="noopener">
           <i className={style.report} />
-          违法和不良信息举报中心 &gt;&gt;
+          违法和不良信息举报中心 &nbsp;&nbsp;
         </a>
-      </p>
-      <p>
         24 小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com
         <br />
         沪公网安备31011502000961号&nbsp;
