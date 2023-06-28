@@ -15,6 +15,7 @@ import PageBanner from 'components/pages/index/PageBanner'
 import { useApiWithParams } from 'hooks/api'
 import { luminanceOf } from 'utils/img'
 import { useTrackShow } from 'hooks/thallo'
+import { useMobile } from 'hooks/ua'
 
 import { headerThemeContext } from 'components/Header/Pc'
 import Activities from 'components/pages/index/Activities'
@@ -24,11 +25,14 @@ import UsageGuide from 'components/pages/index/UsageGuide'
 import Services from 'components/pages/index/Services'
 import { getHomePageBanners, getHomePageActivities, AdvertInfo, HomePageBanner } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import VideoCloudBanner from 'components/pages/index/PageBanner/static/VideoCloud'
 import VideoAbility from 'components/pages/index/VideoAbility'
 import AI from 'components/pages/index/AI'
 import Code from 'components/pages/index/Code'
-import VideoCloud from 'components/pages/index/VideoCloud'
+import Architecture from 'components/pages/index/Architecture'
+// import VideoCloud from 'components/pages/index/VideoCloud'
 import LowCodeSolutions from 'components/pages/index/LowCodeSolutions'
+import AllSolutions from 'components/pages/index/AllSolutions'
 
 import styles from './style.less'
 
@@ -85,6 +89,42 @@ function useBanner(banners: Array<AdvertInfo<HomePageBanner>>) {
   }
 }
 
+// 包含静态 banner 的 hook
+function useBanners(banners: Array<AdvertInfo<HomePageBanner>>) {
+  const isMobile = useMobile()
+  const { dark, onBannerChange, setBannerWrapper } = useBanner(banners)
+  const setDark = useContext(bannerDarkCtx).setDark
+  const [isStaticBannerActive, setIsStaticBannerActive] = useState(true)
+  const isActivitiesHidden = !isMobile && isStaticBannerActive
+
+  useEffect(() => {
+    onBannerChange(-1)
+    // 第一张静态图是暗色的，所以手动设置下
+    setDark(true)
+  }, [onBannerChange, setDark])
+
+  function handleBannerChange(currentSlide: number) {
+    if (currentSlide === 0) {
+      setDark(true)
+      setIsStaticBannerActive(true)
+      onBannerChange(-1)
+      return
+    }
+    setIsStaticBannerActive(false)
+    onBannerChange(currentSlide - 1)
+  }
+
+  const videoCloudBannerView = (<VideoCloudBanner />)
+
+  return {
+    dark,
+    onBannerChange: handleBannerChange,
+    setBannerWrapper,
+    isActivitiesHidden,
+    videoCloudBannerView
+  }
+}
+
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
@@ -94,7 +134,8 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
     { params: [] }
   )
 
-  const { dark, onBannerChange, setBannerWrapper } = useBanner(banners)
+  // 去掉静态图后换回 `useBanner`
+  const { dark, onBannerChange, setBannerWrapper, isActivitiesHidden, videoCloudBannerView } = useBanners(banners)
 
   return (
     <>
@@ -107,11 +148,13 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
         autoplaySpeed={5000}
         autoplay
       >
+        {videoCloudBannerView}
         {banners.map((banner, i) => <PageBanner key={i} dark={dark} {...banner} />)}
       </Carousel>
 
-      <Activities activities={currentActivities || activities} />
-      <VideoCloud />
+      <Activities activities={currentActivities || activities} hide={isActivitiesHidden} />
+      <AllSolutions />
+      <Architecture />
       <VideoAbility />
       <Code />
       <AI />

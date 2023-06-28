@@ -32,7 +32,7 @@ import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.png'
 import imgCase3 from './_images/case-3.png'
 
-const title = `${nameMap[Solution.Entlive]}解决方案`
+const title = `${nameMap[Solution.EntLive]}解决方案`
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 

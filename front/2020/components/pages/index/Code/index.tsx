@@ -20,7 +20,7 @@ const iOSContent = `#import <QNLiveKit/QNLiveKit.h>
 
 [QLive initWithToken:token serverURL:liveKitURL errorBack:errorBack];
 [QLive setUser:avatar nick:nickname extension:extension];
-    
+
 QLiveListController *listVc = [QLiveListController new];
 [self.navigationController pushViewController:listVc animated:YES];`
 
@@ -49,7 +49,7 @@ export default function Code() {
     })
   }, [])
   return (
-    <Section title="更易接入的低代码应用平台" rootClassName={styles.section}>
+    <Section title="快速集成" rootClassName={styles.section}>
       <Tabs defaultValue="1" shadow={false} contentClassName={styles.content}>
         <TabPane value="1" tab={<strong>iOS</strong>}>
           <pre className={styles.code}>

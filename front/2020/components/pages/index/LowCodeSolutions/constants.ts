@@ -51,7 +51,7 @@ export const cardData: CardProps[] = [
     backgroundImgUrl: bg1,
     title: '私域营销直播',
     desc: '帮助企业快速集成和接入直播服务，促进私域流量沉淀',
-    url: urlMap[Solution.Entlive],
+    url: urlMap[Solution.EntLive],
     cases: [case1_1, case1_2, case1_3],
     icon: icon1
   },
@@ -83,7 +83,7 @@ export const cardData: CardProps[] = [
     backgroundImgUrl: bg5,
     title: '金融智能双录',
     desc: '基于实时音视频和 AI 能力研制的一站式音视频内容录制、检测及审核解决方案，解决保险公司及中介、银行、汽车金融等企业在双录时体验及效率难题',
-    url: urlMap[Solution.Fin],
+    url: null, // urlMap[Solution.Fin], // 临时下掉
     cases: [case5],
     icon: icon5
   },

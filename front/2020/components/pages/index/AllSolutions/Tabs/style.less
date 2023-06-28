@@ -1,0 +1,130 @@
+@import "~utils/less/index.less";
+
+@tab-duration: 0.25s;
+
+.tabs {
+  //
+
+  .navs {
+    display: flex;
+    justify-content: center;
+
+    .notMobile({
+      gap: 104px; // TODO
+      padding-bottom: 30px;
+    });
+
+    .mobile({
+      gap: 28px; // TODO
+      overflow-x: auto;
+      padding-bottom: 20px;
+    });
+
+    @icon-size: 70px;
+    @icon-size-inc: 20px;
+
+    .nav {
+      flex: 0 1 0%;
+      cursor: pointer;
+
+      &.active {
+        .notMobile({
+          .iconWrapper {
+            // TODO: 保持垂直居中？
+            .icon {
+              width: @icon-size + @icon-size-inc;
+              height: @icon-size + @icon-size-inc;
+            }
+          }
+        });
+
+        .title {
+          font-weight: 500;
+          color: #000;
+        }
+      }
+
+      &.inactive {
+        //
+      }
+    }
+
+    .iconWrapper {
+      .notMobile({
+        width: @icon-size + @icon-size-inc;
+        height: @icon-size + @icon-size-inc;
+        // transition: all @tab-duration; // TODO: 字体颜色动画
+
+        .icon {
+          width: @icon-size;
+          height: @icon-size;
+          transition: all @tab-duration;
+        }
+      });
+
+      // TODO: 尺寸变量
+      .mobile({
+        .icon {
+          width: 40px;
+          height: 40px;
+        }
+      });
+    }
+
+    .title {
+      margin-top: 5px; // TODO
+      color: #666;
+      white-space: nowrap;
+
+      .notMobile({
+        font-size: 20px;
+      });
+
+      .mobile({
+        font-size: 12px;
+      });
+    }
+  }
+
+  .panes {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden; // TODO
+
+    .notMobile({
+      width: 1180px;
+      height: 391px;
+      border: 1px solid #FFF;
+    });
+
+    .pcLg({
+      width: 1440px;
+      height: 477px;
+    });
+
+    .mobile({
+      height: 367px; // TODO
+      border: 1px solid #E5EDF4;
+    });
+
+    .pane {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: #FFF;
+
+      &.active {
+        opacity: 1;
+        width: 100%;
+        transition: width 0s @tab-duration, opacity @tab-duration @tab-duration;
+      }
+
+      &.inactive {
+        opacity: 0;
+        width: 0;
+        transition: width 0s @tab-duration, opacity @tab-duration;
+      }
+    }
+  }
+}

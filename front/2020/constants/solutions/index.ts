@@ -4,7 +4,7 @@ import { FC, SVGAttributes } from 'react'
 
 import rtcliveLargeIconUrl from './images/large/rtclive.png'
 import plsvLargeIconUrl from './images/large/plsv.png'
-import EntliveLargeIconUrl from './images/large/entlive.png'
+import entliveLargeIconUrl from './images/large/entlive.png'
 import kodoeLargeIconUrl from './images/large/kodoe.png'
 import essLargeIconUrl from './images/large/ess.png'
 import storageLargeIconUrl from './images/large/storage.png'
@@ -16,8 +16,8 @@ import imLargeIconUrl from './images/large/im.png'
 import socialLargeIconUrl from './images/large/social.png'
 import genLargeIconUrl from './images/large/gen.png'
 import entertainmentLargeIconUrl from './images/large/entertainment.png'
-import ApaasLargeIconUrl from './images/large/apaas.png'
-import AvatarLargeIconUrl from './images/large/avatar.png'
+import apaasLargeIconUrl from './images/large/apaas.png'
+import avatarLargeIconUrl from './images/large/avatar.png'
 
 /** @deprecated 参考 `/apis/admin/solution.ts` 的 `getSolutionInfo` */
 export enum Solution {
@@ -46,7 +46,7 @@ export enum Solution {
   /** 短视频 */
   Plsv = 'plsv',
   /** 企业直播 */
-  Entlive = 'entlive',
+  EntLive = 'entlive',
   /** 私有云存储 */
   Kodoe = 'kodoe',
   /** 视频冷存储 */
@@ -60,7 +60,25 @@ export enum Solution {
   /** 低代码音视频工厂 */
   Apaas = 'Apaas',
   /** 虚拟数字人 */
-  Avatar = 'avatar'
+  Avatar = 'avatar',
+  /** 互动营销 */
+  InteractMkt = 'interact-mkt',
+  /** 秀场/赛事直播 */
+  ShowLive = 'showlive',
+  /** 图片处理分发加速 */
+  Image = 'image',
+  /** 家居视联网 */
+  SmartHome = 'smarthome',
+  /** 智慧幼教 */
+  KindergartenMonitoring = 'kindergarten-monitoring',
+  /** 车载智能 */
+  VehicleIntelligence = 'vehicle-intelligence',
+  /** 智能剪辑 */
+  CmediaProduction = 'cmedia-production',
+  /** 智能媒资 */
+  MediaManagement = 'media-management',
+  /** VR 直播 */
+  VrLive = 'vrlive'
 }
 
 export enum Category {
@@ -68,23 +86,33 @@ export enum Category {
   LowCode = 'lowCode',
   Storage = 'storage',
   Industry = 'industry',
-  Consumer = 'consumer'
+  Consumer = 'consumer',
+  SocialEntertainment = 'social-entertainment',
+  VideoMarketing = 'video-marketing',
+  VideoNetworking = 'video-networking',
+  SmartNewMedia = 'smart-new-media',
+  Metaverse = 'metaverse'
 }
 
-export const categories = [
-  Category.Media,
-  Category.LowCode,
-  Category.Storage,
-  Category.Industry,
-  Category.Consumer
-] as const
+export const categories: Category[] = [
+  Category.VideoMarketing,
+  Category.SocialEntertainment,
+  Category.VideoNetworking,
+  Category.SmartNewMedia,
+  Category.Metaverse
+]
 
 export const categoryNameMap = {
   [Category.Media]: '音视频解决方案',
   [Category.LowCode]: '低代码解决方案',
   [Category.Storage]: '存储解决方案',
   [Category.Industry]: '行业解决方案',
-  [Category.Consumer]: '消费互联网解决方案'
+  [Category.Consumer]: '消费互联网解决方案',
+  [Category.VideoMarketing]: '视频营销',
+  [Category.SocialEntertainment]: '社交互娱',
+  [Category.VideoNetworking]: '视联网',
+  [Category.SmartNewMedia]: '智慧新媒体',
+  [Category.Metaverse]: '元宇宙'
 } as const
 
 export const categoryNameMapForMp = {
@@ -92,7 +120,12 @@ export const categoryNameMapForMp = {
   [Category.LowCode]: '低代码',
   [Category.Storage]: '存储',
   [Category.Industry]: '行业',
-  [Category.Consumer]: '消费互联网'
+  [Category.Consumer]: '消费互联网',
+  [Category.VideoMarketing]: '视频营销',
+  [Category.SocialEntertainment]: '社交互娱',
+  [Category.VideoNetworking]: '视联网',
+  [Category.SmartNewMedia]: '智慧新媒体',
+  [Category.Metaverse]: '元宇宙'
 } as const
 
 export const categoryEnNameMap = {
@@ -100,18 +133,36 @@ export const categoryEnNameMap = {
   [Category.LowCode]: 'Solutions by LowCode',
   [Category.Storage]: 'Solutions by Storage',
   [Category.Industry]: 'Solutions by Industry',
-  [Category.Consumer]: 'Solutions by Consumer Internet'
+  [Category.Consumer]: 'Solutions by Consumer Internet',
+  [Category.VideoMarketing]: 'Solutions by Video Marketing',
+  [Category.SocialEntertainment]: 'Solutions by Social Entertainment',
+  [Category.VideoNetworking]: 'Solutions by Video Networking',
+  [Category.SmartNewMedia]: 'Solutions by Smart New Media',
+  [Category.Metaverse]: 'Solutions by Metaverse'
+} as const
+
+export const categoryDescMap = {
+  [Category.VideoMarketing]: '覆盖营销、带货、企业培训、活动直播等场景，帮助企业快速集成和接入直播服务，实现内容生产、直播数据域流量闭环。',
+  [Category.SocialEntertainment]: '为移动社交娱乐平台提供集图片处理、音视频点播、直播与互动、音视频处理、存储与分发等服务的一站式解决方案。',
+  [Category.VideoNetworking]: '为视联网提供集音视频云管理、计算引擎、场景感知分析、云编解码及存储等服务的一站式解决方案。',
+  [Category.SmartNewMedia]: '为智慧新媒体平台提供音视频内容制作服务，兼顾低延时、高吞吐、高精度的一站式解决方案。',
+  [Category.Metaverse]: '提供虚拟数字人、虚拟空间音视频服务，助力元宇宙企业技术及应用落地，打造沉浸式虚拟空间。'
 } as const
 
 export const categorySolutionsMap = {
-  [Category.Media]: [Solution.Rtclive, Solution.Plsv, Solution.Entlive, Solution.Avatar],
+  [Category.Media]: [Solution.Rtclive, Solution.Plsv, Solution.EntLive, Solution.Avatar],
   [Category.LowCode]: [Solution.Apaas],
   [Category.Storage]: [Solution.Kodoe, Solution.Ess, Solution.Storage],
   [Category.Industry]: [
     Solution.Fin, Solution.Automobile, Solution.Gene, Solution.IntelligentManufacturing,
     Solution.Medium, Solution.Isp
   ],
-  [Category.Consumer]: [Solution.Entertainment, Solution.Social, Solution.ECommerce, Solution.Edu]
+  [Category.Consumer]: [Solution.Entertainment, Solution.Social, Solution.ECommerce, Solution.Edu],
+  [Category.VideoMarketing]: [Solution.EntLive, Solution.InteractMkt],
+  [Category.SocialEntertainment]: [Solution.Plsv, Solution.ShowLive, Solution.Image],
+  [Category.VideoNetworking]: [Solution.SmartHome, Solution.KindergartenMonitoring, Solution.VehicleIntelligence],
+  [Category.SmartNewMedia]: [Solution.CmediaProduction, Solution.MediaManagement],
+  [Category.Metaverse]: [Solution.Avatar, Solution.VrLive]
 }
 
 // todo：目前 ts 工作区版本当使用联合类型时，作为函数的成员也将被类型化为联合类型，因此对于 map 之类的方法会产生多种类型，
@@ -153,20 +204,29 @@ export const nameMap: MapTo<string> = {
   [Solution.Qavs]: '智能视频云',
   [Solution.Rtclive]: '互动直播',
   [Solution.Plsv]: '短视频',
-  [Solution.Entlive]: '企业直播',
+  [Solution.EntLive]: '企业直播',
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
   [Solution.Ess]: '监控视频边缘存储',
   [Solution.Storage]: '云存储一体机',
   [Solution.Apaas]: '音视频低代码工厂',
-  [Solution.Avatar]: '数字人解决方案'
+  [Solution.Avatar]: '数字人解决方案',
+  [Solution.InteractMkt]: '互动营销',
+  [Solution.ShowLive]: '秀场/赛事直播',
+  [Solution.Image]: '图片处理分发加速',
+  [Solution.SmartHome]: '家居视联网',
+  [Solution.KindergartenMonitoring]: '智慧幼教',
+  [Solution.VehicleIntelligence]: '车载智能',
+  [Solution.CmediaProduction]: '智能剪辑',
+  [Solution.MediaManagement]: '智能媒资',
+  [Solution.VrLive]: 'VR 直播'
 } as const
 
 export const urlMap: MapTo<string | null> = {
   [Solution.Qavs]: '/solutions/qavs',
   [Solution.Rtclive]: '/solutions/rtclive',
   [Solution.Plsv]: '/solutions/plsv',
-  [Solution.Entlive]: '/solutions/ent-live',
+  [Solution.EntLive]: '/solutions/ent-live',
   [Solution.Kodoe]: '/solutions/kodoe',
   [Solution.Vcs]: '/solutions/vcs',
   [Solution.Ess]: '/solutions/ess',
@@ -182,14 +242,31 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Entertainment]: '/solutions/entertainment',
   [Solution.Medium]: null,
   [Solution.Apaas]: '/solutions/apaas',
-  [Solution.Avatar]: '/solutions/avatar'
+  [Solution.Avatar]: '/solutions/avatar',
+  [Solution.InteractMkt]: '/solutions/interact-mkt',
+  [Solution.ShowLive]: '/solutions/showlive',
+  [Solution.Image]: '/solutions/image',
+  [Solution.SmartHome]: '/solutions/smarthome',
+  [Solution.KindergartenMonitoring]: '/solutions/kindergarten-monitoring',
+  [Solution.VehicleIntelligence]: '/solutions/vehicle-intelligence',
+  [Solution.CmediaProduction]: '/solutions/cmedia-production',
+  [Solution.MediaManagement]: '/solutions/media-management',
+  [Solution.VrLive]: '/solutions/vrlive'
 } as const
+
+/** TODO: 临时代码，后续去掉 */
+export function getUrl(solution: Solution, isFullUrl = true): string | null {
+  const url = urlMap[solution]
+  return isFullUrl
+    ? `https://www.qiniu.com${url}`
+    : url
+}
 
 export const descMap: MapTo<string> = {
   [Solution.Qavs]: '集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案',
   [Solution.Rtclive]: '一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线',
   [Solution.Plsv]: '集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案',
-  [Solution.Entlive]: '多场景通用、0开发接入的直播解决方案',
+  [Solution.EntLive]: '多场景通用、0开发接入的直播解决方案',
   [Solution.Kodoe]: '为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型',
   [Solution.Vcs]: '专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案',
   [Solution.Ess]: '满足监控视频及图片就近存储、加速传输、倍速播放等关键需求',
@@ -205,15 +282,24 @@ export const descMap: MapTo<string> = {
   [Solution.Entertainment]: '丰富的内容生产工具和音视频服务，助力企业快速构建泛娱乐应用',
   [Solution.Medium]: '',
   [Solution.Apaas]: '提供易接入、强扩展、高效部署和覆盖多场景的音视频服务，助力企业快速搭建业务平台',
-  [Solution.Avatar]: '适用于多场景的虚拟数字人解决方案'
+  [Solution.Avatar]: '适用于多场景的虚拟数字人解决方案',
+  [Solution.InteractMkt]: '面向互动营销的低代码解决方案',
+  [Solution.ShowLive]: '一站式构建泛娱乐直播服务',
+  [Solution.Image]: '提供图片的上传、存储、处理和分发加速的全链路解决方案',
+  [Solution.SmartHome]: '为家居物联设备提供音视频低代码接入能力',
+  [Solution.KindergartenMonitoring]: '为幼儿教育行业提供一站式远程看护服务，保障儿童健康成长',
+  [Solution.VehicleIntelligence]: '连接海量汽车出行数据，助力汽车产业加速迈入智能、网联和共享时代',
+  [Solution.CmediaProduction]: '将音视频和深度学习技术应用于海量原始素材剪辑的人工智能解决方案',
+  [Solution.MediaManagement]: 'AI 技术与云媒资的有机结合',
+  [Solution.VrLive]: 'VR 直播，元宇宙时代下的沉浸式直播服务，身临其境般体验'
 } as const
 
 // 32px的icon，默认除导航栏均为该类型
 export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Qavs]: require('./images/default/qavs.svg').default,
   [Solution.Rtclive]: require('./images/default/rtclive.svg').default,
-  [Solution.Plsv]: require('./images/default/plsv.svg').default,
-  [Solution.Entlive]: require('./images/default/entlive.svg').default,
+  [Solution.Plsv]: null, // require('./images/default/plsv.svg').default, // TODO: 恢复
+  [Solution.EntLive]: null, // require('./images/default/entlive.svg').default, // TODO: 恢复
   [Solution.Kodoe]: require('./images/default/kodoe.svg').default,
   [Solution.Vcs]: require('./images/default/vcs.svg').default,
   [Solution.Ess]: require('./images/default/ess.svg').default,
@@ -229,7 +315,16 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Entertainment]: require('./images/default/entertainment.svg').default,
   [Solution.Medium]: null,
   [Solution.Apaas]: require('./images/default/apaas.svg').default,
-  [Solution.Avatar]: require('./images/default/avatar.svg').default
+  [Solution.Avatar]: null, // require('./images/default/avatar.svg').default, // TODO: 恢复
+  [Solution.InteractMkt]: null,
+  [Solution.ShowLive]: null,
+  [Solution.Image]: null,
+  [Solution.SmartHome]: null,
+  [Solution.KindergartenMonitoring]: null,
+  [Solution.VehicleIntelligence]: null,
+  [Solution.CmediaProduction]: null,
+  [Solution.MediaManagement]: null,
+  [Solution.VrLive]: null
 } as const
 
 // 24px的icon，导航栏使用
@@ -237,7 +332,7 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Qavs]: require('./images/small/qavs.svg').default,
   [Solution.Rtclive]: require('./images/small/rtclive.svg').default,
   [Solution.Plsv]: require('./images/small/plsv.svg').default,
-  [Solution.Entlive]: require('./images/small/entlive.svg').default,
+  [Solution.EntLive]: require('./images/small/entlive.svg').default,
   [Solution.Kodoe]: require('./images/small/kodoe.svg').default,
   [Solution.Vcs]: require('./images/small/vcs.svg').default,
   [Solution.Ess]: require('./images/small/ess.svg').default,
@@ -253,7 +348,16 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Entertainment]: require('./images/small/entertainment.svg').default,
   [Solution.Medium]: null,
   [Solution.Apaas]: require('./images/small/apaas.svg').default,
-  [Solution.Avatar]: require('./images/small/avatar.svg').default
+  [Solution.Avatar]: require('./images/small/avatar.svg').default,
+  [Solution.InteractMkt]: null,
+  [Solution.ShowLive]: null,
+  [Solution.Image]: null,
+  [Solution.SmartHome]: null,
+  [Solution.KindergartenMonitoring]: null,
+  [Solution.VehicleIntelligence]: null,
+  [Solution.CmediaProduction]: null,
+  [Solution.MediaManagement]: null,
+  [Solution.VrLive]: null
 } as const
 
 // 96px 的 icon，相关推荐用
@@ -261,7 +365,7 @@ export const largeIconMap: MapTo<string | null> = {
   [Solution.Qavs]: null,
   [Solution.Rtclive]: rtcliveLargeIconUrl,
   [Solution.Plsv]: plsvLargeIconUrl,
-  [Solution.Entlive]: EntliveLargeIconUrl,
+  [Solution.EntLive]: entliveLargeIconUrl,
   [Solution.Kodoe]: kodoeLargeIconUrl,
   [Solution.Vcs]: null,
   [Solution.Ess]: essLargeIconUrl,
@@ -276,8 +380,17 @@ export const largeIconMap: MapTo<string | null> = {
   [Solution.Gene]: genLargeIconUrl,
   [Solution.Entertainment]: entertainmentLargeIconUrl,
   [Solution.Medium]: null,
-  [Solution.Apaas]: ApaasLargeIconUrl,
-  [Solution.Avatar]: AvatarLargeIconUrl
+  [Solution.Apaas]: apaasLargeIconUrl,
+  [Solution.Avatar]: avatarLargeIconUrl,
+  [Solution.InteractMkt]: null,
+  [Solution.ShowLive]: null,
+  [Solution.Image]: null,
+  [Solution.SmartHome]: null,
+  [Solution.KindergartenMonitoring]: null,
+  [Solution.VehicleIntelligence]: null,
+  [Solution.CmediaProduction]: null,
+  [Solution.MediaManagement]: null,
+  [Solution.VrLive]: null
 }
 
 export const allSolutions = categories.reduce(
