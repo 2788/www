@@ -17,7 +17,7 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/Product/Feature'
-import Timeline from 'components/company/Timeline'
+// import Timeline from 'components/company/Timeline'
 import Honor from 'components/company/Honor'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
@@ -115,7 +115,7 @@ function PageContent() {
         </FeatureGroup>
       </Feature>
 
-      <Timeline />
+      {/* <Timeline /> */}
 
       <Honor />
 
