@@ -31,6 +31,7 @@ export default function VideoAbility() {
       title="完备的一站式视频能力"
       subtitle="覆盖音视频生产、处理、传输、消费全流程，集直播、点播、实时音视频、摄像头智能分析为一体，满足不同场景需求。"
       dark
+      rootClassName={styles.section}
     >
       <Row className={styles.row}>
         <Card

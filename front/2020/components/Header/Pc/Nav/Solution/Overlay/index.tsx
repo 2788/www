@@ -8,9 +8,10 @@ import Content from '../../Overlay/Menu/Content'
 import ContentSection from './ContentSection'
 
 export default function Overlay() {
+  const defaultCategory = categories[0] ?? Category.VideoMarketing
   return (
     <OverlayWithMenu>
-      <Menu defaultActive={categoryNameMap[Category.Media]}>
+      <Menu defaultActive={categoryNameMap[defaultCategory]}>
         {categories.map(category => (
           <MenuItem key={category} title={categoryNameMap[category]} subtitle={categoryEnNameMap[category]} />
         ))}

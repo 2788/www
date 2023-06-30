@@ -3,25 +3,23 @@
 @tab-duration: 0.25s;
 
 .tabs {
-  //
-
   .navs {
     display: flex;
     justify-content: center;
 
     .notMobile({
-      gap: 104px; // TODO
+      gap: 124px;
       padding-bottom: 30px;
     });
 
     .mobile({
-      gap: 28px; // TODO
+      gap: 28px;
       overflow-x: auto;
       padding-bottom: 20px;
     });
 
-    @icon-size: 70px;
-    @icon-size-inc: 20px;
+    @pc-icon-size: 70px;
+    @pc-icon-size-inc: 20px;
 
     .nav {
       flex: 0 1 0%;
@@ -30,17 +28,16 @@
       &.active {
         .notMobile({
           .iconWrapper {
-            // TODO: 保持垂直居中？
             .icon {
-              width: @icon-size + @icon-size-inc;
-              height: @icon-size + @icon-size-inc;
+              width: @pc-icon-size + @pc-icon-size-inc;
+              height: @pc-icon-size + @pc-icon-size-inc;
             }
           }
         });
 
         .title {
           font-weight: 500;
-          color: #000;
+          color: #333;
         }
       }
 
@@ -51,18 +48,19 @@
 
     .iconWrapper {
       .notMobile({
-        width: @icon-size + @icon-size-inc;
-        height: @icon-size + @icon-size-inc;
-        // transition: all @tab-duration; // TODO: 字体颜色动画
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: @pc-icon-size + @pc-icon-size-inc;
+        height: @pc-icon-size + @pc-icon-size-inc;
 
         .icon {
-          width: @icon-size;
-          height: @icon-size;
+          width: @pc-icon-size;
+          height: @pc-icon-size;
           transition: all @tab-duration;
         }
       });
 
-      // TODO: 尺寸变量
       .mobile({
         .icon {
           width: 40px;
@@ -72,12 +70,13 @@
     }
 
     .title {
-      margin-top: 5px; // TODO
+      margin-top: 5px;
       color: #666;
       white-space: nowrap;
 
       .notMobile({
         font-size: 20px;
+        transition: all @tab-duration; // FIXME: 字体颜色动画有问题
       });
 
       .mobile({
@@ -89,22 +88,19 @@
   .panes {
     position: relative;
     border-radius: 4px;
-    overflow: hidden; // TODO
 
     .notMobile({
-      width: 1180px;
-      height: 391px;
-      border: 1px solid #FFF;
-    });
-
-    .pcLg({
-      width: 1440px;
-      height: 477px;
+      height: 460px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 2px solid #FFF;
+      backdrop-filter: blur(79px);
     });
 
     .mobile({
-      height: 367px; // TODO
+      height: 372px;
       border: 1px solid #E5EDF4;
+      background: #FFF;
+      box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.02);
     });
 
     .pane {
@@ -112,6 +108,7 @@
       left: 0;
       top: 0;
       height: 100%;
+      overflow: hidden;
       background: #FFF;
 
       &.active {
@@ -124,6 +121,7 @@
         opacity: 0;
         width: 0;
         transition: width 0s @tab-duration, opacity @tab-duration;
+        pointer-events: none;
       }
     }
   }

@@ -74,7 +74,7 @@ export function ContentSectionItem({ title, href, hot, className, onClick, child
     : <>{children}{hotIcon}</>
   return (
     <li className={style.item}>
-      <Link href={href} onClick={onClick} className={cls(style.link, className)}>
+      <Link href={href} onClick={onClick} className={cls(style.link, className)} target="_self">
         {contentView}
       </Link>
     </li>

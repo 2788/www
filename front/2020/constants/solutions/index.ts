@@ -254,10 +254,13 @@ export const urlMap: MapTo<string | null> = {
   [Solution.VrLive]: '/solutions/vrlive'
 } as const
 
-/** TODO: 临时代码，后续去掉 */
+/**
+ * TODO: 不应该放 `constants` 里，并且不应该添加 host、更不应该把 host 写死成线上的
+ * 现在这么干是因为测试环境数据不全，影响线下测试环境预览效果，最近测试环境比较重要
+ */
 export function getUrl(solution: Solution, isFullUrl = true): string | null {
   const url = urlMap[solution]
-  return isFullUrl
+  return url && isFullUrl
     ? `https://www.qiniu.com${url}`
     : url
 }
@@ -266,7 +269,7 @@ export const descMap: MapTo<string> = {
   [Solution.Qavs]: '集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案',
   [Solution.Rtclive]: '一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线',
   [Solution.Plsv]: '集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案',
-  [Solution.EntLive]: '多场景通用、0开发接入的直播解决方案',
+  [Solution.EntLive]: '多场景通用、0 开发接入的直播解决方案',
   [Solution.Kodoe]: '为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型',
   [Solution.Vcs]: '专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案',
   [Solution.Ess]: '满足监控视频及图片就近存储、加速传输、倍速播放等关键需求',
@@ -298,8 +301,8 @@ export const descMap: MapTo<string> = {
 export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Qavs]: require('./images/default/qavs.svg').default,
   [Solution.Rtclive]: require('./images/default/rtclive.svg').default,
-  [Solution.Plsv]: null, // require('./images/default/plsv.svg').default, // TODO: 恢复
-  [Solution.EntLive]: null, // require('./images/default/entlive.svg').default, // TODO: 恢复
+  [Solution.Plsv]: null, // require('./images/default/plsv.svg').default, // TODO: 恢复 icon 但需要检查 /mp/solutions 效果
+  [Solution.EntLive]: null, // require('./images/default/entlive.svg').default, // TODO: 恢复 icon 但需要检查 /mp/solutions 效果
   [Solution.Kodoe]: require('./images/default/kodoe.svg').default,
   [Solution.Vcs]: require('./images/default/vcs.svg').default,
   [Solution.Ess]: require('./images/default/ess.svg').default,
@@ -315,7 +318,7 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Entertainment]: require('./images/default/entertainment.svg').default,
   [Solution.Medium]: null,
   [Solution.Apaas]: require('./images/default/apaas.svg').default,
-  [Solution.Avatar]: null, // require('./images/default/avatar.svg').default, // TODO: 恢复
+  [Solution.Avatar]: null, // require('./images/default/avatar.svg').default, // TODO: 恢复 icon 但需要检查 /mp/solutions 效果
   [Solution.InteractMkt]: null,
   [Solution.ShowLive]: null,
   [Solution.Image]: null,

@@ -27,12 +27,13 @@ import { getHomePageBanners, getHomePageActivities, AdvertInfo, HomePageBanner }
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import VideoCloudBanner from 'components/pages/index/PageBanner/static/VideoCloud'
 import VideoAbility from 'components/pages/index/VideoAbility'
-import AI from 'components/pages/index/AI'
+// import AI from 'components/pages/index/AI'
 import Code from 'components/pages/index/Code'
 import Architecture from 'components/pages/index/Architecture'
 // import VideoCloud from 'components/pages/index/VideoCloud'
-import LowCodeSolutions from 'components/pages/index/LowCodeSolutions'
+// import LowCodeSolutions from 'components/pages/index/LowCodeSolutions'
 import AllSolutions from 'components/pages/index/AllSolutions'
+import PlatformAbility from 'components/pages/index/PlatformAbility'
 
 import styles from './style.less'
 
@@ -155,10 +156,11 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
       <Activities activities={currentActivities || activities} hide={isActivitiesHidden} />
       <AllSolutions />
       <Architecture />
-      <VideoAbility />
+      <PlatformAbility />
       <Code />
-      <AI />
-      <LowCodeSolutions />
+      <VideoAbility />
+      {/* <AI /> */}
+      {/* <LowCodeSolutions /> */}
       <Cases />
       <Certs />
       <UsageGuide />
@@ -176,7 +178,7 @@ export default function IndexPage({ globalBanners, banners, activities }: Props)
         <Layout
           title=""
           keywords="七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速, 七牛短视频, 七牛智能视频云, 七牛实时音视频云, 七牛数据分析平台"
-          description="2011 年成立以来，七牛云致力于成为全球领先的一站式场景化智能视频云服务商，围绕数字化浪潮下的在线音视频需求，基于强大的云边一体化能力和低代码能力，持续在视频点播、互动直播、实时音视频、摄像头上云等领域，进行深度技术投入，提供面向业务场景的视频云解决方案。截至目前，有超过 100 万企业客户和开发者长期使用七牛云服务，包括 OPPO 、爱奇艺、平安银行、招商银行、上汽集团、芒果 TV 等知名企业。"
+          description="2011 年成立以来，七牛云致力于成为全球领先的一站式场景化智能音视频 APaaS 服务商，围绕数字化浪潮下的在线音视频需求，基于强大的云边一体化能力和低代码能力，持续在视频点播、互动直播、实时音视频、摄像头上云等领域，进行深度技术投入，提供面向业务场景的视频云解决方案。截至目前，有超过 100 万企业客户和开发者长期使用七牛云服务，包括 OPPO 、爱奇艺、平安银行、招商银行、上汽集团、芒果 TV 等知名企业。"
           globalBanners={globalBanners}
         >
           <PageContent banners={banners} activities={activities} />

@@ -19,7 +19,7 @@ export default function VideoCloud() {
     <div className={style.wrapper}>
       <div className={style.bg}>
         <div className={style.main}>
-          <h3 className={style.title}>一站式场景化智能视频云</h3>
+          <h3 className={style.title}>一站式场景化智能音视频 APaaS</h3>
           <div className={style.layout} style={{ backgroundImage: `url("${layoutUrl}")` }} />
           <div className={style.step5} style={{ backgroundImage: `url("${step5Url}")` }} />
           <div className={style.step4} style={{ backgroundImage: `url("${step4Url}")` }} />

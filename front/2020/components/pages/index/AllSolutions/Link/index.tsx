@@ -6,16 +6,21 @@ import ArrowIcon from './arrow.svg'
 import styles from './style.less'
 
 export interface Props {
-  href?: string | null // TODO: 类型修正
+  href: string | null
   iconUrl: string
   children: ReactNode
 }
 
 export default function LinkItem({ href, iconUrl, children }: Props) {
+  if (!href) {
+    // eslint-disable-next-line no-console
+    console.error('Missing url.')
+    return null
+  }
+
   return (
     <div className={styles.link}>
-      {/* TODO: 去掉 target="_self" 和 ?? '' */}
-      <Link href={href ?? ''} target="_self">
+      <Link href={href} target="_self">
         <span className={styles.iconWrapper}>
           <img src={iconUrl} className={styles.icon} alt="icon" />
         </span>

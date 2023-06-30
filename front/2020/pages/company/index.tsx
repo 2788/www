@@ -41,7 +41,7 @@ function PageContent() {
   return (
     <div className={styles.pageContent}>
       <Banner background={imgBanner} backgroundSize="contain" backgroundPosition="right bottom" >
-        <Title className={styles.bannerTitle}>一站式场景化智能视频云</Title>
+        <Title className={styles.bannerTitle}>一站式场景化智能音视频 APaaS</Title>
       </Banner>
 
       <PageNotice>
@@ -65,7 +65,7 @@ function PageContent() {
 
       <Section title="关于七牛" name="about" header="七牛是一家怎样的公司？">
         <section className={styles.about}>
-          <p className={styles.passage}>七牛云（上海七牛信息技术有限公司）成立于 2011 年，公司致力于打造全球领先的一站式场景化智能音视频服务，总部位于上海，同时在北京、深圳、广州、成都、杭州、武汉等地设有分部，公司累计融资超 30 亿人民币，股东包括经纬中国、启明创投、张江高科、中国国有企业结构调整基金等明星机构。</p>
+          <p className={styles.passage}>七牛云（上海七牛信息技术有限公司）成立于 2011 年，公司致力于打造全球领先的一站式场景化智能音视频 APaaS 服务，总部位于上海，同时在北京、深圳、广州、成都、杭州、武汉等地设有分部，公司累计融资超 30 亿人民币，股东包括经纬中国、启明创投、张江高科、中国国有企业结构调整基金等明星机构。</p>
           <p className={styles.passage}>七牛云成立以来围绕数字化浪潮下的在线音视频需求，基于强大的云边一体化能力和低代码能力，深耕视频点播、互动直播、实时音视频、摄像头上云等领域，提供面向场景的音视频服务，赋能产业数字化转型。目前，公司公有云管理文件数超 1 万亿；覆盖全球节点近 3000 个；每日直播与实时互动时长超 2.3 亿分钟；企业客户和开发者数量超过 100 万，广泛分布在互联网、广电与新媒体、汽车、金融、生命科学、智能制造等行业，包括 OPPO 、爱奇艺、平安银行、招商银行、上汽集团、芒果 TV 等知名企业。</p>
           <div className={styles.gallery}>
             <div className={styles.main} />

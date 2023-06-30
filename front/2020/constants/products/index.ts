@@ -1,4 +1,3 @@
-import { Landpage, urlMap as landpageUrlMap } from 'constants/landpage'
 /**
  * @file 所有产品信息的定义，全局用同一份保证一致
  * @description 包括 id、展示名、页面地址等
@@ -6,6 +5,8 @@ import { Landpage, urlMap as landpageUrlMap } from 'constants/landpage'
 
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
+
+import { Landpage, urlMap as landpageUrlMap } from 'constants/landpage'
 
 import kodoLargeIconUrl from './icons/large/kodo.png'
 import qcdnLargeIconUrl from './icons/large/qcdn.png'
@@ -38,6 +39,7 @@ import qoeLargeIconUrl from './icons/large/qoe.png'
 import qecLargeIconUrl from './icons/large/qec.png'
 import enhancementLargeIconUrl from './icons/large/enhancement.png'
 import qappLargeIconUrl from './icons/large/qapp.png'
+import qnvsLargeIconUrl from './icons/large/qnvs.png'
 
 /** @deprecated 参考 `/apis/admin/product.ts` 的 `getProductInfo` */
 export enum Product {
@@ -120,7 +122,9 @@ export enum Product {
   /** 画质增强 */
   Enhancement = 'enhancement',
   /** 容器轻应用平台 */
-  QApp = 'qapp'
+  QApp = 'qapp',
+  /** 号码认证服务 */
+  Qnvs = 'qnvs'
 }
 
 // TODO: 这个再核对一遍
@@ -162,7 +166,8 @@ export const nameMap = {
   [Product.Qoe]: '音画质量分析',
   [Product.Qec]: '专有云计算',
   [Product.Enhancement]: '画质增强',
-  [Product.QApp]: '容器轻应用平台'
+  [Product.QApp]: '容器轻应用平台',
+  [Product.Qnvs]: '号码认证服务'
 } as const
 
 export const urlMap = {
@@ -202,7 +207,8 @@ export const urlMap = {
   [Product.Qoe]: '/products/qoe',
   [Product.Qec]: '/products/qec',
   [Product.Enhancement]: '/products/enhancement',
-  [Product.QApp]: '/products/qapp'
+  [Product.QApp]: '/products/qapp',
+  [Product.Qnvs]: '/products/qnvs'
 } as const
 
 export const priceUrlMap = {
@@ -242,7 +248,8 @@ export const priceUrlMap = {
   [Product.Qoe]: null,
   [Product.Qec]: null,
   [Product.Enhancement]: null,
-  [Product.QApp]: '/prices/qapp'
+  [Product.QApp]: '/prices/qapp',
+  [Product.Qnvs]: '/prices/qnvs'
 } as const
 
 export const descMap = {
@@ -286,7 +293,8 @@ export const descMap = {
   [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统',
   [Product.Qec]: '针对企业级市场使用特点，为客户量身打造的开放、统一、可信的云计算平台',
   [Product.Enhancement]: '基于七牛领先的深度学习技术，提供视频画质增强服务',
-  [Product.QApp]: '为多媒体开发客户提供稳定、可靠、弹性、轻量的容器应用平台，实现业务容器化'
+  [Product.QApp]: '为多媒体开发客户提供稳定、可靠、弹性、轻量的容器应用平台，实现业务容器化',
+  [Product.Qnvs]: '为 APP 开发者提供一键登录及号码认证的快捷服务'
 } as const
 
 export const iconMap = {
@@ -326,7 +334,8 @@ export const iconMap = {
   [Product.Qoe]: require('./icons/default/qoe.svg').default,
   [Product.Qec]: require('./icons/default/qec.svg').default,
   [Product.Enhancement]: null,
-  [Product.QApp]: require('./icons/default/qapp.svg').default
+  [Product.QApp]: require('./icons/default/qapp.svg').default,
+  [Product.Qnvs]: require('./icons/default/qnvs.svg').default
 }
 
 export const smallIconMap = {
@@ -366,7 +375,8 @@ export const smallIconMap = {
   [Product.Qoe]: require('./icons/small/qoe.svg').default,
   [Product.Qec]: require('./icons/small/qec.svg').default,
   [Product.Enhancement]: null,
-  [Product.QApp]: require('./icons/small/qapp.svg').default
+  [Product.QApp]: require('./icons/small/qapp.svg').default,
+  [Product.Qnvs]: require('./icons/small/qnvs.svg').default
 }
 
 export const largeIconMap: Record<Product, string | null> = {
@@ -406,7 +416,8 @@ export const largeIconMap: Record<Product, string | null> = {
   [Product.Qoe]: qoeLargeIconUrl,
   [Product.Qec]: qecLargeIconUrl,
   [Product.Enhancement]: enhancementLargeIconUrl,
-  [Product.QApp]: qappLargeIconUrl
+  [Product.QApp]: qappLargeIconUrl,
+  [Product.Qnvs]: qnvsLargeIconUrl
 }
 
 export enum Category {
@@ -493,7 +504,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   [SubCategory.Storage]: [Product.Kodo, Product.Archive, Product.Storage, Product.Hdfs],
   [SubCategory.Distribution]: [Product.Cdn, Product.Dcdn, Product.Pcdn, Product.Ssl],
   [SubCategory.Basis]: [
-    Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms, Product.QApp
+    Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms, Product.QApp, Product.Qnvs
   ],
   [SubCategory.Audio]: [
     // TODO: 尝试弄成一个跟 Product.Kodo 配置几乎一样的真·Product 简化这里的逻辑

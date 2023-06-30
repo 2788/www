@@ -17,7 +17,7 @@ export default function Content({ title, desc, imgUrl, children }: Props) {
         <p className={styles.desc}>{desc}</p>
         <div className={styles.links}>{children}</div>
       </div>
-      <img src={imgUrl} className={styles.bg} alt="background" />
+      <div className={styles.bg} style={{ backgroundImage: `url("${imgUrl}")` }}></div>
     </div>
   )
 }

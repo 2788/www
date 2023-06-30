@@ -65,7 +65,7 @@ function Page() {
       <Section name="cases" title="客户案例" withTailPadding>
         <Cases>
           <Case logo={imgCase1} title="复星健康" onConsult={showWechatConsultModal}>
-            复星健康的每个业务线都有不同的直播场景，培训、营销、科普，七牛云企业直播方案具备 SaaS 层到 aPaaS 层的能力，支持定制开发，实现了多层次的直播需求。同时提供了子账号和讲师账号，满足了不同部门和合作医院的运营需求。
+            复星健康的每个业务线都有不同的直播场景，培训、营销、科普，七牛云企业直播方案具备 SaaS 层到 APaaS 层的能力，支持定制开发，实现了多层次的直播需求。同时提供了子账号和讲师账号，满足了不同部门和合作医院的运营需求。
           </Case>
           <Case logo={imgCase2} title="东莞证券" onConsult={showWechatConsultModal}>
             七牛云为东莞证券提供从底层资源到上层功能全链路自主可控的业务价值，实现了微信、H5、PC、APP 多终端的直播与观看。

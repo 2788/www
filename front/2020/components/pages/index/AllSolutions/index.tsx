@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-// import { useMobile } from 'hooks/ua'
 import {
   Category, categoryNameMap, categoryDescMap, Solution, nameMap, getUrl
 } from 'constants/solutions'
@@ -47,7 +46,6 @@ import mvVrLiveIconUrl from './imgs/metaverse/vrlive.jpg' // VR 直播
 import styles from './style.less'
 
 export default function AllSolutions() {
-  // const isMobile = useMobile() // TODO
   const [current, setCurrent] = useState(0)
   return (
     <Section

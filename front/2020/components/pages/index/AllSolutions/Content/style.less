@@ -1,43 +1,41 @@
 @import "~utils/less/index.less";
 
 .content {
-  .notMobile({
-    display: flex;
+  height: 100%;
+  display: flex;
+
+  .mobile({
+    flex-direction: column;
+    padding: 16px;
   });
 }
 
 .detail,
 .bg {
-  flex: 0 1 50%;
-  overflow: hidden;
+  .notMobile({
+    flex: 0 1 50%;
+    height: 100%;
+  });
 }
 
 .detail {
   text-align: left;
 
   .notMobile({
-    padding: 35px 90px; // TODO
+    padding: 60px 115px;
     background: #FBFBFC;
-  });
-
-  .mobile({
-    padding: 16px;
-  });
-
-  .pcLg({
-    padding: 60px 120px;
   });
 }
 
 .bg {
   background-size: cover;
-
-  .notMobile({
-    height: 100%;
-  });
+  background-position: center center;
 
   .mobile({
+    flex: 1;
     width: 100%;
+    margin-top: 8px;
+    border-radius: 4px;
   });
 }
 
@@ -46,7 +44,7 @@
   color: #333;
 
   .notMobile({
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     font-size: 24px;
   });
 
@@ -56,12 +54,8 @@
 }
 
 .desc {
-  margin-bottom: 10px; // TODO
+  margin-bottom: 24px;
   color: #666;
-
-  .pcLg({
-    margin-bottom: 30px;
-  });
 
   .mobile({
     margin: 8px 0;

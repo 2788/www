@@ -9,7 +9,7 @@ import Mobile from './Mobile'
 export default function Cases() {
   const isMobile = useMobile()
   return (
-    <Section title="100w+ 企业和开发者的共同选择">
+    <Section title="成功案例">
       {
         isMobile ? <Mobile /> : <Pc />
       }

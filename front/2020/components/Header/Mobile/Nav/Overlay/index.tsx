@@ -30,7 +30,7 @@ function getSolutionItems(solutions: readonly sol.Solution[]) {
     solution => sol.getUrl(solution) != null
   ).map(solution => (
     <MenuItem key={solution}>
-      <Link href={sol.getUrl(solution)!}>{sol.nameMap[solution]}</Link>
+      <Link href={sol.getUrl(solution)!} target="_self">{sol.nameMap[solution]}</Link>
     </MenuItem>
   ))
 }

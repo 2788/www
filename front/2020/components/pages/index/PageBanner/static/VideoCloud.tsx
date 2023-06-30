@@ -16,7 +16,7 @@ export default function VideoCloud() {
   const descView = '面向视频点播、互动直播、实时音视频、视联网等领域，提供场景化智能音视频服务能力'
   return (
     <Wrapper bgImg={isMobile ? bgMobile : bg}>
-      <h1 className={style.title}>一站式场景化智能音视频 aPaaS</h1>
+      <h1 className={style.title}>一站式场景化智能音视频 APaaS</h1>
       <p className={style.desc}>{descView}</p>
       {
         !isMobile && (
