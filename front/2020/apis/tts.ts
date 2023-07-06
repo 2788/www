@@ -26,7 +26,7 @@ export type TtsOptipns = {
 }
 
 export async function getTts(options: TtsOptipns): Promise<TtsResponse> {
-  const response: TtsResponse = await post(`${ttsApi}/voice/tts`, options)
+  const response: TtsResponse = await post(`${ttsApi}/voice/v2/tts`, options)
   if (response.err_code !== 0 || !response.audio) {
     throw new Error(response.err_msg)
   }
