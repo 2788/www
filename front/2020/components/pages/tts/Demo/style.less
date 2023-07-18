@@ -38,13 +38,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
     .button {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       width: 128px;
       height: 44px;
       margin-bottom: 16px;
       padding: 10px 16px;
+      text-align: center;
       background-color: @grey-2;
       border: 2px solid @grey-2;
       border-radius: 4px;
@@ -75,6 +73,22 @@
      text-align: right;
     }
   }
+
+  .selectWrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+
+    .selectTag {
+      width: 50px;
+    }
+
+    .select {
+      margin-left: 10px;
+    }
+  }
+
   .submitBtn {
    position: absolute;
    left: 0;

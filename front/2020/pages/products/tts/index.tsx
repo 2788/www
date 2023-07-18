@@ -17,8 +17,7 @@ import { urlForPrice } from 'utils/route'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
-/** TODO: 暂时隐藏 */
-// import Demo from 'components/pages/tts/Demo'
+import Demo from 'components/pages/tts/Demo'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import Section from 'components/Product/Section'
 
@@ -53,7 +52,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
       <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{btns.nav}</Navigator>
-      {/* {isPc && <Demo />} */}
+      {isPc && <Demo />}
       <Advantage />
       <Scene />
       <ProductNews newsRes={newsRes} />

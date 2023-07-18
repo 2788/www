@@ -8,27 +8,28 @@ import { apiPrefix as basePrefix } from 'constants/api'
 
 const ttsApi = `${basePrefix}/ap-gate-z0`
 
+type Result = {
+  audioUrl: string
+}
+
 export type TtsResponse = {
-  voice_id: string
-  err_code: number
-  err_msg: string
-  audio: string
+  code: number
+  msg: string
+  result: Result
 }
 
 export type TtsOptipns = {
-  text: string
-  speaker?: string
-  volume?: number
+  content: string
+  spkid?: number
+  audioType?: number
   speed?: number
-  voiceId?: string
-  audioEncoding?: number
-  sampleRate?: number
+  volume?: number
 }
 
 export async function getTts(options: TtsOptipns): Promise<TtsResponse> {
   const response: TtsResponse = await post(`${ttsApi}/voice/v2/tts`, options)
-  if (response.err_code !== 0 || !response.audio) {
-    throw new Error(response.err_msg)
+  if (response.code !== 0 || !response.result.audioUrl) {
+    throw new Error(response.msg)
   }
   return response
 }
