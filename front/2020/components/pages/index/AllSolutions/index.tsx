@@ -17,7 +17,7 @@ import vmIllustrationUrl from './imgs/video-marketing/illustration.jpg' // 配�
 import vmEntLiveIconUrl from './imgs/video-marketing/ent-live.png' // 企业直播
 import vmInteractMktIconUrl from './imgs/video-marketing/interact-mkt.png' // 互动营销
 
-// 社交互娱
+// 社交娱乐
 import seEntryIconUrl from './imgs/social-entertainment/entry.png' // 入口 icon
 import seIllustrationUrl from './imgs/social-entertainment/illustration.jpg' // 配图
 import sePlsvIconUrl from './imgs/social-entertainment/plsv.png' // 短视频
@@ -31,7 +31,7 @@ import vnSmartHomeIconUrl from './imgs/video-networking/smart-home.png' // 家�
 import vnKindergartenMonitoringIconUrl from './imgs/video-networking/kindergarten-monitoring.png' // 智慧幼教
 import vnVehicleIntelligenceIconUrl from './imgs/video-networking/vehicle-intelligence.png' // 车载智能
 
-// 智慧新媒体
+// 智能新媒体
 import snmEntryIconUrl from './imgs/smart-new-media/entry.png' // 入口 icon
 import snmIllustrationUrl from './imgs/smart-new-media/illustration.jpg' // 配图
 import snmCmediaProductionIconUrl from './imgs/smart-new-media/cmedia-production.png' // 智能剪辑

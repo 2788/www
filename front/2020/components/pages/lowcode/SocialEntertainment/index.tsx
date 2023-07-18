@@ -1,5 +1,5 @@
 /**
- * @file 社交互娱
+ * @file 社交娱乐
  */
 
 import React from 'react'
@@ -31,7 +31,7 @@ const cardListInfo: CardItemProps[] = [
 
 export default function SocialEntertainment() {
   return (
-    <Section name="socialEntertainment" title="社交互娱" withTailPadding>
+    <Section name="socialEntertainment" title="社交娱乐" withTailPadding>
       <MemoizedCardList cardListInfo={cardListInfo} />
     </Section>
   )

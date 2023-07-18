@@ -44,7 +44,7 @@ function Page() {
     <>
       <PageBanner
         title={title}
-        desc="沉淀七牛云近十年全面的音视频场景，结合七牛云低代码平台和音视频智能，提供社交互娱、视频营销、视联网、智慧新媒体、元宇宙等多个领域一站式解决方案。"
+        desc="沉淀七牛云近十年全面的音视频场景，结合七牛云低代码平台和音视频智能，提供社交娱乐、视频营销、视联网、智能新媒体、元宇宙等多个领域一站式解决方案。"
         btns={btns.banner}
         bgImgUrl={isMobile ? mobileBanner : pcBanner}
       />
@@ -69,8 +69,8 @@ export default function LowCodePage({ globalBanners }: Props) {
     <headerThemeContext.Provider value="dark">
       <Layout
         title={title}
-        keywords="低代码解决方案，社交互娱，统一消息营销触达，企业直播，图片处理分发加速，视频点播"
-        description="沉淀七牛云近十年全面的音视频场景，结合七牛云低代码平台和音视频智能，提供社交互娱、视频营销、视联网、智慧新媒体、元宇宙等多个领域一站式解决方案。"
+        keywords="低代码解决方案，社交娱乐，统一消息营销触达，企业直播，图片处理分发加速，视频点播"
+        description="沉淀七牛云近十年全面的音视频场景，结合七牛云低代码平台和音视频智能，提供社交娱乐、视频营销、视联网、智能新媒体、元宇宙等多个领域一站式解决方案。"
         globalBanners={globalBanners}
       >
         <Page />

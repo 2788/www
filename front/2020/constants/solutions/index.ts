@@ -109,9 +109,9 @@ export const categoryNameMap = {
   [Category.Industry]: '行业解决方案',
   [Category.Consumer]: '消费互联网解决方案',
   [Category.VideoMarketing]: '视频营销',
-  [Category.SocialEntertainment]: '社交互娱',
+  [Category.SocialEntertainment]: '社交娱乐',
   [Category.VideoNetworking]: '视联网',
-  [Category.SmartNewMedia]: '智慧新媒体',
+  [Category.SmartNewMedia]: '智能新媒体',
   [Category.Metaverse]: '元宇宙'
 } as const
 
@@ -122,9 +122,9 @@ export const categoryNameMapForMp = {
   [Category.Industry]: '行业',
   [Category.Consumer]: '消费互联网',
   [Category.VideoMarketing]: '视频营销',
-  [Category.SocialEntertainment]: '社交互娱',
+  [Category.SocialEntertainment]: '社交娱乐',
   [Category.VideoNetworking]: '视联网',
-  [Category.SmartNewMedia]: '智慧新媒体',
+  [Category.SmartNewMedia]: '智能新媒体',
   [Category.Metaverse]: '元宇宙'
 } as const
 
@@ -145,7 +145,7 @@ export const categoryDescMap = {
   [Category.VideoMarketing]: '覆盖营销、带货、企业培训、活动直播等场景，帮助企业快速集成和接入直播服务，实现内容生产、直播数据域流量闭环。',
   [Category.SocialEntertainment]: '为移动社交娱乐平台提供集图片处理、音视频点播、直播与互动、音视频处理、存储与分发等服务的一站式解决方案。',
   [Category.VideoNetworking]: '为视联网提供集音视频云管理、计算引擎、场景感知分析、云编解码及存储等服务的一站式解决方案。',
-  [Category.SmartNewMedia]: '为智慧新媒体平台提供音视频内容制作服务，兼顾低延时、高吞吐、高精度的一站式解决方案。',
+  [Category.SmartNewMedia]: '为智能新媒体平台提供音视频内容制作服务，兼顾低延时、高吞吐、高精度的一站式解决方案。',
   [Category.Metaverse]: '提供虚拟数字人、虚拟空间音视频服务，助力元宇宙企业技术及应用落地，打造沉浸式虚拟空间。'
 } as const
 

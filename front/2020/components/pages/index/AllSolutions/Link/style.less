@@ -15,6 +15,7 @@
     transition: none;
 
     .notMobile({
+      margin-left: -13px;
       padding: 13px;
       font-size: 16px;
     });
@@ -26,7 +27,7 @@
     });
 
     &:hover {
-      .icon {
+      .iconWrapper {
         width: @icon-size + @icon-size-inc;
         height: @icon-size + @icon-size-inc;
         margin: -(@icon-size-inc / 2);
@@ -43,9 +44,15 @@
 }
 
 .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.iconWrapper {
   width: @icon-size;
   height: @icon-size;
   padding: 11px;
+  overflow: hidden;
   background: #FFF;
   border: 1px solid #FFF;
   border-radius: (@icon-size / 2);
@@ -53,21 +60,8 @@
   transition:
     width @anchor-duration,
     height @anchor-duration,
-    color @anchor-duration,
-    padding @anchor-duration,
-    margin @anchor-duration;
-
-  svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.iconWrapper {
-  width: @icon-size + @icon-size-inc;
-  margin-left: -@icon-size-inc;
-  margin-right: -@icon-size-inc;
+    margin @anchor-duration,
+    padding @anchor-duration;
 
   .mobile({
     display: none;
