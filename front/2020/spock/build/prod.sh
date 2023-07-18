@@ -24,3 +24,9 @@ date
 echo "deploy end"
 
 . $FRONTEND/spock/build/pkg.sh
+shasum $DIST_DIR/$PKG_FILE
+mv $DIST_DIR/$PKG_FILE $FRONTEND
+cd $FRONTEND
+node deploy-qstack.js $DEPLOY_AK $DEPLOY_SK $PKG_FILE $DIST_DIR
+rm ./$PKG_FILE
+rm ./$PKG_FILE.md5
