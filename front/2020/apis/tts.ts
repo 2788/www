@@ -13,7 +13,7 @@ type Result = {
 }
 
 export type TtsResponse = {
-  code: number
+  code: string
   msg: string
   result: Result
 }
@@ -28,7 +28,7 @@ export type TtsOptipns = {
 
 export async function getTts(options: TtsOptipns): Promise<TtsResponse> {
   const response: TtsResponse = await post(`${ttsApi}/voice/v2/tts`, options)
-  if (response.code !== 0 || !response.result.audioUrl) {
+  if (response.code !== '0' || !response.result.audioUrl) {
     throw new Error(response.msg)
   }
   return response
