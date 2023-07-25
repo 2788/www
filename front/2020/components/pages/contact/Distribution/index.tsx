@@ -35,7 +35,7 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={shenzhen} />
           <Title className={style.title}>深圳分部</Title>
-          <Desc className={style.desc}>广东省深圳市南山区粤海街道高新区社区科技南十二路 28 号康佳研发大厦十八层</Desc>
+          <Desc className={style.desc}>深圳市南山区深圳湾科技生态园 9 栋 B2 座 513 室</Desc>
         </LayoutCard>
         <LayoutCard>
           <Img className={style.image} src={guangzhou} />
