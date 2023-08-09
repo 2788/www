@@ -32,7 +32,7 @@ type Activity struct {
 func NewActivity(config *config.Config) *Activity {
 	transport := auth.NewQiniuAuthTransport(config.Admin.AccessKey, config.Admin.SecretKey, http.DefaultTransport)
 	host := []string{fmt.Sprintf("http://127.0.0.1:%d", config.Port)}
-	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, config.MongoApiPrefix, transport)
+	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, config.MongoApi.Prefix, transport)
 	lilliputService := lilliput.NewLilliputService(config.LilliputHost, http.DefaultTransport)
 	morseService := morse.NewMorseService(config.MorseHost, config.MorseClientId)
 	return &Activity{

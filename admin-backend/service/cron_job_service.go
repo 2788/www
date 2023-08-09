@@ -39,7 +39,7 @@ func NewCronJobService(conf *config.Config) *CronJobService {
 
 	transport := auth.NewQiniuAuthTransport(conf.Admin.AccessKey, conf.Admin.SecretKey, http.DefaultTransport)
 	host := []string{fmt.Sprintf("http://127.0.0.1:%d", conf.Port)}
-	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, conf.MongoApiPrefix, transport)
+	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, conf.MongoApi.Prefix, transport)
 
 	morseService := morse.NewMorseService(conf.MorseHost, conf.MorseClientId)
 	lilliputService := lilliput.NewLilliputService(conf.LilliputHost, http.DefaultTransport)

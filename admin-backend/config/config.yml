@@ -2,7 +2,6 @@ server:
   port: 4080
   mode: dev
   write_timeout: 20
-  mongo_api_prefix: /api/mongo
   market_activity_resource_name: www-market-activity # 要和下面 mongo_api 配置保持一致
   activity_registration_resource_name: www-activity-registration # 要和下面 mongo_api 配置保持一致
   sms_templates:

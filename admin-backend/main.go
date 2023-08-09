@@ -33,9 +33,9 @@ func main() {
 	err = r.InitRouters()
 	Must(err)
 
-	if conf.MgoApiConfig != nil {
-		mongoApis := r.Group(conf.MongoApiPrefix, app.ParseAuthMiddleware(&conf.Config), app.AdminCheck())
-		err = mongoApi.Init(mongoApis, conf.MgoApiConfig)
+	if conf.MongoApi != nil {
+		mongoApis := r.Group(conf.MongoApi.Prefix, app.ParseAuthMiddleware(&conf.Config), app.AdminCheck())
+		err = mongoApi.Init(mongoApis, conf.MongoApi)
 		Must(err)
 	}
 

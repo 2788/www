@@ -5,7 +5,6 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	mongoApi "qiniu.com/rmb-web/admin-backend/mongo-api"
 	"qiniu.com/rmb-web/admin-backend/pkg/app"
 )
 
@@ -13,7 +12,6 @@ type ServerConfig struct {
 	Port                             int               `yaml:"port"`
 	Mode                             string            `yaml:"mode"`
 	WriteTimeout                     int               `yaml:"write_timeout"`
-	MongoApiPrefix                   string            `yaml:"mongo_api_prefix"`
 	MarketActivityResourceName       string            `yaml:"market_activity_resource_name"`
 	ActivityRegistrationResourceName string            `yaml:"activity_registration_resource_name"`
 	SMSTemplates                     SMSTemplateConfig `yaml:"sms_templates"`
@@ -51,11 +49,10 @@ type TbpConfig struct {
 }
 
 type Config struct {
-	app.Config             `yaml:",inline"`
-	ServerConfig           `yaml:"server"`
-	*mongoApi.MgoApiConfig `yaml:"mongo_api"`
-	Tbp                    TbpConfig `yaml:"tbp"`
-	Refresher              Refresher `yaml:"refresher"`
+	app.Config   `yaml:",inline"`
+	ServerConfig `yaml:"server"`
+	Tbp          TbpConfig `yaml:"tbp"`
+	Refresher    Refresher `yaml:"refresher"`
 }
 
 // InitConf inits Config info
