@@ -64,8 +64,8 @@
   "// TODO: deploy": "add www marketing deploy config",
   "deploy": {
     "config": {
-      "accessKey": "tkabCgtBh5OiAbZ32-BC3KbLpWO274oY4nL6e5hr",
-      "secretKey": "1oUlrJlpJprkl4sLZQYdJLsGoVTCZaZXEbmiZTNh",
+      "accessKey": "{{process.env.BUILD_DEPLOY_ACCESS_KEY}}",
+      "secretKey": "{{process.env.BUILD_DEPLOY_SECRET_KEY}}",
       "bucket": "portal-v4-static"
     }
   },

@@ -19,10 +19,10 @@ server:
   lilliput_host: http://bo-staging-lilliput.qa.qiniu.io # 短链服务地址
 
 refresher:
-  access_key:
-  secret_key:
-  bucket:
-  url:
+  access_key: {{uxd_admin_static_file_ak}}
+  secret_key: {{uxd_admin_static_file_sk}}
+  bucket: www-2020-staging
+  url: http://www-2020.dev.qiniu.io
   prefix_path_blacklist: ["", "/assets", "/_next", "/_next/data", "/_next/static"]
   kodo_prefetch_max_goroutine: 30
 
@@ -42,8 +42,8 @@ ldap:
   tls: false
 
 upload_file:
-  access_key: tkabCgtBh5OiAbZ32-BC3KbLpWO274oY4nL6e5hr
-  secret_key: 1oUlrJlpJprkl4sLZQYdJLsGoVTCZaZXEbmiZTNh
+  access_key: {{uxd_admin_static_file_ak}}
+  secret_key: {{uxd_admin_static_file_sk}}
 
 admin:
   access_key: 4_odedBxmrAHiu4Y0Qp0HPG0NANCf6VAsAjWL_k9
@@ -61,6 +61,7 @@ mongo:
 
 
 mongo_api:
+  prefix: /api/mongo
   batch_limit: 200
   resources:
     - name: www-homepage-banner

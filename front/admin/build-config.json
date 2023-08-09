@@ -20,12 +20,12 @@
   },
   "deploy": {
     "config": {
-      "accessKey": "tkabCgtBh5OiAbZ32-BC3KbLpWO274oY4nL6e5hr",
-      "secretKey": "1oUlrJlpJprkl4sLZQYdJLsGoVTCZaZXEbmiZTNh",
+      "accessKey": "{{process.env.BUILD_DEPLOY_ACCESS_KEY}}",
+      "secretKey": "{{process.env.BUILD_DEPLOY_SECRET_KEY}}",
       "bucket": "admin-v2-static"
     }
   },
   "engines": {
-    "builder": "^2.0.0"
+    "builder": "^2.7.1"
   }
 }
