@@ -16,9 +16,9 @@ const typeDemoMap = {
 }
 
 const urlsMap = {
-  [DemoType.VedioSdk]: ['http://fir.qnsdk.com/654e', 'http://fir.qnsdk.com/bd4g'],
-  [DemoType.LiveSdk]: ['http://fir.qnsdk.com/5fdt', 'http://fir.qnsdk.com/b3jw'],
-  [DemoType.RealTimeSdk]: ['http://fir.qnsdk.com/naem', 'http://fir.qnsdk.com/kzh9']
+  [DemoType.VedioSdk]: ['http://fir.qnsdk.com/654e', 'https://testflight.apple.com/join/v47Ht5vK'],
+  [DemoType.LiveSdk]: ['http://fir.qnsdk.com/5fdt', 'https://testflight.apple.com/join/THQm8BNT'],
+  [DemoType.RealTimeSdk]: ['http://fir.qnsdk.com/naem', 'https://testflight.apple.com/join/xYhyOS6L']
 }
 
 export default function ForPc() {
