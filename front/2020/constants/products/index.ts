@@ -504,7 +504,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   [SubCategory.Storage]: [Product.Kodo, Product.Archive, Product.Storage, Product.Hdfs],
   [SubCategory.Distribution]: [Product.Cdn, Product.Dcdn, Product.Pcdn, Product.Ssl],
   [SubCategory.Basis]: [
-    Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms, Product.QApp, Product.Qnvs
+    Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms, Product.Qnvs
   ],
   [SubCategory.Audio]: [
     // TODO: 尝试弄成一个跟 Product.Kodo 配置几乎一样的真·Product 简化这里的逻辑
