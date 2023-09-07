@@ -63,6 +63,8 @@ export enum Solution {
   Avatar = 'avatar',
   /** 互动营销 */
   InteractMkt = 'interact-mkt',
+  /** 统一消息触达 */
+  Message = 'message',
   /** 秀场/赛事直播 */
   ShowLive = 'showlive',
   /** 图片处理分发加速 */
@@ -158,7 +160,7 @@ export const categorySolutionsMap = {
     Solution.Medium, Solution.Isp
   ],
   [Category.Consumer]: [Solution.Entertainment, Solution.Social, Solution.ECommerce, Solution.Edu],
-  [Category.VideoMarketing]: [Solution.EntLive, Solution.InteractMkt],
+  [Category.VideoMarketing]: [Solution.EntLive, Solution.InteractMkt, Solution.Message],
   [Category.SocialEntertainment]: [Solution.Plsv, Solution.ShowLive, Solution.Image],
   [Category.VideoNetworking]: [Solution.SmartHome, Solution.KindergartenMonitoring, Solution.VehicleIntelligence],
   [Category.SmartNewMedia]: [Solution.CmediaProduction, Solution.MediaManagement],
@@ -212,6 +214,7 @@ export const nameMap: MapTo<string> = {
   [Solution.Apaas]: '音视频低代码工厂',
   [Solution.Avatar]: '数字人解决方案',
   [Solution.InteractMkt]: '互动营销',
+  [Solution.Message]: '统一消息触达',
   [Solution.ShowLive]: '秀场/赛事直播',
   [Solution.Image]: '图片处理分发加速',
   [Solution.SmartHome]: '家居视联网',
@@ -244,6 +247,7 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Apaas]: '/solutions/apaas',
   [Solution.Avatar]: '/solutions/avatar',
   [Solution.InteractMkt]: '/solutions/interact-mkt',
+  [Solution.Message]: '/solutions/message',
   [Solution.ShowLive]: '/solutions/showlive',
   [Solution.Image]: '/solutions/image',
   [Solution.SmartHome]: '/solutions/smarthome',
@@ -287,6 +291,7 @@ export const descMap: MapTo<string> = {
   [Solution.Apaas]: '提供易接入、强扩展、高效部署和覆盖多场景的音视频服务，助力企业快速搭建业务平台',
   [Solution.Avatar]: '适用于多场景的虚拟数字人解决方案',
   [Solution.InteractMkt]: '面向互动营销的低代码解决方案',
+  [Solution.Message]: '提供了包括短信等多种消息触达客户通道，支持预设消息内容与变量，以进行针对性促活',
   [Solution.ShowLive]: '一站式构建泛娱乐直播服务',
   [Solution.Image]: '提供图片的上传、存储、处理和分发加速的全链路解决方案',
   [Solution.SmartHome]: '为家居物联设备提供音视频低代码接入能力',
@@ -320,6 +325,7 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Apaas]: require('./images/default/apaas.svg').default,
   [Solution.Avatar]: null, // require('./images/default/avatar.svg').default, // TODO: 恢复 icon 但需要检查 /mp/solutions 效果
   [Solution.InteractMkt]: null,
+  [Solution.Message]: null,
   [Solution.ShowLive]: null,
   [Solution.Image]: null,
   [Solution.SmartHome]: null,
@@ -353,6 +359,7 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Apaas]: require('./images/small/apaas.svg').default,
   [Solution.Avatar]: require('./images/small/avatar.svg').default,
   [Solution.InteractMkt]: null,
+  [Solution.Message]: null,
   [Solution.ShowLive]: null,
   [Solution.Image]: null,
   [Solution.SmartHome]: null,
@@ -386,6 +393,7 @@ export const largeIconMap: MapTo<string | null> = {
   [Solution.Apaas]: apaasLargeIconUrl,
   [Solution.Avatar]: avatarLargeIconUrl,
   [Solution.InteractMkt]: null,
+  [Solution.Message]: null,
   [Solution.ShowLive]: null,
   [Solution.Image]: null,
   [Solution.SmartHome]: null,
