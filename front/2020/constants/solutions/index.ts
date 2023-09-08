@@ -2,6 +2,8 @@
 
 import { FC, SVGAttributes } from 'react'
 
+import { portalHost } from 'constants/env'
+
 import rtcliveLargeIconUrl from './images/large/rtclive.png'
 import plsvLargeIconUrl from './images/large/plsv.png'
 import entliveLargeIconUrl from './images/large/entlive.png'
@@ -247,7 +249,7 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Apaas]: '/solutions/apaas',
   [Solution.Avatar]: '/solutions/avatar',
   [Solution.InteractMkt]: '/solutions/interact-mkt',
-  [Solution.Message]: '/solutions/message',
+  [Solution.Message]: `${portalHost}/solutions/message`,
   [Solution.ShowLive]: '/solutions/showlive',
   [Solution.Image]: '/solutions/image',
   [Solution.SmartHome]: '/solutions/smarthome',
@@ -257,17 +259,6 @@ export const urlMap: MapTo<string | null> = {
   [Solution.MediaManagement]: '/solutions/media-management',
   [Solution.VrLive]: '/solutions/vrlive'
 } as const
-
-/**
- * TODO: 不应该放 `constants` 里，并且不应该添加 host、更不应该把 host 写死成线上的
- * 现在这么干是因为测试环境数据不全，影响线下测试环境预览效果，最近测试环境比较重要
- */
-export function getUrl(solution: Solution, isFullUrl = true): string | null {
-  const url = urlMap[solution]
-  return url && isFullUrl
-    ? `https://www.qiniu.com${url}`
-    : url
-}
 
 export const descMap: MapTo<string> = {
   [Solution.Qavs]: '集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案',

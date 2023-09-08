@@ -12,5 +12,6 @@ process.env = {
   NEXT_PUBLIC_BUILT_AT: new Date().getTime(),
   NEXT_PUBLIC_IGNORE_PRODUCT_PRICE_ERROR: 'true',
   NEXT_PUBLIC_PGC_CONTENT_MD_EMBED_HOST: 'http://www-2020.dev.qiniu.io',
-  NEXT_PUBLIC_WITH_SOURCE_MAPS: 'true'
+  NEXT_PUBLIC_WITH_SOURCE_MAPS: 'true',
+  NEXT_PUBLIC_PORTAL_HOST: 'https://portal.qiniu.com'
 }

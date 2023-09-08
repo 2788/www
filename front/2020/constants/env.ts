@@ -41,6 +41,8 @@ export const ignoreProductPriceError = must('ignoreProductPriceError', process.e
 /** 内容站内链 Host */
 export const pgcContentMdEmbedHost = must('pgcContentMdEmbedHost', process.env.NEXT_PUBLIC_PGC_CONTENT_MD_EMBED_HOST)
 
+export const portalHost = must('portalHost', process.env.NEXT_PUBLIC_PORTAL_HOST)
+
 function must(name: string, variable?: string): string {
   if (variable == null) {
     throw new Error(`Invalid value for environment variable ${name}, you need to configure it in env file`)

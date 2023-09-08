@@ -5,7 +5,7 @@
  */
 
 import React, { MouseEvent } from 'react'
-import { nameMap, getUrl, descMap, Solution } from 'constants/solutions'
+import { nameMap, urlMap, descMap, Solution } from 'constants/solutions'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useDropdown } from 'components/UI/Dropdown'
 import { ContentSectionItem } from '../../../Overlay/Content/Section'
@@ -19,7 +19,7 @@ const hotSolutions: Solution[] = []
 export default function ContentSection({ solution }: { solution: Solution }) {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const { close } = useDropdown()
-  const url = getUrl(solution)
+  const url = urlMap[solution]
   const online = url != null // 方案内容已上线
   const subtitle = online ? descMap[solution] : '即将上线，敬请垂询'
   const hot = hotSolutions.includes(solution)

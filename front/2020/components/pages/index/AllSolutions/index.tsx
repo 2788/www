@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import {
-  Category, categoryNameMap, categoryDescMap, Solution, nameMap, getUrl
+  Category, categoryNameMap, categoryDescMap, Solution, nameMap, urlMap
 } from 'constants/solutions'
 
 import Section from '../Section'
@@ -63,8 +63,8 @@ export default function AllSolutions() {
             desc={categoryDescMap[Category.VideoMarketing]}
             imgUrl={vmIllustrationUrl}
           >
-            <Link iconUrl={vmEntLiveIconUrl} href={getUrl(Solution.EntLive)}>{nameMap[Solution.EntLive]}</Link>
-            <Link iconUrl={vmInteractMktIconUrl} href={getUrl(Solution.InteractMkt)}>
+            <Link iconUrl={vmEntLiveIconUrl} href={urlMap[Solution.EntLive]}>{nameMap[Solution.EntLive]}</Link>
+            <Link iconUrl={vmInteractMktIconUrl} href={urlMap[Solution.InteractMkt]}>
               {nameMap[Solution.InteractMkt]}
             </Link>
           </Content>
@@ -78,9 +78,9 @@ export default function AllSolutions() {
             desc={categoryDescMap[Category.SocialEntertainment]}
             imgUrl={seIllustrationUrl}
           >
-            <Link iconUrl={sePlsvIconUrl} href={getUrl(Solution.Plsv)}>{nameMap[Solution.Plsv]}</Link>
-            <Link iconUrl={seShowLiveIconUrl} href={getUrl(Solution.ShowLive)}>{nameMap[Solution.ShowLive]}</Link>
-            <Link iconUrl={seImageIconUrl} href={getUrl(Solution.Image)}>{nameMap[Solution.Image]}</Link>
+            <Link iconUrl={sePlsvIconUrl} href={urlMap[Solution.Plsv]}>{nameMap[Solution.Plsv]}</Link>
+            <Link iconUrl={seShowLiveIconUrl} href={urlMap[Solution.ShowLive]}>{nameMap[Solution.ShowLive]}</Link>
+            <Link iconUrl={seImageIconUrl} href={urlMap[Solution.Image]}>{nameMap[Solution.Image]}</Link>
           </Content>
         </TabPane>
         <TabPane
@@ -92,11 +92,11 @@ export default function AllSolutions() {
             desc={categoryDescMap[Category.VideoNetworking]}
             imgUrl={vnIllustrationUrl}
           >
-            <Link iconUrl={vnSmartHomeIconUrl} href={getUrl(Solution.SmartHome)}>{nameMap[Solution.SmartHome]}</Link>
-            <Link iconUrl={vnKindergartenMonitoringIconUrl} href={getUrl(Solution.KindergartenMonitoring)}>
+            <Link iconUrl={vnSmartHomeIconUrl} href={urlMap[Solution.SmartHome]}>{nameMap[Solution.SmartHome]}</Link>
+            <Link iconUrl={vnKindergartenMonitoringIconUrl} href={urlMap[Solution.KindergartenMonitoring]}>
               {nameMap[Solution.KindergartenMonitoring]}
             </Link>
-            <Link iconUrl={vnVehicleIntelligenceIconUrl} href={getUrl(Solution.VehicleIntelligence)}>
+            <Link iconUrl={vnVehicleIntelligenceIconUrl} href={urlMap[Solution.VehicleIntelligence]}>
               {nameMap[Solution.VehicleIntelligence]}
             </Link>
           </Content>
@@ -110,10 +110,10 @@ export default function AllSolutions() {
             desc={categoryDescMap[Category.SmartNewMedia]}
             imgUrl={snmIllustrationUrl}
           >
-            <Link iconUrl={snmCmediaProductionIconUrl} href={getUrl(Solution.CmediaProduction)}>
+            <Link iconUrl={snmCmediaProductionIconUrl} href={urlMap[Solution.CmediaProduction]}>
               {nameMap[Solution.CmediaProduction]}
             </Link>
-            <Link iconUrl={snmMediaManagementIconUrl} href={getUrl(Solution.MediaManagement)}>
+            <Link iconUrl={snmMediaManagementIconUrl} href={urlMap[Solution.MediaManagement]}>
               {nameMap[Solution.MediaManagement]}
             </Link>
           </Content>
@@ -127,8 +127,8 @@ export default function AllSolutions() {
             desc={categoryDescMap[Category.Metaverse]}
             imgUrl={mvIllustrationUrl}
           >
-            <Link iconUrl={mvAvatarIconUrl} href={getUrl(Solution.Avatar)}>{nameMap[Solution.Avatar]}</Link>
-            <Link iconUrl={mvVrLiveIconUrl} href={getUrl(Solution.VrLive)}>{nameMap[Solution.VrLive]}</Link>
+            <Link iconUrl={mvAvatarIconUrl} href={urlMap[Solution.Avatar]}>{nameMap[Solution.Avatar]}</Link>
+            <Link iconUrl={mvVrLiveIconUrl} href={urlMap[Solution.VrLive]}>{nameMap[Solution.VrLive]}</Link>
           </Content>
         </TabPane>
       </Tabs>

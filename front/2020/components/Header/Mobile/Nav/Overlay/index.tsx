@@ -27,10 +27,10 @@ function getProductItems(products: PartialProductData[]) {
 
 function getSolutionItems(solutions: readonly sol.Solution[]) {
   return solutions.filter(
-    solution => sol.getUrl(solution) != null
+    solution => sol.urlMap[solution] != null
   ).map(solution => (
     <MenuItem key={solution}>
-      <Link href={sol.getUrl(solution)!} target="_self">{sol.nameMap[solution]}</Link>
+      <Link href={sol.urlMap[solution]!} target="_self">{sol.nameMap[solution]}</Link>
     </MenuItem>
   ))
 }
