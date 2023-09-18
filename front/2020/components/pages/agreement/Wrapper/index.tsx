@@ -9,6 +9,7 @@ type AgreementWrapperProps = {
 export default function Wrapper({ children }: AgreementWrapperProps) {
   const links = [
     { href: '/agreements/user-agreement', text: '服务用户协议' },
+    { href: '/agreements/identity', text: '实名认证授权协议' },
     { href: '/agreements/privacy-right', text: '隐私权政策' },
     { href: '/agreements/sla/kodo', text: '对象存储 SLA' },
     { href: '/agreements/sla/fusion', text: 'CDN SLA' },
