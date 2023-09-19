@@ -42,7 +42,8 @@ function Page() {
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: showWechatConsultModal, children: '立即咨询' }
+    // { href: 'https://s.qiniu.com/uaANNn', children: '立即试用' },
+    { href: 'https://s.qiniu.com/uaANNn', children: '直播管理后台' }
   )
 
   return (
