@@ -5,7 +5,7 @@ import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Loadings } from 'admin-base/common/loading'
 
-import ActivityApis, { IActivityWithId, IActivity, IListOptions, IListResponse } from 'apis/activity'
+import MarketActivityApis, { IActivityWithId, IActivity, IListOptions, IListResponse } from 'apis/activity/market'
 import { StateType } from 'constants/activity'
 import { pageSize } from '.'
 
@@ -14,7 +14,7 @@ type FecthListOptions = { page: number, states?: StateType[] }
 export default class ActivityStore extends Store {
 
   constructor(
-    private activityApis: ActivityApis,
+    private activityApis: MarketActivityApis,
     public toasterStore: ToasterStore
   ) {
     super()

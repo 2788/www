@@ -15,7 +15,7 @@ import { generateUploadBucketKey } from 'transforms/pgc/content'
 import style from './style.m.less'
 
 export interface IProps extends UploadProps {
-  uploadBucketKeyRule?: 'www' | 'pgc-content' | 'icon'
+  uploadBucketKeyRule?: 'www' | 'pgc-content' | 'icon' | 'activity-content'
   onUploaded?: (url: string, file: File) => void // 上传成功之后执行的方法
 }
 
@@ -51,6 +51,7 @@ class LocalStore extends Store {
     return {
       www: `${uploadKeyPrefix}/${timestamp}/${fileName}`,
       'pgc-content': generateUploadBucketKey(fileName, timestamp),
+      'activity-content': generateUploadBucketKey(fileName, timestamp),
       icon: `icon/admin/content/${timestamp}/${fileName}`
     }[this.props.uploadBucketKeyRule ?? 'www']
   }

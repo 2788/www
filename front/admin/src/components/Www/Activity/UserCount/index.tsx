@@ -4,7 +4,7 @@ import { Button, Modal } from 'react-icecream-1'
 import XLSX from 'xlsx'
 import { useInjection } from 'qn-fe-core/di'
 
-import { IRegistration } from 'apis/activity'
+import { IRegistration } from 'apis/activity/market'
 import { timeFormatter } from 'utils/time'
 
 import ActivityStore from '../store'
@@ -14,15 +14,16 @@ interface IProps {
 }
 
 const filenName = '活动报名人员信息表.xlsx'
-const header = [
-  'userName', 'phoneNumber', 'email', 'location', 'industry',
-  'company', 'department', 'position', 'relationship', 'createdAt', 'checkedIn'
-]
-// 展示的名称
-const headerDisplay = [
-  '姓名', '手机号', '邮箱', '所在地', '所在行业',
-  '公司', '部门', '职位', '与七牛的关系', '报名时间', '是否已签到'
-]
+
+const headerKeyName = {
+  userName: '姓名',
+  phoneNumber: '手机号',
+  email: '邮箱',
+  location: '所在地',
+  createdAt: '报名时间',
+  checkedIn: '是否已签到'
+}
+
 // 每列显示宽度
 const cols = [
   { wpx: 120 }, { wpx: 120 }, { wpx: 200 }, { wpx: 300 }, { wpx: 150 },
@@ -63,10 +64,14 @@ export default observer(function UserCount({ id }: IProps) {
 
 // 生成表格所需的 data
 function genSheetData(registrations: IRegistration[]) {
-  const res = [headerDisplay]
+  const header = Object.values(headerKeyName)
+  const res = [header] // 第一行为表头
+
+  // 先处理基本字段
   for (const registration of registrations) {
     const arr: string[] = []
-    for (const i of header) {
+
+    for (const i of Object.keys(headerKeyName)) {
       if (i === 'createdAt') {
         arr.push(registration.createdAt ? timeFormatter('YYYY-MM-DD HH:mm')(registration.createdAt) : '')
         continue
@@ -77,7 +82,21 @@ function genSheetData(registrations: IRegistration[]) {
       }
       arr.push(registration[i] || '')
     }
+
+    // 处理自定义表单字段
+    if (registration.extraForm != null) {
+      for (const key in registration.extraForm) {
+        if (Object.prototype.hasOwnProperty.call(registration.extraForm, key)) {
+          const element = registration.extraForm[key]
+          if (!header.includes(key)) header.push(key)
+          const index = header.findIndex(k => k === key)
+          arr[index] = element
+        }
+      }
+    }
+
     res.push(arr)
   }
+
   return res
 }

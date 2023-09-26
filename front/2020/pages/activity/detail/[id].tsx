@@ -1,19 +1,21 @@
 import React from 'react'
 import { GetServerSidePropsContext } from 'next'
 
-import { getActivityById, IActivity, getActivities } from 'apis/admin/activity'
+import { getActivityById, IActivity, getActivities, PageType } from 'apis/admin/activity'
 import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import Layout from 'components/Product/Layout'
 import Banner from 'components/pages/activity/detail/Banner'
+import { Page } from 'components/pages/activity/detail/Page'
 import DetailInfo from 'components/pages/activity/detail/Info'
 import NotFoundPage from 'pages/404'
+import Redirect from 'components/Redirect'
 
 type Props = {
   globalBanners?: GlobalBanner[]
   activity: IActivity
 }
 
-function Page({ activity }: { activity: IActivity | null }) {
+function RmbPage({ activity }: { activity: IActivity | null }) {
 
   return (
     <>
@@ -29,6 +31,21 @@ export default function Detail({ globalBanners, activity }: Props) {
     return <NotFoundPage globalBanners={globalBanners} />
   }
 
+  const getDetailPageView = () => {
+    // 默认为富媒体
+    const pageType: PageType = activity.pageType ?? 'RMB'
+
+    if (pageType === 'RMB' && activity.detail) {
+      return <RmbPage activity={activity} />
+    }
+
+    if (pageType === 'PAGE' && activity.page) {
+      return <Page activity={activity} />
+    }
+
+    return <Redirect target="/404" />
+  }
+
   const title = activity ? activity.title : '活动详情'
   return (
     <Layout
@@ -37,7 +54,7 @@ export default function Detail({ globalBanners, activity }: Props) {
       description=""
       globalBanners={globalBanners || []}
     >
-      <Page activity={activity} />
+      {getDetailPageView()}
     </Layout>
   )
 }

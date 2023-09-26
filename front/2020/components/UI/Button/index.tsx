@@ -20,6 +20,7 @@ export type Props = HTMLAttributes<HTMLElement> & {
   htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type']
   disabled?: boolean
   download?: any
+  name?: string
 }
 
 const typeStyleMap = {

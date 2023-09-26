@@ -1,0 +1,34 @@
+@import '~utils/less/index.less';
+
+.items {
+  .notMobile({
+    display: flex;
+    justify-content: center;
+  });
+}
+
+.descButton {
+  margin-top: @icecream-gap-sm;
+}
+
+.descModal {
+  .notMobile({
+    width: 800px;
+  });
+
+  p {
+    color: @icecream-color-grey-9;
+  }
+
+  th,
+  td {
+    border: @icecream-border-width solid @icecream-color-grey-5;
+    text-align: center;
+    padding: 10px;
+    font-size: @icecream-font-size-1;
+  }
+
+  th {
+    font-weight: @icecream-bold;
+  }
+}

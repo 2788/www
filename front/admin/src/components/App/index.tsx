@@ -30,7 +30,8 @@ import {
   productInfoRoute, productInfoTitle, productPriceRoute, productPriceTitle, productNewsRoute, productNewsTitle,
   consultTitle, consultRoute, activityTitle, activityRoute, globalBannersTitle, globalBannersRoute,
   pgcRoute, pgcTitle, pgcManageRoute, pgcManageTitle, pgcBannerRoute, pgcBannerTitle, deployRoute, deployTitle,
-  deployRefreshRoute, deployRefreshTitle, deployPathsRoute, deployPathsTitle, deployStatusRoute, deployStatusTitle
+  deployRefreshRoute, deployRefreshTitle, deployPathsRoute, deployPathsTitle, deployStatusRoute,
+  deployStatusTitle
 } from 'constants/route'
 
 import Provider from './Provider'
@@ -76,7 +77,6 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-
   const userRoutes = renderUserRoutes((
     <Permission code={PermissionCode.ACCOUNT}>
       <User />

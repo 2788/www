@@ -44,24 +44,19 @@ func NewActivity(config *config.Config) *Activity {
 }
 
 type activityRegInput struct {
-	Uid                     uint32 `json:"uid"`
-	UserName                string `json:"userName"`
-	PhoneNumber             string `json:"phoneNumber"`
-	Email                   string `json:"email"`
-	Company                 string `json:"company"`
-	Location                string `json:"location"`                // 所在地址
-	Industry                string `json:"industry"`                // 所在行业
-	Department              string `json:"department"`              // 部门
-	Position                string `json:"position"`                // 职位
-	Relationship            string `json:"relationship"`            // 和 qiniu 的关系
-	MarketActivityId        string `json:"marketActivityId"`        // 报名活动 id
-	MarketActivitySessionId string `json:"marketActivitySessionId"` // 报名活动场次 id
+	Uid                     uint32      `json:"uid"`
+	UserName                string      `json:"userName"`
+	PhoneNumber             string      `json:"phoneNumber"`
+	Email                   string      `json:"email"`
+	Location                string      `json:"location"`                // 所在地址
+	ExtraForm               interface{} `json:"extraForm"`               // 自定义表单内容
+	MarketActivityId        string      `json:"marketActivityId"`        // 报名活动 id
+	MarketActivitySessionId string      `json:"marketActivitySessionId"` // 报名活动场次 id
 }
 
 func (i *activityRegInput) valid() (code codes.Code, valid bool) {
-	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" || i.Company == "" ||
-		i.Location == "" || i.Industry == "" || i.Department == "" || i.Position == "" ||
-		i.Relationship == "" || i.MarketActivitySessionId == "" {
+	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" ||
+		i.Location == "" || i.MarketActivitySessionId == "" {
 		code = codes.ArgsEmpty
 		return
 	}
@@ -197,14 +192,10 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		UserName:                params.UserName,
 		PhoneNumber:             params.PhoneNumber,
 		Email:                   params.Email,
-		Company:                 params.Company,
+		ExtraForm:               params.ExtraForm,
 		MarketActivityId:        params.MarketActivityId,
 		MarketActivitySessionId: params.MarketActivitySessionId,
 		Location:                params.Location,
-		Industry:                params.Industry,
-		Department:              params.Department,
-		Position:                params.Position,
-		Relationship:            params.Relationship,
 		CreatedAt:               time.Now().Unix(),
 		UpdatedAt:               time.Now().Unix(),
 	}

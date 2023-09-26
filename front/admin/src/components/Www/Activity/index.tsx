@@ -1,17 +1,19 @@
 import React, { useCallback } from 'react'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Tooltip, Icon, Modal, Button } from 'react-icecream-1'
+import { Modal, Button } from 'react-icecream-1'
 import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
 import { PaginationProps } from 'react-icecream-1/lib/pagination'
 import autobind from 'autobind-decorator'
 
 import { Provider } from 'qn-fe-core/di'
+import { Route, Switch } from 'qn-fe-core/router'
 import { useLocalStore } from 'qn-fe-core/local-store'
 import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
 import { ModalStore } from 'admin-base/common/utils/modal'
 import { ToasterStore } from 'admin-base/common/toaster'
+import { ButtonLink } from 'admin-base/common/components/Link'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
@@ -20,11 +22,12 @@ import commonStyle from 'utils/style.m.less'
 import { wwwHost } from 'constants/env'
 import { stateMap, dateFormat, StateType } from 'constants/activity'
 import { EditorStatus } from 'constants/editor'
-import { IActivityWithId } from 'apis/activity'
+import { IActivityWithId } from 'apis/activity/market'
 
+import EditorModal, { ExtraProps } from './ActivityEditor'
 import CopyUrlButton from './CopyUrlButton'
+import PageEditor from './PageEditor'
 import ActivityStore from './store'
-import EditorModal, { ExtraProps } from './Editor'
 import style from './style.m.less'
 
 // 表格数据一页条数
@@ -40,8 +43,8 @@ class LocalStore extends Store {
     super()
     ToasterStore.bindTo(this, toasterStore)
   }
-  editorModal = new ModalStore<ExtraProps>()
   @observable.ref currentPage = 1
+  infoEditorModal = new ModalStore<ExtraProps>()
 
   @action.bound
   updateCurrentPage(currentPage: number) {
@@ -57,21 +60,21 @@ class LocalStore extends Store {
 
   @autobind
   add() {
-    this.editorModal.open({ status: EditorStatus.Creating }).then(() => this.refresh())
+    this.infoEditorModal.open({ status: EditorStatus.Creating }).then(() => this.refresh())
   }
 
   @autobind
-  edit(id: string) {
+  editInfo(id: string) {
     const activity = this.activityStore.list.find(item => item._id === id)
-    this.editorModal.open(
+    this.infoEditorModal.open(
       { activity, id, status: EditorStatus.Editing }
     ).then(() => this.refresh(this.currentPage))
   }
 
   @autobind
-  read(id: string) {
+  readInfo(id: string) {
     const activity = this.activityStore.list.find(item => item._id === id)
-    this.editorModal.open({ activity, id, status: EditorStatus.Reading })
+    this.infoEditorModal.open({ activity, id, status: EditorStatus.Reading })
   }
 
   @autobind
@@ -97,13 +100,13 @@ class LocalStore extends Store {
 
   init() {
     this.addDisposer(
-      () => this.editorModal.dispose()
+      () => this.infoEditorModal.dispose()
     )
     this.refresh()
   }
 }
 
-const PageContent = observer(function _PageContent() {
+const ActivityList = observer(function _ActivityList() {
   const store = useLocalStore(LocalStore)
   const activityStore = store.activityStore
   const { total, list, isLoading } = activityStore
@@ -111,32 +114,23 @@ const PageContent = observer(function _PageContent() {
   const renderState = (_: string, record: IActivityWithId) => stateMap[record.state]
   const renderTime = (_: string, record: IActivityWithId) => timeFormatter(dateFormat)(record.startTime) + ' 至 ' + timeFormatter(dateFormat)(record.endTime)
   const renderOperation = (_: string, record: IActivityWithId) => (
-    <div className={commonStyle.operation}>
-      <Tooltip title="详情">
-        <a onClick={() => store.read(record._id)}>
-          <Icon type="eye" />
-        </a>
-      </Tooltip>
-      <Tooltip title="编辑">
-        <a onClick={() => store.edit(record._id)}>
-          <Icon type="edit" />
-        </a>
-      </Tooltip>
-      <Tooltip title="删除">
-        <a onClick={() => store.handleDelete(record._id)}>
-          <Icon type="delete" />
-        </a>
-      </Tooltip>
+    <div className={style.operations}>
+      <Button type="link" onClick={() => { store.readInfo(record._id) }}>查看信息</Button>
+      <Button type="link" onClick={() => { store.editInfo(record._id) }}>修改信息</Button>
+      {!record.detail && (<ButtonLink type="link" relative to={`${record._id}`}>编辑页面</ButtonLink>)}
+      <Button type="link" onClick={() => { store.handleDelete(record._id) }}>删除</Button>
     </div>
   )
 
   // 筛选
   const stateFilters = Object.keys(stateMap).map(key => ({ text: stateMap[key], value: Number(key) }))
+
   const paginationConfig: PaginationConfig = {
     total,
     pageSize,
     current: store.currentPage
   }
+
   const handleTableChange = (pagination: PaginationProps, filters: { state: StateType[] }) => {
     const current = pagination.current || 1
     store.updateCurrentPage(current)
@@ -152,6 +146,7 @@ const PageContent = observer(function _PageContent() {
       })
     })
   }, [store])
+
   const handleCreateScannerUrl = useCallback(() => {
     Modal.confirm({
       title: '确定生成扫码签到链接？',
@@ -179,9 +174,9 @@ const PageContent = observer(function _PageContent() {
         <Table.Column title="活动时间" width={300} render={renderTime} />
         <Table.Column title="更新时间" width={150} dataIndex="editTime" render={timeFormatter(dateFormat)} />
         <Table.Column title="状态" width={120} dataIndex="state" render={renderState} filters={stateFilters} />
-        <Table.Column title="操作" width={120} render={renderOperation} />
+        <Table.Column title="操作" width={180} render={renderOperation} />
       </Table>
-      {store.editorModal.visible && <EditorModal {...store.editorModal.bind() as any} />}
+      {store.infoEditorModal.visible && <EditorModal {...store.infoEditorModal.bind() as any} />}
     </>
   )
 })
@@ -189,7 +184,18 @@ const PageContent = observer(function _PageContent() {
 export default function Activity() {
   return (
     <Provider provides={[{ identifier: ActivityStore, constr: ActivityStore }]} >
-      <PageContent />
+      <Switch>
+        <Route path="/" relative exact>
+          <ActivityList />
+        </Route>
+        <Route
+          path=":id"
+          relative
+          component={({ match: { params: { id } } }) => (
+            <PageEditor id={id} />
+          )}
+        />
+      </Switch>
     </Provider>
   )
 }

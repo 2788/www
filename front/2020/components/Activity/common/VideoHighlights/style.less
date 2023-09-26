@@ -1,0 +1,150 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.videoWrapper {
+  display: flex;
+  .mobile({
+    flex-direction: column;
+    align-items: center;
+  });
+
+  .video {
+    position: relative;
+    background: @icecream-color-grey-10;
+    margin-right: @icecream-gap-lg;
+
+    &:hover {
+      opacity: 0.9;
+      cursor: pointer;
+    }
+
+    video {
+      width: 670px;
+      height: 374px;
+      background: @icecream-color-grey-10;
+    }
+    .mobile({
+      margin-right: 0px;
+      video {
+        width: 340px;
+        height: 190px;
+      }
+    });
+
+    .playIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -32px 0 0 -32px;
+      width: 64px;
+      height: 64px;
+
+      .mobile({
+        margin: -16px 0 0 -16px;
+        width: 32px;
+        height: 32px;
+      });
+    }
+  }
+
+  .list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+    padding: @icecream-gap-md-x @icecream-gap-lg @icecream-gap-lg
+      @icecream-gap-lg;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    border-radius: @icecream-border-radius;
+    border: @icecream-border-width solid @icecream-color-grey-5;
+    background: @icecream-color-grey-1;
+
+    .mobile({
+      height: auto;
+      overflow-x: auto;
+      width: 100vw;
+      flex-direction: row;
+      border: none;
+      padding: @icecream-gap-md @icecream-gap-md @icecream-gap-lg @icecream-gap-md;
+    });
+
+    .item {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: @icecream-gap-md;
+      border: @icecream-border-width solid transparent;
+      border-radius: @icecream-border-radius 0 0 @icecream-border-radius;
+
+      &:hover {
+        transition: 0.3s;
+        border: @icecream-border-width solid @icecream-color-blue-6;
+      }
+
+      .mobile({
+        height: fit-content;
+        padding: @icecream-gap-sm @icecream-gap-md;
+        margin-bottom: 0px;
+        margin-right: @icecream-gap-sm;
+
+        border-radius: @icecream-border-radius;
+        border: @icecream-border-width solid @icecream-color-grey-5;
+        background: @icecream-color-grey-1;
+        box-shadow: @icecream-box-shadow-lg;
+
+        .title{
+          color:  @icecream-color-grey-10;
+        }
+
+        &.selected {
+          border-radius: @icecream-border-radius;
+          border: @icecream-border-width solid @icecream-color-blue-6;
+          background: @icecream-color-grey-5;
+          box-shadow: @icecream-box-shadow-lg;
+
+          .title {
+            color: @icecream-color-blue-6;
+          }
+        }
+      });
+
+      .img {
+        width: 156px;
+      }
+
+      .content {
+        margin-left: @icecream-gap-sm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: @icecream-gap-xs / 2;
+
+        .title {
+          text-align: left;
+          color: @icecream-color-grey-10;
+          font-size: @icecream-font-size-lg;
+          font-weight: @icecream-bold;
+        }
+        .createDate {
+          color: @icecream-color-grey-8;
+        }
+      }
+
+      &.selected {
+        background: rgba(0, 170, 231, 0.08);
+        box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.1);
+
+        .content {
+          .title {
+            color: @icecream-color-blue-6;
+          }
+        }
+      }
+    }
+  }
+}

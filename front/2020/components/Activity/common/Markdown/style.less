@@ -1,0 +1,20 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.root {
+  .content {
+    line-height: 1.5;
+    font-size: @icecream-font-size-4;
+
+    .mobile({
+      padding: @icecream-gap-md;
+      border: 1px solid #e5edf4;
+      box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.1);
+      font-size: @icecream-font-size-1;
+    });
+  }
+}

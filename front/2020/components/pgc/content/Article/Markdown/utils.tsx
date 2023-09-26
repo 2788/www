@@ -8,6 +8,7 @@ import React, { ReactHTML, Fragment, ReactNode } from 'react'
 import unified from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
+import remarkGfm from 'remark-gfm'
 
 import { isContentDetailUrl } from '../../url'
 
@@ -47,6 +48,7 @@ export function mdTextToHTMLAst(text: string): Promise<RootNode> {
 
     unified()
       .use(remarkParse) // md text -> md ast
+      .use(remarkGfm)
       .use(remarkRehype) // md ast -> html ast
       .use(getHTMLAstPlugin)
       .process(text)

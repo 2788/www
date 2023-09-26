@@ -4,11 +4,57 @@
 
 import { get, getCode, post } from 'utils/fetch'
 import { ProgressState, locationMap } from 'constants/activity'
+import { ButtonClickWebLink, ButtonClickConsult } from 'hooks/product-btn'
+import { ActivityComponentName } from 'constants/activity/components'
 import { mongoApiPrefix, wwwApiPrefix, handleResponseData } from '..'
 
 export interface ISession {
   id: string // 唯一 id
   title: string // 场次标题
+}
+
+export type PageType = 'RMB' | 'PAGE'
+
+export interface ActivitySection {
+  /** section 内容的 key，当前区块在可导航区域中的唯一标示，也会用来作为 URL hash 的值 */
+  name: string
+  /** section 内容标题，即对应 tab 项中的文本内容 */
+  title: string
+  /** section 内容副标题 */
+  subtitle: string
+
+  component: {
+    /** 组件名称，组件被 Section 包裹 */
+    name: ActivityComponentName
+    /** 组件参数 */
+    props: unknown
+  }
+}
+
+// 活动页
+export interface IActivityPage {
+  // TODO: 后续用新的 mongo api 按需裁剪，相关升级参考产品配置页
+  /** 解决方案页 banner 配置 */
+  banner?: {
+    bgImgUrl: {
+      large: string
+      small?: string
+    }
+    bgColor: string
+    /** 是否为浅色风格（默认深色风格）；浅色风格对应深色按钮和深色文字，深色风格反之 */
+    light?: boolean
+  } | null
+  /** 解决方案页底部使用引导模块 */
+  usageGuide?: {
+    title: string
+    desc?: string
+    button: {
+      text: string
+      click: ButtonClickWebLink | ButtonClickConsult
+    }
+  } | null
+  /** 活动页组件列表配置 */
+  sections: ActivitySection[]
 }
 
 export interface IActivity {
@@ -20,11 +66,16 @@ export interface IActivity {
   endTime: string // 活动结束时间，单位为秒
   applyEndTime: string // 报名截止时间，单位为秒
   noLoginRequired: boolean // 代表活动是否不需要登录，默认为需要登录
-  detail: string // 详情
   progressState: string // 活动进行状态
   location: string // 地点
   isOverApplyTime: boolean // 是否超过报名时间
   sessions: ISession[] // 活动场次数组
+
+  pageType?: PageType
+  // 富媒体格式的活动页
+  detail?: string
+  // 自定义的活动页
+  page?: IActivityPage
 }
 
 export interface IReminder {
@@ -46,12 +97,17 @@ interface IActivityRes {
   applyEndTime: number // 报名截止时间，单位为秒
   noLoginRequired: boolean // 代表活动是否不需要登录，默认为需要登录
   editTime: number // 修改时间，单位为秒
-  detail: string // 详情
   detailUrlPrefix: string // 详情页面 url 前缀
   enableReminder: boolean // 是否提醒
   reminders: IReminder[] // 活动开始前多少分钟提醒
   location: string // 地点
   sessions?: ISession[] // 活动场次数组
+
+  pageType?: PageType
+  // 富媒体格式的活动页
+  detail?: string
+  // 自定义的活动页
+  page?: IActivityPage
 }
 
 // 根据 id 获取市场活动
@@ -90,12 +146,8 @@ export interface IRegistrationInfo {
   userName: string // 报名人姓名
   phoneNumber: string // 手机号
   email: string // 邮箱
-  company: string // 公司
-  location: string // 所在地
-  industry: string // 所在行业
-  department: string // 部门
-  position: string // 职位
-  relationship: string // 与七牛的关系
+  location: string // 地区
+  extraForm: Record<string, string | null>
   createdAt: number // 创建时间，单位为秒
 }
 
@@ -104,17 +156,14 @@ export function getRegistrationInfo(registrationId: string): Promise<IRegistrati
 }
 
 export interface IRegistrationOptions {
-  userName: string
-  phoneNumber: string
-  email: string
-  company: string
-  marketActivityId: string
-  location: string
-  industry: string
-  department: string
-  position: string
-  relationship: string
-  marketActivitySessionId: string
+  marketActivityId: string // 活动 id
+  marketActivitySessionId: string | null // 场次信息
+  userName: string // 报名人姓名
+  phoneNumber: string // 手机号
+  email: string // 邮箱
+  location: string // 地区
+  isReaded: boolean // 已同意协议
+  extraForm: Record<string, string | null>
 }
 
 // 创建报名信息
@@ -146,11 +195,14 @@ function genDisplayList(list: IActivityRes[]): IActivity[] {
       endTime: formatTime(item.endTime),
       applyEndTime: formatTime(item.applyEndTime),
       noLoginRequired: item.noLoginRequired,
-      detail: item.detail,
       progressState: state,
       location: locationMap[item.location] || item.location,
       isOverApplyTime: nowTime > item.applyEndTime,
-      sessions: item.sessions || []
+      sessions: item.sessions || [],
+
+      pageType: item.pageType || 'RMB',
+      detail: item?.detail || '',
+      page: item?.page || null!
     })
   }
   return res

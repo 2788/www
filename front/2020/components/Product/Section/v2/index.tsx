@@ -56,6 +56,7 @@ export default function Section(props: SectionProps) {
   const isEven = blockIndex >= 0 && blockIndex % 2 === 0
   const isOdd = blockIndex >= 0 && blockIndex % 2 === 1
   const greyByIndex = startWithGrey ? isEven : isOdd
+
   const grey = propGrey != null && isPc ? propGrey : greyByIndex
   const isLast = blockIndex === blocks.length - 1
   const blockClassName = classnames(style.blockWraper, grey && style.grey)

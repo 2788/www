@@ -3,9 +3,13 @@
  * @author zaviertang <tangzhengwei01@qiniu.com>
  */
 
-import React, { useState, useEffect } from 'react'
+import { debounce } from 'lodash'
+import React, { useState } from 'react'
 import classNames from 'classnames'
-import { Button, TextInput } from 'react-icecream'
+import { useLocalStore } from 'qn-fe-core/local-store'
+import { LocalStorageStore } from 'qn-fe-core/storage-store'
+import { AutoComplete } from 'react-icecream-2'
+import { Button, InputGroup, InputGroupItem, TextInput } from 'react-icecream'
 import { ShareIcon } from 'react-icecream/icons'
 
 import { useWwwPreviewMessage } from 'utils/www'
@@ -52,18 +56,41 @@ export interface Props extends MetaProps {
   className?: string
 }
 
-export default function PreviewPage({ url, name, data, id, className }: Props) {
-  const [previewUrl, setPreviewUrl] = useState(url)
+const localStorageKey = 'page-preview-urls'
 
-  useEffect(() => {
-    setPreviewUrl(url)
-  }, [url])
+const savePreviewUrls = debounce((storage: LocalStorageStore, newUrl: string) => {
+  const previewUrls: string[] = storage.getItem(localStorageKey) || []
+  previewUrls.unshift(newUrl)
+  const saveUrls = Array.from(new Set(previewUrls)).slice(0, 10)
+  storage.setItem(localStorageKey, saveUrls)
+}, 10000)
+
+export default function PreviewPage({ url, name, data, id, className }: Props) {
+  const [previewUrl, _setPreviewUrl] = useState(url)
+  const localStorage = useLocalStore(LocalStorageStore)
+
+  const setPreviewUrl = (newUrl: string) => {
+    _setPreviewUrl(newUrl)
+    savePreviewUrls(localStorage, newUrl)
+  }
+
+  const fetchPreviewUrl = () => {
+    const result = localStorage.getItem(localStorageKey) || []
+    return result.map(v => ({ value: v, content: v }))
+  }
 
   return (
     <div className={classNames(styles.previewPageContainer, className)}>
       <div className={styles.previewUrl}>
-        预览地址:
-        <TextInput className={styles.input} value={previewUrl} onChange={value => { setPreviewUrl(value) }} />
+        <InputGroup style={{ width: '100%' }}>
+          <InputGroupItem>预览地址</InputGroupItem>
+          <AutoComplete
+            value={previewUrl}
+            fetch={fetchPreviewUrl}
+            onChange={value => setPreviewUrl(value as string)}
+          />
+          <TextInput className={styles.input} />
+        </InputGroup>
       </div>
       <div className={styles.backLoading}>正在加载预览页面...</div>
       <PreviewIframe

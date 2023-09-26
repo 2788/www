@@ -5,7 +5,7 @@
 import React, { useState, useCallback, useRef } from 'react'
 
 // FIXME: 查一下 Modal / Dialog 是不是也需要类似 `useAlive` 啥的 @huangbinjie
-import IcecreamBaseDialog from 'react-icecream-2/lib/Dialog'
+import { Dialog as IcecreamBaseDialog } from 'react-icecream-2/lib/Dialog'
 import * as icecreamDialog from 'react-icecream-2/lib/Dialog'
 
 import style from './style.less'

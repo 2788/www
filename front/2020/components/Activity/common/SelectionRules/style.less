@@ -1,0 +1,87 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.root {
+  width: 100%;
+  text-align: left;
+
+  .list {
+    display: flex;
+    flex-direction: row;
+
+    .mobile({
+      flex-direction: column;
+    });
+
+    .item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: @icecream-gap-md;
+  
+      .mobile({
+        flex-direction: row;
+        align-items: flex-start;
+        padding: @icecream-gap-md @icecream-gap-md / 2;
+    
+        &:first-child {
+          padding-top: 0;
+        }
+    
+        &:last-child {
+          padding-bottom: 0;
+        }
+    
+        &:not(:last-child) {
+          border-bottom: 1px solid #E5EDF4;
+        }
+      });
+  
+      .icon {
+        width: 52px;
+        height: 52px;
+        margin-bottom: @icecream-gap-md-x;
+  
+        .mobile({
+          width: 28px;
+          height: 28px;
+          margin-right: @icecream-gap-xs;
+        });
+      }
+  
+      .content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+  
+        .mobile({
+          text-align: left;
+        });
+  
+        .title {
+          font-weight: bold;
+          font-size: @icecream-font-size-4;
+          margin-bottom: @icecream-gap-md-x;
+  
+          .mobile({
+            font-size: @icecream-font-size-3;
+            margin-bottom: @icecream-gap-xs / 2;
+          });
+        }
+  
+        .desc {
+          font-size: @icecream-font-size-3;
+  
+          .mobile({
+            font-size: @icecream-font-size-1;
+          });
+        }
+      }
+    }
+  }
+}

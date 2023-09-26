@@ -1,0 +1,63 @@
+@import "~utils/less/index.less";
+
+.modalRoot {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+
+  .mobile({
+    height: 100% !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow-y: auto
+  });
+}
+
+.itemContent {
+  width: 100%;
+}
+
+.isReaded {
+  color: @grey-5;
+
+  .isReadedCheckbox {
+    margin-right: 8px;
+  }
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+}
+
+.errorLine {
+  margin-bottom: 12px;
+  text-align: center;
+  color: @red-6;
+}
+
+.formItemGroupRoot {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: @icecream-gap-md;
+
+  > * {
+    width: 50%;
+    padding: 0 @icecream-gap-md;
+  }
+
+  .mobile({
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: @icecream-gap-md;
+
+    > * {
+      width: 100%;
+      padding: 0;
+    }
+  });
+}

@@ -76,6 +76,7 @@ export default function Section(props: SectionProps) {
   const defaultGrey = isPc ? greyByIndex : false
   const grey = propGrey != null && isPc ? propGrey : defaultGrey
   const isLast = blockIndex === blocks.length - 1
+
   const blockClassName = classnames(style.blockWraper, grey && style.grey, rootClassName)
   const wrapperClassName = classnames(
     style.wrapper,

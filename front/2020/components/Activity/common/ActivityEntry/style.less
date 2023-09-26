@@ -1,0 +1,112 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .mobile({
+    flex-direction: column
+  });
+}
+
+.registrationRulesRoot {
+  .mobile({
+    padding: @icecream-gap-md;
+    border: 1px solid #e5edf4;
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.1);
+  });
+
+  .registrationRules {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .rule {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      &:not(:first-child) {
+        margin-top: @icecream-gap-sm * 3;
+
+        .mobile({
+          margin-top: @icecream-gap-sm;
+        });
+      }
+
+      .title {
+        color: @icecream-color-grey-10;
+        font-family: YouSheBiaoTiHei;
+        font-size: @icecream-font-size-6;
+        margin-bottom: @icecream-gap-sm;
+
+        .mobile({
+          font-size: @icecream-font-size-3;
+        });
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: @icecream-color-grey-10;
+        font-size: @icecream-font-size-4;
+        margin-left: @icecream-gap-md;
+        list-style: decimal;
+        max-width: 800px;
+        text-align: left;
+
+        .mobile({
+          font-size: @icecream-font-size-1;
+        });
+
+        > li {
+          list-style: decimal;
+        }
+      }
+    }
+  }
+
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: @icecream-gap-sm * 3;
+
+    .mobile({
+      justify-content: center;
+      margin-top: @icecream-gap-sm;
+    });
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .mobile({
+    margin-top: @icecream-gap-md;
+  });
+
+  .qrCodeWrap {
+    margin-bottom: @icecream-gap-md;
+  }
+
+  .qrCode {
+    width: 128px;
+    height: 128px;
+  }
+
+  .desc {
+    font-size: @icecream-font-size-1;
+    color: @icecream-color-grey-9;
+  }
+}

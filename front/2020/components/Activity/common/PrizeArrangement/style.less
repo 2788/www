@@ -1,0 +1,164 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .prizeItem {
+    flex: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    margin: @icecream-gap-sm;
+    padding: @icecream-gap-lg;
+    background: #fff;
+    border: 1px solid #e5edf4;
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+
+    .mobile({
+      border: none;
+      margin: @icecream-gap-sm / 2;
+      padding: @icecream-gap-md;
+      box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.06);
+
+      .label {
+        transform-origin: 0%;
+        transform: scale(0.8)
+      }
+    });
+
+    // 水平布局
+    &.row {
+      text-align: left;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: calc(50% - @icecream-gap-sm * 2);
+      padding: @icecream-gap-md @icecream-gap-lg;
+      
+      .img {
+        height: 80px;
+        margin-right: @icecream-gap-md;
+      }
+
+      .content {
+        align-items: flex-start;
+
+        .prize {
+          flex-direction: row;
+          justify-content: center;
+
+          >*+* {
+            margin-left: @icecream-gap-xs;
+          }
+        }
+      }
+    }
+
+    .img {
+      width: auto;
+      height: 100px;
+
+      .mobile({
+        right: 0;
+        position: absolute;
+        translate: 30% -10%;
+        scale: 1;
+        opacity: 0.4
+      });
+    }
+
+    .content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+
+      .mobile({
+        text-align: left;
+        align-items: flex-start;
+      });
+
+      .name {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+
+        font-size: @icecream-font-size-4;
+        margin-top: @icecream-gap-md-x;
+        margin-bottom: @icecream-gap-sm;
+
+        .mobile({
+          margin-top: 0;
+          margin-bottom: @icecream-gap-xs / 2;
+          font-size: @icecream-font-size-1;
+        });
+
+        .label {
+          display: inline-block;
+          position: absolute;
+          line-height: 1;
+          right: 0;
+          padding-left: @icecream-gap-xs;
+          translate: 100%;
+
+          >*{
+            width: max-content;
+          }
+        }
+      }
+
+      .prize {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .mobile({
+          text-align: left;
+          align-items: flex-start;
+        });
+  
+        .money {
+          font-weight: bold;
+          font-size: @icecream-font-size-6;
+
+          .mobile({
+            font-size: @icecream-font-size-4;
+          });
+        }
+
+        .more {
+          color: @icecream-color-grey-9;
+          font-size: @icecream-font-size-4;
+
+          .mobile({
+            font-size: @icecream-font-size-1;
+          });
+        }
+      }
+
+      
+    }
+  }
+}

@@ -7,7 +7,7 @@ import { RefreshClient } from 'apis/refresh'
 import WwwApis from 'apis/refresh/www'
 import BaseClient from 'apis/base-client'
 import { MongoApiBaseClient } from 'apis/mongo-api-client'
-import ActivityApis from 'apis/activity'
+import MarketActivityApis from 'apis/activity/market'
 import GlobalBannerApis from 'apis/global-banner'
 import UploadApis from 'apis/upload'
 import EntityApis from 'apis/consult/entity'
@@ -27,7 +27,7 @@ export const defaultProvides: di.Provides = [
   WwwApis,
   BaseClient,
   MongoApiBaseClient,
-  ActivityApis,
+  MarketActivityApis,
   GlobalBannerApis,
   UploadApis,
   EntityApis,

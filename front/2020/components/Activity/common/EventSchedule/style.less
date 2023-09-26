@@ -1,0 +1,99 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .mobile({
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 @icecream-gap-lg;
+  });
+
+  .stepItem {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .mobile({
+      flex-direction: row;
+
+      &:not(:last-child) {
+        padding-bottom: @icecream-gap-md-x;
+      }
+    });
+
+    --point-size: 13px;
+
+    .mobile({
+      --point-size: 9px;
+    });
+
+    &:not(:last-child) {
+      .point {
+        &::after {
+          content: "";
+          position: absolute;
+          display: inline-block;
+          background: #e5edf4;
+          width: calc(100% - var(--point-size));
+          height: 1px;
+          right: 0;
+          top: calc(var(--point-size) / 2);
+          translate: 50%;
+
+          .mobile({
+            height: 100%;
+            width: 1px;
+            left: calc(var(--point-size) / 2 - 1px);
+            top: calc(var(--point-size) / 2);
+            translate: 0 calc(50% - var(--point-size));
+          });
+        }
+      }
+    }
+
+    .point {
+      width: var(--point-size);
+      height: var(--point-size);
+      border-radius: calc(var(--point-size) / 2);
+      background-color: @primary-color;
+      margin-bottom: @icecream-gap-md-x;
+
+      .mobile({
+        margin-bottom: 0;
+        margin-right: @icecream-gap-md-x;
+      });
+    }
+
+    .title {
+      text-align: center;
+      font-weight: bold;
+      font-size: @icecream-font-size-4;
+
+      .mobile({
+        text-align: left;
+        font-size: @icecream-font-size-3;
+      });
+    }
+
+    .date {
+      text-align: left;
+      font-size: @icecream-font-size-1;
+      color: @icecream-color-grey-9;
+
+      .mobile({
+        font-size: @icecream-font-size-1;
+      });
+    }
+  }
+}

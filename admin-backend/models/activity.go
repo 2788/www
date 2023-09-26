@@ -1,8 +1,9 @@
 package models
 
 import (
-	"gopkg.in/mgo.v2/bson"
 	"sort"
+
+	"gopkg.in/mgo.v2/bson"
 )
 
 type ReminderStatus int
@@ -34,13 +35,10 @@ type ActivityRegistration struct {
 	PhoneNumber             string                         `json:"phoneNumber"`
 	Email                   string                         `json:"email"`
 	Company                 string                         `json:"company"`
+	ExtraForm               interface{}                    `json:"extraForm"`
 	MarketActivityId        string                         `json:"marketActivityId"`
 	MarketActivitySessionId string                         `json:"marketActivitySessionId"`
-	Location                string                         `json:"location"`     // 所在地址
-	Industry                string                         `json:"industry"`     // 所在行业
-	Department              string                         `json:"department"`   // 部门
-	Position                string                         `json:"position"`     // 职位
-	Relationship            string                         `json:"relationship"` // 和 qiniu 的关系
+	Location                string                         `json:"location"` // 所在地址
 	Reminders               []ActivityRegistrationReminder `json:"reminders"`
 	CreatedAt               int64                          `json:"createdAt"`
 	UpdatedAt               int64                          `json:"updatedAt"`

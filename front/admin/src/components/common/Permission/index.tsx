@@ -9,7 +9,7 @@ type Props = {
 
 // 引自 admin-base/user/permission ,增加 message 字段方便修改提示文案
 export default observer(function Permission(
-  { code, deny = false, message = '没有权限，可找 @tangbingyan 开通权限', children }: Props
+  { code, deny = false, message = '没有权限，可找 @yinxulai 开通权限', children }: Props
 ) {
   const currentUserPermissionStore = useInjection(CurrentUserPermissionStore)
 

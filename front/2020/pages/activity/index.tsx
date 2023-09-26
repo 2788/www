@@ -78,6 +78,7 @@ export async function getServerSideProps() {
     getActivities({ page, pageSize }),
     getGlobalBanners()
   ])
+
   return {
     props: {
       activities: res.data,

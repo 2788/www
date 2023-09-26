@@ -82,7 +82,8 @@ export default function PageBanner(props: IPageBannerProps) {
       backgroundPosition: isMobile ? 'right 0px center' : 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      backgroundColor: bgColor
+      backgroundColor: bgColor,
+      minHeight: isMobile ? '251px' : '350px'
     }
 
   return (

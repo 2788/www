@@ -1,0 +1,134 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.description,
+.highlights {
+  &:not(:last-child) {
+    margin-bottom: @icecream-gap-lg;
+  }
+
+  .mobile({
+    padding: @icecream-gap-md;
+    border: 1px solid #e5edf4;
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.1)
+  });
+
+  > .title {
+    text-align: left;
+    font-family: YouSheBiaoTiHei;
+    font-size: @icecream-font-size-6;
+    margin-bottom: @icecream-gap-sm;
+
+    .mobile({
+      text-align: center;
+      font-size: @icecream-font-size-5;
+      margin-bottom: @icecream-gap-xs;
+    });
+  }
+}
+
+.description {
+  .text {
+    font-family: PingFang SC;
+    font-size: @icecream-font-size-4;
+
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    .mobile({
+      text-align: center;
+      font-size: @icecream-font-size-1;
+      margin-bottom: @icecream-gap-xs;
+    });
+  }
+}
+
+.highlights {
+  .list {
+    display: flex;
+    flex-direction: row;
+
+    .mobile({
+      flex-direction: column;
+    });
+  }
+
+  .highlightItem {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: @icecream-gap-md;
+
+    .mobile({
+      flex-direction: row;
+      align-items: flex-start;
+      padding: @icecream-gap-md @icecream-gap-md / 2;
+  
+      &:first-child {
+        padding-top: 0;
+      }
+  
+      &:last-child {
+        padding-bottom: 0;
+      }
+  
+      &:not(:last-child) {
+        border-bottom: 1px solid #E5EDF4;
+      }
+    });
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: @icecream-gap-md-x;
+
+      .mobile({
+        width: 28px;
+        height: 28px;
+        margin-right: @icecream-gap-xs;
+      });
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      .mobile({
+        text-align: left;
+      });
+
+      .title {
+        font-weight: bold;
+        font-size: @icecream-font-size-5;
+        margin-bottom: @icecream-gap-md-x;
+
+        .mobile({
+          font-size: @icecream-font-size-3;
+          margin-bottom: @icecream-gap-xs / 2;
+        });
+      }
+
+      .desc {
+        font-size: @icecream-font-size-3;
+
+        .mobile({
+          font-size: @icecream-font-size-1;
+        });
+      }
+    }
+  }
+}

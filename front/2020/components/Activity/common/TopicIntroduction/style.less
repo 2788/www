@@ -1,0 +1,67 @@
+/**
+ * @file 组件样式
+ * @author yinxulai <yinxulai@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.root {
+  width: 100%;
+  text-align: left;
+
+  >.content {
+    line-height: 1.5;
+    font-size: @icecream-font-size-4;
+
+    .mobile({
+      padding: @icecream-gap-md;
+      border: 1px solid #e5edf4;
+      box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.1);
+      font-size: @icecream-font-size-1;
+    });
+
+    .title {
+      line-height: 2;
+      font-family: YouSheBiaoTiHei;
+      font-size: @icecream-font-size-6;
+
+      .mobile({
+        text-align: center;
+        font-size: @icecream-font-size-5;
+      });
+    }
+
+    .content {
+      color: @icecream-color-grey-10;
+      font-size: @icecream-font-size-4;
+
+      .mobile({
+        font-size: @icecream-font-size-1;
+      });
+    }
+
+    .block {
+      .title {
+        line-height: 3;
+        text-align: left;
+        font-weight: bold;
+        font-family: unset;
+        font-size: @icecream-font-size-4;
+
+        .mobile({
+          font-size: @icecream-font-size-3;
+        });
+      }
+
+      .content {
+        list-style: disc;
+        padding-left: @icecream-gap-md;
+
+        > li {
+          list-style: disc;
+          color: @icecream-color-grey-9;
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ import { InputNumber, Icon } from 'react-icecream-1'
 import { FieldState, FormState } from 'formstate-x-v2'
 
 import { bindInputNumber } from 'utils/bind'
-import { IReminder } from 'apis/activity'
+import { IReminder } from 'apis/activity/market'
 import style from './style.m.less'
 
 type ReminderState = FormState<{

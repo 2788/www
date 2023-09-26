@@ -152,7 +152,7 @@ function BaseEditor(props: BaseProps) {
 
   return (
     <>
-      <div ref={vditorContainerRef}></div>
+      <div className={style.root} ref={vditorContainerRef}></div>
       {uploadImageToolbarMenuItemView}
     </>
   )
