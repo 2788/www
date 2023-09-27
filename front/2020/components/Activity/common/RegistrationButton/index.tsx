@@ -10,6 +10,8 @@ import { urlForSignin } from 'utils/route'
 import { useActivity } from '../ActivityContext'
 import ActivityRegistrationModal, { ExtraFormItem } from '../ActivityRegistrationModal'
 
+import styles from './style.less'
+
 const activityRegistrationExtraForm: ExtraFormItem[] = [
   {
     type: 'text',
@@ -113,10 +115,7 @@ export function RegistrationButton() {
         disabled={isDisabled}
         onClick={handelClick}
         size={isMobile ? 'default' : 'large'}
-        style={{
-          background: '#33C8EF',
-          borderColor: '#33C8EF'
-        }}
+        className={styles.button}
       >
         {text}
       </Button>

@@ -11,13 +11,15 @@ import Mobile from './Mobile'
 
 import style from './style.less'
 
+export type CardType = 'default' | 'motivation'
+
 export interface Props {
   serial: ReactNode
   title: string
   desc: ReactNode
   bgUrl: string
   popDir: 'up' | 'down'
-  motivation?: boolean
+  type?: CardType
 }
 
 export interface CardItemProps {
@@ -30,7 +32,7 @@ export interface CardItemProps {
 
 export interface CardListProps {
   list: CardItemProps[]
-  motivation?: boolean
+  type?: CardType
 }
 
 export function CardItem(props: Props) {
@@ -57,7 +59,7 @@ function Detail(props: { detail: string }) {
 }
 
 export function CardList(props: CardListProps) {
-  const { list, motivation = false } = props
+  const { list, type = 'default' } = props
   const [modalIndex, setModal] = useState(-1)
 
   return (
@@ -98,7 +100,7 @@ export function CardList(props: CardListProps) {
             desc={desc ?? ''}
             bgUrl={item.bgUrl ?? ''}
             popDir={index % 2 === 0 ? 'up' : 'down'}
-            motivation={motivation}
+            type={type}
           />
         )
       })}

@@ -1,6 +1,6 @@
-import React, { ReactNode, useState, useRef, useEffect } from 'react'
+import React, { ReactNode, useState } from 'react'
 import classNames from 'classnames'
-
+import type { CardType } from '..'
 import styles from './style.less'
 
 export interface Props {
@@ -9,7 +9,7 @@ export interface Props {
   desc: ReactNode
   bgUrl: string
   popDir: 'up' | 'down'
-  motivation?: boolean
+  type?: CardType
 }
 
 const popDirStyle = {
@@ -17,41 +17,49 @@ const popDirStyle = {
   down: styles.popDirDown
 }
 
-export default function Item({ serial, title, desc, bgUrl, popDir, motivation = false }: Props) {
+function DefaultItem({ serial, title, desc, bgUrl, popDir }: Props) {
+  return (
+    <div
+      className={classNames(styles.card, popDirStyle[popDir])}
+      style={{ backgroundImage: `url("${bgUrl}")` }}
+    >
+      <div className={styles.group}>
+        <div className={styles.serial}>{serial}</div>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.desc}>{desc}</div>
+      </div>
+    </div>
+  )
+}
+
+type MotivationProps = {
+  title: string
+  desc: ReactNode
+  bgUrl: string
+}
+
+function MotivationItem({ title, desc, bgUrl }: MotivationProps) {
   const [isEnter, setIsEnter] = useState(false)
-  const moti = isEnter ? styles.enter : styles.leave
-  const motivationRef = useRef<HTMLDivElement | null>(null)
+  const motion = isEnter ? styles.enter : styles.leave
 
-  const handleMotivationEnter = () => setIsEnter(true)
-  const handleMotivationLeave = () => setIsEnter(false)
-
-  useEffect(() => {
-    if (motivationRef.current) {
-      motivationRef.current.addEventListener('mouseenter', handleMotivationEnter)
-      motivationRef.current.addEventListener('mouseleave', handleMotivationLeave)
-    }
-    return () => {
-      motivationRef.current!.removeEventListener('mouseenter', handleMotivationEnter)
-      motivationRef.current!.removeEventListener('mouseleave', handleMotivationLeave)
-    }
-  }, [])
-
-  return motivation
-    ? (<div className={classNames(styles.motivationCard, moti)} ref={motivationRef}>
+  return (
+    <div className={classNames(styles.motivationCard, motion)}
+      onMouseEnter={() => setIsEnter(true)}
+      onMouseLeave={() => setIsEnter(false)}
+    >
       <img src={bgUrl} />
       <h5>{title}</h5>
       <p>{desc}</p>
-    </div >)
-    : (
-      <div
-        className={classNames(styles.card, popDirStyle[popDir])}
-        style={{ backgroundImage: `url("${bgUrl}")` }}
-      >
-        <div className={styles.group}>
-          <div className={styles.serial}>{serial}</div>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.desc}>{desc}</div>
-        </div>
-      </div>
-    )
+    </div>
+  )
+}
+
+export default function Item(props: Props) {
+  const cardMapper = new Map<CardType | undefined, JSX.Element>([
+    ['default', <DefaultItem {...props} key={props.title} />],
+    ['motivation', <MotivationItem title={props.title} desc={props.desc} bgUrl={props.bgUrl} key={props.title} />],
+    [undefined, <DefaultItem {...props} key={props.title} />]
+  ])
+
+  return cardMapper.get(props.type) || <DefaultItem {...props} />
 }

@@ -18,12 +18,12 @@ const processMotivationList: CardItemProps[] = [
     detail: [
       '#### 活动规则',
       '在以下渠道分享活动信息，分享次数达5次以上，可获得以下七牛周边1个：帆布袋/西桥T',
-      '* 朋友圈、牛客网、微博、QQ群或微信群（技术相关≥100人）',
+      '* 朋友圈、牛客网、微博、QQ群或微信群（技术相关 ≥ 100 人）',
       '* V2EX、CSDN、GitHub、知乎、简书、Golang中国社区、GoCN社区等技术社区或论坛',
       '#### 如何兑奖',
       '完成分享后保留页面截图，联系活动小助手，确认后填写收件信息。',
       '#### 活动时间',
-      '报名截止前'
+      '即日起至报名截止前（10月31日 23:59)'
     ].join('\n')
   },
   {
@@ -38,6 +38,8 @@ const processMotivationList: CardItemProps[] = [
       '#### 如何兑奖',
       '大赛结束组委会统计完成后统一发放奖品。',
       '#### 活动时间',
+      '即日起至报名截止前（10月31日 23:59)',
+      '#### 有效报名定义',
       '有效报名指提交报名信息后实际参赛，进行编程创作，提交比较完整的作品（超过 50% 的功能实现）。',
       '| 带来有效报名 | 奖品                | 数量（先到先得） |',
       '| ------------ | --------------------- | ---------------- |',
@@ -58,5 +60,5 @@ const processMotivationList: CardItemProps[] = [
 ]
 
 export default function ProcessMotivation() {
-  return <CardList list={processMotivationList} motivation />
+  return <CardList list={processMotivationList} type="motivation" />
 }
