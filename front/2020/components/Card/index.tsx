@@ -17,6 +17,7 @@ export interface Props {
   desc: ReactNode
   bgUrl: string
   popDir: 'up' | 'down'
+  motivation?: boolean
 }
 
 export interface CardItemProps {
@@ -29,6 +30,7 @@ export interface CardItemProps {
 
 export interface CardListProps {
   list: CardItemProps[]
+  motivation?: boolean
 }
 
 export function CardItem(props: Props) {
@@ -37,7 +39,7 @@ export function CardItem(props: Props) {
     <Mobile title={props.title} desc={props.desc} />
   ) : (
     <Pc {...props} />
-  )
+    )
 }
 
 function Detail(props: { detail: string }) {
@@ -55,7 +57,7 @@ function Detail(props: { detail: string }) {
 }
 
 export function CardList(props: CardListProps) {
-  const { list } = props
+  const { list, motivation = false } = props
   const [modalIndex, setModal] = useState(-1)
 
   return (
@@ -96,6 +98,7 @@ export function CardList(props: CardListProps) {
             desc={desc ?? ''}
             bgUrl={item.bgUrl ?? ''}
             popDir={index % 2 === 0 ? 'up' : 'down'}
+            motivation={motivation}
           />
         )
       })}

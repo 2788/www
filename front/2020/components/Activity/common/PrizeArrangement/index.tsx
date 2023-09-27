@@ -74,7 +74,7 @@ export default function PrizeArrangement(_props: Props) {
   ]
 
   const renderPrizeItem = (item: Prize, row: boolean) => (
-    <div className={`${styles.prizeItem} ${row ? styles.row : ''}`}>
+    <div key={item.name} className={`${styles.prizeItem} ${row ? styles.row : ''}`}>
       <img className={styles.img} src={item.backgroundImage} alt={item.label} />
       <div className={styles.content}>
         <div className={styles.name}>

@@ -70,3 +70,81 @@
     }
   }
 }
+
+
+.motivationCard {
+  flex: 1;
+  position: relative;
+  height: 260px;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0px 10px 20px 0px #00000005;
+  overflow: hidden;
+}
+
+.enter {
+  background-color: #07BEFF;
+  color: #FFF;
+  transition: .3s;
+
+  img {
+    width: 108px;
+    height: 108px;
+    margin-bottom: 1rem;
+    transform: translate(0, -200%);
+    transition: all .3s linear;
+  }
+
+  h5 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFF;
+    transform: translate(0, -400%);
+    transition: all .3s linear;
+  }
+
+  p {
+    position: absolute;
+    padding: 0 3rem;
+    color: #FFF;
+    opacity: 1;
+    transform: translate(0, 10%);
+    transition: all .3s ease-in;
+  }
+}
+
+.leave {
+  background-color: #FFF;
+  color: #000;
+  transition: .3s;
+
+  img {
+    width: 108px;
+    height: 108px;
+    margin-bottom: 1rem;
+    transform: translate(0, 0);
+    transition: all .3s linear;
+  }
+
+  h5 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    transform: translate(0, 0);
+    transition: all .3s linear;
+  }
+
+  p {
+    position: absolute;
+    padding: 0 3rem;
+    color: #333;
+    opacity: 0;
+    transform: translate(0, 200%);
+    transition: all .3s ease-in;
+  }
+}
+

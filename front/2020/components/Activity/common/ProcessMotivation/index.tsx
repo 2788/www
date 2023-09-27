@@ -58,5 +58,5 @@ const processMotivationList: CardItemProps[] = [
 ]
 
 export default function ProcessMotivation() {
-  return <CardList list={processMotivationList} />
+  return <CardList list={processMotivationList} motivation />
 }

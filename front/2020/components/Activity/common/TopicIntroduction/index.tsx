@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-
+import Remainer from './images/remain.svg'
 import styles from './style.less'
 
 export interface Props { }
@@ -43,11 +43,12 @@ export default function TopicIntroduction(_props: Props) {
 
   return (
     <div className={styles.root}>
+      <Remainer />
       {/* <div className={styles.content}> */}
       {/*   <div className={styles.title}>网页短视频应用</div> */}
       {/*   <p className={styles.content}>使用七牛云存储、七牛视频相关产品（如视频截帧等）开发一款Web端短视频应用</p> */}
       {/*   {data.map(renderBlock)} */}
       {/* </div> */}
-    </div>
+    </div >
   )
 }

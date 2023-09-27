@@ -59,6 +59,13 @@ const activityRegistrationExtraForm: ExtraFormItem[] = [
     placeholder: '请输入年级'
   }, {
     type: 'text',
+    required: false,
+    name: '推荐码',
+    key: 'referralCode',
+    placeholder: '如果有请输入（可选）'
+  },
+  {
+    type: 'text',
     required: true,
     name: '学信网学籍验证码',
     key: 'xueXinWangVerificationCode',
@@ -70,14 +77,7 @@ const activityRegistrationExtraForm: ExtraFormItem[] = [
         <li>3. 复制并填写【学籍验证码】</li>
       </ul>
     )
-  }, {
-    type: 'text',
-    required: false,
-    name: '推荐码',
-    key: 'referralCode',
-    placeholder: '如果有请输入（可选）'
-  }
-]
+  }]
 
 export function RegistrationButton() {
   const currentUrl = useUrl()
@@ -113,18 +113,24 @@ export function RegistrationButton() {
         disabled={isDisabled}
         onClick={handelClick}
         size={isMobile ? 'default' : 'large'}
+        style={{
+          background: '#33C8EF',
+          borderColor: '#33C8EF'
+        }}
       >
         {text}
       </Button>
-      {activity && (
-        <ActivityRegistrationModal
-          visible={visible}
-          sessions={activity.sessions}
-          marketActivityId={activity.id}
-          onCancel={() => setVisible(false)}
-          extraForm={activityRegistrationExtraForm}
-        />
-      )}
+      {
+        activity && (
+          <ActivityRegistrationModal
+            visible={visible}
+            sessions={activity.sessions}
+            marketActivityId={activity.id}
+            onCancel={() => setVisible(false)}
+            extraForm={activityRegistrationExtraForm}
+          />
+        )
+      }
     </>
   )
 }
