@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Button, Modal } from 'react-icecream-2'
+import { Button, Modal, ButtonType } from 'react-icecream-2'
 
 import { useMobile } from 'hooks/ua'
 
@@ -58,6 +58,11 @@ function Detail(props: { detail: string }) {
   return <Markdown htmlAst={articleHtmlAst} />
 }
 
+const descriptionButtonType: Record<CardType, ButtonType> = {
+  default: 'secondary',
+  motivation: 'reverse'
+}
+
 export function CardList(props: CardListProps) {
   const { list, type = 'default' } = props
   const [modalIndex, setModal] = useState(-1)
@@ -72,7 +77,7 @@ export function CardList(props: CardListProps) {
               <>
                 <Button
                   className={classNames(style.descButton)}
-                  type="secondary"
+                  type={descriptionButtonType[type]}
                   onClick={() => setModal(index)}
                 >
                   查看更多

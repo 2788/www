@@ -24,7 +24,7 @@ import Footer from '../Footer'
 import * as feedback from '../Feedback'
 import ScrollToTop from '../ScrollToTopV2'
 import { Provider as UserInfoProvider } from '../UserInfo'
-import RegisterEntry from '../RegisterEntry'
+import GlobalEntryProvider from '../GlobalEntryProvider'
 import GlobalBannerComp from './GlobalBanner'
 import logo from './logo.jpg'
 
@@ -103,10 +103,11 @@ function ContentWrapper({
             {notSimple && <GlobalBannerComp banners={globalBanners ?? []} />}
             {notSimple && <Header />}
             <ErrorBoundary>
-              {children}
+              <GlobalEntryProvider>
+                {children}
+              </GlobalEntryProvider>
             </ErrorBoundary>
             {notSimple && <Footer />}
-            <RegisterEntry />
             {notSimple && <feedback.EntryV4 />}
             <feedback.Modal />
             <ScrollToTop />

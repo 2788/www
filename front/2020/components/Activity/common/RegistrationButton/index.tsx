@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { Modal } from 'react-icecream'
 import { Button } from 'react-icecream-2'
 import { useUserInfo } from 'components/UserInfo'
 import Link from 'components/Link'
+import { useGlobalEntryContext } from 'components/GlobalEntryProvider'
 
 import { useUrl } from 'hooks/url'
 import { useMobile } from 'hooks/ua'
@@ -87,6 +88,7 @@ export function RegistrationButton() {
   const userInfo = useUserInfo()
   const activity = useActivity()
   const [visible, setVisible] = useState(false)
+  const globalEntryContext = useGlobalEntryContext()
 
   const noLoginRequired = activity?.noLoginRequired != null
     ? activity.noLoginRequired
@@ -107,6 +109,26 @@ export function RegistrationButton() {
 
   const isDisabled = activity?.isOverApplyTime
   const text = activity?.isOverApplyTime ? '报名已结束' : '立即报名'
+
+  const btn = () => (
+    <Button
+      type="primary"
+      disabled={isDisabled}
+      onClick={handelClick}
+      style={{
+        width: '100%',
+        height: '48px',
+        lineHeight: '48px'
+      }}
+    >
+      {text}
+    </Button>
+  )
+
+  useLayoutEffect(() => {
+    if (globalEntryContext) globalEntryContext.set(btn)
+    return () => globalEntryContext.set(null)
+  }, [isDisabled, activity, userInfo])
 
   return (
     <>

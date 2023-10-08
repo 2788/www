@@ -30,10 +30,6 @@ export default function MobileRegisterEntry() {
     }
   }
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.fixed}>
-        <Link className={styles.link} {...linkProps}>注册</Link>
-      </div>
-    </div>
+    <Link className={styles.link} {...linkProps}>注册</Link>
   )
 }
