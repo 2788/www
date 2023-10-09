@@ -31,6 +31,7 @@ import useCompDocument from './comps/document'
 import useCompFunction from './comps/function'
 import useCompRelated from './comps/related'
 import useCompScene from './comps/scene'
+import useCompHotPackage from './comps/hot-package'
 
 import styles from './style.m.less'
 
@@ -91,6 +92,7 @@ export default observer(function PageInfo({ productId }: Props) {
   const [configCompFunction, compFunctionView] = useCompFunction()
   const [configCompRelated, compRelatedView] = useCompRelated()
   const [configCompScene, compSceneView] = useCompScene()
+  const [configCompHotPackage, compHotPackageView] = useCompHotPackage()
 
   function submit() {
     if (!productInfo) {
@@ -167,6 +169,9 @@ export default observer(function PageInfo({ productId }: Props) {
       case ProductModule.Scene:
         configSectionComp = configCompScene()
         break
+      case ProductModule.HotPackage:
+        configSectionComp = configCompHotPackage()
+        break
       default:
         toasterStore.error(`未知模块 ${productModule}`)
         return
@@ -216,6 +221,9 @@ export default observer(function PageInfo({ productId }: Props) {
         break
       case ProductComponentName.Scene:
         configComp = configCompScene({ ...currentSection, component: currentSection.component })
+        break
+      case ProductComponentName.HotPackage:
+        configComp = configCompHotPackage({ ...currentSection, component: currentSection.component })
         break
       default:
         toasterStore.error(`未知组件 ${currentSection.name}`)
@@ -376,6 +384,7 @@ export default observer(function PageInfo({ productId }: Props) {
       {compFunctionView}
       {compRelatedView}
       {compSceneView}
+      {compHotPackageView}
     </div>
   )
 })

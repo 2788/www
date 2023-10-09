@@ -13,6 +13,7 @@ import { ProductComponentDocumentConfig } from './comp-document'
 import { ProductComponentCaseConfig } from './comp-case'
 import { ProductComponentRelatedConfig } from './comp-related'
 import { ProductComponentNewsConfig } from './comp-news'
+import { ProductComponentHotPackageConfig } from './comp-hot-package'
 
 export type ProductComponent = (
   | ProductComponentAdvantageConfig
@@ -23,6 +24,7 @@ export type ProductComponent = (
   | ProductComponentCaseConfig
   | ProductComponentRelatedConfig
   | ProductComponentNewsConfig
+  | ProductComponentHotPackageConfig
 )
 
 /** 模块 id，会用作 section 内容的 key（当前区块在可导航区域中的唯一标示），同时用作 URL hash 的值（如果有锚点） */
@@ -36,7 +38,8 @@ export enum ProductModule {
   Scene = 'scene',
   Document = 'document',
   Case = 'cases',
-  Related = 'related'
+  Related = 'related',
+  HotPackage = 'hot-package'
 }
 
 export const productModuleTitleMap = {
@@ -49,7 +52,8 @@ export const productModuleTitleMap = {
   [ProductModule.Scene]: '应用场景',
   [ProductModule.Document]: '相关文档',
   [ProductModule.Case]: '客户案例',
-  [ProductModule.Related]: '相关产品'
+  [ProductModule.Related]: '相关产品',
+  [ProductModule.HotPackage]: '热销套餐'
 } as const
 
 export interface ProductSection<T extends ProductComponent = ProductComponent> {

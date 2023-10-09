@@ -13,7 +13,8 @@ export enum ProductComponentName {
   Scene = 'Scene',
   Document = 'Documentation',
   Case = 'Case',
-  Related = 'Related'
+  Related = 'Related',
+  HotPackage = 'HotPackage'
 }
 
 /**

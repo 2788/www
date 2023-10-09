@@ -1,0 +1,128 @@
+@import '~utils/less/index.less';
+
+.card {
+  .notMobile({
+    flex: 1;
+  });
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  padding: 32px;
+  background: @grey-1;
+  box-shadow: 0px 3px 18px rgba(51, 65, 101, 0.1);
+  border-radius: 8px;
+
+  .tagBackground {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 90px;
+    height: 30px;
+    border-bottom-left-radius: 14px;
+    transform: skew(20deg);
+    background: linear-gradient(276.35deg, #F82119 -4.61%, #FF7754 102.25%);
+  }
+
+  .tagText {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    font-size: @icecream-font-size-1;
+    font-weight: 500;
+    color: @grey-1;
+  }
+
+  .header {
+    .title {
+      width: 100%;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 150%;
+      text-align: left;
+      color: @grey-7;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      width: 100%;
+      text-align: left;
+      color: @grey-6;
+      margin-bottom: 32px;
+    }
+  }
+
+  .body {
+    width: 100%;
+    margin-bottom: @icecream-gap-lg;
+
+    .row {
+      display: flex;
+      margin-bottom: @icecream-gap-sm;
+      text-align: left;
+      color: @grey-7;
+      word-break: keep-all;
+    }
+
+    .icon {
+      margin-top: 3px;
+      margin-right: 8px;
+    }
+  }
+
+  .footer {
+    width: 100%;
+    border-top: 1px solid #E5E5E5;
+    padding-top: @icecream-gap-lg;
+
+    .price {
+      text-align: left;
+      font-size: @icecream-font-size-1;
+      color: #4E5969;
+      margin-bottom: 18px;
+
+      .symbol {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        line-height: 100%;
+        text-align: center;
+        font-size: @icecream-font-size-3;
+        color: #F50505;
+      }
+
+      .number {
+        font-weight: 600;
+        font-size: 30px;
+        letter-spacing: 0.06px;
+        color: #F50505;
+      }
+    }
+
+    .button {
+      width: 100%;
+      height: 44px;
+      line-height: 44px;
+      background: #07BEFF;
+      box-shadow: 0px 6px 8px rgba(28, 129, 223, 0.1);
+      border-radius: @icecream-border-radius;
+      color: @grey-1;
+
+      &:hover {
+        background: @grey-1;
+        color: @primary-color;
+      }
+    }
+  }
+}
+
+.card + .card {
+  margin-left: @icecream-gap-md-x;
+
+  .mobile({
+    margin-top: @icecream-gap-md;
+    margin-left: 0;
+  });
+}

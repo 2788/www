@@ -35,7 +35,7 @@ export function Raw({ children, maxColumnsPerRow }: RawProps) {
       {itemsRows.map((items, index) => (
         <Group key={index}>
           {items}
-          {index === itemsRows.length - 1 && index !== 0 && items.length < maxColumnsPerRow && (
+          {index === itemsRows.length - 1 && items.length < maxColumnsPerRow && (
             [...new Array(maxColumnsPerRow - items.length).keys()].map(item => <EmptyItem key={item} />)
           )}
         </Group>
