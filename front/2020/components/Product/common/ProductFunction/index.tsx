@@ -6,6 +6,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { chunk } from 'lodash'
+import { RightIcon } from 'react-icecream-2/lib/icons'
 
 import Link from 'components/Link'
 import { Row } from 'components/UI/Card'
@@ -13,7 +14,6 @@ import { useMobile } from 'hooks/ua'
 
 import Description from '../Description'
 
-import IconArrowRight from './arrow-right.svg'
 import style from './style.less'
 
 interface Item {
@@ -73,7 +73,7 @@ function Item({ item }: { item: Item | null }) {
 
       {isMobile && (
         <div className={style.right}>
-          <IconArrowRight />
+          <RightIcon />
         </div>
       )}
     </div>

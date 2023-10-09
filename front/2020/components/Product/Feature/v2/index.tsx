@@ -58,7 +58,7 @@ function Group({ children }: PropsWithChildren<{}>) {
 
 function EmptyItem() {
   return (
-    <div className={styles.itemWrapper}></div>
+    <div className={styles.emptyItem}></div>
   )
 }
 
@@ -84,6 +84,29 @@ export function Item(props: ItemProps) {
           <h3 className={styles.itemTitle}>{title}</h3>
           <div className={styles.desc}>{desc}</div>
         </div>
+      </div>
+    </div>
+  )
+}
+
+interface VerticalDetailItemProps {
+  title: string
+  desc: string
+  bgImgUrl?: string
+}
+
+export function VerticalImgItem(props: VerticalDetailItemProps) {
+  const { title, desc, bgImgUrl = '' } = props
+  const isMobile = useMobile()
+
+  return (
+    <div className={styles.verticalDetailItem}>
+      <div className={styles.imgWrapper}>
+        <img src={bgImgUrl} alt={title} />
+      </div>
+      <div className={styles.content}>
+        {!isMobile && <div className={styles.title}>{title}</div>}
+        <div className={styles.desc}>{desc}</div>
       </div>
     </div>
   )

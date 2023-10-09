@@ -1,0 +1,29 @@
+@import '~utils/less/index.less';
+
+.mobileWrapper {
+  padding: 0 @icecream-gap-md;
+
+  :global {
+    .rc-menu {
+      text-align: left;
+
+      .rc-menu-submenu {
+        border: 1px solid @border-color;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
+        border-radius: @icecream-border-radius;
+        margin-bottom: @icecream-gap-sm;
+        background: @grey-1;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .rc-menu-submenu-title {
+          font-size: @icecream-font-size-4;
+          font-weight: 500;
+          color: @grey-7;
+        }
+      }
+    }
+  }
+}

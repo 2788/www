@@ -1,60 +1,41 @@
 /**
- * @file 方案优势
+ * @file 核心优势
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
 import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
-import { FormState, DebouncedFieldState, ArrayFormState } from 'formstate-x'
-import { Button } from 'react-icecream'
-import { AddThinIcon, DeleteIcon } from 'react-icecream/icons'
-import { DrawerForm, FormItem, useFormstateX, TextInput, TextArea } from 'react-icecream-form'
+import { DrawerForm, FormItem, useFormstateX } from 'react-icecream-form'
 
 import { useModalLike } from 'utils/async'
 import { SolutionModule, solutionModuleTitleMap, SolutionSection } from 'constants/solution/page'
 import { SolutionComponentName } from 'constants/solution/page/comp-common'
-import {
-  SolutionComponentAdvantageConfig, SolutionComponentAdvantageProps, AdvantageItem
-} from 'constants/solution/page/comp-advantage'
-import ImgIconInput, { createState as createImgIconState } from 'components/common/ImgIcon'
+import { SolutionComponentAdvantageConfig, SolutionComponentAdvantageProps } from 'constants/solution/page/comp-advantage'
 
-import styles from './style.m.less'
+import Advantage, { AdvantageConfig, AdvantageType, createState as createAdvantageState } from 'components/common/www/Advantage'
 
 function createState(props?: SolutionComponentAdvantageProps) {
-  return new FormState({
-    items: new ArrayFormState(props?.items ?? [], item => (
-      new FormState({
-        title: new DebouncedFieldState(item.title).withValidator(title => {
-          if (title.trim() === '') {
-            return '不能为空'
-          }
-          if (title.length > 12) {
-            return '不能超过 12 个字'
-          }
-        }),
-        desc: new DebouncedFieldState(item.desc).withValidator(desc => {
-          if (desc.trim() === '') {
-            return '不能为空'
-          }
-          if (desc.length > 70) {
-            return '不能超过 70 个字'
-          }
-        }),
-        iconUrl: createImgIconState(item.iconUrl).withValidator(iconUrl => {
-          if (iconUrl === '') {
-            return '不能为空'
-          }
-        })
-      })
-    )).withValidator(items => {
-      if (items.length < 3) {
-        return '最少 3 个'
-      }
-      if (items.length > 8) {
-        return '最多 8 个'
-      }
-    })
-  })
+  function getAdvantageConfig(): AdvantageConfig<AdvantageType.VerticalIcon | AdvantageType.VerticalImg> | undefined {
+    if (props == null) {
+      return undefined
+    }
+
+    if (props.type !== 'default' && props.type != null) {
+      return props
+    }
+
+    const horizontalAdvantageConfig = {
+      ...props,
+      type: AdvantageType.VerticalIcon as const
+    }
+
+    return horizontalAdvantageConfig
+  }
+
+  return createAdvantageState(
+    [AdvantageType.VerticalIcon, AdvantageType.VerticalImg],
+    getAdvantageConfig()
+  )
 }
 
 interface Props {
@@ -74,20 +55,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   }, [props.visible, state])
 
   function submit() {
-    props.onSubmit({ type: 'default', ...state.value })
-  }
-
-  function addItem() {
-    const item: AdvantageItem = {
-      title: '',
-      desc: '',
-      iconUrl: ''
-    }
-    state.$.items.append(item)
-  }
-
-  function removeItem(index: number) {
-    state.$.items.remove(index)
+    props.onSubmit(state.value)
   }
 
   return (
@@ -101,37 +69,8 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
       onSubmit={submit}
       onCancel={() => { props.onCancel() }}
     >
-      <FormItem label="优势" labelWidth="2em" required state={state.$.items}>
-        {state.$.items.$.map((itemState, index) => (
-          <FormItem
-            key={index}
-            label={
-              <span className={styles.sectionLabel}>
-                <span>{index + 1}</span>
-                <Button
-                  type="link"
-                  icon={<DeleteIcon />}
-                  className={styles.btn}
-                  onClick={() => { removeItem(index) }}
-                />
-              </span>
-            }
-            labelWidth="3em"
-            className={styles.sectionItem}
-            state={itemState}
-          >
-            <FormItem label="标题" required>
-              <TextInput state={itemState.$.title} />
-            </FormItem>
-            <FormItem label="副标题" required>
-              <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 3 }} />
-            </FormItem>
-            <FormItem label="图标地址" required>
-              <ImgIconInput state={itemState.$.iconUrl} />
-            </FormItem>
-          </FormItem>
-        ))}
-        <Button type="dashed" icon={<AddThinIcon />} onClick={() => { addItem() }} />
+      <FormItem>
+        <Advantage state={state} labelWidth="4em" previewTypeSize={{ width: '700px', height: '400px' }} />
       </FormItem>
     </DrawerForm>
   )
