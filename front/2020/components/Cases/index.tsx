@@ -5,12 +5,16 @@ import { useMobile } from 'hooks/ua'
 import Pc from './Pc'
 import Mobile from './Mobile'
 
-export default function Cases() {
+export type CasesProps = {
+  customLogoUrls?: string[]
+}
+
+export default function Cases(props: CasesProps) {
   const isMobile = useMobile()
   return (
     <>
       {
-        isMobile ? <Mobile /> : <Pc />
+        isMobile ? <Mobile customLogoUrls={props.customLogoUrls} /> : <Pc customLogoUrls={props.customLogoUrls} />
       }
     </>
   )

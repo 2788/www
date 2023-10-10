@@ -1,10 +1,12 @@
 import React from 'react'
 import { chunk } from 'lodash'
 import { Img as CardImg } from 'components/UI/Card'
-import { logoUrls } from '../constants'
+import { logoUrls as urls } from '../constants'
+import { CasesProps } from '..'
 import style from './style.less'
 
-export default function Mobile() {
+export default function Mobile(props: CasesProps) {
+  const logoUrls = props.customLogoUrls ?? urls
   return (
     <div className={style.wrapper}>
       <div className={style.logosWrapper}>

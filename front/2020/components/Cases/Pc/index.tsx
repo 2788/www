@@ -4,14 +4,17 @@ import { Carousel } from 'react-icecream-2'
 import { chunk } from 'lodash'
 import { Img as CardImg } from 'components/UI/Card'
 import { logoUrls } from '../constants'
+import { CasesProps } from '..'
 import style from './style.less'
 
-export default function Pc() {
+export default function Pc(props: CasesProps) {
+  // 12 个一页
+  const groups = chunk(props.customLogoUrls ?? logoUrls, 12)
   return (
     <div className={style.wrapper}>
       <Carousel rootHtmlProps={{ className: style.logosWrapper }}>
         {
-          chunk(logoUrls, 12).map((logos, index) => (
+          groups.map((logos, index) => (
             <Logos logos={logos} key={index} size={6} />
           ))
         }
@@ -21,10 +24,11 @@ export default function Pc() {
 }
 
 function Logos({ logos, size }: { logos: string[], size: number }) {
+  const groups = chunk(logos, size)
   return (
     <div className={style.logos}>
       {
-        chunk(logos, size).map((group, i) => (
+        groups.map((group, i) => (
           <div className={style.row} key={i}>
             {
               [...group, ...Array.from({ length: size }).map(() => null)].slice(0, size).map((logo, index) => (
@@ -34,7 +38,8 @@ function Logos({ logos, size }: { logos: string[], size: number }) {
                       <CardImg src={logo} className={style.logo} />
                     </div>
                   )
-                  : <div className={cls(style.logoWrapper, style.invisible)} key={index} />
+                  // 一页只有一行时，不使用占位元素
+                  : groups.length > 1 && <div className={cls(style.logoWrapper, style.invisible)} key={index} />
               ))
             }
           </div>
