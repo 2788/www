@@ -185,6 +185,8 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
+	referer := c.Request.Header.Get("referer")
+
 	var res models.ActivityRegistration
 	// 提交用户活动报名请求
 	activityRegParams := &models.ActivityRegistration{
@@ -192,6 +194,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		UserName:                params.UserName,
 		PhoneNumber:             params.PhoneNumber,
 		Email:                   params.Email,
+		Referer:                 referer,
 		ExtraForm:               params.ExtraForm,
 		MarketActivityId:        params.MarketActivityId,
 		MarketActivitySessionId: params.MarketActivitySessionId,
