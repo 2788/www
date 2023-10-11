@@ -19,6 +19,7 @@ const headerKeyName = {
   userName: '姓名',
   phoneNumber: '手机号',
   email: '邮箱',
+  referrer: '报名来源地址',
   location: '所在地',
   createdAt: '报名时间',
   checkedIn: '是否已签到'
@@ -76,6 +77,7 @@ function genSheetData(registrations: IRegistration[]) {
         arr.push(registration.createdAt ? timeFormatter('YYYY-MM-DD HH:mm')(registration.createdAt) : '')
         continue
       }
+
       if (i === 'checkedIn') {
         arr.push(registration.checkedIn ? '是' : '否')
         continue

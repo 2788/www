@@ -161,6 +161,7 @@ export interface IRegistrationOptions {
   userName: string // 报名人姓名
   phoneNumber: string // 手机号
   email: string // 邮箱
+  referrer: string // 当前的页面地址
   location: string // 地区
   isReaded: boolean // 已同意协议
   extraForm: Record<string, string | null>

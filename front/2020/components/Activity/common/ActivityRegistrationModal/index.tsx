@@ -112,6 +112,7 @@ export default observer(function ActivityRegistration(props: Props) {
         marketActivitySessionId,
         userName,
         email,
+        referrer: window.location.href,
         location: `${location.province}/${location.city}`,
         phoneNumber: phoneInfo.phoneNumber,
         isReaded,

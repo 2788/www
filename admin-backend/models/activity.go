@@ -35,7 +35,7 @@ type ActivityRegistration struct {
 	PhoneNumber             string                         `json:"phoneNumber"`
 	Email                   string                         `json:"email"`
 	Company                 string                         `json:"company"`
-	Referer                 string                         `json:"referer"`
+	Referrer                 string                         `json:"referrer"`
 	ExtraForm               interface{}                    `json:"extraForm"`
 	MarketActivityId        string                         `json:"marketActivityId"`
 	MarketActivitySessionId string                         `json:"marketActivitySessionId"`

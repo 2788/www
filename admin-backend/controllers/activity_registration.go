@@ -48,6 +48,7 @@ type activityRegInput struct {
 	UserName                string      `json:"userName"`
 	PhoneNumber             string      `json:"phoneNumber"`
 	Email                   string      `json:"email"`
+	Referrer                *string     `json:"referrer"`                // 报名来源
 	Location                string      `json:"location"`                // 所在地址
 	ExtraForm               interface{} `json:"extraForm"`               // 自定义表单内容
 	MarketActivityId        string      `json:"marketActivityId"`        // 报名活动 id
@@ -185,7 +186,13 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
-	referer := c.Request.Header.Get("referer")
+	var referrer string
+	if params.Referrer != nil && *params.Referrer != "" {
+		// 不保证和 referer 完全一致
+		referrer = *params.Referrer
+	} else {
+		referrer = c.Request.Header.Get("Referer")
+	}
 
 	var res models.ActivityRegistration
 	// 提交用户活动报名请求
@@ -194,7 +201,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		UserName:                params.UserName,
 		PhoneNumber:             params.PhoneNumber,
 		Email:                   params.Email,
-		Referer:                 referer,
+		Referrer:                referrer,
 		ExtraForm:               params.ExtraForm,
 		MarketActivityId:        params.MarketActivityId,
 		MarketActivitySessionId: params.MarketActivitySessionId,
