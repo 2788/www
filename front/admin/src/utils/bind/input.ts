@@ -91,3 +91,7 @@ export function bindCheckboxGroup(state: v2.FieldState<CheckboxValueType[]>) {
     onChange: (value: CheckboxValueType[]) => state.onChange(value)
   }
 }
+
+export function bindTextArea(state: v2.FieldState<string>) {
+  return bindInputWithTarget(state)
+}

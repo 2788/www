@@ -2,12 +2,14 @@ import React, { useCallback } from 'react'
 import dayjs from 'dayjs'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
-import { InputNumber, Icon } from 'react-icecream-1'
+import { InputNumber, Input, Icon } from 'react-icecream-1'
 import { FieldState, FormState } from 'formstate-x-v2'
 
-import { bindInputNumber } from 'utils/bind'
+import { bindInputNumber, bindTextArea } from 'utils/bind'
 import { IReminder } from 'apis/activity/market'
 import style from './style.m.less'
+import { ACTIVITY_REMINDER_SMS_TEMPLATE } from 'constants/activity'
+import { smsMatchKeysValidator } from 'components/Www/Activity/util'
 
 type ReminderState = FormState<{
   id: FieldState<string>
@@ -15,6 +17,7 @@ type ReminderState = FormState<{
   reminderStatus: FieldState<number>
   createdAt: FieldState<number>
   updatedAt: FieldState<number>
+  smsTemplate: FieldState<string>
 }>
 
 export type Value = IReminder[]
@@ -30,14 +33,16 @@ function createReminderState(reminderValue?: IReminder): ReminderState {
     reminderTime: defaultTime,
     reminderStatus: 0,
     createdAt: now.unix(),
-    updatedAt: now.unix()
+    updatedAt: now.unix(),
+    smsTemplate: ''
   }
   const reminderState = new FormState({
     id: new FieldState(val.id),
     reminderTime: new FieldState(val.reminderTime),
     reminderStatus: new FieldState(val.reminderStatus),
     createdAt: new FieldState(val.createdAt),
-    updatedAt: new FieldState(val.updatedAt)
+    updatedAt: new FieldState(val.updatedAt),
+    smsTemplate: new FieldState(val.smsTemplate || ACTIVITY_REMINDER_SMS_TEMPLATE).validators(smsMatchKeysValidator)
   })
   return reminderState
 }
@@ -90,15 +95,22 @@ export default observer(function RemindersInput({ state, disabled, visible }: IP
   }), [state])
 
   const contentView = state.$.map((item, index, arr) => (
-    <div className={style.row} key={index}>
-      <InputNumber
-        disabled={disabled}
-        {...bindInputNumber(item.$.reminderTime)}
-      />
-      <p>分钟前提醒</p>
-      <div>
-        {(index === arr.length - 1 && !disabled) && <Icon type="plus" className={style.icon} onClick={handleAdd} />}
-        {(index !== 0 && !disabled) && <Icon type="minus" className={style.icon} onClick={handleDelete(index)} />}
+    <div className={style.reminderItem} key={index}>
+      <div className={style.row}>
+        <p>提醒时间: </p>
+        <InputNumber
+          disabled={disabled}
+          {...bindInputNumber(item.$.reminderTime)}
+        />
+        <p>分钟前提醒</p>
+      </div>
+      <div className={style.row}>
+        <p>通知模板:</p>
+        <Input.TextArea className={style.textArea} {...bindTextArea(item.$.smsTemplate)} />
+        <div className={style.reminderOperation}>
+          {(index === arr.length - 1 && !disabled) && <Icon type="plus" className={style.icon} onClick={handleAdd} />}
+          {(index !== 0 && !disabled) && <Icon type="minus" className={style.icon} onClick={handleDelete(index)} />}
+        </div>
       </div>
     </div>
   ))

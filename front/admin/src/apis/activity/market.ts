@@ -23,6 +23,7 @@ export interface IReminder {
   reminderStatus: number // 0: 未提醒，1:开始提醒，2:提醒完成
   createdAt: number // 创建提醒的时间，单位为秒
   updatedAt: number // 更新提醒的时间，单位为秒
+  smsTemplate: string // 活动提醒短信模板
 }
 
 export interface ISession {
@@ -49,6 +50,7 @@ export interface IActivity {
   endTime: number // 活动结束时间，单位为秒
   applyEndTime: number // 报名截止时间，单位为秒
   noLoginRequired: boolean // 代表活动是否不需要登录，默认为需要登录
+  regSuccessSmsTemplate: string // 报名成功通知短信模板
   editTime: number // 修改时间，单位为秒
   enableReminder: boolean // 是否提醒
   reminders: IReminder[] // 活动提醒数组
@@ -102,7 +104,7 @@ const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/activity'] }
 export default class MarketActivityApis {
 
   // TODO: 换成 MongoApiBaseClient
-  constructor(private client: BaseClient) {}
+  constructor(private client: BaseClient) { }
 
   get(id: string): Promise<IActivityWithId> {
     return this.client.get(apiMongo + '/www-market-activity/' + id)

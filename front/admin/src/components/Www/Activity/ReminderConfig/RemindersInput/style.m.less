@@ -3,19 +3,39 @@
 .container {
   margin-left: @icecream-gap-sm;
 
-  .row {
+  .reminderItem {
     display: flex;
-    align-items: center;
-    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin: 1rem 0;
 
     p {
       margin: 0 @icecream-gap-xs;
+      text-wrap: nowrap;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      width: 100%;
     }
 
     .icon {
       &:nth-child(2) {
         margin-left: @icecream-gap-xs;
       }
+    }
+
+    .reminderOperation {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    }
+
+    .textArea {
+      width: 100%;
     }
   }
 }

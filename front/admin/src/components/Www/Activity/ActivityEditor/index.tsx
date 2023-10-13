@@ -15,10 +15,10 @@ import { Loadings } from 'admin-base/common/loading'
 import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
 import { textNotBlank } from 'admin-base/common/form'
 
-import { bindFormItem, bindTextInput, bindCheckbox, bindRangePicker, bindRadioGroup } from 'utils/bind'
+import { bindFormItem, bindTextArea, bindTextInput, bindCheckbox, bindRangePicker, bindRadioGroup } from 'utils/bind'
 import commonStyle from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
-import { StateType, stateMap, dateFormat, timeFormat } from 'constants/activity'
+import { StateType, stateMap, dateFormat, timeFormat, ACTIVITY_REG_SUCCEED_SMS_TEMPLATE } from 'constants/activity'
 import { IActivity, PageType } from 'apis/activity/market'
 import UploadImg, * as uploadImg from 'components/common/Upload/Img'
 import RichTextEditor, * as richTextEditor from 'components/common/RichTextEditor'
@@ -30,6 +30,7 @@ import SessionsInput, * as sessionsInput from '../SessionsInput'
 import UserCount from '../UserCount'
 import ActivityStore from '../store'
 import style from './style.m.less'
+import { smsMatchKeysValidator } from '../util'
 
 const defaultFormItemLayout = {
   labelCol: { xs: { span: 4 }, sm: { span: 4 } },
@@ -57,6 +58,7 @@ export const defaultFormData: FormDataType = {
     endTime: moment().add(1, 'day').hour(16).startOf('hour')
       .unix(),
     applyEndTime: moment().unix(),
+    regSuccessSmsTemplate: '',
     noLoginRequired: false,
     editTime: 0,
     enableReminder: false,
@@ -81,12 +83,13 @@ function createState(activity: IActivity) {
     location: locationInput.createState(activity.location),
     startTime,
     endTime,
-    applyEndTime: new FieldState(moment.unix(activity.applyEndTime))
-      .validators(val => (val >= startTime.value.startOf('minute') ? '报名截止时间不能大于等于活动开始时间' : null)),
+    applyEndTime: new FieldState(moment.unix(activity.applyEndTime)),
+    // .validators(val => (val >= startTime.value.startOf('minute') ? '报名截止时间不能大于等于活动开始时间' : null)),
+    regSuccessSmsTemplate: new FieldState(activity.regSuccessSmsTemplate || ACTIVITY_REG_SUCCEED_SMS_TEMPLATE)
+      .validators(smsMatchKeysValidator),
     requireLogin: new FieldState(!activity.noLoginRequired),
     reminder: reminderConfig.createState({ enableReminder, reminders }),
     sessions: sessionsInput.createState(activity.sessions || []),
-
     pageType,
     detail: richTextEditor.createState(activity.detail || '').disableValidationWhen(() => pageType.value === 'PAGE')
   })
@@ -132,6 +135,7 @@ class LocalStore extends Store {
       startTime: this.formValue.startTime.startOf('minute').unix(),
       endTime: this.formValue.endTime.endOf('minute').unix(),
       applyEndTime: this.formValue.applyEndTime.endOf('minute').unix(),
+      regSuccessSmsTemplate: this.formValue.regSuccessSmsTemplate,
       noLoginRequired: !this.formValue.requireLogin,
       editTime: this.props.activity.editTime,
       enableReminder: reminder.enableReminder,
@@ -301,6 +305,12 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
             disabled={isReading}
           />
           <Checkbox className={style.checkbox} {...bindCheckbox(fields.requireLogin)}>报名前是否需要强制登录</Checkbox>
+        </Form.Item>
+        <Form.Item
+          label="报名成功通知模板"
+          {...bindFormItem(fields.regSuccessSmsTemplate)}
+        >
+          <Input.TextArea {...bindTextArea(fields.regSuccessSmsTemplate)} />
         </Form.Item>
         <Form.Item
           label="活动提醒"
