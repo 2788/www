@@ -35,7 +35,7 @@ type ActivityRegistration struct {
 	PhoneNumber             string                         `json:"phoneNumber"`
 	Email                   string                         `json:"email"`
 	Company                 string                         `json:"company"`
-	Referrer                 string                         `json:"referrer"`
+	Referrer                string                         `json:"referrer"`
 	ExtraForm               interface{}                    `json:"extraForm"`
 	MarketActivityId        string                         `json:"marketActivityId"`
 	MarketActivitySessionId string                         `json:"marketActivitySessionId"`
@@ -53,10 +53,13 @@ type PartOfMarketActivity struct {
 	NoLoginRequired bool          `json:"noLoginRequired"` // 是否不需要登录，默认都是需要登录才能报名的活动
 	EnableReminder  bool          `json:"enableReminder"`  // 是否开启提醒
 	StartTime       int64         `json:"startTime"`       // 活动开始时间
+	Location        string        `json:"location"`        // 活动地址
 	DetailUrlPrefix string        `json:"detailUrlPrefix"` // 详情页面 url 前缀
 	ApplyEndTime    int64         `json:"applyEndTime"`    // 报名截止时间
 	Reminders       Reminders     `json:"reminders"`       // 活动提醒
 	Sessions        []session     `json:"sessions"`        // 活动场次
+
+	RegSuccessSmsTemplate string `json:"regSuccessSmsTemplate"` // 报名成功短信通知模版
 }
 
 // session 定义活动场次结构
@@ -66,6 +69,7 @@ type session struct {
 
 type Reminder struct {
 	Id             string         `json:"id"`           // reminder 唯一标识
+	SmsTemplate    string         `json:"smsTemplate"`  // 提醒短信通知模版
 	ReminderTime   int64          `json:"reminderTime"` // 活动开始前多少分钟提醒
 	ReminderStatus ReminderStatus `json:"reminderStatus"`
 	CreatedAt      int64          `json:"createdAt"`

@@ -3,10 +3,11 @@ package service
 import (
 	"errors"
 	"fmt"
-	"gopkg.in/mgo.v2/bson"
 	"net/http"
 	"strings"
 	"time"
+
+	"gopkg.in/mgo.v2/bson"
 
 	"github.com/go-redis/redis/v7"
 	"github.com/qiniu/xlog.v1"
@@ -53,7 +54,7 @@ func NewCronJobService(conf *config.Config) *CronJobService {
 	}
 }
 
-func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity models.PartOfMarketActivity,
+func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity models.PartOfMarketActivity, reminder models.Reminder,
 	logger *xlog.Logger) (jobId string, err error) {
 
 	in := make([]morse.SendSmsIn, 0)
@@ -70,7 +71,12 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 			PhoneNumber: user.PhoneNumber,
 		})
 	}
-	return f.morseService.BatchSendSms(logger, in, f.conf.SMSTemplates.ActivityReminder)
+
+	if reminder.SmsTemplate == "" {
+		return "", fmt.Errorf("BatchSendSms error: Please configure a message template for this event")
+	}
+
+	return f.morseService.BatchSendSms(logger, in, reminder.SmsTemplate)
 }
 
 func (f *CronJobService) tryLock(key string, value int64) (ok bool, err error) {
@@ -238,8 +244,8 @@ func (f *CronJobService) sendWithReminderIds(logger *xlog.Logger, activityId str
 
 	for {
 		// 如果有多次 reminder 需要通知，只会通知 reminder time 最小的那次，并认为此次活动通知都已完成
-		reminderId := activity.Reminders[indexes[0]].Id
-		users, err := f.getReminderUsers(logger, activityId, reminderId, f.conf.SMSBatchLimit)
+		reminder := activity.Reminders[indexes[0]]
+		users, err := f.getReminderUsers(logger, activityId, reminder.Id, f.conf.SMSBatchLimit)
 		if err != nil {
 			logger.Errorf("getReminderUsers activityId(%s) error: %v", activity.Id.Hex(), err)
 			return
@@ -249,13 +255,13 @@ func (f *CronJobService) sendWithReminderIds(logger *xlog.Logger, activityId str
 			break
 		}
 
-		jobId, err := f.batchSend(users, activity, logger)
+		jobId, err := f.batchSend(users, activity, reminder, logger)
 		if err != nil {
 			logger.Errorf("f.batchSend error: %v", err)
 			return
 		}
 		// 更新用户报名表 reminders
-		err = f.updateActivityRegistrationReminders(logger, users, reminderId, jobId)
+		err = f.updateActivityRegistrationReminders(logger, users, reminder.Id, jobId)
 		if err != nil {
 			logger.Errorf("updateActivityRegistrationReminders error: %v", err)
 		}

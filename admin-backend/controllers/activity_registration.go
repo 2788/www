@@ -95,9 +95,9 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
-	var getRes models.PartOfMarketActivity
+	var activity models.PartOfMarketActivity
 	// 查看当前活动是否存在
-	err = m.mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, &getRes)
+	err = m.mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, &activity)
 	if err != nil {
 		if errInfo, ok := err.(*rpc.ErrorInfo); ok && errInfo.Code == 404 {
 			logger.Errorf("market_activity_id(%s) not found", params.MarketActivityId)
@@ -109,12 +109,12 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 	// 场次 id 是否有效
-	for index, session := range getRes.Sessions {
+	for index, session := range activity.Sessions {
 		if session.Id == params.MarketActivitySessionId {
 			break
 		}
 		// 场次 id 不存在
-		if index == len(getRes.Sessions)-1 {
+		if index == len(activity.Sessions)-1 {
 			logger.Errorf("session id(%s) not found", params.MarketActivitySessionId)
 			m.Send(c, codes.MarketActivitySessionIdInvalid, "not found")
 			return
@@ -122,9 +122,9 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 活动如果需要登录才能报名，检查 uid 是否不为 0
-	if !getRes.NoLoginRequired && params.Uid == 0 {
+	if !activity.NoLoginRequired && params.Uid == 0 {
 		logger.Errorf("login is required to register for market activity (id: %s, title: %s)",
-			params.MarketActivityId, getRes.Title)
+			params.MarketActivityId, activity.Title)
 		m.Send(c, codes.UidRequired, nil)
 		return
 	}
@@ -134,7 +134,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 活动报名截止不能报名
-	if getRes.ApplyEndTime < time.Now().Unix() {
+	if activity.ApplyEndTime < time.Now().Unix() {
 		logger.Errorf("registration deadline error")
 		m.Send(c, codes.Forbidden, nil)
 		return
@@ -217,28 +217,33 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 发送活动报名成功短信
-	m.sendActivityRegSucceedSMS(logger, res.Id.Hex(), getRes.Title,
-		m.conf.SMSTemplates.ActivityCheckinLinkPrefix, params.PhoneNumber, getRes.StartTime)
+	m.sendActivityRegSucceedSMS(logger, activity, res.Id.Hex(),
+		m.conf.SMSTemplates.ActivityCheckinLinkPrefix, params.PhoneNumber)
 
 	m.Send(c, codes.OK, res)
 }
 
 // sendActivityRegSucceedSMS 发送报名成功短信通知
-func (m *Activity) sendActivityRegSucceedSMS(logger *xlog.Logger, activityRegId, activityTitle,
-	linkPrefix, phoneNumber string, activityStartTime int64) {
+func (m *Activity) sendActivityRegSucceedSMS(logger *xlog.Logger, activity models.PartOfMarketActivity, regId, linkPrefix, phoneNumber string) {
 
-	url := utils.GetCheckinLinkUrl(logger, m.lilliputService, linkPrefix, activityRegId)
+	url := utils.GetCheckinLinkUrl(logger, m.lilliputService, linkPrefix, regId)
 	// 发送短信
 	data := map[string]interface{}{
-		"Title":     activityTitle,
+		"Title":     activity.Title,
 		"Link":      url,
-		"StartTime": utils.FormatSecTime(activityStartTime),
+		"StartTime": utils.FormatSecTime(activity.StartTime),
 	}
 	in := morse.SendSmsIn{
 		PhoneNumber: phoneNumber,
 		TmplData:    data,
 	}
-	_, err := m.morseService.SendSms(logger, in, m.conf.SMSTemplates.ActivityRegSucceed)
+
+	if activity.RegSuccessSmsTemplate == "" {
+		logger.Errorf("SendSms error: Please configure a message template for this event")
+		return
+	}
+
+	_, err := m.morseService.SendSms(logger, in, activity.RegSuccessSmsTemplate)
 	if err != nil {
 		logger.Errorf("SendSms error: %v", err)
 	}

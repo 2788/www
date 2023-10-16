@@ -33,8 +33,6 @@ type Refresher struct {
 }
 
 type SMSTemplateConfig struct {
-	ActivityReminder          string `yaml:"activity_reminder"`            // 活动提醒模版
-	ActivityRegSucceed        string `yaml:"activity_reg_succeed"`         // 活动报名成功模版
 	ActivityCheckinLinkPrefix string `yaml:"activity_checkin_link_prefix"` // 活动签到链接前缀
 }
 
