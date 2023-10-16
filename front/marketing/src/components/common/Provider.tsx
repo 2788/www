@@ -54,7 +54,7 @@ export class Env extends Disposable implements base.IEnv {
 
     this.addDisposer(
       bindGA(this.base.routerStore, 'UA-40857860-16', {
-        gaAddress: '//qiniu.staticfile.org/analytics.js',
+        gaAddress: '//static.qiniu.com/analytics.js',
         gaOptions: {
           cookieDomain: 'auto'
         }

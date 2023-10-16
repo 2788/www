@@ -69,7 +69,7 @@ export default function Layout({
         <Head>
           <title>{title}</title>
           <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
-          <link rel="shortcut icon" href="//qiniu.staticfile.org/favicon.ico" type="image/x-icon" />
+          <link rel="shortcut icon" href="//static.qiniu.com/favicon.ico" type="image/x-icon" />
           <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
           {keywordsMeta}
           {descriptionMeta}

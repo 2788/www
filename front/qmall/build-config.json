@@ -1,7 +1,7 @@
 {
   "extends": "typescript-react",
   "srcDir": "src",
-  "publicUrl": "https://qiniu.staticfile.org/",
+  "publicUrl": "https://static.qiniu.com/",
   "optimization": {
     "transformDeps": ["tr46", "react-hot-loader", "ansi-regex", "whatwg-url", "webidl-conversions"]
   },

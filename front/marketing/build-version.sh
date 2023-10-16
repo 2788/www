@@ -1,6 +1,6 @@
 #!/bin/bash
 basename=$1
-host="//qiniu.staticfile.org"
+host="//static.qiniu.com"
 polyfill=$(ls $basename/fec__polyfill-*.js)
 polyfillName=${polyfill##*/}
 renderer=$(ls $basename/www-marketing-*.js)
