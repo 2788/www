@@ -26,7 +26,7 @@ const activityRegistrationExtraForm: ExtraFormItem[] = [
     name: '是否完成组队',
     key: 'teamedUp',
     placeholder: '请选择是否完成组队',
-    options: ['已组队', '未组队']
+    options: ['已组队', '未组队', '个人组队']
   }, {
     type: 'select',
     required: true,
