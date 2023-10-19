@@ -1,10 +1,10 @@
 {
   "extends": "./build-config.json",
   "devProxy": {
-    "/api": "http://admin-backend-www-env-staging.qa.qiniu.io"
+    "/api": "http://admin-backend-www-env-staging.jfcs-k8s-qa1.qiniu.io"
   },
   "envVariables": {
-    "process.env.WWW_HOST": "http://www-2020.dev.qiniu.io",
-    "process.env.WWW_SOURCE_HOST": "http://www-source.dev.qiniu.io"
+    "process.env.WWW_HOST": "http://www-2020.jfcs.qiniu.io",
+    "process.env.WWW_SOURCE_HOST": "http://www-source.jfcs.qiniu.io"
   }
 }

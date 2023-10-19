@@ -16,7 +16,7 @@
     "md": "file"
   },
   "devProxy": {
-    "/api": "http://admin-backend-www-env-staging.qa.qiniu.io"
+    "/api": "http://admin-backend-www-env-staging.jfcs-k8s-qa1.qiniu.io"
   },
   "deploy": {
     "config": {
