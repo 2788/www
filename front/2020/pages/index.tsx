@@ -2,7 +2,7 @@
  * @file 首页内容
  */
 
-import React, { createContext, useState, useContext, useEffect, useMemo } from 'react'
+import React, { createContext, useState, useContext, useEffect, useMemo, useRef } from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import cls from 'classnames'
 import { memoize } from 'lodash'
@@ -16,6 +16,7 @@ import { useApiWithParams } from 'hooks/api'
 import { luminanceOf } from 'utils/img'
 import { useTrackShow } from 'hooks/thallo'
 import { useMobile } from 'hooks/ua'
+import useIsomorphicLayoutEffect from 'hooks/use-isomorphic-layout-effect'
 
 import { headerThemeContext } from 'components/Header/Pc'
 import Activities from 'components/pages/index/Activities'
@@ -90,39 +91,59 @@ function useBanner(banners: Array<AdvertInfo<HomePageBanner>>) {
   }
 }
 
-// 包含静态 banner 的 hook
+/**
+ * HACK: 在 `useBanner` 的基础上插入一批本地静态写死的 banners
+ * 抽出来一个跟 `useBanner` 类似的外挂式 hook 方便后续移除
+ */
 function useBanners(banners: Array<AdvertInfo<HomePageBanner>>) {
+  const insertionPosition = 1 // 第二个位置
+  const insertedDarkBanners = useMemo(() => [
+    <VideoCloudBanner key="VideoCloudBanner" />
+  ], [])
+
+  function isInserted(currentSlide: number): boolean {
+    return currentSlide >= insertionPosition && currentSlide < insertionPosition + insertedDarkBanners.length
+  }
+
+  const initialSlide = 0
   const isMobile = useMobile()
   const { dark, onBannerChange, setBannerWrapper } = useBanner(banners)
   const setDark = useContext(bannerDarkCtx).setDark
-  const [isStaticBannerActive, setIsStaticBannerActive] = useState(true)
-  const isActivitiesHidden = !isMobile && isStaticBannerActive
+  const [isInsertedBannersActive, setIsInsertedBannersActive] = useState(isInserted(initialSlide))
+  const isActivitiesHidden = !isMobile && isInsertedBannersActive
 
-  useEffect(() => {
-    onBannerChange(-1)
-    // 第一张静态图是暗色的，所以手动设置下
-    setDark(true)
-  }, [onBannerChange, setDark])
-
-  function handleBannerChange(currentSlide: number) {
-    if (currentSlide === 0) {
+  function setCurrentBanner(currentSlide: number) {
+    if (isInserted(currentSlide)) {
+      setIsInsertedBannersActive(true)
       setDark(true)
-      setIsStaticBannerActive(true)
-      onBannerChange(-1)
+      onBannerChange(-1) // 置空
       return
     }
-    setIsStaticBannerActive(false)
-    onBannerChange(currentSlide - 1)
+
+    setIsInsertedBannersActive(false)
+    const offset = currentSlide < insertionPosition ? 0 : insertedDarkBanners.length
+    onBannerChange(currentSlide - offset)
   }
 
-  const videoCloudBannerView = (<VideoCloudBanner />)
+  // 初始化
+  const setCurrentBannerRef = useRef(setCurrentBanner)
+  setCurrentBannerRef.current = setCurrentBanner
+  useIsomorphicLayoutEffect(() => {
+    setCurrentBannerRef.current(initialSlide)
+  }, [setCurrentBannerRef])
+
+  const partition = useMemo(() => ({
+    before: banners.slice(0, insertionPosition),
+    inserted: insertedDarkBanners,
+    after: banners.slice(insertionPosition)
+  }), [banners, insertedDarkBanners])
 
   return {
     dark,
-    onBannerChange: handleBannerChange,
+    onBannerChange: setCurrentBanner,
     setBannerWrapper,
     isActivitiesHidden,
-    videoCloudBannerView
+    allBanners: partition
   }
 }
 
@@ -136,7 +157,7 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
   )
 
   // 去掉静态图后换回 `useBanner`
-  const { dark, onBannerChange, setBannerWrapper, isActivitiesHidden, videoCloudBannerView } = useBanners(banners)
+  const { dark, onBannerChange, setBannerWrapper, isActivitiesHidden, allBanners } = useBanners(banners)
 
   return (
     <>
@@ -149,8 +170,9 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
         autoplaySpeed={5000}
         autoplay
       >
-        {videoCloudBannerView}
-        {banners.map((banner, i) => <PageBanner key={i} dark={dark} {...banner} />)}
+        {allBanners.before.map((banner, i) => <PageBanner key={i} dark={dark} {...banner} />)}
+        {allBanners.inserted}
+        {allBanners.after.map((banner, i) => <PageBanner key={i + allBanners.before.length} dark={dark} {...banner} />)}
       </Carousel>
 
       <Activities activities={currentActivities || activities} hide={isActivitiesHidden} />
