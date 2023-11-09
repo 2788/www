@@ -73,6 +73,13 @@ const baiduzhanzhangScriptContent = `
 })();
 `
 
+const fenxi360InitScriptContent = `
+(function(b,a,e,h,f,c,g,s){b[h]=b[h]||function(){(b[h].c=b[h].c||[]).push(arguments)};
+b[h].s=!!c;g=a.getElementsByTagName(e)[0];s=a.createElement(e);
+s.src="//s.union.360.cn/"+f+".js";s.defer=!0;s.async=!0;g.parentNode.insertBefore(s,g)
+})(window,document,"script","_qha",44866,false);
+`
+
 const mikuDeliveryInitScriptContent = `
 (function () {
   const debug = window.location.search.includes('debug')
@@ -106,6 +113,7 @@ class MyDocument extends Document {
           <script> </script>
           <Main />
           <NextScript />
+          <script dangerouslySetInnerHTML={{ __html: fenxi360InitScriptContent }} />
           {/* https://stackoverflow.com/a/42969608 修复 Chrome 下 transition 会立即触发的问题 */}
           <script> </script>
         </body>
