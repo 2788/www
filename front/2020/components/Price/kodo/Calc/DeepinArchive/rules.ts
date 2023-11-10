@@ -255,4 +255,91 @@ const asiaSgp = {
   items: usla.items
 }
 
-export default [eastZheJiang2, east, south, north, usla, asiaSgp]
+// 亚太-河内
+const asiaHanoi: CalcRule = {
+  region: Region.AsiaHanoi,
+  desc: nameMap[Region.AsiaHanoi],
+  items: [
+    {
+      name: '存储空间费用',
+      price: 0.015,
+      min: 0,
+      max: Number.POSITIVE_INFINITY
+    },
+    {
+      type: 'group',
+      name: '流量费用',
+      items: [
+        {
+          name: '外网流出流量',
+          desc: '0-10TB',
+          price: 0.522,
+          min: 0,
+          max: 10 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '10-50TB',
+          price: 0.474,
+          min: 10 * 1024,
+          max: 50 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '50-100TB',
+          price: 0.447,
+          min: 50 * 1024,
+          max: 100 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '100TB 以上',
+          price: 0.412,
+          min: 100 * 1024,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'CDN',
+          price: 0.522,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
+    },
+    {
+      type: 'group',
+      name: '请求次数',
+      unitAdaptor: countUnitAdaptor,
+      items: [
+        {
+          name: 'PUT/DELETE',
+          price: 1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'GET',
+          price: 0.8,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '数据取回请求次数',
+          desc: '标准（5 - 12 小时）',
+          price: 8,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
+    },
+    {
+      name: '数据取回',
+      desc: '标准（5 - 12 小时）',
+      price: 0.14,
+      min: 0,
+      max: Number.POSITIVE_INFINITY
+    }
+  ]
+}
+
+export default [eastZheJiang2, east, south, north, usla, asiaSgp, asiaHanoi]

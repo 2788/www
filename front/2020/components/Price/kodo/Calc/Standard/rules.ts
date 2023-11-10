@@ -454,4 +454,142 @@ const usla: CalcRule = {
 // 亚太-新加坡
 const asiaSgp = { ...usla, region: Region.AsiaSgp, desc: nameMap[Region.AsiaSgp] }
 
-export default [eastZheJiang2, east, south, north, usla, asiaSgp]
+// 亚太-河内
+const asiaHanoi: CalcRule = {
+  region: Region.AsiaHanoi,
+  desc: nameMap[Region.AsiaHanoi],
+  items: [
+    {
+      type: 'group',
+      name: '存储费用',
+      items: [
+        {
+          name: '存储空间费用',
+          desc: '0-10 GB',
+          price: 0,
+          min: 0,
+          max: 10
+        },
+        {
+          name: '存储空间费用',
+          desc: '10 GB - 50 TB',
+          price: 0.14,
+          min: 10,
+          max: 50 * 1024
+        },
+        {
+          name: '存储空间费用',
+          desc: '50 TB - 500 TB',
+          price: 0.135,
+          min: 50 * 1024,
+          max: 500 * 1024
+        },
+        {
+          name: '存储空间费用',
+          desc: '500 TB - 5 PB',
+          price: 0.129,
+          min: 500 * 1024,
+          max: 5 * 1024 * 1024
+        },
+        {
+          name: '存储空间费用',
+          desc: '5 PB 以上',
+          price: 0.122,
+          min: 5 * 1024 * 1024,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
+    },
+    {
+      type: 'group',
+      name: '流量费用',
+      items: [
+        {
+          name: '外网流出流量',
+          desc: '0-10TB',
+          price: 0.522,
+          min: 0,
+          max: 10 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '10-50TB',
+          price: 0.474,
+          min: 10 * 1024,
+          max: 50 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '50-100TB',
+          price: 0.447,
+          min: 50 * 1024,
+          max: 100 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '100TB 以上',
+          price: 0.412,
+          min: 100 * 1024,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'CDN',
+          desc: '0-10GB',
+          price: 0,
+          min: 0,
+          max: 10
+        },
+        {
+          name: 'CDN',
+          desc: '10GB以上',
+          price: 0.522,
+          min: 10,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
+    },
+    {
+      type: 'group',
+      name: '请求次数',
+      unitAdaptor: countUnitAdaptor,
+      items: [
+        {
+          name: 'PUT/DELETE',
+          desc: '0 - 10 万次',
+          price: 0,
+          min: 0,
+          max: 10
+        },
+        {
+          name: 'PUT/DELETE',
+          desc: '10 万次以上',
+          price: 0.01,
+          min: 10,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'GET',
+          desc: '0 - 100 万次',
+          price: 0,
+          min: 0,
+          max: 100
+        },
+        {
+          name: 'GET',
+          desc: '100 万次以上',
+          price: 0.01,
+          min: 100,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
+    },
+    {
+      name: '数据取回',
+      price: 0,
+      min: 0,
+      max: Number.POSITIVE_INFINITY
+    }
+  ]
+}
+
+export default [eastZheJiang2, east, south, north, usla, asiaSgp, asiaHanoi]
